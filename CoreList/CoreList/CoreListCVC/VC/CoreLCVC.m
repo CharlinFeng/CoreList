@@ -52,7 +52,9 @@
  *  重新加载数据
  */
 -(void)reloadData{
-    [self.collectionView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.collectionView reloadData];
+    });
 }
 
 
