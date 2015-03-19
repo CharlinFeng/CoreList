@@ -4,6 +4,21 @@
 # CoreList
     大型列表MVC体系，强大的封装，Charlin精华倾情奉献！！！
 <br />
+
+
+#### 框架依赖：<br />
+.CoreStatus<br />
+.CoreArchive<br />
+.MJExtension<br />
+.CoreHttp<br />
+.CoreRefresh<br />
+.CoreViewNetWorkStausManager<br />
+
+
+
+
+<br /><br />
+
 ####框架特性：<br />
 >1.高度封装了列表的事个网络请求过程<br />
 >2.封装了上拉下拉加载<br />
