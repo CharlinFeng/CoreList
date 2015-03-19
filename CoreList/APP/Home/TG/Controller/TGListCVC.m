@@ -70,7 +70,10 @@ static NSString * const reuseIdentifier = @"Cell";
     
     LTConfigModel *configModel=[[LTConfigModel alloc] init];
     //url
-    configModel.url=@"http://218.244.141.72:8080/carnet/driver.php?m=Driver&c=User&a=test_fy";
+    NSString *url=@"http://218.244.141.72:8080/carnet/driver.php?m=Driver&c=User&a=test_fy";
+    url=@"http://localhost/APPlist.php";
+    configModel.url=url;
+    
     //请求方式
     configModel.httpMethod=LTConfigModelHTTPMethodGET;
     //模型类
@@ -91,7 +94,7 @@ static NSString * const reuseIdentifier = @"Cell";
     configModel.pageSize=18;
     
     //是否安装顶部刷新控件
-    configModel.refreshControlType=LTConfigModelRefreshControlTypeNeither;
+    configModel.refreshControlType=LTConfigModelRefreshControlTypeBoth;
     
     //配置完毕
     self.configModel=configModel;

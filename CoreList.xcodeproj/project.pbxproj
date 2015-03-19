@@ -55,16 +55,16 @@
 		EE583A661AB995D800516AC1 /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = EE583A421AB995D800516AC1 /* NSObject+MJCoding.m */; };
 		EE583A671AB995D800516AC1 /* NSObject+MJIvar.m in Sources */ = {isa = PBXBuildFile; fileRef = EE583A441AB995D800516AC1 /* NSObject+MJIvar.m */; };
 		EE583A681AB995D800516AC1 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = EE583A461AB995D800516AC1 /* NSObject+MJKeyValue.m */; };
-		EE583A7B1AB9960000516AC1 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE583A6A1AB9960000516AC1 /* HomeModel.m */; };
-		EE583A7C1AB9960000516AC1 /* HomeTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EE583A6C1AB9960000516AC1 /* HomeTVC.m */; };
-		EE583A7D1AB9960000516AC1 /* ShopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE583A6E1AB9960000516AC1 /* ShopListCell.m */; };
-		EE583A7E1AB9960000516AC1 /* ShopListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE583A6F1AB9960000516AC1 /* ShopListCell.xib */; };
-		EE583A7F1AB9960000516AC1 /* ShopListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EE583A711AB9960000516AC1 /* ShopListTVC.m */; };
-		EE583A801AB9960000516AC1 /* ShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE583A731AB9960000516AC1 /* ShopModel.m */; };
-		EE583A811AB9960000516AC1 /* TGCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE583A751AB9960000516AC1 /* TGCell.m */; };
-		EE583A821AB9960000516AC1 /* TGCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE583A761AB9960000516AC1 /* TGCell.xib */; };
-		EE583A831AB9960000516AC1 /* TGListCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EE583A781AB9960000516AC1 /* TGListCVC.m */; };
-		EE583A841AB9960000516AC1 /* TGModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE583A7A1AB9960000516AC1 /* TGModel.m */; };
+		EE61836E1ABA886B0066C864 /* HomeTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6183541ABA886B0066C864 /* HomeTVC.m */; };
+		EE61836F1ABA886B0066C864 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6183571ABA886B0066C864 /* HomeModel.m */; };
+		EE6183701ABA886B0066C864 /* ShopListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EE61835B1ABA886B0066C864 /* ShopListTVC.m */; };
+		EE6183711ABA886B0066C864 /* ShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE61835E1ABA886B0066C864 /* ShopModel.m */; };
+		EE6183721ABA886B0066C864 /* ShopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6183611ABA886B0066C864 /* ShopListCell.m */; };
+		EE6183731ABA886B0066C864 /* ShopListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6183621ABA886B0066C864 /* ShopListCell.xib */; };
+		EE6183741ABA886B0066C864 /* TGListCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6183661ABA886B0066C864 /* TGListCVC.m */; };
+		EE6183751ABA886B0066C864 /* TGModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6183691ABA886B0066C864 /* TGModel.m */; };
+		EE6183761ABA886B0066C864 /* TGCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE61836C1ABA886B0066C864 /* TGCell.m */; };
+		EE6183771ABA886B0066C864 /* TGCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE61836D1ABA886B0066C864 /* TGCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,24 +170,24 @@
 		EE583A441AB995D800516AC1 /* NSObject+MJIvar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJIvar.m"; sourceTree = "<group>"; };
 		EE583A451AB995D800516AC1 /* NSObject+MJKeyValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJKeyValue.h"; sourceTree = "<group>"; };
 		EE583A461AB995D800516AC1 /* NSObject+MJKeyValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJKeyValue.m"; sourceTree = "<group>"; };
-		EE583A691AB9960000516AC1 /* HomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
-		EE583A6A1AB9960000516AC1 /* HomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
-		EE583A6B1AB9960000516AC1 /* HomeTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTVC.h; sourceTree = "<group>"; };
-		EE583A6C1AB9960000516AC1 /* HomeTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTVC.m; sourceTree = "<group>"; };
-		EE583A6D1AB9960000516AC1 /* ShopListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListCell.h; sourceTree = "<group>"; };
-		EE583A6E1AB9960000516AC1 /* ShopListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListCell.m; sourceTree = "<group>"; };
-		EE583A6F1AB9960000516AC1 /* ShopListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopListCell.xib; sourceTree = "<group>"; };
-		EE583A701AB9960000516AC1 /* ShopListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListTVC.h; sourceTree = "<group>"; };
-		EE583A711AB9960000516AC1 /* ShopListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListTVC.m; sourceTree = "<group>"; };
-		EE583A721AB9960000516AC1 /* ShopModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopModel.h; sourceTree = "<group>"; };
-		EE583A731AB9960000516AC1 /* ShopModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopModel.m; sourceTree = "<group>"; };
-		EE583A741AB9960000516AC1 /* TGCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGCell.h; sourceTree = "<group>"; };
-		EE583A751AB9960000516AC1 /* TGCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGCell.m; sourceTree = "<group>"; };
-		EE583A761AB9960000516AC1 /* TGCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TGCell.xib; sourceTree = "<group>"; };
-		EE583A771AB9960000516AC1 /* TGListCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGListCVC.h; sourceTree = "<group>"; };
-		EE583A781AB9960000516AC1 /* TGListCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGListCVC.m; sourceTree = "<group>"; };
-		EE583A791AB9960000516AC1 /* TGModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGModel.h; sourceTree = "<group>"; };
-		EE583A7A1AB9960000516AC1 /* TGModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGModel.m; sourceTree = "<group>"; };
+		EE6183531ABA886B0066C864 /* HomeTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTVC.h; sourceTree = "<group>"; };
+		EE6183541ABA886B0066C864 /* HomeTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTVC.m; sourceTree = "<group>"; };
+		EE6183561ABA886B0066C864 /* HomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
+		EE6183571ABA886B0066C864 /* HomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
+		EE61835A1ABA886B0066C864 /* ShopListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListTVC.h; sourceTree = "<group>"; };
+		EE61835B1ABA886B0066C864 /* ShopListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListTVC.m; sourceTree = "<group>"; };
+		EE61835D1ABA886B0066C864 /* ShopModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopModel.h; sourceTree = "<group>"; };
+		EE61835E1ABA886B0066C864 /* ShopModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopModel.m; sourceTree = "<group>"; };
+		EE6183601ABA886B0066C864 /* ShopListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopListCell.h; sourceTree = "<group>"; };
+		EE6183611ABA886B0066C864 /* ShopListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopListCell.m; sourceTree = "<group>"; };
+		EE6183621ABA886B0066C864 /* ShopListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopListCell.xib; sourceTree = "<group>"; };
+		EE6183651ABA886B0066C864 /* TGListCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGListCVC.h; sourceTree = "<group>"; };
+		EE6183661ABA886B0066C864 /* TGListCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGListCVC.m; sourceTree = "<group>"; };
+		EE6183681ABA886B0066C864 /* TGModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGModel.h; sourceTree = "<group>"; };
+		EE6183691ABA886B0066C864 /* TGModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGModel.m; sourceTree = "<group>"; };
+		EE61836B1ABA886B0066C864 /* TGCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGCell.h; sourceTree = "<group>"; };
+		EE61836C1ABA886B0066C864 /* TGCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGCell.m; sourceTree = "<group>"; };
+		EE61836D1ABA886B0066C864 /* TGCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TGCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,24 +387,7 @@
 		EE5839FC1AB995A200516AC1 /* APP */ = {
 			isa = PBXGroup;
 			children = (
-				EE583A691AB9960000516AC1 /* HomeModel.h */,
-				EE583A6A1AB9960000516AC1 /* HomeModel.m */,
-				EE583A6B1AB9960000516AC1 /* HomeTVC.h */,
-				EE583A6C1AB9960000516AC1 /* HomeTVC.m */,
-				EE583A6D1AB9960000516AC1 /* ShopListCell.h */,
-				EE583A6E1AB9960000516AC1 /* ShopListCell.m */,
-				EE583A6F1AB9960000516AC1 /* ShopListCell.xib */,
-				EE583A701AB9960000516AC1 /* ShopListTVC.h */,
-				EE583A711AB9960000516AC1 /* ShopListTVC.m */,
-				EE583A721AB9960000516AC1 /* ShopModel.h */,
-				EE583A731AB9960000516AC1 /* ShopModel.m */,
-				EE583A741AB9960000516AC1 /* TGCell.h */,
-				EE583A751AB9960000516AC1 /* TGCell.m */,
-				EE583A761AB9960000516AC1 /* TGCell.xib */,
-				EE583A771AB9960000516AC1 /* TGListCVC.h */,
-				EE583A781AB9960000516AC1 /* TGListCVC.m */,
-				EE583A791AB9960000516AC1 /* TGModel.h */,
-				EE583A7A1AB9960000516AC1 /* TGModel.m */,
+				EE6183511ABA886B0066C864 /* Home */,
 			);
 			path = APP;
 			sourceTree = "<group>";
@@ -548,6 +531,111 @@
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
+		EE6183511ABA886B0066C864 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EE6183521ABA886B0066C864 /* Controller */,
+				EE6183551ABA886B0066C864 /* Model */,
+				EE6183581ABA886B0066C864 /* Shop */,
+				EE6183631ABA886B0066C864 /* TG */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		EE6183521ABA886B0066C864 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EE6183531ABA886B0066C864 /* HomeTVC.h */,
+				EE6183541ABA886B0066C864 /* HomeTVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EE6183551ABA886B0066C864 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE6183561ABA886B0066C864 /* HomeModel.h */,
+				EE6183571ABA886B0066C864 /* HomeModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EE6183581ABA886B0066C864 /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				EE6183591ABA886B0066C864 /* Controller */,
+				EE61835C1ABA886B0066C864 /* Model */,
+				EE61835F1ABA886B0066C864 /* View */,
+			);
+			path = Shop;
+			sourceTree = "<group>";
+		};
+		EE6183591ABA886B0066C864 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EE61835A1ABA886B0066C864 /* ShopListTVC.h */,
+				EE61835B1ABA886B0066C864 /* ShopListTVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EE61835C1ABA886B0066C864 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE61835D1ABA886B0066C864 /* ShopModel.h */,
+				EE61835E1ABA886B0066C864 /* ShopModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EE61835F1ABA886B0066C864 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EE6183601ABA886B0066C864 /* ShopListCell.h */,
+				EE6183611ABA886B0066C864 /* ShopListCell.m */,
+				EE6183621ABA886B0066C864 /* ShopListCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EE6183631ABA886B0066C864 /* TG */ = {
+			isa = PBXGroup;
+			children = (
+				EE6183641ABA886B0066C864 /* Controller */,
+				EE6183671ABA886B0066C864 /* Model */,
+				EE61836A1ABA886B0066C864 /* View */,
+			);
+			path = TG;
+			sourceTree = "<group>";
+		};
+		EE6183641ABA886B0066C864 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EE6183651ABA886B0066C864 /* TGListCVC.h */,
+				EE6183661ABA886B0066C864 /* TGListCVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EE6183671ABA886B0066C864 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE6183681ABA886B0066C864 /* TGModel.h */,
+				EE6183691ABA886B0066C864 /* TGModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EE61836A1ABA886B0066C864 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EE61836B1ABA886B0066C864 /* TGCell.h */,
+				EE61836C1ABA886B0066C864 /* TGCell.m */,
+				EE61836D1ABA886B0066C864 /* TGCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -629,14 +717,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE5839C01AB9953A00516AC1 /* Main.storyboard in Resources */,
-				EE583A821AB9960000516AC1 /* TGCell.xib in Resources */,
+				EE6183771ABA886B0066C864 /* TGCell.xib in Resources */,
 				EE583A5F1AB995D800516AC1 /* CM.bundle in Resources */,
 				EE583A591AB995D800516AC1 /* CoreRefreshResource.bundle in Resources */,
 				EE583A551AB995D800516AC1 /* CoreHeaderShowView.xib in Resources */,
 				EE583A571AB995D800516AC1 /* CoreHeaderView.xib in Resources */,
 				EE583A611AB995D800516AC1 /* CMView.xib in Resources */,
 				EE5839C51AB9953A00516AC1 /* LaunchScreen.xib in Resources */,
-				EE583A7E1AB9960000516AC1 /* ShopListCell.xib in Resources */,
+				EE6183731ABA886B0066C864 /* ShopListCell.xib in Resources */,
 				EE583A531AB995D800516AC1 /* CoreFooterView.xib in Resources */,
 				EE5839C21AB9953A00516AC1 /* Images.xcassets in Resources */,
 			);
@@ -656,33 +744,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE61836F1ABA886B0066C864 /* HomeModel.m in Sources */,
+				EE6183741ABA886B0066C864 /* TGListCVC.m in Sources */,
 				EE583A5B1AB995D800516AC1 /* UIScrollView+MJExtension.m in Sources */,
 				EE583A581AB995D800516AC1 /* CoreRefreshConst.m in Sources */,
-				EE583A841AB9960000516AC1 /* TGModel.m in Sources */,
-				EE583A7C1AB9960000516AC1 /* HomeTVC.m in Sources */,
+				EE61836E1ABA886B0066C864 /* HomeTVC.m in Sources */,
 				EE583A621AB995D800516AC1 /* MJConst.m in Sources */,
 				EE583A601AB995D800516AC1 /* CMView.m in Sources */,
 				EE583A501AB995D800516AC1 /* UploadFile.m in Sources */,
 				EE5839BD1AB9953A00516AC1 /* ViewController.m in Sources */,
+				EE6183721ABA886B0066C864 /* ShopListCell.m in Sources */,
 				EE5839F41AB9954D00516AC1 /* CoreListVC.m in Sources */,
 				EE583A491AB995D800516AC1 /* NSString+CoreHttp.m in Sources */,
 				EE583A521AB995D800516AC1 /* CoreFooterView.m in Sources */,
 				EE583A481AB995D800516AC1 /* CoreHttp.m in Sources */,
 				EE583A641AB995D800516AC1 /* MJIvar.m in Sources */,
 				EE583A651AB995D800516AC1 /* MJType.m in Sources */,
-				EE583A7F1AB9960000516AC1 /* ShopListTVC.m in Sources */,
-				EE583A7D1AB9960000516AC1 /* ShopListCell.m in Sources */,
 				EE5839F81AB9954D00516AC1 /* LCCell.m in Sources */,
 				EE583A4F1AB995D800516AC1 /* NSURL+File.m in Sources */,
 				EE583A631AB995D800516AC1 /* MJFoundation.m in Sources */,
-				EE583A811AB9960000516AC1 /* TGCell.m in Sources */,
-				EE583A831AB9960000516AC1 /* TGListCVC.m in Sources */,
+				EE6183701ABA886B0066C864 /* ShopListTVC.m in Sources */,
 				EE583A561AB995D800516AC1 /* CoreHeaderView.m in Sources */,
 				EE583A5E1AB995D800516AC1 /* CoreViewNetWorkStausManager.m in Sources */,
 				EE583A671AB995D800516AC1 /* NSObject+MJIvar.m in Sources */,
+				EE6183711ABA886B0066C864 /* ShopModel.m in Sources */,
 				EE5839FA1AB9954D00516AC1 /* LTCell.m in Sources */,
 				EE5839F51AB9954D00516AC1 /* CoreListCommonModel.m in Sources */,
-				EE583A7B1AB9960000516AC1 /* HomeModel.m in Sources */,
 				EE583A681AB995D800516AC1 /* NSObject+MJKeyValue.m in Sources */,
 				EE5839BA1AB9953A00516AC1 /* AppDelegate.m in Sources */,
 				EE583A4D1AB995D800516AC1 /* NSData+Param.m in Sources */,
@@ -697,11 +784,12 @@
 				EE583A4E1AB995D800516AC1 /* NSString+File.m in Sources */,
 				EE583A5A1AB995D800516AC1 /* CoreRefreshView.m in Sources */,
 				EE583A4C1AB995D800516AC1 /* NSData+MimeType.m in Sources */,
+				EE6183761ABA886B0066C864 /* TGCell.m in Sources */,
+				EE6183751ABA886B0066C864 /* TGModel.m in Sources */,
 				EE583A661AB995D800516AC1 /* NSObject+MJCoding.m in Sources */,
 				EE5839F61AB9954D00516AC1 /* LTConfigModel.m in Sources */,
 				EE5839F71AB9954D00516AC1 /* CoreLCVC.m in Sources */,
 				EE5839F91AB9954D00516AC1 /* CoreLTVC.m in Sources */,
-				EE583A801AB9960000516AC1 /* ShopModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -892,6 +980,7 @@
 				EE5839D61AB9953A00516AC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EE5839D71AB9953A00516AC1 /* Build configuration list for PBXNativeTarget "CoreListTests" */ = {
 			isa = XCConfigurationList;
@@ -900,6 +989,7 @@
 				EE5839D91AB9953A00516AC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

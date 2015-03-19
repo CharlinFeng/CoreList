@@ -84,6 +84,9 @@ typedef enum{
 @property (nonatomic,strong) NSArray *headerRefreshDataListIDArray;
 
 
+@property (nonatomic,assign) CoreLTVCRequestType currentType;
+
+
 @end
 
 
@@ -246,6 +249,9 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
  */
 -(void)requestWithRequestType:(CoreLTVCRequestType)requestType{
     
+    //记录当前的请求方式（顶部刷新/底部刷新）
+    _currentType=requestType;
+    
     //GET请求
     if(LTConfigModelHTTPMethodGET == _configModel.httpMethod){
         [self getMethodWithRequestType:requestType]; return;
@@ -301,7 +307,6 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
     //数据需要经过模型处理
     NSArray *dictsArray=[_configModel.ModelClass modelPrepare:obj];
     
-
     //查看加载结果
     if(dictsArray==nil || ![dictsArray isKindOfClass:[NSArray class]] || dictsArray.count==0){//没有数据
         
@@ -315,10 +320,14 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
             
             //第一次来就没有数据：提示没有数据
             [CoreViewNetWorkStausManager show:self.view type:CMTypeError msg:@"暂无数据" subMsg:@"没有新数据，点击屏幕获取试试" offsetY:CoreViewNetWorkStausManagerOffsetY failClickBlock:^{
-                [self.scrollView headerSetState:CoreHeaderViewRefreshStateRefreshing];
+                [self reloadDataWithheaderViewStateRefresh];
             }];
-   
-            //这里也可能是由于业务操作的原因，导致当前没有新数据，我们一样需要刷新表格
+            
+            //如果数据量过少，再删除底部刷新控件
+            if(self.alreadySetupFooterRefreshControl){
+                [self removeFooterRefreshControl];
+            }
+            
             //清空数据
             self.dataList=nil;
             [self reloadData];
@@ -388,25 +397,13 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
             //2.还没有安装过
             //3.当前数据量足够超过scrollView的高度
             if(self.canSetupFooterRefreshControl && !self.alreadySetupFooterRefreshControl && dataListTotalH >=scrollViewH){
-                //安装底部刷新控件
-                [self.scrollView addFooterWithTarget:self action:@selector(footerRefreshAction)];
-                
-                //已经有了底部刷新控件
-                self.alreadySetupFooterRefreshControl=YES;
+                [self addFooterRefreshControl];
             }
             
             //如果数据量过少，再删除底部刷新控件
             if(self.alreadySetupFooterRefreshControl && dataListTotalH <scrollViewH){
-                
-                //由于业务的操作，数据量变少，需要执行底部刷新控件的移除
-                [self.scrollView removeFooter];
-    
-                //已经没有了底部刷新控件
-                self.alreadySetupFooterRefreshControl=NO;
+                [self removeFooterRefreshControl];
             }
-            
-            //有数据了
-            self.hasData = YES;
         }
         
         
@@ -436,9 +433,6 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
             
             //有数据：顶部刷新后将要展示的数据
             showArray=modelsArray;
-            
-            //记录顶部最新的服务器id数组
-            self.headerRefreshDataListIDArray=[modelsArray valueForKeyPath:@"hostID"];
         }
         
         
@@ -466,6 +460,38 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
         [self reloadData];
     });
 }
+
+
+
+
+/**
+ *  添加底部刷新控件
+ */
+-(void)addFooterRefreshControl{
+    
+    //安装底部刷新控件
+    [self.scrollView addFooterWithTarget:self action:@selector(footerRefreshAction)];
+    
+    //已经有了底部刷新控件
+    self.alreadySetupFooterRefreshControl=YES;
+}
+
+
+
+/**
+ *  移除底部刷新控件
+ */
+-(void)removeFooterRefreshControl{
+    
+    //由于业务的操作，数据量变少，需要执行底部刷新控件的移除
+    [self.scrollView removeFooter];
+    
+    //已经没有了底部刷新控件
+    self.alreadySetupFooterRefreshControl=NO;
+}
+
+
+
 
 
 
@@ -568,5 +594,22 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
 -(CGFloat)scrollH{
     return self.scrollView.bounds.size.height;
 }
+
+
+-(void)setDataList:(NSArray *)dataList{
+    
+    _dataList=dataList;
+    
+    BOOL hasData=!(dataList==nil || dataList.count==0);
+    
+    //是否有数据
+    self.hasData=hasData;
+    
+    if(CoreLTVCRequestTypeFooterRefresh == _currentType) return;
+    
+    //记录顶部服务器id数组
+    self.headerRefreshDataListIDArray=hasData?[dataList valueForKeyPath:@"hostID"]:nil;
+}
+
 
 @end

@@ -197,6 +197,7 @@ CGFloat const deltaValue=40.0f;
 
 -(void)setState:(CoreHeaderViewRefreshState)state{
     
+    
     // 1.一样的就直接返回
     if (_state == state) return;
 
