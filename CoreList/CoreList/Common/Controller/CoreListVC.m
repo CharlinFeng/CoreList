@@ -54,16 +54,23 @@ typedef enum{
 
 
 /**
- *  是否需要安装顶部刷新控件
+ *  是否允许安装顶部刷新控件
  */
-@property (nonatomic,assign) BOOL hasHeaderRefreshControl;
+@property (nonatomic,assign) BOOL canSetupHeaderRefreshControl;
 
 
 
 /**
- *  是否需要安装底部刷新控件
+ *  是否允许安装底部刷新控件
  */
-@property (nonatomic,assign) BOOL hasFooterRefreshControl;
+@property (nonatomic,assign) BOOL canSetupFooterRefreshControl;
+
+
+
+/**
+ *  是否已经安装了底部刷新控件
+ */
+@property (nonatomic,assign) BOOL alreadySetupFooterRefreshControl;
 
 
 /**
@@ -149,7 +156,7 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
  *  触发顶部刷新
  */
 -(void)triggerTopRefreshAction{
-    if(self.hasHeaderRefreshControl){
+    if(self.canSetupHeaderRefreshControl){
         
         //需要安装顶部刷新控件
         
@@ -190,7 +197,7 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
  */
 -(void)workBegin{
     
-    if(self.hasHeaderRefreshControl){
+    if(self.canSetupHeaderRefreshControl){
         //添加顶部刷新控件
         [self.scrollView addHeaderWithTarget:self action:@selector(headerRefreshAction)];
     }
@@ -312,6 +319,8 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
             }];
    
             //这里也可能是由于业务操作的原因，导致当前没有新数据，我们一样需要刷新表格
+            //清空数据
+            self.dataList=nil;
             [self reloadData];
             
             return;
@@ -374,21 +383,26 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
             CGFloat scrollViewH=self.scrollH;
             CGFloat dataListTotalH=_configModel.rowHeight * modelsArray.count;
             
-            if(self.hasFooterRefreshControl && dataListTotalH >=scrollViewH){
+            //安装底部刷新控件的条件
+            //1.允许安装
+            //2.还没有安装过
+            //3.当前数据量足够超过scrollView的高度
+            if(self.canSetupFooterRefreshControl && !self.alreadySetupFooterRefreshControl && dataListTotalH >=scrollViewH){
                 //安装底部刷新控件
                 [self.scrollView addFooterWithTarget:self action:@selector(footerRefreshAction)];
                 
                 //已经有了底部刷新控件
-                self.hasFooterRefreshControl=YES;
+                self.alreadySetupFooterRefreshControl=YES;
             }
             
-            if(self.hasFooterRefreshControl && dataListTotalH <scrollViewH){
+            //如果数据量过少，再删除底部刷新控件
+            if(self.alreadySetupFooterRefreshControl && dataListTotalH <scrollViewH){
                 
                 //由于业务的操作，数据量变少，需要执行底部刷新控件的移除
                 [self.scrollView removeFooter];
     
                 //已经没有了底部刷新控件
-                self.hasFooterRefreshControl=NO;
+                self.alreadySetupFooterRefreshControl=NO;
             }
             
             //有数据了
@@ -539,13 +553,13 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
 
 
 
--(BOOL)hasHeaderRefreshControl{
+-(BOOL)canSetupHeaderRefreshControl{
     BOOL res = (LTConfigModelRefreshControlTypeTopRefreshOnly == _configModel.refreshControlType || LTConfigModelRefreshControlTypeBoth == _configModel.refreshControlType);
     
     return res;
 }
 
--(BOOL)hasFooterRefreshControl{
+-(BOOL)canSetupFooterRefreshControl{
     return (LTConfigModelRefreshControlTypeBoth == _configModel.refreshControlType || LTConfigModelRefreshControlTypeBottomRefreshOnly == _configModel.refreshControlType);
 }
 
