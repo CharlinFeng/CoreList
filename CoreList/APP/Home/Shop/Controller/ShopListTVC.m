@@ -54,6 +54,8 @@
     configModel.pageStartValue=0;
     //行高
     configModel.rowHeight=100.0f;
+    //移除返回顶部
+    configModel.removeBackToTopBtn=YES;
     
     //是否安装刷新控件
     configModel.refreshControlType=LTConfigModelRefreshControlTypeBoth;

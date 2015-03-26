@@ -135,5 +135,10 @@ typedef enum{
 @property (nonatomic,copy) NSString *lid;
 
 
+/**
+ *  是否移除返回顶部功能按钮，默认不移除
+ */
+@property (nonatomic,assign) BOOL removeBackToTopBtn;
+
 
 @end

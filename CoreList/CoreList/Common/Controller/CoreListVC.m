@@ -24,7 +24,7 @@ typedef enum{
 
 
 
-@interface CoreListVC ()
+@interface CoreListVC ()<UIScrollViewDelegate>
 
 
 /**
@@ -87,6 +87,23 @@ typedef enum{
 @property (nonatomic,assign) CoreLTVCRequestType currentType;
 
 
+/**
+ *  返回顶部按钮
+ */
+@property (nonatomic,strong) UIButton *backTopBtn;
+
+
+@property (nonatomic,assign) BOOL isHideBackTopBtn;
+
+
+/**
+ *  原始的contentOffset值
+ */
+@property (nonatomic,assign) CGPoint oringinalOffset;
+
+
+
+
 @end
 
 
@@ -101,10 +118,20 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
     
     [super viewDidLoad];
     
-    self.view.backgroundColor=[UIColor whiteColor];
-    self.scrollView.backgroundColor=[UIColor clearColor];
+    //控制器相关配置
+    [self vcPrepare];
 }
 
+
+
+/**
+ *  控制器相关配置
+ */
+-(void)vcPrepare{
+    self.view.backgroundColor=[UIColor whiteColor];
+    self.scrollView.backgroundColor=[UIColor clearColor];
+    self.scrollView.delegate=self;
+}
 
 
 
@@ -124,7 +151,8 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
-
+    
+    
     //如果dev没有传lid，说明需要实时更新
     if(_configModel.lid==nil){
         
@@ -152,6 +180,10 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
         }
     }
     
+    if(!_configModel.removeBackToTopBtn){
+        //获取原始的contentOffset值
+        if(CGPointEqualToPoint(_oringinalOffset, CGPointZero)) _oringinalOffset=self.scrollView.contentOffset;
+    }
 }
 
 
@@ -609,6 +641,78 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
     
     //记录顶部服务器id数组
     self.headerRefreshDataListIDArray=hasData?[dataList valueForKeyPath:@"hostID"]:nil;
+}
+
+
+
+/**
+ *  scrollView代理方法区
+ */
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    if(_configModel.removeBackToTopBtn) return;
+    
+    CGFloat offsetY=scrollView.contentOffset.y;
+    
+    self.isHideBackTopBtn=offsetY<800;
+}
+
+
+
+
+
+-(UIButton *)backTopBtn{
+    
+    if(_backTopBtn==nil){
+
+        UIButton *backTopBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+        [backTopBtn setImage:[UIImage imageNamed:@"CoreList.bundle/back_top"] forState:UIControlStateNormal];
+        _backTopBtn=backTopBtn;
+        backTopBtn.alpha=.5f;
+        [backTopBtn addTarget:self action:@selector(backToTopAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:backTopBtn];
+        
+        backTopBtn.translatesAutoresizingMaskIntoConstraints=NO;
+        NSDictionary *views=NSDictionaryOfVariableBindings(backTopBtn);
+        
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[backTopBtn(==44)]-20-|" options:0 metrics:nil views:views]];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[backTopBtn(==44)]-80-|" options:0 metrics:nil views:views]];
+    }
+    
+    return _backTopBtn;
+}
+
+
+-(void)backToTopAction{
+    
+    [self.scrollView setContentOffset:_oringinalOffset animated:YES];
+}
+
+
+
+-(void)setIsHideBackTopBtn:(BOOL)isHideBackTopBtn{
+    
+    if(_configModel.removeBackToTopBtn) return;
+    
+    if(_isHideBackTopBtn==isHideBackTopBtn) return;
+    
+    CGFloat alpha=isHideBackTopBtn?0.f:1.f;
+    
+    [UIView animateWithDuration:.25f animations:^{
+        self.backTopBtn.alpha=alpha;
+    }];
+    
+    _isHideBackTopBtn=isHideBackTopBtn;
+}
+
+
+-(void)dealloc{
+    
+    [self.scrollView removeFromSuperview];
+    
+    self.scrollView=nil;
 }
 
 

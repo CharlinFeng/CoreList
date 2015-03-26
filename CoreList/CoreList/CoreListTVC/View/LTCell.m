@@ -32,8 +32,6 @@
 +(instancetype)cellPrepare{
 
     LTCell *cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] firstObject];
-    cell.alpha=.1f;
-    cell.hidden=YES;
     return cell;
 }
 
@@ -45,9 +43,6 @@
     _model=model;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        
-        self.hidden=NO;
-        
         //调用数据填充方法
         [self dataFill];
     });

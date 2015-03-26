@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE48257B1AC39FD700582A8E /* CoreList.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EE48257A1AC39FD700582A8E /* CoreList.bundle */; };
 		EE5839B71AB9953A00516AC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5839B61AB9953A00516AC1 /* main.m */; };
 		EE5839BA1AB9953A00516AC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5839B91AB9953A00516AC1 /* AppDelegate.m */; };
 		EE5839BD1AB9953A00516AC1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5839BC1AB9953A00516AC1 /* ViewController.m */; };
@@ -78,6 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE48257A1AC39FD700582A8E /* CoreList.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CoreList.bundle; sourceTree = "<group>"; };
 		EE5839B11AB9953A00516AC1 /* CoreList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE5839B51AB9953A00516AC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE5839B61AB9953A00516AC1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -208,6 +210,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE4825791AC39FD700582A8E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				EE48257A1AC39FD700582A8E /* CoreList.bundle */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		EE5839A81AB9953A00516AC1 = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +294,7 @@
 		EE5839DB1AB9954D00516AC1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EE4825791AC39FD700582A8E /* Resource */,
 				EE5839DC1AB9954D00516AC1 /* Controller */,
 				EE5839DF1AB9954D00516AC1 /* Model */,
 			);
@@ -724,6 +735,7 @@
 				EE583A571AB995D800516AC1 /* CoreHeaderView.xib in Resources */,
 				EE583A611AB995D800516AC1 /* CMView.xib in Resources */,
 				EE5839C51AB9953A00516AC1 /* LaunchScreen.xib in Resources */,
+				EE48257B1AC39FD700582A8E /* CoreList.bundle in Resources */,
 				EE6183731ABA886B0066C864 /* ShopListCell.xib in Resources */,
 				EE583A531AB995D800516AC1 /* CoreFooterView.xib in Resources */,
 				EE5839C21AB9953A00516AC1 /* Images.xcassets in Resources */,
