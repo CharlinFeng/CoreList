@@ -47,4 +47,12 @@
 
 
 
+/**
+ *  模型数组对比
+ */
++(BOOL)ListModel:(NSArray *)modelArray1 isEqual:(NSArray *)modelArray2;
+
+
+
+
 @end

@@ -81,7 +81,7 @@ typedef enum{
 /**
  *  顶部刷新返回的数据的服务器id数组
  */
-@property (nonatomic,strong) NSArray *headerRefreshDataListIDArray;
+@property (nonatomic,strong) NSArray *headerRefreshDataListModelArray;
 
 
 @property (nonatomic,assign) CoreLTVCRequestType currentType;
@@ -440,12 +440,8 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
         
         
         
-        //本次请求的最新的数据模型的服务器id数组
-        NSArray *thisTimeIDArray=[modelsArray valueForKeyPath:@"hostID"];
-        
-        
-        //和记录的最新数据对比:
-        if([thisTimeIDArray isEqualToArray:self.headerRefreshDataListIDArray]){//无新数据
+        //当前请求到的数据数组和记录的最新数据对比:
+        if([CoreListCommonModel ListModel:modelsArray isEqual:self.headerRefreshDataListModelArray]){//无新数据
             
             //无新数据。不需要干扰底部刷新
             //页码恢复
@@ -603,10 +599,23 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
 
 }
 
+
+/**
+ *  刷新获取最新数据：此方法会触发顶部刷新控件，并且scrollView会回到顶部
+ */
 -(void)reloadDataWithheaderViewStateRefresh{
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.scrollView headerSetState:CoreHeaderViewRefreshStateRefreshing];
     });
+}
+
+
+/**
+ *  刷新获取最新数据：此方法不会触发顶部刷新控件，scrollView不会回到顶部
+ */
+-(void)reloadDataDerectly{
+    
+    [self requestWithRequestType:CoreLTVCRequestTypeHeaderRefresh];
 }
 
 
@@ -640,7 +649,7 @@ const CGFloat CoreViewNetWorkStausManagerOffsetY=0;
     if(CoreLTVCRequestTypeFooterRefresh == _currentType) return;
     
     //记录顶部服务器id数组
-    self.headerRefreshDataListIDArray=hasData?[dataList valueForKeyPath:@"hostID"]:nil;
+    self.headerRefreshDataListModelArray=hasData?dataList:nil;
 }
 
 

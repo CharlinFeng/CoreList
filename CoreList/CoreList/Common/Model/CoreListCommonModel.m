@@ -59,4 +59,63 @@
 
 
 
+
+
+
+
+
+/**
+ *  模型数组对比
+ */
++(BOOL)ListModel:(NSArray *)modelArray1 isEqual:(NSArray *)modelArray2{
+    
+    //排序
+    NSArray *sortedArray1 = [self modelArrayAsc:modelArray1];
+    NSArray *sortedArray2 = [self modelArrayAsc:modelArray2];
+    
+    //1.对比hostID数组，如果hostID数组都不一致，则数组一定不相同
+    NSArray *idArray1 = [sortedArray1 valueForKeyPath:@"hostID"];
+    NSArray *idArray2 = [sortedArray2 valueForKeyPath:@"hostID"];
+    
+    if(![idArray1 isEqualToArray:idArray2]) return NO;
+    
+    //id数组一样，则需要详细对比整体内容
+    //模型数组转字典数组
+    NSArray *dictArray1=[NSObject keyValuesArrayWithObjectArray:sortedArray1];
+    NSArray *dictArray2=[NSObject keyValuesArrayWithObjectArray:sortedArray2];
+    
+    if(![dictArray1 isEqualToArray:dictArray2]) {
+        NSLog(@"不相同");
+        return NO;
+    }else{
+        NSLog(@"相同");
+    }
+    
+    return YES;
+}
+
+
+
+/**
+ *  模型数组升序排列
+ *
+ *  @param modelArray 原数组
+ *
+ *  @return 升序数组
+ */
++(NSArray *)modelArrayAsc:(NSArray *)modelArray{
+    
+    NSArray *sortedModelArray = [modelArray sortedArrayUsingComparator:^NSComparisonResult(CoreListCommonModel *m1, CoreListCommonModel *m2) {
+        
+        if(m1.hostID<m2.hostID) return NSOrderedAscending;
+        if(m1.hostID>m2.hostID) return NSOrderedDescending;
+        
+        return NSOrderedSame;
+    }];
+    
+    return sortedModelArray;
+}
+
+
+
 @end

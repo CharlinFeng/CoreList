@@ -59,11 +59,14 @@
 
 
 /**
- *  刷新获取最新数据
+ *  刷新获取最新数据：此方法会触发顶部刷新控件，并且scrollView会回到顶部
  */
 -(void)reloadDataWithheaderViewStateRefresh;
 
 
-
+/**
+ *  刷新获取最新数据：此方法不会触发顶部刷新控件，scrollView不会回到顶部
+ */
+-(void)reloadDataDerectly;
 
 @end
