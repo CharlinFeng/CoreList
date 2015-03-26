@@ -27,6 +27,7 @@
 >5.优秀的数据解析、错误处理、网络错误处理及信息指示集成<br />
 >6.多线程全部完美考虑。<br />
 >7.支持所有系统和屏幕！<br />
+>8.添加了返回顶部的功能，并可定制是否启用（默认开启）。
 
 <br /><br />
 ####使用说明：<br />
@@ -84,7 +85,9 @@
       configModel.pageStartValue=1222;
       //行高
       configModel.cellHeight=100.0f;
-      
+      //移除返回顶部:(默认开启)
+      configModel.removeBackToTopBtn=YES;
+    
       //配置完毕
       self.configModel=configModel;
     
