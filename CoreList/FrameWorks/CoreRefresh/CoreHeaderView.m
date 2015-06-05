@@ -197,7 +197,6 @@ CGFloat const deltaValue=40.0f;
 
 -(void)setState:(CoreHeaderViewRefreshState)state{
     
-    
     // 1.一样的就直接返回
     if (_state == state) return;
 
@@ -275,16 +274,18 @@ CGFloat const deltaValue=40.0f;
         
         // 2.设置滚动位置
         self.scrollView.mj_contentOffsetY = - top;
+    } completion:^(BOOL finished) {
+        //更新界面
+        [self updateInterFaceForStatusWithMessage:@"正在刷新中"];
+        
+        //通知showView开始刷新
+        self.showView.refreshing=YES;
+        
+        //回调方法
+        [self beginRefreshing];
     }];
 
-    //更新界面
-    [self updateInterFaceForStatusWithMessage:@"正在刷新中"];
-    
-    //通知showView开始刷新
-    self.showView.refreshing=YES;
-    
-    //回调方法
-    [self beginRefreshing];
+
 }
 
 
@@ -298,6 +299,9 @@ CGFloat const deltaValue=40.0f;
     
     [self updateInterFaceForStatusWithMessage:@"刷新失败"];
     
+    //添加动画
+    [self.iconImageV.layer addAnimation:[CAAnimation shakeAnim] forKey:@"shakeAnim"];
+    
     //回调方法
     [self endRefreshing:NO];
 
@@ -307,6 +311,9 @@ CGFloat const deltaValue=40.0f;
 -(void)stateSuccessedResultNoMoreData{
     
     [self updateInterFaceForStatusWithMessage:@"没有新数据"];
+    
+    //添加动画
+    [self.iconImageV.layer addAnimation:[CAAnimation shakeAnim] forKey:@"shakeAnim"];
     
     //回调方法
     [self endRefreshing:NO];
@@ -389,6 +396,7 @@ CGFloat const deltaValue=40.0f;
             } else {
                 self.scrollView.mj_contentInsetTop = self.scrollViewOriginalInset.top;
             }
+            
         } completion:^(BOOL finished) {
             
             self.state=CoreHeaderViewRefreshStateNorMal;

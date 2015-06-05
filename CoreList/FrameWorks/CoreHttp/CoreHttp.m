@@ -7,7 +7,7 @@
 
 #import "CoreHttp.h"
 #import "NSString+CoreHttp.h"
-#import "ToolStatus.h"
+#import "CoreStatus.h"
 #import "NSData+Param.h"
 #import <UIKit/UIKit.h>
 
@@ -19,7 +19,7 @@ const BOOL kURLConnectionMutualUseJson = NO;
 #pragma mark  请求前统一处理：如果是没有网络，则不论是GET请求还是POST请求，均无需继续处理
 +(BOOL)requestBeforeCheckNetWorkWithErrorBlock:(ErrorBlock)errorBlock{
     
-    BOOL isNETWORKEnable=[ToolStatus isNETWORKEnable];
+    BOOL isNETWORKEnable=[CoreStatus isNETWORKEnable];
     
     if(!isNETWORKEnable){//无网络
         
