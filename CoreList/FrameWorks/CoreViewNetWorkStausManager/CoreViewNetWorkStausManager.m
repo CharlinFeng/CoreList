@@ -15,21 +15,28 @@
 +(void)show:(UIView *)view type:(CMType)type msg:(NSString *)msg subMsg:(NSString *)subMsg offsetY:(CGFloat)offsetY failClickBlock:(void(^)())failClickBlock{
 
     //先移除一次
-    [self dismiss:view];
+    [self dismiss:view animated:NO];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
         //创建CMView
         CMView *myCmView=[CMView cmViewWithType:type msg:msg subMsg:subMsg offsetY:offsetY failClickBlock:failClickBlock];
-  
+        
+        myCmView.backgroundColor = [UIColor whiteColor];
+        
         [view addSubview:myCmView];
+        
+//        myCmView.alpha=0;
+//        [UIView animateWithDuration:.25f animations:^{
+//            myCmView.alpha=1.0f;
+//        }];
     });
     
 }
 
 
 
-+(void)dismiss:(UIView *)view{
++(void)dismiss:(UIView *)view animated:(BOOL)animated;{
     
     NSArray *subViews=view.subviews;
     
@@ -43,7 +50,21 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                [subView removeFromSuperview];
+                if(animated){
+                    
+                    [UIView animateWithDuration:.5f animations:^{
+                        
+                        subView.alpha = 0;
+                        
+                    } completion:^(BOOL finished) {
+                        
+                        [subView removeFromSuperview];
+                        
+                    }];
+                    
+                }else{
+                    [subView removeFromSuperview];
+                }
             });
         }
     });

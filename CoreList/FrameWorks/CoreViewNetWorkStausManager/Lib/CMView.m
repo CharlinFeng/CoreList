@@ -73,7 +73,7 @@
     cmView.offsetY=offsetY;
     
     if(CMTypeError == type) cmView.failClickBlock=failClickBlock;
-
+    
     return cmView;
 }
 
@@ -157,7 +157,7 @@
     
     
     if([superView isKindOfClass:[UIScrollView class]]){
-
+        
         UIScrollView *scrollView=(UIScrollView *)superView;
         
         CGSize contentSize=scrollView.contentSize;
@@ -174,7 +174,7 @@
         metrics=@{@"w":@(size.width),@"h":@(size.height),@"y":@(_offsetY)};
         vfl_H=@"H:|-0-[selfView(==w)]-0-|";
         vfl_V=@"V:|-y-[selfView(==h)]-0-|";
-        
+
     }else{
         
         metrics=@{@"y":@(_offsetY)};
