@@ -114,7 +114,7 @@
             
             //记录page
             page = [[params objectForKey:pageKey] integerValue];
-            NSLog(@"这是第%@页面-----------",@(page));
+  
             //获取pagesize
             NSUInteger pagesize = [self baseModel_PageSize];
             
@@ -313,9 +313,21 @@
             
             isTheSame = [self contrastModel1:hostModelData model2:sqliteModelSing];
             
+            if(isTheSame){
+                NSLog(@"相同");
+            }else{
+                NSLog(@"不同");
+            }
+            
         }else if (BaseModelHostDataTypeModelArray == dataType){//模型：数组
             
             isTheSame = [self contrastModels1:hostModelData models2:sqliteModelDataArray];
+            
+            if(isTheSame){
+                NSLog(@"相同");
+            }else{
+                NSLog(@"不同");
+            }
         }
     }
     
@@ -373,7 +385,7 @@
 
 /** 模型对比时需要忽略的字段 */
 +(NSArray *)constrastIgnorFields{
-    return @[@"pModel",@"pid"];
+    return @[@"pModel",@"pid",@"description",@"debugDescription",@"hash"];
 }
 
 

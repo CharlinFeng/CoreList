@@ -20,6 +20,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+
+
 @end
 
 
@@ -42,6 +45,8 @@
     _descLabel.text = tgModel.about;
     
     _contentLabel.text = tgModel.content;
+    
+    _typeLabel.text = [NSString stringWithFormat:@"%@",@(tgModel.type)];
 }
 
 

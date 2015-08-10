@@ -299,7 +299,7 @@
     //界面立即显示
     self.state=CoreFooterViewRefreshStateRefreshing;
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // 回调
         if ([self.beginRefreshingTaget respondsToSelector:self.beginRefreshingAction]) {
             msgSend(msgTarget(self.beginRefreshingTaget), self.beginRefreshingAction, self);

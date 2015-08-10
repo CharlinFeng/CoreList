@@ -21,22 +21,22 @@
 
 /** 接口地址 */
 +(NSString *)baseModel_UrlString{
-    return @"http://211.149.151.92/Carpenter/tp/index.php/Info/testdata";;
+    return @"http://211.149.151.92/Carpenter/Test/Info/testdata";
 }
 
 /** 请求方式 */
 +(BaseModelHttpType)baseModel_HttpType{
-    return BaseModelHttpTypeGET;
+    return BaseModelHttpTypePOST;
 }
 
 /** 是否需要本地缓存 */
 +(BOOL)baseModel_NeedFMDB{
-    return NO;
+    return YES;
 }
 
 /** 缓存周期：单位秒 */
 +(NSTimeInterval)baseModel_Duration{
-    return 10;
+    return 1;
 }
 
 /**

@@ -12,4 +12,6 @@
 
 @property (nonatomic,copy) NSString *title,*about,*content;
 
+@property (nonatomic,assign) NSInteger type;
+
 @end

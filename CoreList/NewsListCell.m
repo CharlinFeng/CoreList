@@ -19,6 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 
 
 
@@ -38,6 +39,8 @@
     _descLabel.text = newsListModel.about;
     
     _contentLabel.text = newsListModel.content;
+    
+    _typeLabel.text = [NSString stringWithFormat:@"%@",@(newsListModel.type)];
 }
 
 

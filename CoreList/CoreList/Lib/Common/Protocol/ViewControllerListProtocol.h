@@ -30,6 +30,10 @@
 -(Class)listVC_View_Cell_Class;
 
 
+/** 请求参数 */
+-(NSDictionary *)listVC_Request_Params;
+
+
 /** 是否移除回到顶部按钮 */
 -(BOOL)listVC_Remove_Back2Top_Button;
 

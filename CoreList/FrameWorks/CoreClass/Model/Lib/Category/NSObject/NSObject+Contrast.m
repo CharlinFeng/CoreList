@@ -33,7 +33,7 @@
     
     BOOL isMember2 = [NSStringFromClass(model1.class) isEqualToString:NSStringFromClass(BaseModelClass)];
     
-    if(!isMember1 || !isMember2) return YES;
+    if(isMember1 || isMember2) return YES;
     
     BOOL res1= [model1.class isSubclassOfClass:BaseModelClass];
     
@@ -69,6 +69,13 @@
     
     //遍历成员属性
     [model1.class enumeratePropertiesWithBlock:^(MJProperty *property, BOOL *stop) {
+        
+        if(model1.hostID == 100){
+        
+            
+        
+        }
+        
         
         NSString *propertyName = property.name;
         
@@ -111,7 +118,7 @@
             }else if (isIntegerS){//NSInteger、NSUInteger、CoreEnum_int
                 
                 NSInteger integer1=[value1 integerValue];
-                NSInteger integer2=[value1 integerValue];
+                NSInteger integer2=[value2 integerValue];
                 res = integer1==integer2;
                 if(!res) NSLog(@"NSInteger不一样：%@.%@=%@,%@.%@=%@",NSStringFromClass(model1.class),propertyName,@(integer1),NSStringFromClass(model2.class),propertyName,@(integer2));
             }else if ([CoreBOOL isEqualToString:code]){//BOOL

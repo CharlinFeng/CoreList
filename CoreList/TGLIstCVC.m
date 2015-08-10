@@ -42,6 +42,11 @@
     return [TGCell class];
 }
 
+/** 请求参数 */
+-(NSDictionary *)listVC_Request_Params{
+    return nil;
+    return @{@"mobile":@"13540033473",@"user":@"admin"};
+}
 
 /** 是否移除回到顶部按钮 */
 -(BOOL)listVC_Remove_Back2Top_Button{

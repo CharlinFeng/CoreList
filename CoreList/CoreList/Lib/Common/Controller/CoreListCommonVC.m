@@ -190,19 +190,29 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
     Class Model_Class = [self listVC_Model_Class];
     
     //当前页码信息：p,每页数据量信息：pageSize
-    NSDictionary *params = @{[Model_Class baseModel_PageKey] : @(self.page),[Model_Class baseModel_PageSizeKey] : @([Model_Class baseModel_PageSize])};
+    NSMutableDictionary *paramsM = [NSMutableDictionary dictionary];
+  
+    [paramsM addEntriesFromDictionary:@{[Model_Class baseModel_PageKey] : @(self.page),[Model_Class baseModel_PageSizeKey] : @([Model_Class baseModel_PageSize])}];
+    
+    if ([self listVC_Request_Params] != nil) [paramsM addEntriesFromDictionary:[self listVC_Request_Params]];
+    
+    NSLog(@"请求开始：%@",paramsM);
     
     NSDictionary *userInfo = @{RefreshTypeKey : @(self.refreshType)};
-    [Model_Class selectWithParams:params userInfo:userInfo beginBlock:^(BOOL isNetWorkRequest,BOOL needHUD){
+    
+    [Model_Class selectWithParams:paramsM userInfo:userInfo beginBlock:^(BOOL isNetWorkRequest,BOOL needHUD){
         
         if(self.hasFooter && isNetWorkRequest) [self.scrollView footerSetState:CoreFooterViewRefreshStateRequesting];
         
     } successBlock:^(NSArray *models, BaseModelDataSourceType sourceType,NSDictionary *userInfo){
         
+        
+        NSLog(@"成功了=================");
+        
         if(BaseModelDataSourceHostType_Sqlite_Deprecated == sourceType) {
             
             NSLog(@"本地数据过期");
-            return;
+//            return;
         }
         
         ListVCRefreshActionType refreshType = [[userInfo objectForKey:RefreshTypeKey] integerValue];
@@ -351,8 +361,6 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
         self.dataList = models;
         
     }else{
-        
-        NSLog(@"添加：%@",[models valueForKeyPath:@"hostID"]);
         
         self.dataList = [self.dataList appendArray:models];
     }
@@ -580,6 +588,11 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
 /** 视图类 */
 -(Class)listVC_View_Cell_Class{
+    return nil;
+}
+
+/** 请求参数 */
+-(NSDictionary *)listVC_Request_Params{
     return nil;
 }
 
