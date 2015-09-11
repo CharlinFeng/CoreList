@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C2055" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mGq-Tw-1Ba">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BH4-nH-AT8">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Item 1-->
+        <scene sceneID="KAd-ZD-bpX">
+            <objects>
+                <viewController id="36N-c7-r8C" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fXa-g9-E9y"/>
+                        <viewControllerLayoutGuide type="bottom" id="J7k-dd-7Xy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AO8-Ms-FVU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="Oo0-VN-Pg1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aU2-ou-XWP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-817" y="-261"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="6Aq-KU-Xcq">
+            <objects>
+                <tabBarController id="BH4-nH-AT8" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="xqm-dq-5dG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="36N-c7-r8C" kind="relationship" relationship="viewControllers" id="qTl-y2-WTk"/>
+                        <segue destination="mGq-Tw-1Ba" kind="relationship" relationship="viewControllers" id="Sal-dR-OPJ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sa4-bz-c57" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1637" y="70"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="X1Q-OP-aWD">
             <objects>
                 <navigationController id="mGq-Tw-1Ba" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="xzJ-4P-Wy8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1tC-gq-Zkr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -19,7 +58,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5K-dA-sbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-345" y="425"/>
+            <point key="canvasLocation" x="-817" y="436"/>
         </scene>
         <!--TableViewController-->
         <scene sceneID="huk-sG-BIT">
