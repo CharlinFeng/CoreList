@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Item 1-->
+        <!--首页-->
         <scene sceneID="KAd-ZD-bpX">
             <objects>
                 <viewController id="36N-c7-r8C" sceneMemberID="viewController">
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Oo0-VN-Pg1"/>
+                    <tabBarItem key="tabBarItem" title="首页" id="Oo0-VN-Pg1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aU2-ou-XWP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,11 +43,11 @@
             </objects>
             <point key="canvasLocation" x="-1637" y="70"/>
         </scene>
-        <!--Item-->
+        <!--订单-->
         <scene sceneID="X1Q-OP-aWD">
             <objects>
                 <navigationController id="mGq-Tw-1Ba" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="xzJ-4P-Wy8"/>
+                    <tabBarItem key="tabBarItem" title="订单" id="xzJ-4P-Wy8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1tC-gq-Zkr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
