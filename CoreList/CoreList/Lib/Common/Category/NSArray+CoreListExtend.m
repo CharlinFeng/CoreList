@@ -8,6 +8,7 @@
 
 #import "NSArray+CoreListExtend.h"
 #import <UIKit/UIKit.h>
+#import "CoreModel.h"
 
 @implementation NSArray (CoreListExtend)
 
@@ -19,8 +20,15 @@
     
     NSMutableArray *arrM = [NSMutableArray arrayWithArray:self];
     
-    [arrM addObjectsFromArray:newArray];
-    
+    NSArray *arrMHostIDArr = [arrM valueForKeyPath:@"hostID"];
+
+    [newArray enumerateObjectsUsingBlock:^(CoreModel *m, NSUInteger idx, BOOL *stop) {
+
+        if(![arrMHostIDArr containsObject:@(m.hostID)]){
+            [arrM addObject:m];
+        }
+    }];
+
     return arrM;
 }
 

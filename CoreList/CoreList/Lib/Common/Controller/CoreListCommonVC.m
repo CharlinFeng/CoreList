@@ -8,14 +8,15 @@
 
 #import "CoreListCommonVC.h"
 #import "CoreRefreshEntry.h"
-#import "BaseModel.h"
+#import "CoreModel.h"
 #import "NSArray+CoreListExtend.h"
 #import "CoreViewNetWorkStausManager.h"
-#import "CoreArchive.h"
+#import "UIView+Masony.h"
+#import "CoreModel+Cache.h"
 #import "Masonry.h"
 
 static NSString * const RefreshTypeKey = @"RefreshTypeKey";
-
+const NSInteger TipsViewTag = 2015;
 
 @interface CoreListCommonVC ()<UIScrollViewDelegate>
 
@@ -52,10 +53,11 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 @implementation CoreListCommonVC
 
 
-/** 控制器生命周期方法 */
 -(void)viewDidLoad{
     
     [super viewDidLoad];
+    
+    if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
     
     //控制器准备
     [self vcPrepare];
@@ -63,8 +65,31 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
     if(self.isNeedFMDB){//需要缓存，直接请求数据
         [self headerRefreshAction];
     }
-    
 }
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
+    
+    //提示图层：没有数据才显示
+    
+    if(!self.hasData){
+        
+        [CoreViewNetWorkStausManager show:self.view type:CMTypeLoadingWithImage msg:@"努力加载中" subMsg:@"请稍等片刻" offsetY:0 failClickBlock:^{
+            if (ListVCRefreshAddTypeBottomRefreshOnly != self.refreshType){
+                
+                [self headerRefreshAction];
+            }
+        }];
+    }
+}
+
+
+
+
 
 -(void)viewDidAppear:(BOOL)animated{
     
@@ -79,15 +104,17 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 /** 视图显示时操作 */
 -(void)viewAppearAction{
     
+    if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
+    
     //如果是无缓存模式，才需要做定期触发顶部刷新，而不是每次都跳到顶部刷新
-    BOOL needFMDB = [[self listVC_Model_Class] baseModel_NeedFMDB];
+    BOOL needFMDB = [[self listVC_Model_Class] CoreModel_NeedFMDB];
 
     if(!needFMDB){
         
         //取出上次时间
         NSString *key = [self listVC_Update_Delay_Key];
         NSTimeInterval duration = [self listVC_Update_Delay_Time];
-        NSTimeInterval lastTime = [CoreArchive doubleForKey:key];
+        NSTimeInterval lastTime = [[NSUserDefaults standardUserDefaults] doubleForKey:key];
         NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
         BOOL needTriggerHeaderAction = lastTime + duration < now;
         
@@ -96,8 +123,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             [self.scrollView headerSetState:CoreHeaderViewRefreshStateRefreshing];
             
             //存入当前时间
-            [CoreArchive setDouble:now key:key];
-            
+            [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
             return;
         }
         
@@ -108,25 +134,16 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             });
             
             //存入当前时间
-            [CoreArchive setDouble:now key:key];
+            [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
+
         }
+    }
+    
+    if(self.hasData){
+        [CoreViewNetWorkStausManager dismiss:self.view animated:YES];
     }
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    
-    [super viewWillAppear:animated];
-    
-    //提示图层：没有数据才显示
-    if(!self.hasData){
-        [CoreViewNetWorkStausManager show:self.view type:CMTypeLoadingWithImage msg:@"努力加载中" subMsg:@"请稍等片刻" offsetY:0 failClickBlock:^{
-            if (ListVCRefreshAddTypeBottomRefreshOnly != self.refreshType){
-                
-                [self headerRefreshAction];
-            }
-        }];
-    }
-}
 
 
 
@@ -140,7 +157,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
     if(ListVCRefreshAddTypeBottomRefreshOnly != refreshType) [self headerRefreshAdd];
     
     //设置代理
-    self.scrollView.delegate = self;
+    if(self.scrollView.delegate == nil) self.scrollView.delegate = self;
     
 }
 
@@ -150,11 +167,15 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 /** 顶部刷新 */
 -(void)headerRefreshAction{
     
+    ListVCRefreshAddType type = [self listVC_RefreshType];
+    
+    if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
+    
     //标明刷新类型
     self.refreshType = ListVCRefreshActionTypeHeader;
     
     //页码复位
-    self.page = [[self listVC_Model_Class] baseModel_StartPage];
+    self.page = [[self listVC_Model_Class] CoreModel_StartPage];
     
     //底部刷新控件复位
     [self.scrollView footerSetState:CoreFooterViewRefreshStateNormalForContinueDragUp];
@@ -192,32 +213,30 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
     //当前页码信息：p,每页数据量信息：pageSize
     NSMutableDictionary *paramsM = [NSMutableDictionary dictionary];
   
-    [paramsM addEntriesFromDictionary:@{[Model_Class baseModel_PageKey] : @(self.page),[Model_Class baseModel_PageSizeKey] : @([Model_Class baseModel_PageSize])}];
+    [paramsM addEntriesFromDictionary:@{[Model_Class CoreModel_PageKey] : @(self.page),[Model_Class CoreModel_PageSizeKey] : @([Model_Class CoreModel_PageSize])}];
     
     if ([self listVC_Request_Params] != nil) [paramsM addEntriesFromDictionary:[self listVC_Request_Params]];
     
     NSLog(@"请求开始：%@",paramsM);
     
     NSDictionary *userInfo = @{RefreshTypeKey : @(self.refreshType)};
-    
+
     [Model_Class selectWithParams:paramsM userInfo:userInfo beginBlock:^(BOOL isNetWorkRequest,BOOL needHUD){
         
         if(self.hasFooter && isNetWorkRequest) [self.scrollView footerSetState:CoreFooterViewRefreshStateRequesting];
         
-    } successBlock:^(NSArray *models, BaseModelDataSourceType sourceType,NSDictionary *userInfo){
+    } successBlock:^(NSArray *models, CoreModelDataSourceType sourceType,NSDictionary *userInfo){
         
         
-        NSLog(@"成功了=================");
-        
-        if(BaseModelDataSourceHostType_Sqlite_Deprecated == sourceType) {
+        if(CoreModelDataSourceHostType_Sqlite_Deprecated == sourceType) {
             
             NSLog(@"本地数据过期");
-//            return;
         }
         
         ListVCRefreshActionType refreshType = [[userInfo objectForKey:RefreshTypeKey] integerValue];
         
         if(ListVCRefreshActionTypeHeader == refreshType){ //顶部数据刷新成功
+            
             //刷新成功：顶部
             [self refreshSuccess4Header:models];
             
@@ -226,7 +245,6 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             
             //根据顶部刷新数据情况安装底部刷新控件
             [self footerRefreshAdd:models];
-            
         }
         
         
@@ -234,7 +252,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             
             [self refreshSuccess4Footer:models sourceType:sourceType];
             
-            if(models.count ==0 && BaseModelDataSourceTypeSqlite == sourceType){
+            if(models.count ==0 && CoreModelDataSourceTypeSqlite == sourceType){
                
                 [self.scrollView footerSetState:CoreFooterViewRefreshStateSuccessedResultNoMoreData];
 
@@ -341,12 +359,13 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
     //刷新数据
     dispatch_async(dispatch_get_main_queue(), ^{
         [self reloadData];
+        [self.scrollView headerSetState:CoreHeaderViewRefreshStateNorMal];
     });
 }
 
 
 /** 刷新成功：底部 */
--(void)refreshSuccess4Footer:(NSArray *)models sourceType:(BaseModelDataSourceType)sourceType{
+-(void)refreshSuccess4Footer:(NSArray *)models sourceType:(CoreModelDataSourceType)sourceType{
 
     NSUInteger count = models.count;
     
@@ -375,7 +394,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
                 [self reloadData];return ;
             }
             /** 动态刷新 */
-            [self reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationRight];
+            [self reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
             
         });
     }
@@ -384,7 +403,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
     if(count == 0){//新的一页一条数据也没有
         
         
-        if(BaseModelDataSourceHostType_Sqlite_Nil == sourceType){
+        if(CoreModelDataSourceHostType_Sqlite_Nil == sourceType){
             
             //页码需要回退
             self.page -- ;
@@ -412,18 +431,21 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
 -(void)handlestatusViewWithModels:(NSArray *)models{
     
-    NSUInteger count = models.count;
-    
-    if(models == nil || count == 0){//没有数据
+    dispatch_async(dispatch_get_main_queue(), ^{
         
-        [CoreViewNetWorkStausManager show:self.view type:CMTypeNormalMsgWithImage msg:@"没有数据" subMsg:@"过一会再来看看吧" offsetY:0 failClickBlock:nil];
+        NSUInteger count = models.count;
         
-    }else{//有数据，隐藏
-        
-        [CoreViewNetWorkStausManager dismiss:self.view animated:YES];
-     
-        self.hasData = YES;
-    }
+        if(models == nil || count == 0){//没有数据
+            
+            [CoreViewNetWorkStausManager show:self.view type:CMTypeNormalMsgWithImage msg:@"没有数据" subMsg:@"过一会再来看看吧" offsetY:0 failClickBlock:nil];
+            
+        }else{//有数据，隐藏
+            
+            [CoreViewNetWorkStausManager dismiss:self.view animated:YES];
+            
+            self.hasData = YES;
+        }
+    });
     
 }
 
@@ -436,7 +458,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
     
     if(_modelPageSize == 0){
         
-        _modelPageSize = [[self listVC_Model_Class] baseModel_PageSize];
+        _modelPageSize = [[self listVC_Model_Class] CoreModel_PageSize];
     }
     
     return _modelPageSize;
@@ -451,6 +473,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 /** 安装刷新控件：顶部刷新控件 */
 -(void)headerRefreshAdd{
     //添加顶部刷新控件
+    [self.scrollView removeHeader];
     [self.scrollView addHeaderWithTarget:self action:@selector(headerRefreshAction)];
 }
 
@@ -464,7 +487,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
 -(BOOL)isNeedFMDB{
     
-    return [[self listVC_Model_Class] baseModel_NeedFMDB];
+    return [[self listVC_Model_Class] CoreModel_NeedFMDB];
 }
 
 
@@ -561,10 +584,46 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
     }];
 }
 
+
+
+-(void)showTipsWithTitle:(NSString *)title desc:(NSString *)desc offsetY:(CGFloat)offsetY clickBlock:(void(^)())clickBlock{
+    
+    [self dismissTipsView];
+    
+    UIView *tipsView = [[UIView alloc] init];
+    tipsView.tag = TipsViewTag;
+    [self.view addSubview:tipsView];
+    [tipsView masViewAddConstraintMakeEqualSuperViewWithInsets:UIEdgeInsetsZero];
+    [CoreViewNetWorkStausManager show:tipsView type:CMTypeError msg:title subMsg:desc offsetY:offsetY failClickBlock:^{
+        if(clickBlock!=nil) clickBlock();
+    }];
+}
+
+
+-(void)dismissTipsView{
+    
+    UIView *tipsView = [self.view viewWithTag:TipsViewTag];
+    
+    [CoreViewNetWorkStausManager dismiss:tipsView animated:YES];
+    
+    [tipsView removeFromSuperview];
+}
+
+
+/** 刷新页面数据 */
+-(void)refreshData{
+    
+    [self.scrollView headerSetState:CoreHeaderViewRefreshStateRefreshing];
+}
+
+
+
 -(void)dealloc{
     [self.scrollView  removeFromSuperview];
     self.scrollView = nil;
 }
+
+
 
 
 
@@ -624,5 +683,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 -(BOOL)removeBack2TopBtn{
     return NO;
 }
+
+
 
 @end

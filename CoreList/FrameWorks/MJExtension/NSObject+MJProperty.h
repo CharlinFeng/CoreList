@@ -11,113 +11,59 @@
 @class MJProperty;
 
 /**
- *  遍历所有类的block（父类）
- */
-typedef void (^MJClassesBlock)(Class c, BOOL *stop);
-
-/**
  *  遍历成员变量用的block
  *
  *  @param property 成员的包装对象
  *  @param stop   YES代表停止遍历，NO代表继续遍历
  */
-typedef void (^MJPropertiesBlock)(MJProperty *property, BOOL *stop);
+typedef void (^MJPropertiesEnumeration)(MJProperty *property, BOOL *stop);
 
 /** 将属性名换为其他key去字典中取值 */
-typedef NSDictionary * (^ReplacedKeyFromPropertyName)();
+typedef NSDictionary * (^MJReplacedKeyFromPropertyName)();
+typedef NSString * (^MJReplacedKeyFromPropertyName121)(NSString *propertyName);
 /** 数组中需要转换的模型类 */
-typedef NSDictionary * (^ObjectClassInArray)();
+typedef NSDictionary * (^MJObjectClassInArray)();
+/** 用于过滤字典中的值 */
+typedef id (^MJNewValueFromOldValue)(id object, id oldValue, MJProperty *property);
 
-
-/** 这个数组中的属性名才会进行字典和模型的转换 */
-typedef NSArray * (^AllowedPropertyNames)();
-/** 这个数组中的属性名才会进行归档 */
-typedef NSArray * (^AllowedCodingPropertyNames)();
-
-/** 这个数组中的属性名将会被忽略：不进行字典和模型的转换 */
-typedef NSArray * (^IgnoredPropertyNames)();
-/** 这个数组中的属性名将会被忽略：不进行归档 */
-typedef NSArray * (^IgnoredCodingPropertyNames)();
-
+/**
+ * 成员属性相关的扩展
+ */
 @interface NSObject (MJProperty)
-
+#pragma mark - 遍历
 /**
  *  遍历所有的成员
  */
-+ (void)enumeratePropertiesWithBlock:(MJPropertiesBlock)block;
++ (void)enumerateProperties:(MJPropertiesEnumeration)enumeration;
 
+#pragma mark - 新值配置
 /**
- *  遍历所有的类
- */
-+ (void)enumerateClassesWithBlock:(MJClassesBlock)block;
-
-/**
- *  配置模型属性
+ *  用于过滤字典中的值
  *
- *  @param replacedKeyFromPropertyName 将属性名换为其他key去字典中取值
- *  @param objectClassInArray          数组中需要转换的模型类
+ *  @param newValueFormOldValue 用于过滤字典中的值
  */
-+ (void)setupReplacedKeyFromPropertyName:(ReplacedKeyFromPropertyName)replacedKeyFromPropertyName objectClassInArray:(ObjectClassInArray)objectClassInArray;
++ (void)setupNewValueFromOldValue:(MJNewValueFromOldValue)newValueFormOldValue;
++ (id)getNewValueFromObject:(__weak id)object oldValue:(__weak id)oldValue property:(__weak MJProperty *)property;
 
+#pragma mark - key配置
 /**
- *  配置模型属性
+ *  将属性名换为其他key去字典中取值
  *
  *  @param replacedKeyFromPropertyName 将属性名换为其他key去字典中取值
  */
-+ (void)setupReplacedKeyFromPropertyName:(ReplacedKeyFromPropertyName)replacedKeyFromPropertyName;
-
++ (void)setupReplacedKeyFromPropertyName:(MJReplacedKeyFromPropertyName)replacedKeyFromPropertyName;
 /**
- *  配置模型属性
+ *  将属性名换为其他key去字典中取值
+ *
+ *  @param replacedKeyFromPropertyName121 将属性名换为其他key去字典中取值
+ */
++ (void)setupReplacedKeyFromPropertyName121:(MJReplacedKeyFromPropertyName121)replacedKeyFromPropertyName121;
+
+#pragma mark - array model class配置
+/**
+ *  数组中需要转换的模型类
  *
  *  @param objectClassInArray          数组中需要转换的模型类
  */
-+ (void)setupObjectClassInArray:(ObjectClassInArray)objectClassInArray;
-
-/**
- *  配置模型属性
- *
- *  @param allowedPropertyNames          这个数组中的属性名才会进行字典和模型的转换
- */
-+ (void)setupAllowedPropertyNames:(AllowedPropertyNames)allowedPropertyNames;
-
-/**
- *  这个数组中的属性名才会进行字典和模型的转换
- */
-+ (NSArray *)totalAllowedPropertyNames;
-
-/**
- *  配置模型属性
- *
- *  @param allowedCodingPropertyNames          这个数组中的属性名才会进行归档
- */
-+ (void)setupAllowedCodingPropertyNames:(AllowedCodingPropertyNames)allowedCodingPropertyNames;
-
-/**
- *  这个数组中的属性名才会进行字典和模型的转换
- */
-+ (NSArray *)totalAllowedCodingPropertyNames;
-
-/**
- *  配置模型属性
- *
- *  @param ignoredPropertyNames          这个数组中的属性名将会被忽略：不进行字典和模型的转换
- */
-+ (void)setupIgnoredPropertyNames:(IgnoredPropertyNames)ignoredPropertyNames;
-
-/**
- *  这个数组中的属性名将会被忽略：不进行字典和模型的转换
- */
-+ (NSArray *)totalIgnoredPropertyNames;
-
-/**
- *  配置模型属性
- *
- *  @param ignoredCodingPropertyNames          这个数组中的属性名将会被忽略：不进行归档
- */
-+ (void)setupIgnoredCodingPropertyNames:(IgnoredCodingPropertyNames)ignoredCodingPropertyNames;
-
-/**
- *  这个数组中的属性名将会被忽略：不进行归档
- */
-+ (NSArray *)totalIgnoredCodingPropertyNames;
++ (void)setupObjectClassInArray:(MJObjectClassInArray)objectClassInArray;
 @end

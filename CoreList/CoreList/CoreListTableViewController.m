@@ -9,7 +9,7 @@
 #import "CoreListTableViewController.h"
 #import "UIView+Masony.h"
 #import "BaseTableViewCell.h"
-#import "UIDevice+Extend.h"
+#import "CoreListConst.h"
 
 
 
@@ -50,7 +50,7 @@
     BaseTableViewCell *cell = [[self listVC_View_Cell_Class] cellFromTableView:tableView];
     
     //取出模型
-    cell.baseModel = self.dataList [indexPath.row];
+    cell.model = self.dataList [indexPath.row];
     
     return cell;
 }
@@ -75,7 +75,7 @@
 /** 动态刷新 */
 -(void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation{
 
-    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:animation];
+    [self.tableView reloadData];
 }
 
 

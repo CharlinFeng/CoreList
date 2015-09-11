@@ -18,16 +18,13 @@
 @property (nonatomic,strong) UIScrollView *scrollView;
 
 
+-(void)showTipsWithTitle:(NSString *)title desc:(NSString *)desc offsetY:(CGFloat)offsetY clickBlock:(void(^)())clickBlock;
+
+-(void)dismissTipsView;
 
 
-
-
-
-
-
-
-
-
+/** 刷新页面数据 */
+-(void)refreshData;
 
 
 

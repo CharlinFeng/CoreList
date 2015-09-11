@@ -150,6 +150,9 @@ CGFloat const deltaValue=40.0f;
     
     if (self.scrollView.isDragging) {
         // 普通 和 即将刷新 的临界点
+        if(currentOffsetY >= happenOffsetY){
+            
+        }
         if (self.state == CoreHeaderViewRefreshStateNorMal && currentOffsetY >= happenOffsetY) {
             
             // 转为即将刷新状态

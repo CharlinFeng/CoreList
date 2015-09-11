@@ -89,7 +89,7 @@
     //原本的bottom值
     CGFloat bottom=self.scrollViewOriginalInset.bottom;
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.scrollView.mj_contentInsetBottom=bottom+CoreRefreshFooterViewH;
     });
 }
@@ -190,7 +190,7 @@
 #pragma mark 数据正在展示中
 -(void)stateSuccessedResultDataShowing{
     [self configINterfaceWithShowAIView:NO constant:0 text:@"数据正在展示中"];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.state=CoreFooterViewRefreshStateNormalForContinueDragUp;
     });
 }
@@ -299,7 +299,7 @@
     //界面立即显示
     self.state=CoreFooterViewRefreshStateRefreshing;
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // 回调
         if ([self.beginRefreshingTaget respondsToSelector:self.beginRefreshingAction]) {
             msgSend(msgTarget(self.beginRefreshingTaget), self.beginRefreshingAction, self);
