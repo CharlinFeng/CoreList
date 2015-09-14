@@ -2,7 +2,7 @@
 
 
 
-@protocol BaseCellProtocol <NSObject>
+@protocol CoreListCellProtocol <NSObject>
 
 @optional
 

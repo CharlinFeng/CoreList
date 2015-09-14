@@ -6,12 +6,12 @@
 //  Copyright (c) 2015年 muxi. All rights reserved.
 //
 
-#import "BaseCollectionViewCell.h"
+#import "CoreListCollectionViewCell.h"
 #import "NSObject+CoreModelCommon.h"
 
 NSString * _CollectionViewCellRid;
 
-@implementation BaseCollectionViewCell
+@implementation CoreListCollectionViewCell
 
 /** 为指定的collectionView从Nib注册cell */
 +(void)registerNibForCollectionView:(UICollectionView *)collectionView;{
@@ -26,7 +26,7 @@ NSString * _CollectionViewCellRid;
     
     
     
-    BaseCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self CollectionViewCellRid] forIndexPath:indexPath];
+    CoreListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self CollectionViewCellRid] forIndexPath:indexPath];
     
     return cell;
 }

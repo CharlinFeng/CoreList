@@ -8,10 +8,10 @@
 
 
 #import <UIKit/UIKit.h>
-#import "BaseCellProtocol.h"
+#import "CoreListCellProtocol.h"
 
 
-@interface BaseTableViewCell : UITableViewCell<BaseCellProtocol>
+@interface CoreListTableViewCell : UITableViewCell<CoreListCellProtocol>
 
 /** indexPath */
 @property (nonatomic,strong) NSIndexPath *indexPath;

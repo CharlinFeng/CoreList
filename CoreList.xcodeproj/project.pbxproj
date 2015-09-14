@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		891DC8171BA6B39E004EA688 /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891DC8121BA6B39E004EA688 /* BaseCollectionViewCell.m */; };
-		891DC8181BA6B39E004EA688 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891DC8161BA6B39E004EA688 /* BaseTableViewCell.m */; };
+		891DC8171BA6B39E004EA688 /* CoreListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891DC8121BA6B39E004EA688 /* CoreListCollectionViewCell.m */; };
+		891DC8181BA6B39E004EA688 /* CoreListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891DC8161BA6B39E004EA688 /* CoreListTableViewCell.m */; };
 		893C7C741B21CF73003A6D1D /* CoreListCommonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 893C7C6E1B21CF73003A6D1D /* CoreListCommonVC.m */; };
 		893C7C751B21CF73003A6D1D /* CoreList.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 893C7C721B21CF73003A6D1D /* CoreList.bundle */; };
 		893C7C781B21CF91003A6D1D /* CoreListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893C7C771B21CF91003A6D1D /* CoreListTableViewController.m */; };
@@ -113,11 +113,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		891DC8111BA6B39E004EA688 /* BaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewCell.h; sourceTree = "<group>"; };
-		891DC8121BA6B39E004EA688 /* BaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewCell.m; sourceTree = "<group>"; };
-		891DC8141BA6B39E004EA688 /* BaseCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCellProtocol.h; sourceTree = "<group>"; };
-		891DC8151BA6B39E004EA688 /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
-		891DC8161BA6B39E004EA688 /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
+		891DC8111BA6B39E004EA688 /* CoreListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCollectionViewCell.h; sourceTree = "<group>"; };
+		891DC8121BA6B39E004EA688 /* CoreListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListCollectionViewCell.m; sourceTree = "<group>"; };
+		891DC8141BA6B39E004EA688 /* CoreListCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCellProtocol.h; sourceTree = "<group>"; };
+		891DC8151BA6B39E004EA688 /* CoreListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListTableViewCell.h; sourceTree = "<group>"; };
+		891DC8161BA6B39E004EA688 /* CoreListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListTableViewCell.m; sourceTree = "<group>"; };
 		893C7C6D1B21CF73003A6D1D /* CoreListCommonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCommonVC.h; sourceTree = "<group>"; };
 		893C7C6E1B21CF73003A6D1D /* CoreListCommonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListCommonVC.m; sourceTree = "<group>"; };
 		893C7C701B21CF73003A6D1D /* ViewControllerListProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerListProtocol.h; sourceTree = "<group>"; };
@@ -327,8 +327,8 @@
 		891DC8101BA6B39E004EA688 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				891DC8111BA6B39E004EA688 /* BaseCollectionViewCell.h */,
-				891DC8121BA6B39E004EA688 /* BaseCollectionViewCell.m */,
+				891DC8111BA6B39E004EA688 /* CoreListCollectionViewCell.h */,
+				891DC8121BA6B39E004EA688 /* CoreListCollectionViewCell.m */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -336,9 +336,9 @@
 		891DC8131BA6B39E004EA688 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				891DC8141BA6B39E004EA688 /* BaseCellProtocol.h */,
-				891DC8151BA6B39E004EA688 /* BaseTableViewCell.h */,
-				891DC8161BA6B39E004EA688 /* BaseTableViewCell.m */,
+				891DC8141BA6B39E004EA688 /* CoreListCellProtocol.h */,
+				891DC8151BA6B39E004EA688 /* CoreListTableViewCell.h */,
+				891DC8161BA6B39E004EA688 /* CoreListTableViewCell.m */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -1099,7 +1099,7 @@
 				8955C18F1B24280500135D55 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				898A61E71BA27AC20098A0AD /* NSString+CoreFMDB.m in Sources */,
 				897883F11B21984800033B01 /* NSData+Param.m in Sources */,
-				891DC8171BA6B39E004EA688 /* BaseCollectionViewCell.m in Sources */,
+				891DC8171BA6B39E004EA688 /* CoreListCollectionViewCell.m in Sources */,
 				EE5839BA1AB9953A00516AC1 /* AppDelegate.m in Sources */,
 				898A62101BA27D760098A0AD /* NewsListVC.m in Sources */,
 				898A61F61BA27AC20098A0AD /* NSObject+MJProperty.m in Sources */,
@@ -1122,7 +1122,7 @@
 				89CB26171BA27A670034BABA /* NSArray+CoreModel.m in Sources */,
 				EE5839B71AB9953A00516AC1 /* main.m in Sources */,
 				893C7C741B21CF73003A6D1D /* CoreListCommonVC.m in Sources */,
-				891DC8181BA6B39E004EA688 /* BaseTableViewCell.m in Sources */,
+				891DC8181BA6B39E004EA688 /* CoreListTableViewCell.m in Sources */,
 				89CB261F1BA27A670034BABA /* NSObject+Save.m in Sources */,
 				898A61F11BA27AC20098A0AD /* MJPropertyKey.m in Sources */,
 				898A61F51BA27AC20098A0AD /* NSObject+MJKeyValue.m in Sources */,

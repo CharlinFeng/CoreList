@@ -8,7 +8,7 @@
 
 #import "CoreListTableViewController.h"
 #import "UIView+Masony.h"
-#import "BaseTableViewCell.h"
+#import "CoreListTableViewCell.h"
 #import "CoreListConst.h"
 
 
@@ -47,7 +47,7 @@
 /** cell */
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
    
-    BaseTableViewCell *cell = [[self listVC_View_Cell_Class] cellFromTableView:tableView];
+    CoreListTableViewCell *cell = [[self listVC_View_Cell_Class] cellFromTableView:tableView];
     
     //取出模型
     cell.model = self.dataList [indexPath.row];

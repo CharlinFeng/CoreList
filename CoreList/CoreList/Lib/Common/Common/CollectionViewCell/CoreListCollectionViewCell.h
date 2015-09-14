@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseCellProtocol.h"
+#import "CoreListCellProtocol.h"
 
-@interface BaseCollectionViewCell : UICollectionViewCell<BaseCellProtocol>
+@interface CoreListCollectionViewCell : UICollectionViewCell<CoreListCellProtocol>
 
 /** 模型 */
 @property (nonatomic,strong) CoreModel *model;

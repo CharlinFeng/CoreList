@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 muxi. All rights reserved.
 //
 
-#import "BaseTableViewCell.h"
+#import "CoreListTableViewCell.h"
 
-@interface NewsListCell : BaseTableViewCell
+@interface NewsListCell : CoreListTableViewCell
 
 
 

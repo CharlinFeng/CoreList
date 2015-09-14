@@ -8,7 +8,7 @@
 
 #import "CoreListCollectionViewController.h"
 #import "UIView+Masony.h"
-#import "BaseCollectionViewCell.h"
+#import "CoreListCollectionViewCell.h"
 #import "CoreListConst.h"
 
 @interface CoreListCollectionViewController ()
@@ -50,7 +50,7 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     //取出复用cell
-    BaseCollectionViewCell *cell = [[self listVC_View_Cell_Class] dequeueReusableCellWithCollectionView:collectionView indexPath:indexPath];
+    CoreListCollectionViewCell *cell = [[self listVC_View_Cell_Class] dequeueReusableCellWithCollectionView:collectionView indexPath:indexPath];
     
     cell.model = self.dataList[indexPath.item];
     

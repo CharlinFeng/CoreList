@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseCollectionViewCell.h"
+#import "CoreListCollectionViewCell.h"
 
-@interface TGCell : BaseCollectionViewCell
+@interface TGCell : CoreListCollectionViewCell
 
 
 

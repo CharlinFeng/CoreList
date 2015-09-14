@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 muxi. All rights reserved.
 //
 
-#import "BaseTableViewCell.h"
+#import "CoreListTableViewCell.h"
 #import "NSObject+CoreModelCommon.h"
 
-@implementation BaseTableViewCell
+@implementation CoreListTableViewCell
 
 
 
@@ -26,7 +26,7 @@
     
     NSString *rid=[self modelName];
     
-    BaseTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
+    CoreListTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
     
     if(cell==nil){
         cell=[[[NSBundle mainBundle] loadNibNamed:rid owner:nil options:nil] firstObject];
