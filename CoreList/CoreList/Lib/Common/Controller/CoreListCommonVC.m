@@ -217,8 +217,6 @@ const NSInteger TipsViewTag = 2015;
     
     if ([self listVC_Request_Params] != nil) [paramsM addEntriesFromDictionary:[self listVC_Request_Params]];
     
-    NSLog(@"请求开始：%@",paramsM);
-    
     NSDictionary *userInfo = @{RefreshTypeKey : @(self.refreshType)};
     
     NSArray *ignoreParams = [self listVC_Ignore_Params];
@@ -229,12 +227,7 @@ const NSInteger TipsViewTag = 2015;
         
     } successBlock:^(NSArray *models, CoreModelDataSourceType sourceType,NSDictionary *userInfo){
         
-        
-        if(CoreModelDataSourceHostType_Sqlite_Deprecated == sourceType) {
-            
-            NSLog(@"本地数据过期");
-        }
-        
+
         ListVCRefreshActionType refreshType = [[userInfo objectForKey:RefreshTypeKey] integerValue];
         
         if(ListVCRefreshActionTypeHeader == refreshType){ //顶部数据刷新成功
