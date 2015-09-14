@@ -18,10 +18,8 @@ static NSString * const HTTP_REQUEST_ERROR_MSG = @"请稍等重试";
 
 @implementation CoreModel (Cache)
 
-/** 读取 */
-/** 目前是不考虑上拉下拉刷新 */
-/** 不论是本地查询还是网络请求，均是延时操作，返回block均在子线程中 */
-+(void)selectWithParams:(NSDictionary *)params userInfo:(NSDictionary *)userInfo beginBlock:(void(^)(BOOL isNetWorkRequest,BOOL needHUD))beginBlock successBlock:(void(^)(NSArray *models,CoreModelDataSourceType sourceType,NSDictionary *userInfo))successBlock errorBlock:(void(^)(NSString *errorResult,NSDictionary *userInfo))errorBlock{
+
++(void)selectWithParams:(NSDictionary *)params ignoreParams:(NSArray *)ignoreParams userInfo:(NSDictionary *)userInfo beginBlock:(void(^)(BOOL isNetWorkRequest,BOOL needHUD))beginBlock successBlock:(void(^)(NSArray *models,CoreModelDataSourceType sourceType,NSDictionary *userInfo))successBlock errorBlock:(void(^)(NSString *errorResult,NSDictionary *userInfo))errorBlock{
     
     BOOL needFMDB = [self CoreModel_NeedFMDB];
     
@@ -70,6 +68,14 @@ static NSString * const HTTP_REQUEST_ERROR_MSG = @"请稍等重试";
         NSString *orderBy = nil;
         NSUInteger page = 0;
         
+        NSMutableDictionary *paramsM=[NSMutableDictionary dictionaryWithDictionary:params];
+        
+        if(ignoreParams != nil && ignoreParams.count >0){
+            [ignoreParams enumerateObjectsUsingBlock:^(id key, NSUInteger idx, BOOL *stop) {
+                [paramsM removeObjectForKey:key];
+            }];
+        }
+        
         if(isPageEnable){
             
             NSString *pageKey = [self CoreModel_PageKey];
@@ -80,7 +86,7 @@ static NSString * const HTTP_REQUEST_ERROR_MSG = @"请稍等重试";
             
             NSUInteger pagesize = [self CoreModel_PageSize];
             
-            NSMutableDictionary *tempDictM = [NSMutableDictionary dictionaryWithDictionary:params];
+            NSMutableDictionary *tempDictM = [NSMutableDictionary dictionaryWithDictionary:paramsM];
             
             [tempDictM removeObjectForKey:pageKey];
             
@@ -96,7 +102,7 @@ static NSString * const HTTP_REQUEST_ERROR_MSG = @"请稍等重试";
             
         }else{
             
-            where = params.sqlWhere;
+            where = paramsM.sqlWhere;
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{

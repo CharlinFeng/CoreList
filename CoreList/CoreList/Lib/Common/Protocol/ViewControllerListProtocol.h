@@ -34,6 +34,10 @@
 -(NSDictionary *)listVC_Request_Params;
 
 
+/** 忽略参数 */
+-(NSArray *)listVC_Ignore_Params;
+
+
 /** 是否移除回到顶部按钮 */
 -(BOOL)listVC_Remove_Back2Top_Button;
 

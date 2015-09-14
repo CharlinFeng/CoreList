@@ -220,8 +220,10 @@ const NSInteger TipsViewTag = 2015;
     NSLog(@"请求开始：%@",paramsM);
     
     NSDictionary *userInfo = @{RefreshTypeKey : @(self.refreshType)};
+    
+    NSArray *ignoreParams = [self listVC_Ignore_Params];
 
-    [Model_Class selectWithParams:paramsM userInfo:userInfo beginBlock:^(BOOL isNetWorkRequest,BOOL needHUD){
+    [Model_Class selectWithParams:paramsM ignoreParams:ignoreParams userInfo:userInfo beginBlock:^(BOOL isNetWorkRequest,BOOL needHUD){
         
         if(self.hasFooter && isNetWorkRequest) [self.scrollView footerSetState:CoreFooterViewRefreshStateRequesting];
         

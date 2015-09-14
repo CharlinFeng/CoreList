@@ -67,6 +67,11 @@
     return @{@"mobile":@"13540033473",@"user":@"admin"};
 }
 
+/** 忽略参数 */
+-(NSArray *)listVC_Ignore_Params{
+    return nil;
+}
+
 /** 是否移除回到顶部按钮 */
 -(BOOL)listVC_Remove_Back2Top_Button{
     return NO;
