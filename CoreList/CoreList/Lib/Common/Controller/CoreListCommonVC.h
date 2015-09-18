@@ -17,6 +17,13 @@
 /** scrollView */
 @property (nonatomic,strong) UIScrollView *scrollView;
 
+/** 网络请求成功，但服务器抛出状态码错误的回调 */
+@property (nonatomic,copy) void (^NetWorkErrorAction)();
+
+/** 数据源有变化 */
+@property (nonatomic,copy) void (^DataListChangedAction)();
+
+
 
 -(void)showTipsWithTitle:(NSString *)title desc:(NSString *)desc offsetY:(CGFloat)offsetY clickBlock:(void(^)())clickBlock;
 

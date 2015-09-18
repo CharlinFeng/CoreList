@@ -21,6 +21,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.NetWorkErrorAction = ^{
+        
+        NSLog(@"错误处理");
+    };
 
 }
 

@@ -65,6 +65,7 @@
 		898A62151BA27D760098A0AD /* TGModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A620B1BA27D760098A0AD /* TGModel.m */; };
 		898A62161BA27D760098A0AD /* TGCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A620E1BA27D760098A0AD /* TGCell.m */; };
 		898A62171BA27D760098A0AD /* TGCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898A620F1BA27D760098A0AD /* TGCell.xib */; };
+		89AA9FD81BABE2D700BB4093 /* CoreModel+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 89AA9FD71BABE2D700BB4093 /* CoreModel+Compare.m */; };
 		89CB25D81BA277DF0034BABA /* CAAnimation+CoreRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CB25C21BA277DF0034BABA /* CAAnimation+CoreRefresh.m */; };
 		89CB25D91BA277DF0034BABA /* CoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CB25C41BA277DF0034BABA /* CoreFooterView.m */; };
 		89CB25DA1BA277DF0034BABA /* CoreFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CB25C51BA277DF0034BABA /* CoreFooterView.xib */; };
@@ -233,6 +234,8 @@
 		898A620D1BA27D760098A0AD /* TGCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGCell.h; sourceTree = "<group>"; };
 		898A620E1BA27D760098A0AD /* TGCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGCell.m; sourceTree = "<group>"; };
 		898A620F1BA27D760098A0AD /* TGCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TGCell.xib; sourceTree = "<group>"; };
+		89AA9FD61BABE2D700BB4093 /* CoreModel+Compare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreModel+Compare.h"; sourceTree = "<group>"; };
+		89AA9FD71BABE2D700BB4093 /* CoreModel+Compare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreModel+Compare.m"; sourceTree = "<group>"; };
 		89CB25C11BA277DF0034BABA /* CAAnimation+CoreRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+CoreRefresh.h"; sourceTree = "<group>"; };
 		89CB25C21BA277DF0034BABA /* CAAnimation+CoreRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+CoreRefresh.m"; sourceTree = "<group>"; };
 		89CB25C31BA277DF0034BABA /* CoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreFooterView.h; sourceTree = "<group>"; };
@@ -814,6 +817,8 @@
 				89CB26051BA27A670034BABA /* NSObject+Select.m */,
 				89CB26061BA27A670034BABA /* NSObject+Update.h */,
 				89CB26071BA27A670034BABA /* NSObject+Update.m */,
+				89AA9FD61BABE2D700BB4093 /* CoreModel+Compare.h */,
+				89AA9FD71BABE2D700BB4093 /* CoreModel+Compare.m */,
 			);
 			path = NSObject;
 			sourceTree = "<group>";
@@ -1072,6 +1077,7 @@
 				8955C1891B24280500135D55 /* MASConstraint.m in Sources */,
 				893C7D171B21F55F003A6D1D /* CMView.m in Sources */,
 				898A61EE1BA27AC20098A0AD /* MJExtensionConst.m in Sources */,
+				89AA9FD81BABE2D700BB4093 /* CoreModel+Compare.m in Sources */,
 				898A62151BA27D760098A0AD /* TGModel.m in Sources */,
 				89CB261D1BA27A670034BABA /* NSObject+Delete.m in Sources */,
 				89D8B2511BA29A3E0029837A /* NSString+Equal.m in Sources */,

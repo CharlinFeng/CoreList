@@ -241,7 +241,7 @@ const BOOL kURLConnectionMutualUseJson = NO;
     }
     
     //处理成功
-    successBlock(obj);
+    if(successBlock != nil) successBlock(obj);
 }
 
 

@@ -14,6 +14,8 @@
 #import "UIView+Masony.h"
 #import "CoreModel+Cache.h"
 #import "Masonry.h"
+#import "CoreModelConst.h"
+#import "CoreModel+Compare.h"
 
 static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 const NSInteger TipsViewTag = 2015;
@@ -65,6 +67,9 @@ const NSInteger TipsViewTag = 2015;
     if(self.isNeedFMDB){//需要缓存，直接请求数据
         [self headerRefreshAction];
     }
+    
+    
+    
 }
 
 
@@ -167,8 +172,6 @@ const NSInteger TipsViewTag = 2015;
 /** 顶部刷新 */
 -(void)headerRefreshAction{
     
-    ListVCRefreshAddType type = [self listVC_RefreshType];
-    
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
     
     //标明刷新类型
@@ -235,8 +238,11 @@ const NSInteger TipsViewTag = 2015;
             //刷新成功：顶部
             [self refreshSuccess4Header:models];
             
-            //处理指示视图状态
-            [self handlestatusViewWithModels:models];
+            if(sourceType != CoreModelDataSourceTypeSqlite){
+                
+                //处理指示视图状态
+                [self handlestatusViewWithModels:models];
+            }
             
             //根据顶部刷新数据情况安装底部刷新控件
             [self footerRefreshAdd:models];
@@ -262,9 +268,24 @@ const NSInteger TipsViewTag = 2015;
         self.refreshType = ListVCRefreshActionTypeNone;
         
     } errorBlock:^(NSString *errorResult,NSDictionary *userInfo) {
-    
-        NSLog(@"%@",@(self.page));
         
+        if(errorResult != nil && ![errorResult isEqualToString:NetWorkError]){ //网络请求成功，但服务器抛出错误
+            
+            __weak typeof(self) weakSelf=self;
+            
+            [CoreViewNetWorkStausManager dismiss:self.view animated:NO];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self showTipsWithTitle:@"错误" desc:errorResult offsetY:0 clickBlock:^{
+                    
+                    if(weakSelf.NetWorkErrorAction != nil) weakSelf.NetWorkErrorAction();
+                }];
+            });
+            
+            return;
+        }
+        
+    
         if(self.hasData){
             
             
@@ -618,67 +639,14 @@ const NSInteger TipsViewTag = 2015;
     self.scrollView = nil;
 }
 
+-(void)setDataList:(NSArray *)dataList{
+    
+    [CoreModel compareArr1:_dataList arr2:dataList resBlock:^(BOOL res) {
+        
+        if(!res && self.DataListChangedAction!=nil) self.DataListChangedAction();
+    }];
 
-
-
-
-
-
-
-/** 协议方法区 */
-
-
-/** 刷新方式 */
--(ListVCRefreshAddType)listVC_RefreshType{
-    return ListVCRefreshAddTypeBoth;
+    _dataList=dataList;
 }
-
-
-/** 模型类 */
--(Class)listVC_Model_Class{
-    return nil;
-}
-
-
-/** 视图类 */
--(Class)listVC_View_Cell_Class{
-    return nil;
-}
-
-/** 请求参数 */
--(NSDictionary *)listVC_Request_Params{
-    return nil;
-}
-
-
-/** 是否移除回到顶部按钮 */
--(BOOL)listVC_Remove_Back2Top_Button{
-    return NO;
-}
-
-
-/** tableViewController */
-/** cell的行高：tableViewController专用 */
--(CGFloat)listVC_CellH4IndexPath:(NSIndexPath *)indexPath{
-    return 44.0f;
-}
-
-/** 无本地FMDB缓存的情况下，需要在ViewDidAppear中定期自动触发顶部刷新事件 */
--(NSString *)listVC_Update_Delay_Key{
-    return nil;
-}
-
-
-/** 无缓存定期更新周期 */
--(NSTimeInterval)listVC_Update_Delay_Time{
-    return 0;
-}
-
-/** 是否关闭返回顶部功能 */
--(BOOL)removeBack2TopBtn{
-    return NO;
-}
-
-
 
 @end
