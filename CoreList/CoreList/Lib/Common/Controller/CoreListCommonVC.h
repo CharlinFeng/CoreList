@@ -8,11 +8,8 @@
 
 @interface CoreListCommonVC : UIViewController<ViewControllerListProtocol>
 
-
-
 /** 数据数组 */
 @property (nonatomic,strong) NSArray *dataList;
-
 
 /** scrollView */
 @property (nonatomic,strong) UIScrollView *scrollView;
@@ -23,16 +20,6 @@
 /** 数据源有变化 */
 @property (nonatomic,copy) void (^DataListChangedAction)();
 
-
-
--(void)showTipsWithTitle:(NSString *)title desc:(NSString *)desc offsetY:(CGFloat)offsetY clickBlock:(void(^)())clickBlock;
-
--(void)dismissTipsView;
-
-
-/** 刷新页面数据 */
--(void)refreshData;
-
-
+@property (nonatomic,assign) BOOL isRefreshWhenViewDidAppeared;
 
 @end

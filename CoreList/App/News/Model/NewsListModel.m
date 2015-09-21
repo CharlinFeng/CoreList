@@ -36,7 +36,7 @@
 
 /** 缓存周期：单位秒 */
 +(NSTimeInterval)CoreModel_Duration{
-    return 0.1;
+    return 10;
 }
 
 /**

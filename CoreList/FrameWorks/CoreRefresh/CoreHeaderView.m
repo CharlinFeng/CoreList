@@ -387,7 +387,7 @@ CGFloat const deltaValue=40.0f;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeInterVal * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         //执行动画
-        [UIView animateWithDuration:.25f animations:^{
+        [UIView animateWithDuration:.15f animations:^{
             
             //动画曲线
             [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];

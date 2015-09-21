@@ -46,6 +46,8 @@ const NSInteger TipsViewTag = 2015;
 /** 本地数据库没有数据了 */
 @property (nonatomic,assign) BOOL localDataNil;
 
+@property (nonatomic,assign) BOOL isRefreshData;
+
 @end
 
 
@@ -63,13 +65,7 @@ const NSInteger TipsViewTag = 2015;
     
     //控制器准备
     [self vcPrepare];
-    
-    if(self.isNeedFMDB){//需要缓存，直接请求数据
-        [self headerRefreshAction];
-    }
-    
-    
-    
+
 }
 
 
@@ -94,8 +90,6 @@ const NSInteger TipsViewTag = 2015;
 
 
 
-
-
 -(void)viewDidAppear:(BOOL)animated{
     
     [super viewDidAppear:animated];
@@ -111,36 +105,40 @@ const NSInteger TipsViewTag = 2015;
     
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
     
-    //如果是无缓存模式，才需要做定期触发顶部刷新，而不是每次都跳到顶部刷新
-    BOOL needFMDB = [[self listVC_Model_Class] CoreModel_NeedFMDB];
-
-    if(!needFMDB){
+    if(self.isRefreshWhenViewDidAppeared){
+        
+        if(CoreHeaderViewRefreshStateNorMal == self.scrollView.header.state){
+            [self.scrollView headerSetState:CoreHeaderViewRefreshStateRefreshing];
+        }
+        
+    }else{
         
         //取出上次时间
         NSString *key = [self listVC_Update_Delay_Key];
-        NSTimeInterval duration = [self listVC_Update_Delay_Time];
+        NSTimeInterval duration = [[self listVC_Model_Class] CoreModel_Duration];
         NSTimeInterval lastTime = [[NSUserDefaults standardUserDefaults] doubleForKey:key];
         NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
         BOOL needTriggerHeaderAction = lastTime + duration < now;
         
         //如果没有数据，直接请求
         if(!self.hasData){
+            
             [self.scrollView headerSetState:CoreHeaderViewRefreshStateRefreshing];
             
             //存入当前时间
             [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
-            return;
-        }
-        
-        if(needTriggerHeaderAction){
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.scrollView headerSetState:CoreHeaderViewRefreshStateRefreshing];
-            });
+        }else{
             
-            //存入当前时间
-            [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
-
+            if(needTriggerHeaderAction){
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.scrollView headerSetState:CoreHeaderViewRefreshStateRefreshing];
+                });
+                
+                //存入当前时间
+                [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
+            }
         }
     }
     
@@ -185,6 +183,8 @@ const NSInteger TipsViewTag = 2015;
     
     //找模型要获取
     [self fetchDataFromModel];
+    
+    self.isRefreshData=YES;
 }
 
 
@@ -375,8 +375,9 @@ const NSInteger TipsViewTag = 2015;
     //刷新数据
     dispatch_async(dispatch_get_main_queue(), ^{
         [self reloadData];
-        [self.scrollView headerSetState:CoreHeaderViewRefreshStateNorMal];
     });
+    
+    self.isRefreshData=NO;
 }
 
 
@@ -633,12 +634,6 @@ const NSInteger TipsViewTag = 2015;
 }
 
 
-
--(void)dealloc{
-    [self.scrollView  removeFromSuperview];
-    self.scrollView = nil;
-}
-
 -(void)setDataList:(NSArray *)dataList{
     
     [CoreModel compareArr1:_dataList arr2:dataList resBlock:^(BOOL res) {
@@ -647,6 +642,13 @@ const NSInteger TipsViewTag = 2015;
     }];
 
     _dataList=dataList;
+}
+
+
+
+-(void)dealloc{
+    [self.scrollView  removeFromSuperview];
+    self.scrollView = nil;
 }
 
 @end

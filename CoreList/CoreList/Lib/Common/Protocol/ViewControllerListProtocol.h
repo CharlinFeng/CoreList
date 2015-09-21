@@ -7,15 +7,28 @@
 //
 #import "CoreListType.h"
 
-
-
-
-
 @protocol ViewControllerListProtocol <NSObject>
+
+
+
+
+
+-(void)showTipsWithTitle:(NSString *)title desc:(NSString *)desc offsetY:(CGFloat)offsetY clickBlock:(void(^)())clickBlock;
+
+-(void)dismissTipsView;
+
+/** 刷新页面数据 */
+-(void)refreshData;
+
+
+
+
+
 
 
 @required
 
+/** 协议方法区 */
 
 
 /** 刷新方式 */
@@ -57,11 +70,6 @@
 
 /** 无本地FMDB缓存的情况下，需要在ViewDidAppear中定期自动触发顶部刷新事件 */
 -(NSString *)listVC_Update_Delay_Key;
-
-
-/** 无缓存定期更新周期 */
--(NSTimeInterval)listVC_Update_Delay_Time;
-
 
 /** 是否关闭返回顶部功能 */
 -(BOOL)removeBack2TopBtn;

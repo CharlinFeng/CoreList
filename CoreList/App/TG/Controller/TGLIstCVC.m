@@ -65,11 +65,6 @@
 }
 
 
-/** 无缓存定期更新周期 */
--(NSTimeInterval)listVC_Update_Delay_Time{
-    return 10;
-}
-
 /** 是否关闭返回顶部功能 */
 -(BOOL)removeBack2TopBtn{
     return NO;
