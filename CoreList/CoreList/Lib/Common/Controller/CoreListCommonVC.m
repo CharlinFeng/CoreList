@@ -65,7 +65,6 @@ const NSInteger TipsViewTag = 2015;
     
     //控制器准备
     [self vcPrepare];
-
 }
 
 
@@ -79,7 +78,7 @@ const NSInteger TipsViewTag = 2015;
     
     if(!self.hasData){
         
-        [CoreViewNetWorkStausManager show:self.view type:CMTypeLoadingWithImage msg:@"努力加载中" subMsg:@"请稍等片刻" offsetY:0 failClickBlock:^{
+        [CoreViewNetWorkStausManager show:self.view type:CMTypeLoadingWithImage msg:@"努力加载中" subMsg:@"请稍等，马上就好" offsetY:0 failClickBlock:^{
             if (ListVCRefreshAddTypeBottomRefreshOnly != self.refreshType){
                 
                 [self headerRefreshAction];
@@ -317,7 +316,7 @@ const NSInteger TipsViewTag = 2015;
         //标明刷新类型
         self.refreshType = ListVCRefreshActionTypeNone;
         
-        [CoreViewNetWorkStausManager show:self.view type:CMTypeError msg:@"注意" subMsg:@"网络数据丢失" offsetY:0 failClickBlock:^{
+        [CoreViewNetWorkStausManager show:self.view type:CMTypeError msg:@"网络数据丢失" subMsg:@"点击屏幕重试" offsetY:0 failClickBlock:^{
             [self showNetViewManager];
             [self headerRefreshAction];
         }];
@@ -340,21 +339,22 @@ const NSInteger TipsViewTag = 2015;
 
 /** 根据顶部刷新数据情况安装底部刷新控件 */
 -(void)footerRefreshAdd:(NSArray *)models{
- 
+    
+    [self footerRefreshAdd];
+    
     NSUInteger count = models.count;
     
     if(count<=5){//不安装
         
-    }else if (count >5 && count < self.modelPageSize){//安装，并将状态置为无数据
+        [self.scrollView footerSetState:CoreFooterViewRefreshStateSuccessedResultNoMoreData];
         
-        [self footerRefreshAdd];
+    }else if (count >5 && count < self.modelPageSize){//安装，并将状态置为无数据
         
         [self.scrollView footerSetState:CoreFooterViewRefreshStateSuccessedResultNoMoreData];
         
     }else if (count >= self.modelPageSize){//正常安装
         
-        [self footerRefreshAdd];
-        
+//        [self footerRefreshAdd];
     }
     
     self.hasFooter = YES;
@@ -454,7 +454,7 @@ const NSInteger TipsViewTag = 2015;
         
         if(models == nil || count == 0){//没有数据
             
-            [CoreViewNetWorkStausManager show:self.view type:CMTypeNormalMsgWithImage msg:@"没有数据" subMsg:@"过一会再来看看吧" offsetY:0 failClickBlock:nil];
+            [CoreViewNetWorkStausManager show:self.view type:CMTypeNormalMsgWithImage msg:@"暂无数据" subMsg:@"请稍后再来看看吧" offsetY:0 failClickBlock:nil];
             
         }else{//有数据，隐藏
             
@@ -611,7 +611,7 @@ const NSInteger TipsViewTag = 2015;
     tipsView.tag = TipsViewTag;
     [self.view addSubview:tipsView];
     [tipsView masViewAddConstraintMakeEqualSuperViewWithInsets:UIEdgeInsetsZero];
-    [CoreViewNetWorkStausManager show:tipsView type:CMTypeError msg:title subMsg:desc offsetY:offsetY failClickBlock:^{
+    [CoreViewNetWorkStausManager show:tipsView type:CMTypeError msg:title subMsg:@"点击屏幕重试" offsetY:offsetY failClickBlock:^{
         if(clickBlock!=nil) clickBlock();
     }];
 }

@@ -28,10 +28,8 @@
     
     CoreListTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
     
-    if(cell==nil){
-        cell=[[[NSBundle mainBundle] loadNibNamed:rid owner:nil options:nil] firstObject];
-    }
-    
+    if(cell==nil) cell=[[[NSBundle mainBundle] loadNibNamed:rid owner:nil options:nil] firstObject];
+
     return cell;
 }
 
