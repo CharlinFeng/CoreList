@@ -7,12 +7,12 @@
 //
 
 #import "CoreListCommonVC.h"
+#import "CLWaterflowLayout.h"
 
 @interface CoreListCollectionViewController : CoreListCommonVC<UICollectionViewDataSource,UICollectionViewDelegate>
 
 
 @property (nonatomic,strong) UICollectionView *collectionView;
-
 
 
 @end

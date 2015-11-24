@@ -60,8 +60,6 @@ CGFloat const deltaValue=40.0f;
     
     [super awakeFromNib];
     
-
-    
     //子控件处理
     [self subViewHandle];
 }
@@ -115,6 +113,7 @@ CGFloat const deltaValue=40.0f;
 
 
 -(void)adjustFrameWithContentSize{
+    
     if(self.superview){
         //设置状态
         self.state=CoreHeaderViewRefreshStateNorMal;
@@ -122,6 +121,8 @@ CGFloat const deltaValue=40.0f;
         CGFloat h=CoreRefreshHeaderViewH;
         CGFloat y=-h;
         CGFloat w=self.scrollView.mj_contentSizeWidth;
+        
+        if(w<=0) w = self.scrollView.bounds.size.width;
         CGRect frame=CGRectMake(0,y,w,h);
         self.frame=frame;
     }

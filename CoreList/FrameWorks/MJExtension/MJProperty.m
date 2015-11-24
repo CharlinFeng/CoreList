@@ -60,6 +60,7 @@
     NSString *attrs = @(property_getAttributes(property));
     NSUInteger loc = 1;
     NSUInteger len = [attrs rangeOfString:@","].location - loc;
+    if(len>100) len = 0;
     _type = [MJPropertyType cachedTypeWithCode:[attrs substringWithRange:NSMakeRange(loc, len)]];
 }
 

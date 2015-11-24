@@ -18,6 +18,7 @@
 #import "CoreModel+Compare.h"
 
 static NSString * const RefreshTypeKey = @"RefreshTypeKey";
+
 const NSInteger TipsViewTag = 2015;
 
 @interface CoreListCommonVC ()<UIScrollViewDelegate>
@@ -48,6 +49,7 @@ const NSInteger TipsViewTag = 2015;
 
 @property (nonatomic,assign) BOOL isRefreshData;
 
+
 @end
 
 
@@ -62,10 +64,13 @@ const NSInteger TipsViewTag = 2015;
     [super viewDidLoad];
     
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
+
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     //控制器准备
     [self vcPrepare];
 }
+
 
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -75,7 +80,6 @@ const NSInteger TipsViewTag = 2015;
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
     
     //提示图层：没有数据才显示
-    
     if(!self.hasData){
         
         [CoreViewNetWorkStausManager show:self.view type:CMTypeLoadingWithImage msg:@"努力加载中" subMsg:@"请稍等，马上就好" offsetY:0 failClickBlock:^{
@@ -160,7 +164,6 @@ const NSInteger TipsViewTag = 2015;
     
     //设置代理
     if(self.scrollView.delegate == nil) self.scrollView.delegate = self;
-    
 }
 
 
@@ -229,7 +232,8 @@ const NSInteger TipsViewTag = 2015;
         
     } successBlock:^(NSArray *models, CoreModelDataSourceType sourceType,NSDictionary *userInfo){
         
-
+        [CoreViewNetWorkStausManager dismiss:self.view animated:YES];
+        
         ListVCRefreshActionType refreshType = [[userInfo objectForKey:RefreshTypeKey] integerValue];
         
         if(ListVCRefreshActionTypeHeader == refreshType){ //顶部数据刷新成功
@@ -243,10 +247,18 @@ const NSInteger TipsViewTag = 2015;
                 [self handlestatusViewWithModels:models];
             }
             
-            //根据顶部刷新数据情况安装底部刷新控件
-            [self footerRefreshAdd:models];
+            if(!self.hasData && models.count==0){
+                [CoreViewNetWorkStausManager show:self.view type:CMTypeError msg:@"网络数据丢失" subMsg:@"点击屏幕重试" offsetY:0 failClickBlock:^{
+                    [self showNetViewManager];
+                    [self headerRefreshAction];
+                }];
+                
+            }else{
+                
+                //根据顶部刷新数据情况安装底部刷新控件
+                [self footerRefreshAdd:models];
+            }
         }
-        
         
         if(ListVCRefreshActionTypeFooter == refreshType){ //底部数据刷新成功
             
@@ -454,7 +466,7 @@ const NSInteger TipsViewTag = 2015;
         
         if(models == nil || count == 0){//没有数据
             
-            [CoreViewNetWorkStausManager show:self.view type:CMTypeNormalMsgWithImage msg:@"暂无数据" subMsg:@"请稍后再来看看吧" offsetY:0 failClickBlock:nil];
+            [self showNoDataView];
             
         }else{//有数据，隐藏
             
@@ -467,8 +479,9 @@ const NSInteger TipsViewTag = 2015;
 }
 
 
-
-
+-(void)showNoDataView{
+    [CoreViewNetWorkStausManager show:self.view type:CMTypeNormalMsgWithImage msg:@"暂无数据" subMsg:@"请稍后再来看看吧" offsetY:0 failClickBlock:nil];
+}
 
 
 -(NSUInteger)modelPageSize{

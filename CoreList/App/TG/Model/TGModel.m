@@ -7,8 +7,19 @@
 //
 
 #import "TGModel.h"
+#import "NSObject+MJKeyValue.h"
 
 @implementation TGModel
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.cellH = 80 + arc4random_uniform(70);
+    }
+    return self;
+}
+
 
 
 

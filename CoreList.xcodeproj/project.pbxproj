@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		891DC8171BA6B39E004EA688 /* CoreListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891DC8121BA6B39E004EA688 /* CoreListCollectionViewCell.m */; };
 		891DC8181BA6B39E004EA688 /* CoreListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891DC8161BA6B39E004EA688 /* CoreListTableViewCell.m */; };
+		892B6F621C0407F600119CE8 /* CLWaterflowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 892B6F611C0407F600119CE8 /* CLWaterflowLayout.m */; };
 		893C7C741B21CF73003A6D1D /* CoreListCommonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 893C7C6E1B21CF73003A6D1D /* CoreListCommonVC.m */; };
 		893C7C781B21CF91003A6D1D /* CoreListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893C7C771B21CF91003A6D1D /* CoreListTableViewController.m */; };
 		893C7C7B1B21D064003A6D1D /* CoreListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893C7C7A1B21D064003A6D1D /* CoreListCollectionViewController.m */; };
@@ -118,6 +119,8 @@
 		891DC8141BA6B39E004EA688 /* CoreListCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCellProtocol.h; sourceTree = "<group>"; };
 		891DC8151BA6B39E004EA688 /* CoreListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListTableViewCell.h; sourceTree = "<group>"; };
 		891DC8161BA6B39E004EA688 /* CoreListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListTableViewCell.m; sourceTree = "<group>"; };
+		892B6F601C0407F600119CE8 /* CLWaterflowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLWaterflowLayout.h; sourceTree = "<group>"; };
+		892B6F611C0407F600119CE8 /* CLWaterflowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLWaterflowLayout.m; sourceTree = "<group>"; };
 		893C7C6D1B21CF73003A6D1D /* CoreListCommonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCommonVC.h; sourceTree = "<group>"; };
 		893C7C6E1B21CF73003A6D1D /* CoreListCommonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListCommonVC.m; sourceTree = "<group>"; };
 		893C7C701B21CF73003A6D1D /* ViewControllerListProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerListProtocol.h; sourceTree = "<group>"; };
@@ -344,6 +347,15 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		892B6F5F1C0407D200119CE8 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				892B6F601C0407F600119CE8 /* CLWaterflowLayout.h */,
+				892B6F611C0407F600119CE8 /* CLWaterflowLayout.m */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
 		893C7C671B21CF73003A6D1D /* Lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +367,7 @@
 		893C7C681B21CF73003A6D1D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				892B6F5F1C0407D200119CE8 /* Layout */,
 				8999AEAD1BAFB094001729D6 /* Resouce */,
 				893C7CE31B21E2F0003A6D1D /* Type */,
 				893C7C691B21CF73003A6D1D /* Category */,
@@ -1107,6 +1120,7 @@
 				898A61F61BA27AC20098A0AD /* NSObject+MJProperty.m in Sources */,
 				898A61F21BA27AC20098A0AD /* MJPropertyType.m in Sources */,
 				89CB25DF1BA277DF0034BABA /* CoreRefreshConst.m in Sources */,
+				892B6F621C0407F600119CE8 /* CLWaterflowLayout.m in Sources */,
 				89CB261B1BA27A670034BABA /* NSObject+CoreModelCommon.m in Sources */,
 				898A61F01BA27AC20098A0AD /* MJProperty.m in Sources */,
 				893C7D151B21F55F003A6D1D /* CoreViewNetWorkStausManager.m in Sources */,

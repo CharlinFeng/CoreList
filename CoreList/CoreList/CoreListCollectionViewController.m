@@ -11,6 +11,7 @@
 #import "CoreListCollectionViewCell.h"
 #import "CoreListConst.h"
 
+
 @interface CoreListCollectionViewController ()
 
 @end
@@ -18,11 +19,11 @@
 @implementation CoreListCollectionViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     //控制器准备
     [self vcPreare];
-    //注册cell
 }
 
 /** 控制器准备 */
@@ -164,7 +165,22 @@
 
 /** collectionView专有方法 */
 -(UICollectionViewLayout *)listVC_CollectionViewLayout{
+
+    if([self listVC_IsWaterFlowLayout]){
+        
+        CLWaterflowLayout *waterlayout = [[CLWaterflowLayout alloc] init];
+        
+        waterlayout.delegate = self;
+        
+        return waterlayout;
+    }
     return nil;
 }
+
+/** 是否为瀑布流布局 */
+-(BOOL)listVC_IsWaterFlowLayout{
+    return NO;
+}
+
 
 @end

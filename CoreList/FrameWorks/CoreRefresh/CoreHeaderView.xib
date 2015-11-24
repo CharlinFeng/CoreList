@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A4310" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,12 +16,15 @@
                     <subviews>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfa-sy-rIr" userLabel="showView" customClass="CoreHeaderShowView">
                             <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                            <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <imageView userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CoreRefreshResource.bundle/coreRefreshIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="WZO-Mq-25n" userLabel="iconImageV">
                             <rect key="frame" x="4" y="3" width="17" height="17"/>
+                            <animations/>
                         </imageView>
                     </subviews>
+                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="WZO-Mq-25n" secondAttribute="bottom" constant="5" id="1gZ-JN-k7Z"/>
@@ -38,12 +41,14 @@
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="继续向下拉" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59d-gQ-DlJ" userLabel="messageLabel">
                     <rect key="frame" x="128" y="26" width="90" height="22"/>
+                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="gb3-2e-cUQ" firstAttribute="leading" secondItem="qQe-pk-zH2" secondAttribute="leading" constant="100" id="4e2-Yq-MuS"/>
@@ -73,7 +78,7 @@
                 <outlet property="showVWConstraint" destination="4Xh-go-4H2" id="roL-JV-okB"/>
                 <outlet property="showView" destination="sfa-sy-rIr" id="NzY-Cx-qCY"/>
             </connections>
-            <point key="canvasLocation" x="283" y="411"/>
+            <point key="canvasLocation" x="466" y="427"/>
         </view>
     </objects>
     <resources>

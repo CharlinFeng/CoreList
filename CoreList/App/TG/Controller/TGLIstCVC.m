@@ -10,13 +10,14 @@
 #import "TGModel.h"
 #import "TGCell.h"
 
-@interface TGLIstCVC ()
+@interface TGLIstCVC ()<CLWaterflowLayoutDelegate>
 
 @end
 
 @implementation TGLIstCVC
 
 - (void)viewDidLoad {
+
     [super viewDidLoad];
     
 }
@@ -71,18 +72,29 @@
 }
 
 
-/** collectionView专有方法 */
--(UICollectionViewLayout *)listVC_CollectionViewLayout{
-    
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    
-    layout.itemSize = CGSizeMake(100, 100);
-    
-    layout.minimumInteritemSpacing = 5;
-    
-    layout.minimumLineSpacing = 5;
-    
-    return layout;
+///** collectionView专有方法 */
+//-(UICollectionViewLayout *)listVC_CollectionViewLayout{
+//    
+//    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+//    
+//    layout.itemSize = CGSizeMake(100, 100);
+//    
+//    layout.minimumInteritemSpacing = 5;
+//    
+//    layout.minimumLineSpacing = 5;
+//    
+//    return layout;
+//}
+
+/** 是否为瀑布流布局 */
+-(BOOL)listVC_IsWaterFlowLayout{
+    return YES;
+}
+
+
+-(CGFloat)waterflowLayout:(CLWaterflowLayout *)waterflowLayout heightForWidth:(CGFloat)width atIndexPath:(NSIndexPath *)indexPath{
+
+    return [self.dataList[indexPath.row] cellH];
 }
 
 @end

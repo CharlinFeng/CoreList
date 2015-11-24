@@ -13,7 +13,7 @@
 #import "CoreHttp.h"
 #import "NSDictionary+Sqlite.h"
 #import "NSObject+MJKeyValue.h"
-
+#import "CoreStatus.h"
 
 @implementation CoreModel (Cache)
 
@@ -130,6 +130,8 @@
             
             if(!needHttpRequest) return;
             
+            if(![CoreStatus isNETWORKEnable]) return;
+            
             NSString *url = [self CoreModel_UrlString];
             
             NSDictionary *requestParams = params;
@@ -161,6 +163,7 @@
                 } errorBlock:^(CoreHttpErrorType errorType) {
                     
                     if(errorBlock != nil) errorBlock(NetWorkError,userInfo);
+                    
                 }];
             }
             
