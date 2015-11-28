@@ -7,10 +7,10 @@
 //
 
 #import "CoreListCommonVC.h"
-#import "CoreRefreshEntry.h"
+#import "MJRefresh.h"
 #import "CoreModel.h"
 #import "NSArray+CoreListExtend.h"
-#import "CoreViewNetWorkStausManager.h"
+#import "CoreIV.h"
 #import "UIView+Masony.h"
 #import "CoreModel+Cache.h"
 #import "Masonry.h"
@@ -20,6 +20,12 @@
 static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
 const NSInteger TipsViewTag = 2015;
+
+
+#define HeaderRefreshing [self.scrollView.mj_header beginRefreshing];
+#define FooterRefresEndWithMsg(str) [self.scrollView.mj_footer endRefreshingWithNoMoreData];[(MJRefreshAutoStateFooter *)self.scrollView.mj_footer setTitle:str forState:MJRefreshStateNoMoreData];
+
+#define DismissNetView [CoreIV dismissFromView:self.view animated:YES];
 
 @interface CoreListCommonVC ()<UIScrollViewDelegate>
 
@@ -65,10 +71,11 @@ const NSInteger TipsViewTag = 2015;
     
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
 
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    [self.scrollView.mj_footer endRefreshingWithNoMoreData];
     
     //控制器准备
     [self vcPrepare];
+    
 }
 
 
@@ -82,12 +89,7 @@ const NSInteger TipsViewTag = 2015;
     //提示图层：没有数据才显示
     if(!self.hasData){
         
-        [CoreViewNetWorkStausManager show:self.view type:CMTypeLoadingWithImage msg:@"努力加载中" subMsg:@"请稍等，马上就好" offsetY:0 failClickBlock:^{
-            if (ListVCRefreshAddTypeBottomRefreshOnly != self.refreshType){
-                
-                [self headerRefreshAction];
-            }
-        }];
+        [self showLoadNetView];
     }
 }
 
@@ -110,8 +112,10 @@ const NSInteger TipsViewTag = 2015;
     
     if(self.isRefreshWhenViewDidAppeared){
         
-        if(CoreHeaderViewRefreshStateNorMal == self.scrollView.header.state){
-            [self.scrollView headerSetState:CoreHeaderViewRefreshStateRefreshing];
+        
+        
+        if(![self.scrollView.mj_header isRefreshing]){
+            HeaderRefreshing
         }
         
     }else{
@@ -126,7 +130,7 @@ const NSInteger TipsViewTag = 2015;
         //如果没有数据，直接请求
         if(!self.hasData){
             
-            [self.scrollView headerSetState:CoreHeaderViewRefreshStateRefreshing];
+            HeaderRefreshing
             
             //存入当前时间
             [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
@@ -136,7 +140,8 @@ const NSInteger TipsViewTag = 2015;
             if(needTriggerHeaderAction){
                 
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self.scrollView headerSetState:CoreHeaderViewRefreshStateRefreshing];
+                    
+                    HeaderRefreshing
                 });
                 
                 //存入当前时间
@@ -145,9 +150,7 @@ const NSInteger TipsViewTag = 2015;
         }
     }
     
-    if(self.hasData){
-        [CoreViewNetWorkStausManager dismiss:self.view animated:YES];
-    }
+    if(self.hasData){DismissNetView}
 }
 
 
@@ -181,7 +184,7 @@ const NSInteger TipsViewTag = 2015;
     self.page = [[self listVC_Model_Class] CoreModel_StartPage];
     
     //底部刷新控件复位
-    [self.scrollView footerSetState:CoreFooterViewRefreshStateNormalForContinueDragUp];
+    [self.scrollView.mj_footer endRefreshing];
     
     //找模型要获取
     [self fetchDataFromModel];
@@ -228,18 +231,22 @@ const NSInteger TipsViewTag = 2015;
 
     [Model_Class selectWithParams:paramsM ignoreParams:ignoreParams userInfo:userInfo beginBlock:^(BOOL isNetWorkRequest,BOOL needHUD){
         
-        if(self.hasFooter && isNetWorkRequest) [self.scrollView footerSetState:CoreFooterViewRefreshStateRequesting];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(self.hasFooter && isNetWorkRequest) [self.scrollView.mj_footer beginRefreshing];
+        });
         
     } successBlock:^(NSArray *models, CoreModelDataSourceType sourceType,NSDictionary *userInfo){
         
-        [CoreViewNetWorkStausManager dismiss:self.view animated:YES];
+        DismissNetView
         
         ListVCRefreshActionType refreshType = [[userInfo objectForKey:RefreshTypeKey] integerValue];
         
         if(ListVCRefreshActionTypeHeader == refreshType){ //顶部数据刷新成功
             
             //刷新成功：顶部
-            [self refreshSuccess4Header:models];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self refreshSuccess4Header:models];
+            });
             
             if(sourceType != CoreModelDataSourceTypeSqlite){
                 
@@ -248,25 +255,31 @@ const NSInteger TipsViewTag = 2015;
             }
             
             if(!self.hasData && models.count==0){
-                [CoreViewNetWorkStausManager show:self.view type:CMTypeError msg:@"网络数据丢失" subMsg:@"点击屏幕重试" offsetY:0 failClickBlock:^{
-                    [self showNetViewManager];
+                [self showErrorNetViewWithMsg:@"加载失败，点击重试" failClickBlock:^{
+                    [self showLoadNetView];
                     [self headerRefreshAction];
                 }];
                 
             }else{
                 
                 //根据顶部刷新数据情况安装底部刷新控件
-                [self footerRefreshAdd:models];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self footerRefreshAdd:models];
+                });
             }
         }
         
         if(ListVCRefreshActionTypeFooter == refreshType){ //底部数据刷新成功
             
-            [self refreshSuccess4Footer:models sourceType:sourceType];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self refreshSuccess4Footer:models sourceType:sourceType];
+            });
             
             if(models.count ==0 && CoreModelDataSourceTypeSqlite == sourceType){
                
-                [self.scrollView footerSetState:CoreFooterViewRefreshStateSuccessedResultNoMoreData];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    FooterRefresEndWithMsg(@"没有更多数据了")
+                });
 
             }
             
@@ -284,7 +297,7 @@ const NSInteger TipsViewTag = 2015;
             
             __weak typeof(self) weakSelf=self;
             
-            [CoreViewNetWorkStausManager dismiss:self.view animated:NO];
+            DismissNetView
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self showTipsWithTitle:@"错误" desc:errorResult offsetY:0 clickBlock:^{
@@ -304,13 +317,18 @@ const NSInteger TipsViewTag = 2015;
             
             if(self.localDataNil){
                 
-                [self.scrollView footerSetState:CoreFooterViewRefreshStateFailed];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    FooterRefresEndWithMsg(@"数据加载失败")
+                });
             }
             
             //无缓存的情况
             if(!self.isNeedFMDB){
                 
-                [self.scrollView footerSetState:CoreFooterViewRefreshStateFailed];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    FooterRefresEndWithMsg(@"数据加载失败")
+                });
+                
                 //页码回退
                 self.page -- ;
             }
@@ -328,8 +346,9 @@ const NSInteger TipsViewTag = 2015;
         //标明刷新类型
         self.refreshType = ListVCRefreshActionTypeNone;
         
-        [CoreViewNetWorkStausManager show:self.view type:CMTypeError msg:@"网络数据丢失" subMsg:@"点击屏幕重试" offsetY:0 failClickBlock:^{
-            [self showNetViewManager];
+        [CoreIV showWithType:IVTypeError view:self.view msg:@"加载失败，点击重试" failClickBlock:^{
+            
+            [self showLoadNetView];
             [self headerRefreshAction];
         }];
     }];
@@ -337,16 +356,14 @@ const NSInteger TipsViewTag = 2015;
 
 
 /** 显示指示器 */
--(void)showNetViewManager{
+-(void)showLoadNetView{
     
-    [CoreViewNetWorkStausManager show:self.view type:CMTypeLoadingWithImage msg:@"努力加载中" subMsg:@"请稍等片刻" offsetY:0 failClickBlock:^{
-        if (ListVCRefreshAddTypeBottomRefreshOnly != self.refreshType){
-            
-            [self headerRefreshAction];
-        }
-    }];
+    [CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];
 }
 
+-(void)showErrorNetViewWithMsg:(NSString *)msg failClickBlock:(void(^)())failClickBlock{
+    [CoreIV showWithType:IVTypeError view:self.view msg:msg failClickBlock:failClickBlock];
+}
 
 
 /** 根据顶部刷新数据情况安装底部刷新控件 */
@@ -357,12 +374,11 @@ const NSInteger TipsViewTag = 2015;
     NSUInteger count = models.count;
     
     if(count<=5){//不安装
-        
-        [self.scrollView footerSetState:CoreFooterViewRefreshStateSuccessedResultNoMoreData];
+        FooterRefresEndWithMsg(@"没有更多数据了")
         
     }else if (count >5 && count < self.modelPageSize){//安装，并将状态置为无数据
         
-        [self.scrollView footerSetState:CoreFooterViewRefreshStateSuccessedResultNoMoreData];
+        FooterRefresEndWithMsg(@"没有更多数据了")
         
     }else if (count >= self.modelPageSize){//正常安装
         
@@ -379,7 +395,7 @@ const NSInteger TipsViewTag = 2015;
 /** 刷新成功：顶部 */
 -(void)refreshSuccess4Header:(NSArray *)models{
     
-    [self.scrollView headerSetState:CoreHeaderViewRefreshStateSuccessedResultDataShowing];
+    [self.scrollView.mj_header endRefreshing];
 
     //存入数据
     self.dataList = models;
@@ -438,18 +454,14 @@ const NSInteger TipsViewTag = 2015;
             self.page -- ;
         }
         
-        
-        [self.scrollView footerSetState:CoreFooterViewRefreshStateSuccessedResultNoMoreData];
+        FooterRefresEndWithMsg(@"没有更多数据了")
         
     }else if (count < pageSize){//有数据，但没有满载
         
-        
-        [self.scrollView footerSetState:CoreFooterViewRefreshStateSuccessedResultNoMoreData];
+        FooterRefresEndWithMsg(@"没有更多数据了")
         
     }else if (count >= pageSize){//有数据，满载
-        
-        [self.scrollView footerSetState:CoreFooterViewRefreshStateSuccessedResultDataShowing];
-        
+        [self.scrollView.mj_footer endRefreshing];
     }
 }
 
@@ -470,7 +482,7 @@ const NSInteger TipsViewTag = 2015;
             
         }else{//有数据，隐藏
             
-            [CoreViewNetWorkStausManager dismiss:self.view animated:YES];
+            DismissNetView
             
             self.hasData = YES;
         }
@@ -480,7 +492,7 @@ const NSInteger TipsViewTag = 2015;
 
 
 -(void)showNoDataView{
-    [CoreViewNetWorkStausManager show:self.view type:CMTypeNormalMsgWithImage msg:@"暂无数据" subMsg:@"请稍后再来看看吧" offsetY:0 failClickBlock:nil];
+    [self showErrorNetViewWithMsg:@"暂无数据" failClickBlock:nil];
 }
 
 
@@ -502,16 +514,21 @@ const NSInteger TipsViewTag = 2015;
 
 /** 安装刷新控件：顶部刷新控件 */
 -(void)headerRefreshAdd{
+    
     //添加顶部刷新控件
-    [self.scrollView removeHeader];
-    [self.scrollView addHeaderWithTarget:self action:@selector(headerRefreshAction)];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshAction)];
+    });
 }
 
 
 /** 安装刷新控件：顶部刷新控件 */
 -(void)footerRefreshAdd{
+    
     //添加底部刷新
-    [self.scrollView addFooterWithTarget:self action:@selector(footerRefreshAction)];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.scrollView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshAction)];
+    });
 }
 
 
@@ -558,6 +575,7 @@ const NSInteger TipsViewTag = 2015;
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
         
         [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        
     }else{
         
         
@@ -624,9 +642,7 @@ const NSInteger TipsViewTag = 2015;
     tipsView.tag = TipsViewTag;
     [self.view addSubview:tipsView];
     [tipsView masViewAddConstraintMakeEqualSuperViewWithInsets:UIEdgeInsetsZero];
-    [CoreViewNetWorkStausManager show:tipsView type:CMTypeError msg:title subMsg:@"点击屏幕重试" offsetY:offsetY failClickBlock:^{
-        if(clickBlock!=nil) clickBlock();
-    }];
+    [self showErrorNetViewWithMsg:@"暂无数据，点击重试" failClickBlock:clickBlock];
 }
 
 
@@ -634,7 +650,7 @@ const NSInteger TipsViewTag = 2015;
     
     UIView *tipsView = [self.view viewWithTag:TipsViewTag];
     
-    [CoreViewNetWorkStausManager dismiss:tipsView animated:YES];
+    DismissNetView
     
     [tipsView removeFromSuperview];
 }
@@ -643,7 +659,7 @@ const NSInteger TipsViewTag = 2015;
 /** 刷新页面数据 */
 -(void)refreshData{
     
-    [self.scrollView headerSetState:CoreHeaderViewRefreshStateRefreshing];
+    HeaderRefreshing
 }
 
 

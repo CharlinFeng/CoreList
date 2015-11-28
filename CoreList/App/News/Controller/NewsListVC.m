@@ -9,7 +9,7 @@
 #import "NewsListVC.h"
 #import "NewsListModel.h"
 #import "NewsListCell.h"
-#import "CoreViewNetWorkStausManager.h"
+
 
 
 @interface NewsListVC ()
@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.NetWorkErrorAction = ^{
         
         NSLog(@"错误处理");
