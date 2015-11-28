@@ -262,6 +262,7 @@ const NSInteger TipsViewTag = 2015;
                 
                 //根据顶部刷新数据情况安装底部刷新控件
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    
                     [self footerRefreshAdd:models];
                 });
             }
@@ -411,7 +412,7 @@ const NSInteger TipsViewTag = 2015;
 
 /** 刷新成功：底部 */
 -(void)refreshSuccess4Footer:(NSArray *)models sourceType:(CoreModelDataSourceType)sourceType{
-
+    
     NSUInteger count = models.count;
     
     NSUInteger pageSize = self.modelPageSize;
@@ -444,9 +445,7 @@ const NSInteger TipsViewTag = 2015;
         });
     }
 
-    
-    if(count == 0){//新的一页一条数据也没有
-        
+    if(count < pageSize){//新的一页数据不足pagesize
         
         if(CoreModelDataSourceHostType_Sqlite_Nil == sourceType){
             
@@ -455,13 +454,12 @@ const NSInteger TipsViewTag = 2015;
         }
         
         FooterRefresEndWithMsg(@"没有更多数据了")
-        
-    }else if (count < pageSize){//有数据，但没有满载
-        
-        FooterRefresEndWithMsg(@"没有更多数据了")
-        
+
     }else if (count >= pageSize){//有数据，满载
-        [self.scrollView.mj_footer endRefreshing];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.scrollView.mj_footer endRefreshing];
+        });
     }
 }
 
@@ -517,7 +515,9 @@ const NSInteger TipsViewTag = 2015;
     
     //添加顶部刷新控件
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshAction)];
+        if(self.scrollView.mj_header == nil) {
+            self.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshAction)];
+        }
     });
 }
 
@@ -527,8 +527,11 @@ const NSInteger TipsViewTag = 2015;
     
     //添加底部刷新
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.scrollView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshAction)];
+        if(self.scrollView.mj_footer == nil) {
+            self.scrollView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshAction)];
+        }
     });
+    
 }
 
 
