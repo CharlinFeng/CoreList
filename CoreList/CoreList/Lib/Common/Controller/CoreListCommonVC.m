@@ -11,9 +11,7 @@
 #import "CoreModel.h"
 #import "NSArray+CoreListExtend.h"
 #import "CoreIV.h"
-#import "UIView+Masony.h"
 #import "CoreModel+Cache.h"
-#import "Masonry.h"
 #import "CoreModelConst.h"
 #import "CoreModel+Compare.h"
 
@@ -300,9 +298,11 @@ const NSInteger TipsViewTag = 2015;
             DismissNetView
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self showTipsWithTitle:@"错误" desc:errorResult offsetY:0 clickBlock:^{
-                    
+                
+                [self showErrorNetViewWithMsg:@"操作失败" failClickBlock:^{
+ 
                     if(weakSelf.NetWorkErrorAction != nil) weakSelf.NetWorkErrorAction();
+                    
                 }];
             });
             
@@ -551,13 +551,13 @@ const NSInteger TipsViewTag = 2015;
         [_back2TopBtn addTarget:self action:@selector(back2Top) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_back2TopBtn];
         
-        //添加约束
-        [_back2TopBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            
-            make.width.height.mas_equalTo(40);
-            make.right.equalTo(self.view.mas_right).with.offset(-20);
-            make.bottom.equalTo(self.view.mas_bottom).with.offset(-60);
-        }];
+        _back2TopBtn.translatesAutoresizingMaskIntoConstraints = NO;
+        NSDictionary *views = @{@"back2TopBtn": _back2TopBtn};
+        
+        NSArray *v_hor = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[back2TopBtn(==40)]-20-|" options:0 metrics:nil views:views];
+        NSArray *v_ver = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[back2TopBtn(==40)]-60-|" options:0 metrics:nil views:views];
+        [self.view addConstraints:v_hor];[self.view addConstraints:v_ver];
+
         
     }
     
@@ -632,28 +632,6 @@ const NSInteger TipsViewTag = 2015;
     }];
 }
 
-
-
--(void)showTipsWithTitle:(NSString *)title desc:(NSString *)desc offsetY:(CGFloat)offsetY clickBlock:(void(^)())clickBlock{
-    
-    [self dismissTipsView];
-    
-    UIView *tipsView = [[UIView alloc] init];
-    tipsView.tag = TipsViewTag;
-    [self.view addSubview:tipsView];
-    [tipsView masViewAddConstraintMakeEqualSuperViewWithInsets:UIEdgeInsetsZero];
-    [self showErrorNetViewWithMsg:@"暂无数据，点击重试" failClickBlock:clickBlock];
-}
-
-
--(void)dismissTipsView{
-    
-    UIView *tipsView = [self.view viewWithTag:TipsViewTag];
-    
-    DismissNetView
-    
-    [tipsView removeFromSuperview];
-}
 
 
 /** 刷新页面数据 */

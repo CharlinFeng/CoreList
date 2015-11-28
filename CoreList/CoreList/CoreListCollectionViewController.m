@@ -7,9 +7,10 @@
 //
 
 #import "CoreListCollectionViewController.h"
-#import "UIView+Masony.h"
 #import "CoreListCollectionViewCell.h"
 #import "CoreListConst.h"
+#import "UIView+CoreListLayout.h"
+
 
 
 @interface CoreListCollectionViewController ()
@@ -79,7 +80,7 @@
         if(ios7x) _collectionView.contentInset = UIEdgeInsetsMake(topPadding, 0, 0, 0);
         _collectionView.contentOffset = CGPointMake(-topPadding, 0);
         
-        [_collectionView masViewAddConstraintMakeEqualSuperViewWithInsets:UIEdgeInsetsZero];
+        [_collectionView autoLayoutFillSuperView];
     }
     
     return _collectionView;

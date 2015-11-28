@@ -7,12 +7,9 @@
 //
 
 #import "CoreListTableViewController.h"
-#import "UIView+Masony.h"
 #import "CoreListTableViewCell.h"
 #import "CoreListConst.h"
-
-
-
+#import "UIView+CoreListLayout.h"
 
 
 @interface CoreListTableViewController ()
@@ -99,7 +96,7 @@
         _tableView.contentOffset = CGPointMake(-topPadding, 0);
         
         //添加约束
-        [_tableView masViewAddConstraintMakeEqualSuperViewWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+        [_tableView autoLayoutFillSuperView];
     }
     
     return _tableView;
