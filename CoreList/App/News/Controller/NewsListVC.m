@@ -26,6 +26,8 @@
         
         NSLog(@"错误处理");
     };
+    
+    self.shyNavBarOff = YES;
 }
 
 

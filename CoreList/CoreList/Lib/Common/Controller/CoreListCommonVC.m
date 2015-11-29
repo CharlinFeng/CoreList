@@ -72,8 +72,6 @@ const NSInteger TipsViewTag = 2015;
 
     //控制器准备
     [self vcPrepare];
-    
-    self.shyNavBarManager.scrollView = self.scrollView;self.shyNavBarManager.fadeBehavior = TLYShyNavBarFadeNavbar;
 }
 
 
@@ -102,6 +100,8 @@ const NSInteger TipsViewTag = 2015;
     
     //视图显示时操作
     [self viewAppearAction];
+    
+    if(self.shyNavBarManager.scrollView == nil && !self.shyNavBarOff) {self.shyNavBarManager.scrollView = self.scrollView;self.shyNavBarManager.fadeBehavior = TLYShyNavBarFadeNavbar;NSLog(@"设置了");}
 }
 
 

@@ -22,4 +22,7 @@
 
 @property (nonatomic,assign) BOOL isRefreshWhenViewDidAppeared;
 
+/** 关闭shyNavBar功能 */
+@property (nonatomic,assign) BOOL shyNavBarOff;
+
 @end
