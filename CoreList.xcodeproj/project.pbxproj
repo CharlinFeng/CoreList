@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		891DC8171BA6B39E004EA688 /* CoreListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891DC8121BA6B39E004EA688 /* CoreListCollectionViewCell.m */; };
 		891DC8181BA6B39E004EA688 /* CoreListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891DC8161BA6B39E004EA688 /* CoreListTableViewCell.m */; };
+		8920F2C01C0A92EA00A040B4 /* NSObject+TLYSwizzlingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8920F2AC1C0A92EA00A040B4 /* NSObject+TLYSwizzlingHelpers.m */; };
+		8920F2C11C0A92EA00A040B4 /* TLYDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8920F2AE1C0A92EA00A040B4 /* TLYDelegateProxy.m */; };
+		8920F2C21C0A92EA00A040B4 /* UIScrollView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8920F2B01C0A92EA00A040B4 /* UIScrollView+Helpers.m */; };
+		8920F2C31C0A92EA00A040B4 /* UIViewController+BetterLayoutGuides.m in Sources */ = {isa = PBXBuildFile; fileRef = 8920F2B21C0A92EA00A040B4 /* UIViewController+BetterLayoutGuides.m */; };
+		8920F2C41C0A92EA00A040B4 /* TLYShyScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8920F2B71C0A92EA00A040B4 /* TLYShyScrollViewController.m */; };
+		8920F2C51C0A92EA00A040B4 /* TLYShyStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8920F2B91C0A92EA00A040B4 /* TLYShyStatusBarController.m */; };
+		8920F2C61C0A92EA00A040B4 /* TLYShyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8920F2BB1C0A92EA00A040B4 /* TLYShyViewController.m */; };
+		8920F2C71C0A92EA00A040B4 /* TLYShyNavBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8920F2BF1C0A92EA00A040B4 /* TLYShyNavBarManager.m */; };
 		892B6F621C0407F600119CE8 /* CLWaterflowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 892B6F611C0407F600119CE8 /* CLWaterflowLayout.m */; };
 		893C7C741B21CF73003A6D1D /* CoreListCommonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 893C7C6E1B21CF73003A6D1D /* CoreListCommonVC.m */; };
 		893C7C781B21CF91003A6D1D /* CoreListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893C7C771B21CF91003A6D1D /* CoreListTableViewController.m */; };
@@ -148,6 +156,26 @@
 		891DC8141BA6B39E004EA688 /* CoreListCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCellProtocol.h; sourceTree = "<group>"; };
 		891DC8151BA6B39E004EA688 /* CoreListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListTableViewCell.h; sourceTree = "<group>"; };
 		891DC8161BA6B39E004EA688 /* CoreListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListTableViewCell.m; sourceTree = "<group>"; };
+		8920F2AB1C0A92EA00A040B4 /* NSObject+TLYSwizzlingHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TLYSwizzlingHelpers.h"; sourceTree = "<group>"; };
+		8920F2AC1C0A92EA00A040B4 /* NSObject+TLYSwizzlingHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TLYSwizzlingHelpers.m"; sourceTree = "<group>"; };
+		8920F2AD1C0A92EA00A040B4 /* TLYDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYDelegateProxy.h; sourceTree = "<group>"; };
+		8920F2AE1C0A92EA00A040B4 /* TLYDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLYDelegateProxy.m; sourceTree = "<group>"; };
+		8920F2AF1C0A92EA00A040B4 /* UIScrollView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Helpers.h"; sourceTree = "<group>"; };
+		8920F2B01C0A92EA00A040B4 /* UIScrollView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Helpers.m"; sourceTree = "<group>"; };
+		8920F2B11C0A92EA00A040B4 /* UIViewController+BetterLayoutGuides.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BetterLayoutGuides.h"; sourceTree = "<group>"; };
+		8920F2B21C0A92EA00A040B4 /* UIViewController+BetterLayoutGuides.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BetterLayoutGuides.m"; sourceTree = "<group>"; };
+		8920F2B41C0A92EA00A040B4 /* TLYShyChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyChild.h; sourceTree = "<group>"; };
+		8920F2B51C0A92EA00A040B4 /* TLYShyParent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyParent.h; sourceTree = "<group>"; };
+		8920F2B61C0A92EA00A040B4 /* TLYShyScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyScrollViewController.h; sourceTree = "<group>"; };
+		8920F2B71C0A92EA00A040B4 /* TLYShyScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLYShyScrollViewController.m; sourceTree = "<group>"; };
+		8920F2B81C0A92EA00A040B4 /* TLYShyStatusBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyStatusBarController.h; sourceTree = "<group>"; };
+		8920F2B91C0A92EA00A040B4 /* TLYShyStatusBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLYShyStatusBarController.m; sourceTree = "<group>"; };
+		8920F2BA1C0A92EA00A040B4 /* TLYShyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyViewController.h; sourceTree = "<group>"; };
+		8920F2BB1C0A92EA00A040B4 /* TLYShyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLYShyViewController.m; sourceTree = "<group>"; };
+		8920F2BC1C0A92EA00A040B4 /* TLYShyNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyNavBar.h; sourceTree = "<group>"; };
+		8920F2BD1C0A92EA00A040B4 /* TLYShyNavBarFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyNavBarFade.h; sourceTree = "<group>"; };
+		8920F2BE1C0A92EA00A040B4 /* TLYShyNavBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYShyNavBarManager.h; sourceTree = "<group>"; };
+		8920F2BF1C0A92EA00A040B4 /* TLYShyNavBarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLYShyNavBarManager.m; sourceTree = "<group>"; };
 		892B6F601C0407F600119CE8 /* CLWaterflowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLWaterflowLayout.h; sourceTree = "<group>"; };
 		892B6F611C0407F600119CE8 /* CLWaterflowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLWaterflowLayout.m; sourceTree = "<group>"; };
 		893C7C6D1B21CF73003A6D1D /* CoreListCommonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCommonVC.h; sourceTree = "<group>"; };
@@ -432,6 +460,49 @@
 				891DC8161BA6B39E004EA688 /* CoreListTableViewCell.m */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		8920F2A91C0A92EA00A040B4 /* TLYShyNavBar */ = {
+			isa = PBXGroup;
+			children = (
+				8920F2AA1C0A92EA00A040B4 /* Categories */,
+				8920F2B31C0A92EA00A040B4 /* ShyControllers */,
+				8920F2BC1C0A92EA00A040B4 /* TLYShyNavBar.h */,
+				8920F2BD1C0A92EA00A040B4 /* TLYShyNavBarFade.h */,
+				8920F2BE1C0A92EA00A040B4 /* TLYShyNavBarManager.h */,
+				8920F2BF1C0A92EA00A040B4 /* TLYShyNavBarManager.m */,
+			);
+			path = TLYShyNavBar;
+			sourceTree = "<group>";
+		};
+		8920F2AA1C0A92EA00A040B4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				8920F2AB1C0A92EA00A040B4 /* NSObject+TLYSwizzlingHelpers.h */,
+				8920F2AC1C0A92EA00A040B4 /* NSObject+TLYSwizzlingHelpers.m */,
+				8920F2AD1C0A92EA00A040B4 /* TLYDelegateProxy.h */,
+				8920F2AE1C0A92EA00A040B4 /* TLYDelegateProxy.m */,
+				8920F2AF1C0A92EA00A040B4 /* UIScrollView+Helpers.h */,
+				8920F2B01C0A92EA00A040B4 /* UIScrollView+Helpers.m */,
+				8920F2B11C0A92EA00A040B4 /* UIViewController+BetterLayoutGuides.h */,
+				8920F2B21C0A92EA00A040B4 /* UIViewController+BetterLayoutGuides.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		8920F2B31C0A92EA00A040B4 /* ShyControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8920F2B41C0A92EA00A040B4 /* TLYShyChild.h */,
+				8920F2B51C0A92EA00A040B4 /* TLYShyParent.h */,
+				8920F2B61C0A92EA00A040B4 /* TLYShyScrollViewController.h */,
+				8920F2B71C0A92EA00A040B4 /* TLYShyScrollViewController.m */,
+				8920F2B81C0A92EA00A040B4 /* TLYShyStatusBarController.h */,
+				8920F2B91C0A92EA00A040B4 /* TLYShyStatusBarController.m */,
+				8920F2BA1C0A92EA00A040B4 /* TLYShyViewController.h */,
+				8920F2BB1C0A92EA00A040B4 /* TLYShyViewController.m */,
+			);
+			path = ShyControllers;
 			sourceTree = "<group>";
 		};
 		892B6F5F1C0407D200119CE8 /* Layout */ = {
@@ -1141,6 +1212,7 @@
 		EE5839FB1AB9957800516AC1 /* FrameWorks */ = {
 			isa = PBXGroup;
 			children = (
+				8920F2A91C0A92EA00A040B4 /* TLYShyNavBar */,
 				89D4EBA71C099C5900F81377 /* CoreIV */,
 				89D4E9FF1C0959E500F81377 /* MJRefresh */,
 				898A61B91BA27AC20098A0AD /* CoreFMDB */,
@@ -1278,17 +1350,21 @@
 				89D8B2511BA29A3E0029837A /* NSString+Equal.m in Sources */,
 				89D4EA351C0959E500F81377 /* MJRefreshBackNormalFooter.m in Sources */,
 				898A61ED1BA27AC20098A0AD /* MJDictionaryCache.m in Sources */,
+				8920F2C61C0A92EA00A040B4 /* TLYShyViewController.m in Sources */,
 				89D4EA301C0959E500F81377 /* MJRefreshHeader.m in Sources */,
 				89D4EBFE1C099C5900F81377 /* DGActivityIndicatorBallScaleAnimation.m in Sources */,
+				8920F2C01C0A92EA00A040B4 /* NSObject+TLYSwizzlingHelpers.m in Sources */,
 				893C7CE71B21E5D7003A6D1D /* NSArray+CoreListExtend.m in Sources */,
 				89D4EC011C099C5900F81377 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m in Sources */,
 				89D4EC001C099C5900F81377 /* DGActivityIndicatorBallScaleRippleAnimation.m in Sources */,
 				89CB26231BA27A670034BABA /* NSString+Stackoverflow.m in Sources */,
+				8920F2C41C0A92EA00A040B4 /* TLYShyScrollViewController.m in Sources */,
 				898A62141BA27D760098A0AD /* TGLIstCVC.m in Sources */,
 				89D4EA371C0959E500F81377 /* MJRefreshGifHeader.m in Sources */,
 				EE5839BD1AB9953A00516AC1 /* ViewController.m in Sources */,
 				89CB26161BA27A670034BABA /* CoreModel.m in Sources */,
 				89CB26241BA27A670034BABA /* CoreModelConst.m in Sources */,
+				8920F2C51C0A92EA00A040B4 /* TLYShyStatusBarController.m in Sources */,
 				89D4EA2D1C0959E500F81377 /* MJRefreshBackFooter.m in Sources */,
 				89D4EC101C099C5900F81377 /* DGActivityIndicatorRotatingTrigonAnimation.m in Sources */,
 				898A61EC1BA27AC20098A0AD /* FMResultSet.m in Sources */,
@@ -1296,12 +1372,14 @@
 				89D4EC051C099C5900F81377 /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */,
 				89CB26201BA27A670034BABA /* NSObject+Select.m in Sources */,
 				897883DB1B21983C00033B01 /* CoreStatus.m in Sources */,
+				8920F2C31C0A92EA00A040B4 /* UIViewController+BetterLayoutGuides.m in Sources */,
 				89D4EBF51C099C5900F81377 /* DGActivityIndicatorBallBeatAnimation.m in Sources */,
 				898A61F71BA27AC20098A0AD /* NSString+MJExtension.m in Sources */,
 				893C7C781B21CF91003A6D1D /* CoreListTableViewController.m in Sources */,
 				89CB26191BA27A670034BABA /* CoreModel+Cache.m in Sources */,
 				898A61E81BA27AC20098A0AD /* FMDatabase.m in Sources */,
 				898A61EB1BA27AC20098A0AD /* FMDatabaseQueue.m in Sources */,
+				8920F2C71C0A92EA00A040B4 /* TLYShyNavBarManager.m in Sources */,
 				89D4EC071C099C5900F81377 /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */,
 				89D4EBFF1C099C5900F81377 /* DGActivityIndicatorBallScaleMultipleAnimation.m in Sources */,
 				89CB26181BA27A670034BABA /* NSDictionary+Sqlite.m in Sources */,
@@ -1324,8 +1402,10 @@
 				89D4EBF61C099C5900F81377 /* DGActivityIndicatorBallClipRotateAnimation.m in Sources */,
 				89D4EC031C099C5900F81377 /* DGActivityIndicatorBallTrianglePathAnimation.m in Sources */,
 				89CB261B1BA27A670034BABA /* NSObject+CoreModelCommon.m in Sources */,
+				8920F2C11C0A92EA00A040B4 /* TLYDelegateProxy.m in Sources */,
 				898A61F01BA27AC20098A0AD /* MJProperty.m in Sources */,
 				89D4EBF31C099C5900F81377 /* CoreIV.m in Sources */,
+				8920F2C21C0A92EA00A040B4 /* UIScrollView+Helpers.m in Sources */,
 				898A61E61BA27AC20098A0AD /* CoreFMDB.m in Sources */,
 				898A61F31BA27AC20098A0AD /* NSObject+MJClass.m in Sources */,
 				898A62111BA27D760098A0AD /* NewsListModel.m in Sources */,

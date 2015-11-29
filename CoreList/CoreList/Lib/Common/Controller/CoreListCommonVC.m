@@ -14,6 +14,7 @@
 #import "CoreModel+Cache.h"
 #import "CoreModelConst.h"
 #import "CoreModel+Compare.h"
+#import "TLYShyNavBarManager.h"
 
 static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
@@ -69,12 +70,14 @@ const NSInteger TipsViewTag = 2015;
     
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
 
-    [self.scrollView.mj_footer endRefreshingWithNoMoreData];
-    
     //控制器准备
     [self vcPrepare];
     
+    self.shyNavBarManager.scrollView = self.scrollView;self.shyNavBarManager.fadeBehavior = TLYShyNavBarFadeNavbar;
 }
+
+
+
 
 
 
@@ -113,7 +116,9 @@ const NSInteger TipsViewTag = 2015;
         
         
         if(![self.scrollView.mj_header isRefreshing]){
-            HeaderRefreshing
+            dispatch_async(dispatch_get_main_queue(), ^{
+                HeaderRefreshing
+            });
         }
         
     }else{
@@ -128,7 +133,9 @@ const NSInteger TipsViewTag = 2015;
         //如果没有数据，直接请求
         if(!self.hasData){
             
-            HeaderRefreshing
+            dispatch_async(dispatch_get_main_queue(), ^{
+                HeaderRefreshing
+            });
             
             //存入当前时间
             [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
