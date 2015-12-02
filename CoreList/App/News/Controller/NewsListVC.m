@@ -26,8 +26,8 @@
         
         NSLog(@"错误处理");
     };
-    
-    self.shyNavBarOff = YES;
+//    
+//    self.shyNavBarOff = YES;
 }
 
 
@@ -92,7 +92,7 @@
 
 /** 是否关闭返回顶部功能 */
 -(BOOL)removeBack2TopBtn{
-    return YES;
+    return NO;
 }
 
 @end

@@ -647,7 +647,13 @@ const NSInteger TipsViewTag = 2015;
 /** 刷新页面数据 */
 -(void)refreshData{
     
-    HeaderRefreshing
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.scrollView.mj_footer removeFromSuperview];
+        self.scrollView.mj_footer=nil;
+        [self.scrollView.mj_header beginRefreshing];
+        
+    });
 }
 
 
