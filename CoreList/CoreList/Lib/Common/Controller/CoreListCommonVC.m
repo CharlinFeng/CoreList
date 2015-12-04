@@ -180,6 +180,8 @@ const NSInteger TipsViewTag = 2015;
 /** 顶部刷新 */
 -(void)headerRefreshAction{
     
+    if(MJRefreshStateRefreshing == self.scrollView.mj_header.state) return;
+    
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
     
     //标明刷新类型
