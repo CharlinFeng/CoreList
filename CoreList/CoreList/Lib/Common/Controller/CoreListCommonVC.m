@@ -201,6 +201,8 @@ const NSInteger TipsViewTag = 2015;
 /** 底部刷新 */
 -(void)footerRefreshAction{
     
+    if(MJRefreshStateNoMoreData == self.scrollView.mj_footer.state) return;
+    
     //标明刷新类型
     self.refreshType = ListVCRefreshActionTypeFooter;
     
