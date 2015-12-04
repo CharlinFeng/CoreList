@@ -21,7 +21,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 const NSInteger TipsViewTag = 2015;
 
 
-#define HeaderRefreshing [self.scrollView.mj_header beginRefreshing];
+#define HeaderRefreshing [self refreshData];
 #define FooterRefresEndWithMsg(str) [self.scrollView.mj_footer endRefreshingWithNoMoreData];[(MJRefreshAutoStateFooter *)self.scrollView.mj_footer setTitle:str forState:MJRefreshStateNoMoreData];
 
 #define DismissNetView [CoreIV dismissFromView:self.view animated:YES];
@@ -69,7 +69,7 @@ const NSInteger TipsViewTag = 2015;
     [super viewDidLoad];
     
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
-
+    
     //控制器准备
     [self vcPrepare];
 }
@@ -225,7 +225,7 @@ const NSInteger TipsViewTag = 2015;
     
     //当前页码信息：p,每页数据量信息：pageSize
     NSMutableDictionary *paramsM = [NSMutableDictionary dictionary];
-  
+    
     [paramsM addEntriesFromDictionary:@{[Model_Class CoreModel_PageKey] : @(self.page),[Model_Class CoreModel_PageSizeKey] : @([Model_Class CoreModel_PageSize])}];
     
     if ([self listVC_Request_Params] != nil) [paramsM addEntriesFromDictionary:[self listVC_Request_Params]];
@@ -233,7 +233,7 @@ const NSInteger TipsViewTag = 2015;
     NSDictionary *userInfo = @{RefreshTypeKey : @(self.refreshType)};
     
     NSArray *ignoreParams = [self listVC_Ignore_Params];
-
+    
     [Model_Class selectWithParams:paramsM ignoreParams:ignoreParams userInfo:userInfo beginBlock:^(BOOL isNetWorkRequest,BOOL needHUD){
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -281,19 +281,20 @@ const NSInteger TipsViewTag = 2015;
                 [self refreshSuccess4Footer:models sourceType:sourceType];
             });
             
-            if(models.count ==0 && CoreModelDataSourceTypeSqlite == sourceType){
-               
+            // && CoreModelDataSourceTypeSqlite == sourceType
+            if(models.count ==0){
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     FooterRefresEndWithMsg(@"没有更多数据了")
                 });
-
+                
             }
             
             //标明本地数据库没有数据了
             self.localDataNil = models.count ==0;
         }
         
-
+        
         //标明刷新类型：这句一定要放在后面，因为在修改刷新状态为无之前，状态值还有用
         self.refreshType = ListVCRefreshActionTypeNone;
         
@@ -308,7 +309,7 @@ const NSInteger TipsViewTag = 2015;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
                 [self showErrorNetViewWithMsg:@"操作失败" failClickBlock:^{
- 
+                    
                     if(weakSelf.NetWorkErrorAction != nil) weakSelf.NetWorkErrorAction();
                     
                 }];
@@ -317,7 +318,7 @@ const NSInteger TipsViewTag = 2015;
             return;
         }
         
-    
+        
         if(self.hasData){
             
             
@@ -390,7 +391,7 @@ const NSInteger TipsViewTag = 2015;
         
     }else if (count >= self.modelPageSize){//正常安装
         
-//        [self footerRefreshAdd];
+        //        [self footerRefreshAdd];
     }
     
     self.hasFooter = YES;
@@ -404,7 +405,7 @@ const NSInteger TipsViewTag = 2015;
 -(void)refreshSuccess4Header:(NSArray *)models{
     
     [self.scrollView.mj_header endRefreshing];
-
+    
     //存入数据
     self.dataList = models;
     
@@ -451,7 +452,7 @@ const NSInteger TipsViewTag = 2015;
             
         });
     }
-
+    
     if(count < pageSize){//新的一页数据不足pagesize
         
         if(CoreModelDataSourceHostType_Sqlite_Nil == sourceType){
@@ -461,7 +462,7 @@ const NSInteger TipsViewTag = 2015;
         }
         
         FooterRefresEndWithMsg(@"没有更多数据了")
-
+        
     }else if (count >= pageSize){//有数据，满载
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -567,7 +568,7 @@ const NSInteger TipsViewTag = 2015;
         NSArray *v_hor = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[back2TopBtn(==40)]-20-|" options:0 metrics:nil views:views];
         NSArray *v_ver = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[back2TopBtn(==40)]-60-|" options:0 metrics:nil views:views];
         [self.view addConstraints:v_hor];[self.view addConstraints:v_ver];
-
+        
         
     }
     
@@ -647,6 +648,8 @@ const NSInteger TipsViewTag = 2015;
 /** 刷新页面数据 */
 -(void)refreshData{
     
+    if(self.scrollView.mj_header.isRefreshing) return;
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         
         [self.scrollView.mj_footer removeFromSuperview];
@@ -663,7 +666,7 @@ const NSInteger TipsViewTag = 2015;
         
         if(!res && self.DataListChangedAction!=nil) self.DataListChangedAction();
     }];
-
+    
     _dataList=dataList;
 }
 
