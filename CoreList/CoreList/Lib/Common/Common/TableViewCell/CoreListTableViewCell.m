@@ -23,7 +23,7 @@
  *
  *  @return 实例
  */
-+(instancetype)cellFromTableView:(UITableView *)tableView{
++(instancetype)dequeReuseCell:(UITableView *)tableView{
     
     NSString *rid=[self modelName];
     

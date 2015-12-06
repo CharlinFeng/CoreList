@@ -44,7 +44,7 @@
 /** cell */
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    CoreListTableViewCell *cell = [[self listVC_View_Cell_Class] cellFromTableView:tableView];
+    CoreListTableViewCell *cell = [[self listVC_View_Cell_Class] dequeReuseCell:tableView];
     
     //取出模型
     cell.model = self.dataList [indexPath.row];

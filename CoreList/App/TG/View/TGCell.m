@@ -36,6 +36,7 @@
 
 
 
+
 -(void)dataFill:(TGModel *)tgModel{
     
     _idLabel.text = [NSString stringWithFormat:@"%@",@(tgModel.hostID)];

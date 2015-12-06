@@ -51,18 +51,6 @@
 -(NSArray *)listVC_Ignore_Params;
 
 
-/** 是否移除回到顶部按钮 */
--(BOOL)listVC_Remove_Back2Top_Button;
-
-
-
-
-/** tableViewController */
-/** cell的行高：tableViewController专用 */
--(CGFloat)listVC_CellH4IndexPath:(NSIndexPath *)indexPath;
-
-
-
 
 
 
@@ -71,21 +59,12 @@
 /** 无本地FMDB缓存的情况下，需要在ViewDidAppear中定期自动触发顶部刷新事件 */
 -(NSString *)listVC_Update_Delay_Key;
 
-/** 是否关闭返回顶部功能 */
--(BOOL)removeBack2TopBtn;
 
 
 /** 数据方法区 */
 
 /** 刷新数据 */
 -(void)reloadData;
-
-
-
-/** tableView专有方法*/
-/** 动态刷新 */
--(void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
-
 
 
 /** collectionView专有方法 */

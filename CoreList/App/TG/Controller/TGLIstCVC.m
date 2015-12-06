@@ -54,11 +54,6 @@
     return nil;
 }
 
-/** 是否移除回到顶部按钮 */
--(BOOL)listVC_Remove_Back2Top_Button{
-    return NO;
-}
-
 
 /** 无本地FMDB缓存的情况下，需要在ViewDidAppear中定期自动触发顶部刷新事件 */
 -(NSString *)listVC_Update_Delay_Key{
@@ -66,10 +61,6 @@
 }
 
 
-/** 是否关闭返回顶部功能 */
--(BOOL)removeBack2TopBtn{
-    return NO;
-}
 
 
 ///** collectionView专有方法 */
