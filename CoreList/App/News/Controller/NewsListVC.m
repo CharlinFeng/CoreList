@@ -27,7 +27,10 @@
         
         NSLog(@"错误处理");
     };
-//    
+    
+    self.tableView.rowHeight = 60;
+//
+    
 //    self.shyNavBarOff = YES;
 }
 

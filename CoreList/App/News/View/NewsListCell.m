@@ -9,6 +9,7 @@
 #import "NewsListCell.h"
 #import "NewsListModel.h"
 
+
 @interface NewsListCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *idLabel;
@@ -29,6 +30,19 @@
 
 
 @implementation NewsListCell
+
+
++(instancetype)cellFromTableView:(UITableView *)tableView{
+    
+    static NSString *rid=@"NewsListCell";
+    
+    NewsListCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
+    
+    if(cell==nil) {cell=[[[NSBundle mainBundle] loadNibNamed:rid owner:nil options:nil] firstObject];}
+    
+    return cell;
+}
+
 
 -(void)dataFill:(NewsListModel *)newsListModel{
     

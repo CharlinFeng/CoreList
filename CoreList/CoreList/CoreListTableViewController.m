@@ -53,25 +53,11 @@
 }
 
 
-/** cellH */
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    CGFloat cellH = [self listVC_CellH4IndexPath:indexPath];
-    
-    return cellH;
-}
-
 
 
 
 /** 刷新数据 */
 -(void)reloadData{
-    [self.tableView reloadData];
-}
-
-/** 动态刷新 */
--(void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation{
-
     [self.tableView reloadData];
 }
 

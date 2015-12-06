@@ -31,7 +31,7 @@
 
 /** 是否需要本地缓存 */
 +(BOOL)CoreModel_NeedFMDB{
-    return YES;
+    return NO;
 }
 
 /** 缓存周期：单位秒 */

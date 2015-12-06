@@ -35,6 +35,10 @@
 		897883F31B21984800033B01 /* NSURL+File.m in Sources */ = {isa = PBXBuildFile; fileRef = 897883EB1B21984800033B01 /* NSURL+File.m */; };
 		897883F41B21984800033B01 /* UploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 897883ED1B21984800033B01 /* UploadFile.m */; };
 		897884821B219B3D00033B01 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 897884811B219B3D00033B01 /* libsqlite3.dylib */; };
+		8980BC5A1C13D5BC007879D5 /* CoreListCommonVC+LifeFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980BC591C13D5BC007879D5 /* CoreListCommonVC+LifeFunc.m */; };
+		8980BC5E1C13D953007879D5 /* CoreListCommonVC+Refresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980BC5D1C13D953007879D5 /* CoreListCommonVC+Refresh.m */; };
+		8980BC611C13DBFD007879D5 /* CoreListCommonVC+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980BC601C13DBFD007879D5 /* CoreListCommonVC+Data.m */; };
+		8980BC641C13DE9A007879D5 /* CoreListCommonVC+BackBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 8980BC631C13DE9A007879D5 /* CoreListCommonVC+BackBtn.m */; };
 		898A61E61BA27AC20098A0AD /* CoreFMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A61BB1BA27AC20098A0AD /* CoreFMDB.m */; };
 		898A61E71BA27AC20098A0AD /* NSString+CoreFMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A61BF1BA27AC20098A0AD /* NSString+CoreFMDB.m */; };
 		898A61E81BA27AC20098A0AD /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A61C21BA27AC20098A0AD /* FMDatabase.m */; };
@@ -122,6 +126,7 @@
 		89D4EC151C099C5900F81377 /* DGActivityIndicatorTwoDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4EBEF1C099C5900F81377 /* DGActivityIndicatorTwoDotsAnimation.m */; };
 		89D4EC161C099C5900F81377 /* DGActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4EBF21C099C5900F81377 /* DGActivityIndicatorView.m */; };
 		89D8B2511BA29A3E0029837A /* NSString+Equal.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D8B2501BA29A3E0029837A /* NSString+Equal.m */; };
+		89F4D9A81C13E014002F9B6B /* CoreListCommonVC+Main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F4D9A71C13E014002F9B6B /* CoreListCommonVC+Main.m */; };
 		89F9990B1C12F7DE00DA2DC8 /* MJDictionaryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F998F51C12F7DE00DA2DC8 /* MJDictionaryCache.m */; };
 		89F9990C1C12F7DE00DA2DC8 /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F998F81C12F7DE00DA2DC8 /* MJExtensionConst.m */; };
 		89F9990D1C12F7DE00DA2DC8 /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F998FA1C12F7DE00DA2DC8 /* MJFoundation.m */; };
@@ -213,6 +218,15 @@
 		897883EC1B21984800033B01 /* UploadFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadFile.h; sourceTree = "<group>"; };
 		897883ED1B21984800033B01 /* UploadFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadFile.m; sourceTree = "<group>"; };
 		897884811B219B3D00033B01 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		8980BC581C13D5BC007879D5 /* CoreListCommonVC+LifeFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+LifeFunc.h"; sourceTree = "<group>"; };
+		8980BC591C13D5BC007879D5 /* CoreListCommonVC+LifeFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+LifeFunc.m"; sourceTree = "<group>"; };
+		8980BC5B1C13D608007879D5 /* CoreListCommonVCProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCommonVCProtocol.h; sourceTree = "<group>"; };
+		8980BC5C1C13D953007879D5 /* CoreListCommonVC+Refresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+Refresh.h"; sourceTree = "<group>"; };
+		8980BC5D1C13D953007879D5 /* CoreListCommonVC+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+Refresh.m"; sourceTree = "<group>"; };
+		8980BC5F1C13DBFD007879D5 /* CoreListCommonVC+Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+Data.h"; sourceTree = "<group>"; };
+		8980BC601C13DBFD007879D5 /* CoreListCommonVC+Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+Data.m"; sourceTree = "<group>"; };
+		8980BC621C13DE9A007879D5 /* CoreListCommonVC+BackBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+BackBtn.h"; sourceTree = "<group>"; };
+		8980BC631C13DE9A007879D5 /* CoreListCommonVC+BackBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+BackBtn.m"; sourceTree = "<group>"; };
 		898A61BA1BA27AC20098A0AD /* CoreFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreFMDB.h; sourceTree = "<group>"; };
 		898A61BB1BA27AC20098A0AD /* CoreFMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreFMDB.m; sourceTree = "<group>"; };
 		898A61BE1BA27AC20098A0AD /* NSString+CoreFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CoreFMDB.h"; sourceTree = "<group>"; };
@@ -390,6 +404,9 @@
 		89D4EBF21C099C5900F81377 /* DGActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorView.m; sourceTree = "<group>"; };
 		89D8B24F1BA29A3E0029837A /* NSString+Equal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Equal.h"; sourceTree = "<group>"; };
 		89D8B2501BA29A3E0029837A /* NSString+Equal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Equal.m"; sourceTree = "<group>"; };
+		89F4D9A61C13E014002F9B6B /* CoreListCommonVC+Main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+Main.h"; sourceTree = "<group>"; };
+		89F4D9A71C13E014002F9B6B /* CoreListCommonVC+Main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+Main.m"; sourceTree = "<group>"; };
+		89F4D9A91C13E0B8002F9B6B /* CoreList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreList.h; sourceTree = "<group>"; };
 		89F998F41C12F7DE00DA2DC8 /* MJDictionaryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDictionaryCache.h; sourceTree = "<group>"; };
 		89F998F51C12F7DE00DA2DC8 /* MJDictionaryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJDictionaryCache.m; sourceTree = "<group>"; };
 		89F998F61C12F7DE00DA2DC8 /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
@@ -560,6 +577,17 @@
 			children = (
 				893C7C6D1B21CF73003A6D1D /* CoreListCommonVC.h */,
 				893C7C6E1B21CF73003A6D1D /* CoreListCommonVC.m */,
+				89F4D9A61C13E014002F9B6B /* CoreListCommonVC+Main.h */,
+				89F4D9A71C13E014002F9B6B /* CoreListCommonVC+Main.m */,
+				8980BC581C13D5BC007879D5 /* CoreListCommonVC+LifeFunc.h */,
+				8980BC591C13D5BC007879D5 /* CoreListCommonVC+LifeFunc.m */,
+				8980BC5C1C13D953007879D5 /* CoreListCommonVC+Refresh.h */,
+				8980BC5D1C13D953007879D5 /* CoreListCommonVC+Refresh.m */,
+				8980BC5F1C13DBFD007879D5 /* CoreListCommonVC+Data.h */,
+				8980BC601C13DBFD007879D5 /* CoreListCommonVC+Data.m */,
+				8980BC621C13DE9A007879D5 /* CoreListCommonVC+BackBtn.h */,
+				8980BC631C13DE9A007879D5 /* CoreListCommonVC+BackBtn.m */,
+				8980BC5B1C13D608007879D5 /* CoreListCommonVCProtocol.h */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1213,6 +1241,7 @@
 				893C7C771B21CF91003A6D1D /* CoreListTableViewController.m */,
 				893C7C791B21D064003A6D1D /* CoreListCollectionViewController.h */,
 				893C7C7A1B21D064003A6D1D /* CoreListCollectionViewController.m */,
+				89F4D9A91C13E0B8002F9B6B /* CoreList.h */,
 			);
 			path = CoreList;
 			sourceTree = "<group>";
@@ -1358,6 +1387,7 @@
 				89D4EA391C0959E500F81377 /* MJRefreshStateHeader.m in Sources */,
 				89D8B2511BA29A3E0029837A /* NSString+Equal.m in Sources */,
 				89D4EA351C0959E500F81377 /* MJRefreshBackNormalFooter.m in Sources */,
+				89F4D9A81C13E014002F9B6B /* CoreListCommonVC+Main.m in Sources */,
 				8920F2C61C0A92EA00A040B4 /* TLYShyViewController.m in Sources */,
 				89D4EA301C0959E500F81377 /* MJRefreshHeader.m in Sources */,
 				89D4EBFE1C099C5900F81377 /* DGActivityIndicatorBallScaleAnimation.m in Sources */,
@@ -1395,10 +1425,13 @@
 				89D4EC0A1C099C5900F81377 /* DGActivityIndicatorLineScalePartyAnimation.m in Sources */,
 				89D4EBFB1C099C5900F81377 /* DGActivityIndicatorBallPulseAnimation.m in Sources */,
 				89D4EC0F1C099C5900F81377 /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */,
+				8980BC611C13DBFD007879D5 /* CoreListCommonVC+Data.m in Sources */,
 				89F9990B1C12F7DE00DA2DC8 /* MJDictionaryCache.m in Sources */,
+				8980BC5E1C13D953007879D5 /* CoreListCommonVC+Refresh.m in Sources */,
 				898A61E71BA27AC20098A0AD /* NSString+CoreFMDB.m in Sources */,
 				89D4EBF71C099C5900F81377 /* DGActivityIndicatorBallClipRotateMultipleAnimation.m in Sources */,
 				89D4EC061C099C5900F81377 /* DGActivityIndicatorCookieTerminatorAnimation.m in Sources */,
+				8980BC641C13DE9A007879D5 /* CoreListCommonVC+BackBtn.m in Sources */,
 				897883F11B21984800033B01 /* NSData+Param.m in Sources */,
 				891DC8171BA6B39E004EA688 /* CoreListCollectionViewCell.m in Sources */,
 				89D4EC141C099C5900F81377 /* DGActivityIndicatorTripleRingsAnimation.m in Sources */,
@@ -1429,6 +1462,7 @@
 				89CB26171BA27A670034BABA /* NSArray+CoreModel.m in Sources */,
 				89D4EBF91C099C5900F81377 /* DGActivityIndicatorBallGridBeatAnimation.m in Sources */,
 				89F999101C12F7DE00DA2DC8 /* MJPropertyType.m in Sources */,
+				8980BC5A1C13D5BC007879D5 /* CoreListCommonVC+LifeFunc.m in Sources */,
 				89D4EC091C099C5900F81377 /* DGActivityIndicatorLineScaleAnimation.m in Sources */,
 				EE5839B71AB9953A00516AC1 /* main.m in Sources */,
 				89D4EC0C1C099C5900F81377 /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m in Sources */,

@@ -9,6 +9,7 @@
 #import "CoreListTableViewCell.h"
 #import "NSObject+CoreModelCommon.h"
 
+
 @implementation CoreListTableViewCell
 
 
