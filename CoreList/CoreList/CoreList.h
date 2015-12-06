@@ -9,9 +9,10 @@
 #ifndef CoreList_h
 #define CoreList_h
 
-#import "CoreListCommonVC.h"
-#import "CoreListCommonVC+Main.h"
+#import "CoreListTableViewController.h"
+#import "CoreListTableViewCell.h"
 
-
+#import "CoreListCollectionViewController.h"
+#import "CoreListCollectionViewCell.h"
 
 #endif
