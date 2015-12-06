@@ -36,4 +36,7 @@
 }
 
 
+/** 默认值填充 */
+-(ListVCRefreshAddType)listVC_RefreshType{return ListVCRefreshAddTypeBoth;}
+
 @end

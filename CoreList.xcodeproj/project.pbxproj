@@ -9,22 +9,22 @@
 /* Begin PBXBuildFile section */
 		8901BAF61C111DBF004F7E81 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8901BAF51C111DBF004F7E81 /* AssetsLibrary.framework */; };
 		8901BAF81C111EDA004F7E81 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8901BAF71C111EDA004F7E81 /* Photos.framework */; };
-		891D55EB1C141C6E00E86A52 /* CoreListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55BC1C141C6E00E86A52 /* CoreListCollectionViewController.m */; };
-		891D55EC1C141C6E00E86A52 /* CoreListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55BE1C141C6E00E86A52 /* CoreListTableViewController.m */; };
-		891D55ED1C141C6E00E86A52 /* NSArray+CoreListExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55C31C141C6E00E86A52 /* NSArray+CoreListExtend.m */; };
-		891D55EE1C141C6E00E86A52 /* NSString+Equal.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55C51C141C6E00E86A52 /* NSString+Equal.m */; };
-		891D55EF1C141C6E00E86A52 /* UIView+CoreListLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55C71C141C6E00E86A52 /* UIView+CoreListLayout.m */; };
-		891D55F01C141C6E00E86A52 /* CoreListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55CB1C141C6E00E86A52 /* CoreListCollectionViewCell.m */; };
-		891D55F11C141C6E00E86A52 /* CoreListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55CF1C141C6E00E86A52 /* CoreListModel.m */; };
-		891D55F21C141C6E00E86A52 /* CoreListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55D31C141C6E00E86A52 /* CoreListTableViewCell.m */; };
-		891D55F31C141C6E00E86A52 /* CoreListCommonVC+BackBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55D61C141C6E00E86A52 /* CoreListCommonVC+BackBtn.m */; };
-		891D55F41C141C6E00E86A52 /* CoreListCommonVC+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55D81C141C6E00E86A52 /* CoreListCommonVC+Data.m */; };
-		891D55F51C141C6E00E86A52 /* CoreListCommonVC+LifeFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55DA1C141C6E00E86A52 /* CoreListCommonVC+LifeFunc.m */; };
-		891D55F61C141C6E00E86A52 /* CoreListCommonVC+Main.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55DC1C141C6E00E86A52 /* CoreListCommonVC+Main.m */; };
-		891D55F71C141C6E00E86A52 /* CoreListCommonVC+Refresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55DE1C141C6E00E86A52 /* CoreListCommonVC+Refresh.m */; };
-		891D55F81C141C6E00E86A52 /* CoreListCommonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55E01C141C6E00E86A52 /* CoreListCommonVC.m */; };
-		891D55F91C141C6E00E86A52 /* CLWaterflowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D55E41C141C6E00E86A52 /* CLWaterflowLayout.m */; };
-		891D55FA1C141C6E00E86A52 /* CoreList.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 891D55E81C141C6E00E86A52 /* CoreList.bundle */; };
+		891D57251C142C5D00E86A52 /* CoreListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D56F61C142C5D00E86A52 /* CoreListCollectionViewController.m */; };
+		891D57261C142C5D00E86A52 /* CoreListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D56F81C142C5D00E86A52 /* CoreListTableViewController.m */; };
+		891D57271C142C5D00E86A52 /* NSArray+CoreListExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D56FC1C142C5D00E86A52 /* NSArray+CoreListExtend.m */; };
+		891D57281C142C5D00E86A52 /* NSString+Equal.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D56FE1C142C5D00E86A52 /* NSString+Equal.m */; };
+		891D57291C142C5D00E86A52 /* UIView+CoreListLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D57001C142C5D00E86A52 /* UIView+CoreListLayout.m */; };
+		891D572A1C142C5D00E86A52 /* CoreListCommonVC+BackBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D57051C142C5D00E86A52 /* CoreListCommonVC+BackBtn.m */; };
+		891D572B1C142C5D00E86A52 /* CoreListCommonVC+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D57071C142C5D00E86A52 /* CoreListCommonVC+Data.m */; };
+		891D572C1C142C5D00E86A52 /* CoreListCommonVC+LifeFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D57091C142C5D00E86A52 /* CoreListCommonVC+LifeFunc.m */; };
+		891D572D1C142C5D00E86A52 /* CoreListCommonVC+Main.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D570B1C142C5D00E86A52 /* CoreListCommonVC+Main.m */; };
+		891D572E1C142C5D00E86A52 /* CoreListCommonVC+Refresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D570D1C142C5D00E86A52 /* CoreListCommonVC+Refresh.m */; };
+		891D572F1C142C5D00E86A52 /* CoreListCommonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D570F1C142C5D00E86A52 /* CoreListCommonVC.m */; };
+		891D57301C142C5D00E86A52 /* CLWaterflowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D57131C142C5D00E86A52 /* CLWaterflowLayout.m */; };
+		891D57311C142C5D00E86A52 /* CoreListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D57161C142C5D00E86A52 /* CoreListModel.m */; };
+		891D57321C142C5D00E86A52 /* CoreList.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 891D571A1C142C5D00E86A52 /* CoreList.bundle */; };
+		891D57331C142C5D00E86A52 /* CoreListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D57201C142C5D00E86A52 /* CoreListCollectionViewCell.m */; };
+		891D57341C142C5D00E86A52 /* CoreListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891D57241C142C5D00E86A52 /* CoreListTableViewCell.m */; };
 		8920F2C01C0A92EA00A040B4 /* NSObject+TLYSwizzlingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8920F2AC1C0A92EA00A040B4 /* NSObject+TLYSwizzlingHelpers.m */; };
 		8920F2C11C0A92EA00A040B4 /* TLYDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8920F2AE1C0A92EA00A040B4 /* TLYDelegateProxy.m */; };
 		8920F2C21C0A92EA00A040B4 /* UIScrollView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8920F2B01C0A92EA00A040B4 /* UIScrollView+Helpers.m */; };
@@ -161,43 +161,43 @@
 /* Begin PBXFileReference section */
 		8901BAF51C111DBF004F7E81 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		8901BAF71C111EDA004F7E81 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
-		891D55BA1C141C6E00E86A52 /* CoreList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreList.h; sourceTree = "<group>"; };
-		891D55BB1C141C6E00E86A52 /* CoreListCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCollectionViewController.h; sourceTree = "<group>"; };
-		891D55BC1C141C6E00E86A52 /* CoreListCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListCollectionViewController.m; sourceTree = "<group>"; };
-		891D55BD1C141C6E00E86A52 /* CoreListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListTableViewController.h; sourceTree = "<group>"; };
-		891D55BE1C141C6E00E86A52 /* CoreListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListTableViewController.m; sourceTree = "<group>"; };
-		891D55C21C141C6E00E86A52 /* NSArray+CoreListExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CoreListExtend.h"; sourceTree = "<group>"; };
-		891D55C31C141C6E00E86A52 /* NSArray+CoreListExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CoreListExtend.m"; sourceTree = "<group>"; };
-		891D55C41C141C6E00E86A52 /* NSString+Equal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Equal.h"; sourceTree = "<group>"; };
-		891D55C51C141C6E00E86A52 /* NSString+Equal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Equal.m"; sourceTree = "<group>"; };
-		891D55C61C141C6E00E86A52 /* UIView+CoreListLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CoreListLayout.h"; sourceTree = "<group>"; };
-		891D55C71C141C6E00E86A52 /* UIView+CoreListLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CoreListLayout.m"; sourceTree = "<group>"; };
-		891D55CA1C141C6E00E86A52 /* CoreListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCollectionViewCell.h; sourceTree = "<group>"; };
-		891D55CB1C141C6E00E86A52 /* CoreListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListCollectionViewCell.m; sourceTree = "<group>"; };
-		891D55CC1C141C6E00E86A52 /* CoreListConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListConst.h; sourceTree = "<group>"; };
-		891D55CE1C141C6E00E86A52 /* CoreListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListModel.h; sourceTree = "<group>"; };
-		891D55CF1C141C6E00E86A52 /* CoreListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListModel.m; sourceTree = "<group>"; };
-		891D55D11C141C6E00E86A52 /* CoreListCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCellProtocol.h; sourceTree = "<group>"; };
-		891D55D21C141C6E00E86A52 /* CoreListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListTableViewCell.h; sourceTree = "<group>"; };
-		891D55D31C141C6E00E86A52 /* CoreListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListTableViewCell.m; sourceTree = "<group>"; };
-		891D55D51C141C6E00E86A52 /* CoreListCommonVC+BackBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+BackBtn.h"; sourceTree = "<group>"; };
-		891D55D61C141C6E00E86A52 /* CoreListCommonVC+BackBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+BackBtn.m"; sourceTree = "<group>"; };
-		891D55D71C141C6E00E86A52 /* CoreListCommonVC+Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+Data.h"; sourceTree = "<group>"; };
-		891D55D81C141C6E00E86A52 /* CoreListCommonVC+Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+Data.m"; sourceTree = "<group>"; };
-		891D55D91C141C6E00E86A52 /* CoreListCommonVC+LifeFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+LifeFunc.h"; sourceTree = "<group>"; };
-		891D55DA1C141C6E00E86A52 /* CoreListCommonVC+LifeFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+LifeFunc.m"; sourceTree = "<group>"; };
-		891D55DB1C141C6E00E86A52 /* CoreListCommonVC+Main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+Main.h"; sourceTree = "<group>"; };
-		891D55DC1C141C6E00E86A52 /* CoreListCommonVC+Main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+Main.m"; sourceTree = "<group>"; };
-		891D55DD1C141C6E00E86A52 /* CoreListCommonVC+Refresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+Refresh.h"; sourceTree = "<group>"; };
-		891D55DE1C141C6E00E86A52 /* CoreListCommonVC+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+Refresh.m"; sourceTree = "<group>"; };
-		891D55DF1C141C6E00E86A52 /* CoreListCommonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCommonVC.h; sourceTree = "<group>"; };
-		891D55E01C141C6E00E86A52 /* CoreListCommonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListCommonVC.m; sourceTree = "<group>"; };
-		891D55E11C141C6E00E86A52 /* CoreListCommonVCProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCommonVCProtocol.h; sourceTree = "<group>"; };
-		891D55E31C141C6E00E86A52 /* CLWaterflowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLWaterflowLayout.h; sourceTree = "<group>"; };
-		891D55E41C141C6E00E86A52 /* CLWaterflowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLWaterflowLayout.m; sourceTree = "<group>"; };
-		891D55E61C141C6E00E86A52 /* ViewControllerListProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerListProtocol.h; sourceTree = "<group>"; };
-		891D55E81C141C6E00E86A52 /* CoreList.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CoreList.bundle; sourceTree = "<group>"; };
-		891D55EA1C141C6E00E86A52 /* CoreListType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListType.h; sourceTree = "<group>"; };
+		891D56F41C142C5D00E86A52 /* CoreList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreList.h; sourceTree = "<group>"; };
+		891D56F51C142C5D00E86A52 /* CoreListCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCollectionViewController.h; sourceTree = "<group>"; };
+		891D56F61C142C5D00E86A52 /* CoreListCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListCollectionViewController.m; sourceTree = "<group>"; };
+		891D56F71C142C5D00E86A52 /* CoreListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListTableViewController.h; sourceTree = "<group>"; };
+		891D56F81C142C5D00E86A52 /* CoreListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListTableViewController.m; sourceTree = "<group>"; };
+		891D56FB1C142C5D00E86A52 /* NSArray+CoreListExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CoreListExtend.h"; sourceTree = "<group>"; };
+		891D56FC1C142C5D00E86A52 /* NSArray+CoreListExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CoreListExtend.m"; sourceTree = "<group>"; };
+		891D56FD1C142C5D00E86A52 /* NSString+Equal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Equal.h"; sourceTree = "<group>"; };
+		891D56FE1C142C5D00E86A52 /* NSString+Equal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Equal.m"; sourceTree = "<group>"; };
+		891D56FF1C142C5D00E86A52 /* UIView+CoreListLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CoreListLayout.h"; sourceTree = "<group>"; };
+		891D57001C142C5D00E86A52 /* UIView+CoreListLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CoreListLayout.m"; sourceTree = "<group>"; };
+		891D57021C142C5D00E86A52 /* CoreListConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListConst.h; sourceTree = "<group>"; };
+		891D57041C142C5D00E86A52 /* CoreListCommonVC+BackBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+BackBtn.h"; sourceTree = "<group>"; };
+		891D57051C142C5D00E86A52 /* CoreListCommonVC+BackBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+BackBtn.m"; sourceTree = "<group>"; };
+		891D57061C142C5D00E86A52 /* CoreListCommonVC+Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+Data.h"; sourceTree = "<group>"; };
+		891D57071C142C5D00E86A52 /* CoreListCommonVC+Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+Data.m"; sourceTree = "<group>"; };
+		891D57081C142C5D00E86A52 /* CoreListCommonVC+LifeFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+LifeFunc.h"; sourceTree = "<group>"; };
+		891D57091C142C5D00E86A52 /* CoreListCommonVC+LifeFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+LifeFunc.m"; sourceTree = "<group>"; };
+		891D570A1C142C5D00E86A52 /* CoreListCommonVC+Main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+Main.h"; sourceTree = "<group>"; };
+		891D570B1C142C5D00E86A52 /* CoreListCommonVC+Main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+Main.m"; sourceTree = "<group>"; };
+		891D570C1C142C5D00E86A52 /* CoreListCommonVC+Refresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreListCommonVC+Refresh.h"; sourceTree = "<group>"; };
+		891D570D1C142C5D00E86A52 /* CoreListCommonVC+Refresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreListCommonVC+Refresh.m"; sourceTree = "<group>"; };
+		891D570E1C142C5D00E86A52 /* CoreListCommonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCommonVC.h; sourceTree = "<group>"; };
+		891D570F1C142C5D00E86A52 /* CoreListCommonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListCommonVC.m; sourceTree = "<group>"; };
+		891D57101C142C5D00E86A52 /* CoreListCommonVCProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCommonVCProtocol.h; sourceTree = "<group>"; };
+		891D57121C142C5D00E86A52 /* CLWaterflowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLWaterflowLayout.h; sourceTree = "<group>"; };
+		891D57131C142C5D00E86A52 /* CLWaterflowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLWaterflowLayout.m; sourceTree = "<group>"; };
+		891D57151C142C5D00E86A52 /* CoreListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListModel.h; sourceTree = "<group>"; };
+		891D57161C142C5D00E86A52 /* CoreListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListModel.m; sourceTree = "<group>"; };
+		891D57181C142C5D00E86A52 /* ViewControllerListProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerListProtocol.h; sourceTree = "<group>"; };
+		891D571A1C142C5D00E86A52 /* CoreList.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CoreList.bundle; sourceTree = "<group>"; };
+		891D571C1C142C5D00E86A52 /* CoreListType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListType.h; sourceTree = "<group>"; };
+		891D571F1C142C5D00E86A52 /* CoreListCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCollectionViewCell.h; sourceTree = "<group>"; };
+		891D57201C142C5D00E86A52 /* CoreListCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListCollectionViewCell.m; sourceTree = "<group>"; };
+		891D57221C142C5D00E86A52 /* CoreListCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListCellProtocol.h; sourceTree = "<group>"; };
+		891D57231C142C5D00E86A52 /* CoreListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListTableViewCell.h; sourceTree = "<group>"; };
+		891D57241C142C5D00E86A52 /* CoreListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListTableViewCell.m; sourceTree = "<group>"; };
 		8920F2AB1C0A92EA00A040B4 /* NSObject+TLYSwizzlingHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TLYSwizzlingHelpers.h"; sourceTree = "<group>"; };
 		8920F2AC1C0A92EA00A040B4 /* NSObject+TLYSwizzlingHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TLYSwizzlingHelpers.m"; sourceTree = "<group>"; };
 		8920F2AD1C0A92EA00A040B4 /* TLYDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLYDelegateProxy.h; sourceTree = "<group>"; };
@@ -469,144 +469,144 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		891D55B91C141C6E00E86A52 /* CoreList */ = {
+		891D56F31C142C5D00E86A52 /* CoreList */ = {
 			isa = PBXGroup;
 			children = (
-				891D55BA1C141C6E00E86A52 /* CoreList.h */,
-				891D55BB1C141C6E00E86A52 /* CoreListCollectionViewController.h */,
-				891D55BC1C141C6E00E86A52 /* CoreListCollectionViewController.m */,
-				891D55BD1C141C6E00E86A52 /* CoreListTableViewController.h */,
-				891D55BE1C141C6E00E86A52 /* CoreListTableViewController.m */,
-				891D55BF1C141C6E00E86A52 /* Lib */,
+				891D56F41C142C5D00E86A52 /* CoreList.h */,
+				891D56F51C142C5D00E86A52 /* CoreListCollectionViewController.h */,
+				891D56F61C142C5D00E86A52 /* CoreListCollectionViewController.m */,
+				891D56F71C142C5D00E86A52 /* CoreListTableViewController.h */,
+				891D56F81C142C5D00E86A52 /* CoreListTableViewController.m */,
+				891D56F91C142C5D00E86A52 /* Lib */,
 			);
 			path = CoreList;
 			sourceTree = "<group>";
 		};
-		891D55BF1C141C6E00E86A52 /* Lib */ = {
+		891D56F91C142C5D00E86A52 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				891D55C01C141C6E00E86A52 /* Common */,
+				891D56FA1C142C5D00E86A52 /* Category */,
+				891D57011C142C5D00E86A52 /* Common */,
+				891D57031C142C5D00E86A52 /* Controller */,
+				891D57111C142C5D00E86A52 /* Layout */,
+				891D57141C142C5D00E86A52 /* Model */,
+				891D57171C142C5D00E86A52 /* Protocol */,
+				891D57191C142C5D00E86A52 /* Resouce */,
+				891D571B1C142C5D00E86A52 /* Type */,
+				891D571D1C142C5D00E86A52 /* View */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
 		};
-		891D55C01C141C6E00E86A52 /* Common */ = {
+		891D56FA1C142C5D00E86A52 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				891D55C11C141C6E00E86A52 /* Category */,
-				891D55C81C141C6E00E86A52 /* Common */,
-				891D55D41C141C6E00E86A52 /* Controller */,
-				891D55E21C141C6E00E86A52 /* Layout */,
-				891D55E51C141C6E00E86A52 /* Protocol */,
-				891D55E71C141C6E00E86A52 /* Resouce */,
-				891D55E91C141C6E00E86A52 /* Type */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		891D55C11C141C6E00E86A52 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				891D55C21C141C6E00E86A52 /* NSArray+CoreListExtend.h */,
-				891D55C31C141C6E00E86A52 /* NSArray+CoreListExtend.m */,
-				891D55C41C141C6E00E86A52 /* NSString+Equal.h */,
-				891D55C51C141C6E00E86A52 /* NSString+Equal.m */,
-				891D55C61C141C6E00E86A52 /* UIView+CoreListLayout.h */,
-				891D55C71C141C6E00E86A52 /* UIView+CoreListLayout.m */,
+				891D56FB1C142C5D00E86A52 /* NSArray+CoreListExtend.h */,
+				891D56FC1C142C5D00E86A52 /* NSArray+CoreListExtend.m */,
+				891D56FD1C142C5D00E86A52 /* NSString+Equal.h */,
+				891D56FE1C142C5D00E86A52 /* NSString+Equal.m */,
+				891D56FF1C142C5D00E86A52 /* UIView+CoreListLayout.h */,
+				891D57001C142C5D00E86A52 /* UIView+CoreListLayout.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
 		};
-		891D55C81C141C6E00E86A52 /* Common */ = {
+		891D57011C142C5D00E86A52 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				891D55C91C141C6E00E86A52 /* CollectionViewCell */,
-				891D55CC1C141C6E00E86A52 /* CoreListConst.h */,
-				891D55CD1C141C6E00E86A52 /* Model */,
-				891D55D01C141C6E00E86A52 /* TableViewCell */,
+				891D57021C142C5D00E86A52 /* CoreListConst.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
-		891D55C91C141C6E00E86A52 /* CollectionViewCell */ = {
+		891D57031C142C5D00E86A52 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				891D55CA1C141C6E00E86A52 /* CoreListCollectionViewCell.h */,
-				891D55CB1C141C6E00E86A52 /* CoreListCollectionViewCell.m */,
-			);
-			path = CollectionViewCell;
-			sourceTree = "<group>";
-		};
-		891D55CD1C141C6E00E86A52 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				891D55CE1C141C6E00E86A52 /* CoreListModel.h */,
-				891D55CF1C141C6E00E86A52 /* CoreListModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		891D55D01C141C6E00E86A52 /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				891D55D11C141C6E00E86A52 /* CoreListCellProtocol.h */,
-				891D55D21C141C6E00E86A52 /* CoreListTableViewCell.h */,
-				891D55D31C141C6E00E86A52 /* CoreListTableViewCell.m */,
-			);
-			path = TableViewCell;
-			sourceTree = "<group>";
-		};
-		891D55D41C141C6E00E86A52 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				891D55D51C141C6E00E86A52 /* CoreListCommonVC+BackBtn.h */,
-				891D55D61C141C6E00E86A52 /* CoreListCommonVC+BackBtn.m */,
-				891D55D71C141C6E00E86A52 /* CoreListCommonVC+Data.h */,
-				891D55D81C141C6E00E86A52 /* CoreListCommonVC+Data.m */,
-				891D55D91C141C6E00E86A52 /* CoreListCommonVC+LifeFunc.h */,
-				891D55DA1C141C6E00E86A52 /* CoreListCommonVC+LifeFunc.m */,
-				891D55DB1C141C6E00E86A52 /* CoreListCommonVC+Main.h */,
-				891D55DC1C141C6E00E86A52 /* CoreListCommonVC+Main.m */,
-				891D55DD1C141C6E00E86A52 /* CoreListCommonVC+Refresh.h */,
-				891D55DE1C141C6E00E86A52 /* CoreListCommonVC+Refresh.m */,
-				891D55DF1C141C6E00E86A52 /* CoreListCommonVC.h */,
-				891D55E01C141C6E00E86A52 /* CoreListCommonVC.m */,
-				891D55E11C141C6E00E86A52 /* CoreListCommonVCProtocol.h */,
+				891D57041C142C5D00E86A52 /* CoreListCommonVC+BackBtn.h */,
+				891D57051C142C5D00E86A52 /* CoreListCommonVC+BackBtn.m */,
+				891D57061C142C5D00E86A52 /* CoreListCommonVC+Data.h */,
+				891D57071C142C5D00E86A52 /* CoreListCommonVC+Data.m */,
+				891D57081C142C5D00E86A52 /* CoreListCommonVC+LifeFunc.h */,
+				891D57091C142C5D00E86A52 /* CoreListCommonVC+LifeFunc.m */,
+				891D570A1C142C5D00E86A52 /* CoreListCommonVC+Main.h */,
+				891D570B1C142C5D00E86A52 /* CoreListCommonVC+Main.m */,
+				891D570C1C142C5D00E86A52 /* CoreListCommonVC+Refresh.h */,
+				891D570D1C142C5D00E86A52 /* CoreListCommonVC+Refresh.m */,
+				891D570E1C142C5D00E86A52 /* CoreListCommonVC.h */,
+				891D570F1C142C5D00E86A52 /* CoreListCommonVC.m */,
+				891D57101C142C5D00E86A52 /* CoreListCommonVCProtocol.h */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		891D55E21C141C6E00E86A52 /* Layout */ = {
+		891D57111C142C5D00E86A52 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				891D55E31C141C6E00E86A52 /* CLWaterflowLayout.h */,
-				891D55E41C141C6E00E86A52 /* CLWaterflowLayout.m */,
+				891D57121C142C5D00E86A52 /* CLWaterflowLayout.h */,
+				891D57131C142C5D00E86A52 /* CLWaterflowLayout.m */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
 		};
-		891D55E51C141C6E00E86A52 /* Protocol */ = {
+		891D57141C142C5D00E86A52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				891D55E61C141C6E00E86A52 /* ViewControllerListProtocol.h */,
+				891D57151C142C5D00E86A52 /* CoreListModel.h */,
+				891D57161C142C5D00E86A52 /* CoreListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		891D57171C142C5D00E86A52 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				891D57181C142C5D00E86A52 /* ViewControllerListProtocol.h */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		891D55E71C141C6E00E86A52 /* Resouce */ = {
+		891D57191C142C5D00E86A52 /* Resouce */ = {
 			isa = PBXGroup;
 			children = (
-				891D55E81C141C6E00E86A52 /* CoreList.bundle */,
+				891D571A1C142C5D00E86A52 /* CoreList.bundle */,
 			);
 			path = Resouce;
 			sourceTree = "<group>";
 		};
-		891D55E91C141C6E00E86A52 /* Type */ = {
+		891D571B1C142C5D00E86A52 /* Type */ = {
 			isa = PBXGroup;
 			children = (
-				891D55EA1C141C6E00E86A52 /* CoreListType.h */,
+				891D571C1C142C5D00E86A52 /* CoreListType.h */,
 			);
 			path = Type;
+			sourceTree = "<group>";
+		};
+		891D571D1C142C5D00E86A52 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				891D571E1C142C5D00E86A52 /* CollectionViewCell */,
+				891D57211C142C5D00E86A52 /* TableViewCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		891D571E1C142C5D00E86A52 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				891D571F1C142C5D00E86A52 /* CoreListCollectionViewCell.h */,
+				891D57201C142C5D00E86A52 /* CoreListCollectionViewCell.m */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		891D57211C142C5D00E86A52 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				891D57221C142C5D00E86A52 /* CoreListCellProtocol.h */,
+				891D57231C142C5D00E86A52 /* CoreListTableViewCell.h */,
+				891D57241C142C5D00E86A52 /* CoreListTableViewCell.m */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		8920F2A91C0A92EA00A040B4 /* TLYShyNavBar */ = {
@@ -1216,7 +1216,7 @@
 			isa = PBXGroup;
 			children = (
 				898A61F81BA27D760098A0AD /* App */,
-				891D55B91C141C6E00E86A52 /* CoreList */,
+				891D56F31C142C5D00E86A52 /* CoreList */,
 				EE5839FB1AB9957800516AC1 /* FrameWorks */,
 				EE5839B81AB9953A00516AC1 /* AppDelegate.h */,
 				8901BAF71C111EDA004F7E81 /* Photos.framework */,
@@ -1358,7 +1358,7 @@
 				898A62171BA27D760098A0AD /* TGCell.xib in Resources */,
 				898A62131BA27D760098A0AD /* NewsListCell.xib in Resources */,
 				89D4EBF41C099C5900F81377 /* CoreIV.xib in Resources */,
-				891D55FA1C141C6E00E86A52 /* CoreList.bundle in Resources */,
+				891D57321C142C5D00E86A52 /* CoreList.bundle in Resources */,
 				EE5839C51AB9953A00516AC1 /* LaunchScreen.xib in Resources */,
 				EE5839C21AB9953A00516AC1 /* Images.xcassets in Resources */,
 				89D4EA3A1C0959E500F81377 /* MJRefresh.bundle in Resources */,
@@ -1381,34 +1381,34 @@
 			files = (
 				89F9990C1C12F7DE00DA2DC8 /* MJExtensionConst.m in Sources */,
 				89D4EA2E1C0959E500F81377 /* MJRefreshComponent.m in Sources */,
-				891D55F31C141C6E00E86A52 /* CoreListCommonVC+BackBtn.m in Sources */,
 				89D4EA311C0959E500F81377 /* MJRefreshAutoGifFooter.m in Sources */,
 				89D4EA361C0959E500F81377 /* MJRefreshBackStateFooter.m in Sources */,
-				891D55EB1C141C6E00E86A52 /* CoreListCollectionViewController.m in Sources */,
+				891D57251C142C5D00E86A52 /* CoreListCollectionViewController.m in Sources */,
 				897883F41B21984800033B01 /* UploadFile.m in Sources */,
+				891D57301C142C5D00E86A52 /* CLWaterflowLayout.m in Sources */,
 				898A61EA1BA27AC20098A0AD /* FMDatabasePool.m in Sources */,
 				89D4EC081C099C5900F81377 /* DGActivityIndicatorFiveDotsAnimation.m in Sources */,
 				898A61E91BA27AC20098A0AD /* FMDatabaseAdditions.m in Sources */,
+				891D57341C142C5D00E86A52 /* CoreListTableViewCell.m in Sources */,
 				89D4EC0E1C099C5900F81377 /* DGActivityIndicatorRotatingSandglassAnimation.m in Sources */,
 				89F999141C12F7DE00DA2DC8 /* NSObject+MJProperty.m in Sources */,
 				89CB261C1BA27A670034BABA /* NSObject+Create.m in Sources */,
 				89D4EBFD1C099C5900F81377 /* DGActivityIndicatorBallRotateAnimation.m in Sources */,
 				89D4EA3D1C0959E500F81377 /* UIScrollView+MJRefresh.m in Sources */,
 				89AA9FD81BABE2D700BB4093 /* CoreModel+Compare.m in Sources */,
-				891D55F81C141C6E00E86A52 /* CoreListCommonVC.m in Sources */,
 				898A62151BA27D760098A0AD /* TGModel.m in Sources */,
 				89D4EA3E1C0959E500F81377 /* UIView+MJExtension.m in Sources */,
 				89CB261D1BA27A670034BABA /* NSObject+Delete.m in Sources */,
 				89D4EA391C0959E500F81377 /* MJRefreshStateHeader.m in Sources */,
 				89D4EA351C0959E500F81377 /* MJRefreshBackNormalFooter.m in Sources */,
+				891D572C1C142C5D00E86A52 /* CoreListCommonVC+LifeFunc.m in Sources */,
 				8920F2C61C0A92EA00A040B4 /* TLYShyViewController.m in Sources */,
 				89D4EA301C0959E500F81377 /* MJRefreshHeader.m in Sources */,
 				89D4EBFE1C099C5900F81377 /* DGActivityIndicatorBallScaleAnimation.m in Sources */,
 				8920F2C01C0A92EA00A040B4 /* NSObject+TLYSwizzlingHelpers.m in Sources */,
 				89D4EC011C099C5900F81377 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m in Sources */,
-				891D55EF1C141C6E00E86A52 /* UIView+CoreListLayout.m in Sources */,
+				891D57291C142C5D00E86A52 /* UIView+CoreListLayout.m in Sources */,
 				89D4EC001C099C5900F81377 /* DGActivityIndicatorBallScaleRippleAnimation.m in Sources */,
-				891D55F11C141C6E00E86A52 /* CoreListModel.m in Sources */,
 				89CB26231BA27A670034BABA /* NSString+Stackoverflow.m in Sources */,
 				89F9990D1C12F7DE00DA2DC8 /* MJFoundation.m in Sources */,
 				8920F2C41C0A92EA00A040B4 /* TLYShyScrollViewController.m in Sources */,
@@ -1423,17 +1423,15 @@
 				898A61EC1BA27AC20098A0AD /* FMResultSet.m in Sources */,
 				898A62121BA27D760098A0AD /* NewsListCell.m in Sources */,
 				89D4EC051C099C5900F81377 /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */,
-				891D55F01C141C6E00E86A52 /* CoreListCollectionViewCell.m in Sources */,
-				891D55EC1C141C6E00E86A52 /* CoreListTableViewController.m in Sources */,
+				891D57261C142C5D00E86A52 /* CoreListTableViewController.m in Sources */,
 				89CB26201BA27A670034BABA /* NSObject+Select.m in Sources */,
 				897883DB1B21983C00033B01 /* CoreStatus.m in Sources */,
-				891D55ED1C141C6E00E86A52 /* NSArray+CoreListExtend.m in Sources */,
+				891D57271C142C5D00E86A52 /* NSArray+CoreListExtend.m in Sources */,
 				89F9990F1C12F7DE00DA2DC8 /* MJPropertyKey.m in Sources */,
 				8920F2C31C0A92EA00A040B4 /* UIViewController+BetterLayoutGuides.m in Sources */,
 				89D4EBF51C099C5900F81377 /* DGActivityIndicatorBallBeatAnimation.m in Sources */,
 				89CB26191BA27A670034BABA /* CoreModel+Cache.m in Sources */,
 				898A61E81BA27AC20098A0AD /* FMDatabase.m in Sources */,
-				891D55F51C141C6E00E86A52 /* CoreListCommonVC+LifeFunc.m in Sources */,
 				898A61EB1BA27AC20098A0AD /* FMDatabaseQueue.m in Sources */,
 				8920F2C71C0A92EA00A040B4 /* TLYShyNavBarManager.m in Sources */,
 				89D4EC071C099C5900F81377 /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */,
@@ -1443,21 +1441,20 @@
 				89D4EBFB1C099C5900F81377 /* DGActivityIndicatorBallPulseAnimation.m in Sources */,
 				89D4EC0F1C099C5900F81377 /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */,
 				89F9990B1C12F7DE00DA2DC8 /* MJDictionaryCache.m in Sources */,
-				891D55EE1C141C6E00E86A52 /* NSString+Equal.m in Sources */,
+				891D57281C142C5D00E86A52 /* NSString+Equal.m in Sources */,
 				898A61E71BA27AC20098A0AD /* NSString+CoreFMDB.m in Sources */,
 				89D4EBF71C099C5900F81377 /* DGActivityIndicatorBallClipRotateMultipleAnimation.m in Sources */,
 				89D4EC061C099C5900F81377 /* DGActivityIndicatorCookieTerminatorAnimation.m in Sources */,
 				897883F11B21984800033B01 /* NSData+Param.m in Sources */,
 				89D4EC141C099C5900F81377 /* DGActivityIndicatorTripleRingsAnimation.m in Sources */,
-				891D55F61C141C6E00E86A52 /* CoreListCommonVC+Main.m in Sources */,
 				89D4EC111C099C5900F81377 /* DGActivityIndicatorThreeDotsAnimation.m in Sources */,
 				EE5839BA1AB9953A00516AC1 /* AppDelegate.m in Sources */,
 				898A62101BA27D760098A0AD /* NewsListVC.m in Sources */,
 				89D4EBF81C099C5900F81377 /* DGActivityIndicatorBallClipRotatePulseAnimation.m in Sources */,
 				89F999151C12F7DE00DA2DC8 /* NSString+MJExtension.m in Sources */,
 				89F9990E1C12F7DE00DA2DC8 /* MJProperty.m in Sources */,
+				891D572B1C142C5D00E86A52 /* CoreListCommonVC+Data.m in Sources */,
 				89D4EBF61C099C5900F81377 /* DGActivityIndicatorBallClipRotateAnimation.m in Sources */,
-				891D55F71C141C6E00E86A52 /* CoreListCommonVC+Refresh.m in Sources */,
 				89D4EC031C099C5900F81377 /* DGActivityIndicatorBallTrianglePathAnimation.m in Sources */,
 				89CB261B1BA27A670034BABA /* NSObject+CoreModelCommon.m in Sources */,
 				8920F2C11C0A92EA00A040B4 /* TLYDelegateProxy.m in Sources */,
@@ -1481,14 +1478,14 @@
 				89D4EC0C1C099C5900F81377 /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m in Sources */,
 				89CB261F1BA27A670034BABA /* NSObject+Save.m in Sources */,
 				89D4EC131C099C5900F81377 /* DGActivityIndicatorTriplePulseAnimation.m in Sources */,
+				891D57311C142C5D00E86A52 /* CoreListModel.m in Sources */,
 				89D4EA381C0959E500F81377 /* MJRefreshNormalHeader.m in Sources */,
 				89D4EC0B1C099C5900F81377 /* DGActivityIndicatorLineScalePulseOutAnimation.m in Sources */,
 				89D4EC151C099C5900F81377 /* DGActivityIndicatorTwoDotsAnimation.m in Sources */,
 				89D4EA341C0959E500F81377 /* MJRefreshBackGifFooter.m in Sources */,
-				891D55F91C141C6E00E86A52 /* CLWaterflowLayout.m in Sources */,
-				891D55F41C141C6E00E86A52 /* CoreListCommonVC+Data.m in Sources */,
 				89F999111C12F7DE00DA2DC8 /* NSObject+MJClass.m in Sources */,
 				89CB261E1BA27A670034BABA /* NSObject+Insert.m in Sources */,
+				891D572F1C142C5D00E86A52 /* CoreListCommonVC.m in Sources */,
 				89D4EBFA1C099C5900F81377 /* DGActivityIndicatorBallGridPulseAnimation.m in Sources */,
 				897883F31B21984800033B01 /* NSURL+File.m in Sources */,
 				89F999131C12F7DE00DA2DC8 /* NSObject+MJKeyValue.m in Sources */,
@@ -1496,15 +1493,18 @@
 				897883EF1B21984800033B01 /* NSString+CoreHttp.m in Sources */,
 				89D4EA321C0959E500F81377 /* MJRefreshAutoNormalFooter.m in Sources */,
 				89D4EC041C099C5900F81377 /* DGActivityIndicatorBallZigZagAnimation.m in Sources */,
+				891D572A1C142C5D00E86A52 /* CoreListCommonVC+BackBtn.m in Sources */,
 				89D4EC161C099C5900F81377 /* DGActivityIndicatorView.m in Sources */,
 				897883F21B21984800033B01 /* NSString+File.m in Sources */,
 				89D4EC121C099C5900F81377 /* DGActivityIndicatorTriangleSkewSpinAnimation.m in Sources */,
 				89F999121C12F7DE00DA2DC8 /* NSObject+MJCoding.m in Sources */,
-				891D55F21C141C6E00E86A52 /* CoreListTableViewCell.m in Sources */,
 				898A62161BA27D760098A0AD /* TGCell.m in Sources */,
 				89D4EA3B1C0959E500F81377 /* MJRefreshConst.m in Sources */,
 				89D4EBFC1C099C5900F81377 /* DGActivityIndicatorBallPulseSyncAnimation.m in Sources */,
+				891D57331C142C5D00E86A52 /* CoreListCollectionViewCell.m in Sources */,
+				891D572D1C142C5D00E86A52 /* CoreListCommonVC+Main.m in Sources */,
 				89D4EA2C1C0959E500F81377 /* MJRefreshAutoFooter.m in Sources */,
+				891D572E1C142C5D00E86A52 /* CoreListCommonVC+Refresh.m in Sources */,
 				89D4EA2F1C0959E500F81377 /* MJRefreshFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

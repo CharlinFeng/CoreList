@@ -42,6 +42,8 @@
     
     if(self.scrollView.isDragging) return;
     
+    [self unsetupFootRefresh];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
@@ -63,6 +65,24 @@
         self.isRefreshData=YES;
     });
 }
+
+
+/** 卸载底部刷新控件 */
+-(void)unsetupFootRefresh{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.scrollView.mj_footer endRefreshingWithNoMoreData];
+        
+        [UIView animateWithDuration:0.1 animations:^{
+            self.scrollView.mj_footer.alpha = 0;
+            
+        } completion:^(BOOL finished) {
+            [self.scrollView.mj_footer removeFromSuperview];
+        }];
+        self.scrollView.mj_footer = nil;
+    });
+}
+
 
 
 /** 底部刷新 */

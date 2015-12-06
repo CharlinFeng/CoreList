@@ -73,8 +73,11 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
                 
             }else{
                 
-                //根据顶部刷新数据情况安装底部刷新控件
-                [self footerRefreshAdd:models];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    //根据顶部刷新数据情况安装底部刷新控件
+                    [self footerRefreshAdd:models];
+                    if(self.scrollView.mj_footer == nil){[self refreshSuccess4Footer:models sourceType:CoreModelDataSourceTypeNone];}
+                });
             }
         }
         

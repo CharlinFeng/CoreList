@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.tableFooterView=[[UIView alloc] init];
+    self.tableView.rowHeight = 60;
 }
 
 
@@ -46,8 +47,10 @@
 
     CoreListTableViewCell *cell = [[self listVC_View_Cell_Class] dequeReuseCell:tableView];
     
+    NSInteger row = indexPath.row; if(row >= self.dataList.count) row = 0;
+    
     //取出模型
-    cell.model = self.dataList [indexPath.row];
+    cell.model = self.dataList [row];
     
     return cell;
 }
