@@ -13,6 +13,8 @@
 #import "CoreListCommonVC+Data.h"
 #import "NSArray+CoreListExtend.h"
 
+static NSString const *NoMoreDataMsg = @"没有更多数据了";
+
 @implementation CoreListCommonVC (Refresh)
 
 /** 自动触发顶部刷新 */
@@ -160,7 +162,7 @@
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self endFooterRefresWithMsg:@"没有更多数据了"];
+            [self endFooterRefresWithMsg:NoMoreDataMsg];
         });
         
     }else if (count >= pageSize){//有数据，满载
@@ -181,11 +183,11 @@
     NSUInteger count = models.count;
     
     if(count<=5){//不安装
-        [self endFooterRefresWithMsg:@"没有更多数据了"];
+        [self endFooterRefresWithMsg:NoMoreDataMsg];
         
     }else if (count >5 && count < self.modelPageSize){//安装，并将状态置为无数据
         
-        [self endFooterRefresWithMsg:@"没有更多数据了"];
+        [self endFooterRefresWithMsg:NoMoreDataMsg];
         
     }else if (count >= self.modelPageSize){//正常安装
         
