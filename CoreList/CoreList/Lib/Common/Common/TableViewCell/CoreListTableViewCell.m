@@ -23,7 +23,7 @@
  *
  *  @return 实例
  */
-+(instancetype)dequeReuseCell:(UITableView *)tableView{
++(CoreListTableViewCell *)dequeReuseCell:(UITableView *)tableView{
     
     NSString *rid=[self modelName];
     

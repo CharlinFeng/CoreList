@@ -53,18 +53,23 @@
 
 
 
-
 @optional
 
 /** 无本地FMDB缓存的情况下，需要在ViewDidAppear中定期自动触发顶部刷新事件 */
 -(NSString *)listVC_Update_Delay_Key;
 
 
-
 /** 数据方法区 */
 
 /** 刷新数据 */
 -(void)reloadData;
+
+
+
+/** tableView专有方法*/
+/** 动态刷新 */
+-(void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
+
 
 
 /** collectionView专有方法 */

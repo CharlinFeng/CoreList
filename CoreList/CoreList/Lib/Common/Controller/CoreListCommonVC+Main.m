@@ -29,9 +29,11 @@
 
 
 
+
 -(void)dealloc{
     [self.scrollView  removeFromSuperview];
     self.scrollView = nil;
 }
+
 
 @end

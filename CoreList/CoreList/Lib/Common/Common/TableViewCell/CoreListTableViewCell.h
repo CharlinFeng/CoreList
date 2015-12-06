@@ -23,8 +23,7 @@
 
 
 /** cell实例：必须从xib创建 */
-+(instancetype)dequeReuseCell:(UITableView *)tableView;
-
++(CoreListTableViewCell *)dequeReuseCell:(UITableView *)tableView;
 
 
 @end

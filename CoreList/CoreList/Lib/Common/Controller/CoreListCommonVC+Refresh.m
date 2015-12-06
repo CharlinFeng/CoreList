@@ -40,6 +40,8 @@
 /** 顶部刷新 */
 -(void)headerRefreshAction{
     
+    if(self.scrollView.isDragging) return;
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
