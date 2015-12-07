@@ -116,11 +116,11 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
     self.isRefreshData=NO;
     
-    
+    if(![self.scrollView isKindOfClass:[UITableView class]]) return;
+    if(!self.hasData) return;
+    if(models.count==0) return;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        if(![self.scrollView isKindOfClass:[UITableView class]]) return;
-        if(!self.hasData) return;
         [(UITableView *)self.scrollView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewRowAnimationTop animated:YES];
     });
 }
