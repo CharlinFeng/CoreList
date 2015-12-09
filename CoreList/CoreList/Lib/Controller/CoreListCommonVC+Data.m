@@ -66,7 +66,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             }
             
             if(!self.hasData && models.count==0){
-                [CoreIV showWithType:IVTypeError view:self.view msg:@"加载失败，点击重试" failClickBlock:^{
+                [CoreIV showWithType:IVTypeError view:self.view msg:@"没有更多数据了" failClickBlock:^{
                     [CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];
                     [self headerRefreshAction];
                 }];
