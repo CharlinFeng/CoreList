@@ -58,15 +58,15 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             
             //刷新成功：顶部
             [self refreshSuccess4Header:models];
-
+            
             if(sourceType != CoreModelDataSourceTypeSqlite){
                 
                 //处理指示视图状态
                 [self handlestatusViewWithModels:models];
             }
             
-            if(!self.hasData && models.count==0){
-                [CoreIV showWithType:IVTypeError view:self.view msg:@"没有更多数据了" failClickBlock:^{
+            if(!self.hasData && models.count==0 && !self.needOffCoreIVWhenNoData){
+                [CoreIV showWithType:IVTypeError view:self.view msg:@"没有更多数据了1" failClickBlock:^{
                     [CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];
                     [self headerRefreshAction];
                 }];
@@ -173,19 +173,21 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 -(void)handlestatusViewWithModels:(NSArray *)models{
     
     
-        NSUInteger count = models.count;
+    NSUInteger count = models.count;
+    
+    if(models == nil || count == 0 ){//没有数据
         
-        if(models == nil || count == 0){//没有数据
-            
-            [CoreIV showWithType:IVTypeError view:self.view msg:@"暂无数据" failClickBlock:nil];
-            
-        }else{//有数据，隐藏
-            
-            [CoreIV dismissFromView:self.view animated:YES];
-            
-            self.hasData = YES;
-        }
-
+        if (self.needOffCoreIVWhenNoData) return;
+        
+        [CoreIV showWithType:IVTypeError view:self.view msg:@"没有更多数据了0" failClickBlock:nil];
+        
+    }else{//有数据，隐藏
+        
+        [CoreIV dismissFromView:self.view animated:YES];
+        
+        self.hasData = YES;
+    }
+    
 }
 
 

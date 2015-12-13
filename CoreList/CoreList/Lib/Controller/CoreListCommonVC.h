@@ -26,7 +26,7 @@
 /** 关闭shyNavBar功能 */
 @property (nonatomic,assign) BOOL shyNavBarOff;
 
-
+@property (nonatomic,assign) BOOL needOffCoreIVWhenNoData;
 
 
 
