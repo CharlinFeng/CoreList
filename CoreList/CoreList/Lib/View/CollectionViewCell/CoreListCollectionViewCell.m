@@ -51,4 +51,7 @@ NSString * _CollectionViewCellRid;
     return _CollectionViewCellRid;
 }
 
+
+-(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{}
+
 @end
