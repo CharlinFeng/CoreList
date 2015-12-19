@@ -12,6 +12,7 @@
 #import "AddView.h"
 #import "ErrorView.h"
 
+
 @interface NewsListVC ()
 
 
@@ -29,11 +30,12 @@
     
     self.tableView.rowHeight = 60;
   
-//    self.shyNavBarOff = YES;
+    self.shyNavBarOff = YES;
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self refreshData];
     });
+
 }
 
 
@@ -98,6 +100,7 @@
 -(NSString *)listVC_Update_Delay_Key{
     return NSStringFromClass([self class]);
 }
+
 
 
 @end
