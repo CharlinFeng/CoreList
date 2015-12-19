@@ -59,6 +59,17 @@
 -(NSString *)listVC_Update_Delay_Key;
 
 
+/** 返回顶部按钮 */
+-(BOOL)listVC_NeedBackBtn;
+
+
+/** 空数据状态视图 */
+-(UIView *)listVC_StatusView_Empty;
+
+/** 错误数据状态视图 */
+-(UIView *)listVC_StatusView_Error;
+
+
 /** 数据方法区 */
 
 /** 刷新数据 */

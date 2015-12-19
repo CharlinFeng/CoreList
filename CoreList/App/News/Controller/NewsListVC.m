@@ -9,9 +9,8 @@
 #import "NewsListVC.h"
 #import "NewsListModel.h"
 #import "NewsListCell.h"
-
-
-
+#import "AddView.h"
+#import "ErrorView.h"
 
 @interface NewsListVC ()
 
@@ -29,9 +28,12 @@
     };
     
     self.tableView.rowHeight = 60;
-//
-    
+  
 //    self.shyNavBarOff = YES;
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self refreshData];
+    });
 }
 
 
@@ -77,6 +79,19 @@
 }
 
 
+-(UIView *)listVC_StatusView_Empty{
+    return [AddView addView];
+}
+
+-(UIView *)listVC_StatusView_Error{
+
+    ErrorView *errorView = [ErrorView errorViewWithClickAction:^{
+        
+        [self refreshData];
+    }];
+    
+    return errorView;
+}
 
 
 /** 无本地FMDB缓存的情况下，需要在ViewDidAppear中定期自动触发顶部刷新事件 */

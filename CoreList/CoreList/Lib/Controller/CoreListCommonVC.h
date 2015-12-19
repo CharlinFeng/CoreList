@@ -28,7 +28,7 @@
 
 @property (nonatomic,assign) BOOL needOffCoreIVWhenNoData;
 
-
+@property (nonatomic,weak) UIView *emptyView, *errorView;
 
 
 /** 分类访问接口 */

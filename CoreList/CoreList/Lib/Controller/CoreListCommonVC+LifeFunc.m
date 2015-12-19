@@ -8,11 +8,13 @@
 
 #import "CoreListCommonVC+LifeFunc.h"
 #import "CoreListCommonVCProtocol.h"
-#import "TLYShyNavBarManager.h"
 #import "MJRefresh.h"
 #import "CoreModel.h"
 #import "CoreIV.h"
 #import "CoreListCommonVC+Refresh.h"
+#import "CoreListCommonVC+ScrollView.h"
+#import "CoreListCommonVC+BackBtn.h"
+#import "CoreListCommonVC+ScrollView.h"
 
 @interface CoreListCommonVC ()<UIScrollViewDelegate>
 
@@ -40,6 +42,20 @@
 }
 
 
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    [self navBarShow];
+}
+
+
+-(void)dealloc{
+    [self.scrollView  removeFromSuperview];
+    self.scrollView = nil;
+    [self navBarScroll_Disable];
+}
+
 
 -(void)viewDidAppear:(BOOL)animated{
     
@@ -56,6 +72,9 @@
 /** viewDidLoadAction */
 -(void)viewDidLoadAction{
     
+    [self navBarShow];
+    [self navBarScroll_Enable];
+    
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
     
     //安装刷新控件
@@ -65,6 +84,8 @@
     
     //设置代理
     if(self.scrollView.delegate == nil) self.scrollView.delegate = self;
+    
+    [self backBtnPrepare];
 }
 
 
@@ -72,8 +93,6 @@
 -(void)viewWillAppearAction{
     
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
-    
-    if(self.shyNavBarManager.scrollView == nil && !self.shyNavBarOff) {self.shyNavBarManager.scrollView = self.scrollView;self.shyNavBarManager.fadeBehavior = TLYShyNavBarFadeNavbar;}
     
     //提示图层：没有数据才显示
     if(!self.hasData){[CoreIV showWithType:IVTypeLoad view:self.view msg:@"努力加载中" failClickBlock:nil];}

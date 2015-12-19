@@ -10,6 +10,8 @@
 
 @interface CoreListCommonVC (BackBtn)
 
+-(void)backBtnPrepare;
+
 /** 展示返回顶部按钮 */
 -(void)showBack2TopBtn;
 

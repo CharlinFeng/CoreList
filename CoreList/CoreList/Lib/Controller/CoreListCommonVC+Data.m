@@ -14,6 +14,7 @@
 #import "CoreListCommonVC+Refresh.h"
 #import "CoreIV.h"
 #import "CoreModelConst.h"
+#import "UIView+CoreListLayout.h"
 
 static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
@@ -66,10 +67,11 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             }
             
             if(!self.hasData && models.count==0 && !self.needOffCoreIVWhenNoData){
-                [CoreIV showWithType:IVTypeError view:self.view msg:@"没有更多数据了1" failClickBlock:^{
-                    [CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];
-                    [self headerRefreshAction];
-                }];
+                [self handlestatusViewWithModels:models];
+//                [CoreIV showWithType:IVTypeError view:self.view msg:@"没有更多数据了" failClickBlock:^{
+//                    [CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];
+//                    [self headerRefreshAction];
+//                }];
                 
             }else{
                 
@@ -112,10 +114,9 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
-                [CoreIV showWithType:IVTypeError view:self.view msg:@"操作失败" failClickBlock:^{
-                    
+                [self showErrorViewWithMsg:@"加载失败，点击重试" failClickBlock:^{
+
                     if(weakSelf.NetWorkErrorAction != nil) weakSelf.NetWorkErrorAction();
-                    
                 }];
             });
             
@@ -160,8 +161,8 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
         //标明刷新类型
         self.refreshType = ListVCRefreshActionTypeNone;
         
-        [CoreIV showWithType:IVTypeError view:self.view msg:@"加载失败，点击重试" failClickBlock:^{
-            
+        [self showErrorViewWithMsg:@"加载失败，点击重试" failClickBlock:^{
+
             [CoreIV showWithType:IVTypeLoad view:self.view msg:@"努力加载中" failClickBlock:nil];
             [self headerRefreshAction];
         }];
@@ -170,26 +171,94 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
 
 
+
+
+-(void)showErrorViewWithMsg:(NSString *)msg failClickBlock:(void(^)())failClickBlock{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        UIView *errorView = [self listVC_StatusView_Error];
+        
+        self.errorView = errorView;
+        
+        if (errorView == nil) {
+            
+            [CoreIV showWithType:IVTypeError view:self.view msg:msg failClickBlock:failClickBlock];
+            
+        }else{
+            
+            [self.view addSubview:errorView];
+            
+            [errorView autoLayoutFillSuperView];
+        }
+    });
+}
+
+
+
 -(void)handlestatusViewWithModels:(NSArray *)models{
     
     
-    NSUInteger count = models.count;
-    
-    if(models == nil || count == 0 ){//没有数据
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSUInteger count = models.count;
         
-        if (self.needOffCoreIVWhenNoData) return;
+        BOOL noData = models == nil || count == 0;
+
+        UIView *emptyView = [self listVC_StatusView_Empty];
         
-        [CoreIV showWithType:IVTypeError view:self.view msg:@"没有更多数据了0" failClickBlock:nil];
+        self.emptyView = emptyView;
         
-    }else{//有数据，隐藏
+        if(noData){//没有数据
+            
+            if (self.needOffCoreIVWhenNoData) return;
+            
+            if (emptyView == nil) {
+                
+                [CoreIV showWithType:IVTypeError view:self.view msg:@"没有更多数据了" failClickBlock:nil];
+                
+            }else{
+                
+                [self.view addSubview:emptyView];
+                
+                [emptyView autoLayoutFillSuperView];
+            
+            }
+            
+        }else{//有数据，隐藏
+            
+            [CoreIV dismissFromView:self.view animated:YES];
+            
+            [UIView animateWithDuration:0.25 animations:^{
+                
+                self.emptyView.alpha = 0;
+                
+            } completion:^(BOOL finished) {
+                
+                [self.emptyView removeFromSuperview];
+                
+            }];
+            
+            self.hasData = YES;
+        }
         
-        [CoreIV dismissFromView:self.view animated:YES];
-        
-        self.hasData = YES;
-    }
-    
+    });
 }
 
+
+-(void)dismissCustomView_EmptyView_ErrorView{
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:0.25 animations:^{
+            
+            self.emptyView.alpha = 0;
+            self.errorView.alpha = 0;
+        } completion:^(BOOL finished) {
+            
+            [self.emptyView removeFromSuperview];
+            [self.errorView removeFromSuperview];
+        }];
+    });
+}
 
 
 -(BOOL)isNeedFMDB{

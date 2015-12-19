@@ -7,8 +7,17 @@
 //
 
 #import "CoreListCommonVC+BackBtn.h"
+#import "CoreListCommonVC+ScrollView.h"
 
 @implementation CoreListCommonVC (BackBtn)
+
+
+-(void)backBtnPrepare{
+
+    if(![self listVC_NeedBackBtn]) return;
+
+    [self scrollViewPrepare];
+}
 
 
 /** 展示返回顶部按钮 */
@@ -39,35 +48,13 @@
 }
 
 
-//-(UIButton *)back2TopBtn{
-//    
-//    if(_back2TopBtn == nil){
-//        
-//        _back2TopBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_back2TopBtn setBackgroundImage:[UIImage imageNamed:@"CoreList.bundle/back_top"] forState:UIControlStateNormal];
-//        
-//        //隐藏
-//        _back2TopBtn.alpha = 0;
-//        
-//        [_back2TopBtn addTarget:self action:@selector(back2Top) forControlEvents:UIControlEventTouchUpInside];
-//        [self.view addSubview:_back2TopBtn];
-//        
-//        _back2TopBtn.translatesAutoresizingMaskIntoConstraints = NO;
-//        NSDictionary *views = @{@"back2TopBtn": _back2TopBtn};
-//        
-//        NSArray *v_hor = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[back2TopBtn(==40)]-20-|" options:0 metrics:nil views:views];
-//        NSArray *v_ver = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[back2TopBtn(==40)]-60-|" options:0 metrics:nil views:views];
-//        [self.view addConstraints:v_hor];[self.view addConstraints:v_ver];
-//        
-//        
-//    }
-//    
-//    return _back2TopBtn;
-//}
+
 
 
 /** 返回顶部 */
 -(void)back2Top{
+    
+    [self navBarShow];
     
     if([self.scrollView isKindOfClass:[UITableView class]]){//tableView
         
@@ -75,7 +62,7 @@
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
         
-        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
         
     }else{
         
@@ -84,7 +71,8 @@
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
         
-        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
     }
+    
 }
 @end

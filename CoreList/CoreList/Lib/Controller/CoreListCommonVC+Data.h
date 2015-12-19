@@ -16,4 +16,6 @@
 -(void)fetchDataFromModel;
 
 
+-(void)dismissCustomView_EmptyView_ErrorView;
+
 @end

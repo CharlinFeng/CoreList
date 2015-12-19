@@ -13,6 +13,7 @@
 #import "CoreListCommonVC+Data.h"
 #import "NSArray+CoreListExtend.h"
 
+
 static NSString const *NoMoreDataMsg = @"没有更多数据了";
 
 @implementation CoreListCommonVC (Refresh)
@@ -43,6 +44,12 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 -(void)headerRefreshAction{
     
     if(self.scrollView.isDragging) return;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.emptyView removeFromSuperview];
+        [self.errorView removeFromSuperview];
+    });
     
     [self unsetupFootRefresh];
     
