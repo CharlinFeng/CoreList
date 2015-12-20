@@ -12,16 +12,36 @@
 #import "CoreListCommonVC+BackBtn.h"
 #import "CoreListCommonVC+Data.h"
 
+
 @implementation CoreListCommonVC (Main)
 
 /** 刷新页面数据 */
 -(void)refreshData{
     
+    if(!self.scrollView.mj_header.isRefreshing){
+    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self dismissCustomView_EmptyView_ErrorView];
+            [self refreshData_Real];
+        });
+        
+    }else{
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.scrollView.mj_header endRefreshing];
+            [self dismissCustomView_EmptyView_ErrorView];
+        });
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self refreshData_Real];
+        });
+    }
+}
+
+
+-(void)refreshData_Real{
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        [self dismissCustomView_EmptyView_ErrorView];
-        
-        [self.scrollView.mj_header endRefreshing];
+        if (self.scrollView.mj_header.isRefreshing) return;
         
         [self dismissBack2TopBtn];
         
