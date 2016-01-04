@@ -12,4 +12,6 @@
 @interface CoreListCommonVC (LifeFunc)
 
 
+
+
 @end

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BH4-nH-AT8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A4310" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BH4-nH-AT8">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--首页-->
@@ -60,44 +60,6 @@
             </objects>
             <point key="canvasLocation" x="-817" y="436"/>
         </scene>
-        <!--TableViewController-->
-        <scene sceneID="huk-sG-BIT">
-            <objects>
-                <viewController id="V7A-QZ-CLF" customClass="NewsListVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="STd-K1-VCW"/>
-                        <viewControllerLayoutGuide type="bottom" id="0FX-24-AAl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HzD-CW-HU2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="TableViewController" id="SDA-MQ-dSr"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GjR-Oa-gnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="645" y="161"/>
-        </scene>
-        <!--CollectionViewController-->
-        <scene sceneID="YgK-4t-FhL">
-            <objects>
-                <viewController id="jra-lE-xlg" customClass="TGLIstCVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qGi-Ey-dWc"/>
-                        <viewControllerLayoutGuide type="bottom" id="fLS-zN-Xld"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="67I-Ek-jwc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="CollectionViewController" id="p15-2F-hE9"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Jf-KB-K1E" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="649" y="800"/>
-        </scene>
         <!--成都-Charlin（冯成林）原创出品-->
         <scene sceneID="kP4-dO-NJa">
             <objects>
@@ -110,13 +72,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAf-xx-oMX">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAf-xx-oMX">
                                 <rect key="frame" x="92" y="164" width="136" height="30"/>
                                 <state key="normal" title="TableViewController">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="V7A-QZ-CLF" kind="push" id="vSK-eD-lb3"/>
+                                    <action selector="showTableViewListVC:" destination="bzj-5f-u7m" eventType="touchUpInside" id="IGi-tE-CSi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CC-VZ-89A">
@@ -125,7 +87,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="jra-lE-xlg" kind="push" id="Bz6-4D-yR2"/>
+                                    <action selector="showCollectionViewListVC:" destination="bzj-5f-u7m" eventType="touchUpInside" id="W7I-ei-nG8"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -38,6 +38,21 @@
 
 -(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
 
+    [self checkBackView:scrollView];
+}
+
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    
+    [self checkBackView:scrollView];
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    [self checkBackView:scrollView];
+}
+
+
+-(void)checkBackView:(UIScrollView *)scrollView{
+    
     CGFloat offsetX = scrollView.contentOffset.y;
     
     if(offsetX >= 80){
@@ -45,7 +60,6 @@
     }else{
         [self dismissBack2TopBtn];
     }
-    
 }
 
 @end

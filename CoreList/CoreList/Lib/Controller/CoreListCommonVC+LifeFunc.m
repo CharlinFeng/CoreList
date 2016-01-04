@@ -50,12 +50,6 @@
 }
 
 
--(void)dealloc{
-    [self.scrollView  removeFromSuperview];
-    self.scrollView = nil;
-    [self navBarScroll_Disable];
-}
-
 
 -(void)viewDidAppear:(BOOL)animated{
     
@@ -64,8 +58,6 @@
     //viewDidAppearAction
     [self viewDidAppearAction];
 }
-
-
 
 
 
@@ -79,8 +71,6 @@
     
     //安装刷新控件
     ListVCRefreshAddType refreshType = [self listVC_RefreshType];
-    
-    if(ListVCRefreshAddTypeBottomRefreshOnly != refreshType) [self headerRefreshAdd];
     
     //设置代理
     if(self.scrollView.delegate == nil) self.scrollView.delegate = self;
@@ -107,12 +97,8 @@
     
     if(self.isRefreshWhenViewDidAppeared){
         
-        if(![self.scrollView.mj_header isRefreshing]){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self triggerHeaderRefreshing];
-            });
-        }
-        
+        [self refreshData];
+
     }else{
         
         //取出上次时间
@@ -125,10 +111,8 @@
         //如果没有数据，直接请求
         if(!self.hasData){
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self triggerHeaderRefreshing];
-            });
-            
+            [self refreshData];
+
             //存入当前时间
             [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
             
@@ -138,7 +122,7 @@
                 
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     
-                    [self triggerHeaderRefreshing];
+                    [self refreshData];
                 });
                 
                 //存入当前时间
@@ -150,5 +134,15 @@
     if(self.hasData){[CoreIV dismissFromView:self.view animated:YES];}
 }
 
+
+
+-(void)dealloc{
+    [self removeHeaderRefreshControl];
+    [self removeFooterRefreshControl];
+    [self.scrollView  removeFromSuperview];
+    self.scrollView = nil;
+    [self navBarScroll_Disable];
+    [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:[self listVC_Update_Delay_Key]];
+}
 
 @end

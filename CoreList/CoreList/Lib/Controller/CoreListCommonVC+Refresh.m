@@ -18,17 +18,19 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 
 @implementation CoreListCommonVC (Refresh)
 
-/** 自动触发顶部刷新 */
--(void)triggerHeaderRefreshing{
-    
-    [self.scrollView.mj_footer endRefreshingWithNoMoreData];
-    
-    [self.scrollView.mj_footer removeFromSuperview];
-    
-    self.scrollView.mj_footer = nil;
-    
-    [self refreshData];
-}
+///** 自动触发顶部刷新 */
+//-(void)triggerHeaderRefreshing{
+//    
+//    [self.scrollView.mj_footer endRefreshingWithNoMoreData];
+//    
+//    [self.scrollView.mj_footer removeFromSuperview];
+//    
+//    self.scrollView.mj_footer = nil;
+//    
+//    if(self.scrollView.mj_header == nil) {[self headerRefreshAdd];}
+//    
+//    [self refreshData];
+//}
 
 
 /** 结束底部刷新 */
@@ -37,6 +39,8 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     [self.scrollView.mj_footer endRefreshingWithNoMoreData];
     
     [(MJRefreshAutoStateFooter *)self.scrollView.mj_footer setTitle:msg forState:MJRefreshStateNoMoreData];
+    
+    [self removeFooterRefreshControl];
 }
 
 
@@ -51,9 +55,11 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
         [self.errorView removeFromSuperview];
     });
     
-    [self unsetupFootRefresh];
+    
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        [self removeFooterRefreshControl];
         
         if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
         
@@ -76,21 +82,6 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 }
 
 
-/** 卸载底部刷新控件 */
--(void)unsetupFootRefresh{
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.scrollView.mj_footer endRefreshingWithNoMoreData];
-        
-        [UIView animateWithDuration:0.1 animations:^{
-            self.scrollView.mj_footer.alpha = 0;
-            
-        } completion:^(BOOL finished) {
-            [self.scrollView.mj_footer removeFromSuperview];
-        }];
-        self.scrollView.mj_footer = nil;
-    });
-}
 
 
 
@@ -217,11 +208,9 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 -(void)headerRefreshAdd{
     
     //添加顶部刷新控件
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if(self.scrollView.mj_header == nil) {
-            self.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshAction)];
-        }
-    });
+    if(self.scrollView.mj_header == nil) {
+        self.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshAction)];
+    }
 }
 
 
@@ -230,11 +219,32 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
     //添加底部刷新
     dispatch_async(dispatch_get_main_queue(), ^{
+        
         if(self.scrollView.mj_footer == nil) {
-            self.scrollView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshAction)];
+            
+            MJRefreshFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshAction)];
+        
+            self.scrollView.mj_footer = footer;
         }
     });
     
+}
+
+
+
+-(void)removeHeaderRefreshControl{
+   
+    [self.scrollView.mj_header endRefreshing];
+
+    [self.scrollView.mj_header removeFromSuperview];
+    self.scrollView.mj_header = nil;
+}
+
+-(void)removeFooterRefreshControl{
+    
+    [self.scrollView.mj_footer endRefreshing];
+    [self.scrollView.mj_footer removeFromSuperview];
+    self.scrollView.mj_footer = nil;
 }
 
 @end

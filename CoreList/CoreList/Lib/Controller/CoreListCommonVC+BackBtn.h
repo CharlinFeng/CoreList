@@ -18,4 +18,7 @@
 /** 隐藏返回顶部按钮 */
 -(void)dismissBack2TopBtn;
 
+/** 返回顶部 */
+-(void)back2Top;
+
 @end

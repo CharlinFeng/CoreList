@@ -43,12 +43,8 @@ NSString * _CollectionViewCellRid;
 
 
 +(NSString *)CollectionViewCellRid{
-    
-    if(_CollectionViewCellRid == nil){
-        _CollectionViewCellRid =[self modelName];
-    }
-    
-    return _CollectionViewCellRid;
+
+    return [self modelName];
 }
 
 

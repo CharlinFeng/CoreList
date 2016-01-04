@@ -54,7 +54,7 @@
 @property (nonatomic,assign) NSUInteger modelPageSize;
 
 /** 返回顶部 */
-@property (nonatomic,strong) UIButton *back2TopBtn;
+@property (nonatomic,strong) UIView *back2TopView;
 
 /** 本地数据库没有数据了 */
 @property (nonatomic,assign) BOOL localDataNil;

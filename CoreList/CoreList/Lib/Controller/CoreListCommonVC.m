@@ -56,30 +56,42 @@
     }
 }
 
--(UIButton *)back2TopBtn{
+-(UIView *)back2TopView {
+
     
-    if(_back2TopBtn == nil){
+    if(_back2TopView == nil){
         
-        _back2TopBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_back2TopBtn setBackgroundImage:[UIImage imageNamed:@"CoreList.bundle/back_top"] forState:UIControlStateNormal];
+        _back2TopView = [[UIView alloc] init];
+        
+        CGFloat wh = 30;
+        CGRect frame = CGRectMake(0, 0, wh, wh);
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = frame;
+        [btn setBackgroundImage:[UIImage imageNamed:@"CoreList.bundle/back_top"] forState:UIControlStateNormal];
+        
+        UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:frame];
+        [_back2TopView addSubview:toolBar];
+        [_back2TopView addSubview:btn];
         
         //隐藏
-        _back2TopBtn.alpha = 0;
+        _back2TopView.alpha = 0;
         
-        [_back2TopBtn addTarget:self action:@selector(back2Top) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:_back2TopBtn];
+        [btn addTarget:self action:@selector(back2Top) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_back2TopView];
         
-        _back2TopBtn.translatesAutoresizingMaskIntoConstraints = NO;
-        NSDictionary *views = @{@"back2TopBtn": _back2TopBtn};
+        _back2TopView.translatesAutoresizingMaskIntoConstraints = NO;
+        NSDictionary *views = @{@"back2TopView": _back2TopView};
         
-        NSArray *v_hor = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[back2TopBtn(==40)]-20-|" options:0 metrics:nil views:views];
-        NSArray *v_ver = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[back2TopBtn(==40)]-60-|" options:0 metrics:nil views:views];
+        NSArray *v_hor = [NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"H:[back2TopView(==%@)]-20-|", @(wh)] options:0 metrics:nil views:views];
+        NSArray *v_ver = [NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:[back2TopView(==%@)]-60-|", @(wh)] options:0 metrics:nil views:views];
         [self.view addConstraints:v_hor];[self.view addConstraints:v_ver];
         
-        
+        _back2TopView.layer.cornerRadius = wh/2;
+        _back2TopView.layer.masksToBounds = YES;
+        _back2TopView.clipsToBounds = YES;
     }
     
-    return _back2TopBtn;
+    return _back2TopView;
 }
 
 @end

@@ -12,8 +12,8 @@
 @interface CoreListCommonVC (Refresh)
 
 
-/** 自动触发顶部刷新 */
--(void)triggerHeaderRefreshing;
+///** 自动触发顶部刷新 */
+//-(void)triggerHeaderRefreshing;
 
 /** 结束底部刷新 */
 -(void)endFooterRefresWithMsg:(NSString *)msg;
@@ -26,6 +26,8 @@
 /** 底部刷新 */
 -(void)footerRefreshAction;
 
+
+
 /** 刷新成功：顶部 */
 -(void)refreshSuccess4Header:(NSArray *)models;
 
@@ -34,5 +36,9 @@
 
 /** 根据顶部刷新数据情况安装底部刷新控件 */
 -(void)footerRefreshAdd:(NSArray *)models;
+
+
+-(void)removeHeaderRefreshControl;
+-(void)removeFooterRefreshControl;
 
 @end

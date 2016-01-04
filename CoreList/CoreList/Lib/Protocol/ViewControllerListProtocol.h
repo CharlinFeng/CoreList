@@ -58,10 +58,8 @@
 /** 无本地FMDB缓存的情况下，需要在ViewDidAppear中定期自动触发顶部刷新事件 */
 -(NSString *)listVC_Update_Delay_Key;
 
-
 /** 返回顶部按钮 */
 -(BOOL)listVC_NeedBackBtn;
-
 
 /** 空数据状态视图 */
 -(UIView *)listVC_StatusView_Empty;
@@ -69,21 +67,18 @@
 /** 错误数据状态视图 */
 -(UIView *)listVC_StatusView_Error;
 
-
 /** 数据方法区 */
-
 /** 刷新数据 */
 -(void)reloadData;
-
-
 
 /** tableView专有方法*/
 /** 动态刷新 */
 -(void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
 
-
-
 /** collectionView专有方法 */
 -(UICollectionViewLayout *)listVC_CollectionViewLayout;
+
+/** 是否为瀑布流布局 */
+-(BOOL)listVC_IsWaterFlowLayout;
 
 @end

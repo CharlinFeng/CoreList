@@ -12,7 +12,6 @@
 #import "UIView+CoreListLayout.h"
 
 
-
 @interface CoreListCollectionViewController ()
 
 @end
@@ -26,6 +25,8 @@
     //控制器准备
     [self vcPreare];
 }
+
+
 
 /** 控制器准备 */
 -(void)vcPreare{

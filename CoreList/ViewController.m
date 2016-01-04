@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "CoreList-Swift.h"
 
 @interface ViewController ()
 
@@ -18,6 +19,24 @@
     [super viewDidLoad];
     
 }
+
+- (IBAction)showTableViewListVC:(id)sender {
+    
+    NewsListVC *newsListVC  = [[NewsListVC alloc] init];
+    
+    [self.navigationController pushViewController:newsListVC animated:YES];
+}
+
+
+- (IBAction)showCollectionViewListVC:(id)sender {
+    
+    TGListCVC *tgListCVC = [[TGListCVC alloc] init];
+    
+    [self.navigationController pushViewController:tgListCVC animated:YES];
+}
+
+
+
 
 
 

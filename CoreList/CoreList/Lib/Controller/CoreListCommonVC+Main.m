@@ -17,10 +17,12 @@
 
 /** 刷新页面数据 */
 -(void)refreshData{
-    
+ 
     if(!self.scrollView.mj_header.isRefreshing){
     
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self back2Top];
+            self.scrollView.userInteractionEnabled = NO;
             [self dismissCustomView_EmptyView_ErrorView];
             [self refreshData_Real];
         });
@@ -28,6 +30,8 @@
     }else{
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self back2Top];
+            self.scrollView.userInteractionEnabled = NO;
             [self.scrollView.mj_header endRefreshing];
             [self dismissCustomView_EmptyView_ErrorView];
         });
@@ -35,20 +39,29 @@
             [self refreshData_Real];
         });
     }
+    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.scrollView.mj_header endRefreshing];
+//    });
 }
 
 
 -(void)refreshData_Real{
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        if (self.scrollView.mj_header.isRefreshing) return;
+        if(self.refreshType == ListVCRefreshAddTypeBoth || self.refreshType == ListVCRefreshAddTypeTopRefreshOnly) {if (self.scrollView.mj_header.isRefreshing) return;}
         
+        if(self.scrollView.mj_header == nil){[self headerRefreshAdd];NSLog(@"安装");}
+        NSLog(@"------%@",self.scrollView.mj_header);
         [self dismissBack2TopBtn];
-        
+        NSLog(@"------%@",self.scrollView.mj_header);
         if(!self.shyNavBarOff) [self navBarShow];
         [self.scrollView.mj_footer removeFromSuperview];
         self.scrollView.mj_footer=nil;
+        NSLog(@"------%@",self.scrollView.mj_header);
         [self.scrollView.mj_header beginRefreshing];
+        self.scrollView.userInteractionEnabled = YES;
     });
 }
 

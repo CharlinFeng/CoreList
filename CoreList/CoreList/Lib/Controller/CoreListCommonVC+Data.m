@@ -51,6 +51,13 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
         
     } successBlock:^(NSArray *models, CoreModelDataSourceType sourceType,NSDictionary *userInfo){
         
+        if(self.listVC_RefreshType == ListVCRefreshAddTypeBottomRefreshOnly){
+        
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self removeHeaderRefreshControl];
+            });
+        }
+        
         [CoreIV dismissFromView:self.view animated:YES];
         
         ListVCRefreshActionType refreshType = [[userInfo objectForKey:RefreshTypeKey] integerValue];
@@ -68,10 +75,6 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             
             if(!self.hasData && models.count==0 && !self.needOffCoreIVWhenNoData){
                 [self handlestatusViewWithModels:models];
-//                [CoreIV showWithType:IVTypeError view:self.view msg:@"没有更多数据了" failClickBlock:^{
-//                    [CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];
-//                    [self headerRefreshAction];
-//                }];
                 
             }else{
                 
@@ -106,6 +109,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
         
     } errorBlock:^(NSString *errorResult,NSDictionary *userInfo) {
         
+        
         if(errorResult != nil && ![errorResult isEqualToString:NetWorkError]){ //网络请求成功，但服务器抛出错误
             
             __weak typeof(self) weakSelf=self;
@@ -117,6 +121,10 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
                 [self showErrorViewWithMsg:@"加载失败，点击重试" failClickBlock:^{
 
                     if(weakSelf.NetWorkErrorAction != nil) weakSelf.NetWorkErrorAction();
+                    
+                    [CoreIV showWithType:IVTypeLoad view:self.view msg:@"努力加载中" failClickBlock:nil];
+                    
+                    [self refreshData];
                 }];
             });
             
@@ -164,7 +172,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
         [self showErrorViewWithMsg:@"加载失败，点击重试" failClickBlock:^{
 
             [CoreIV showWithType:IVTypeLoad view:self.view msg:@"努力加载中" failClickBlock:nil];
-            [self headerRefreshAction];
+            [self refreshData];
         }];
     }];
 }

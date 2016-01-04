@@ -37,13 +37,13 @@
 /** 动画参数化 */
 -(void)animWithParam:(CGFloat)alpha{
     
-    if(self.back2TopBtn.alpha == alpha) return;
+    if(self.back2TopView.alpha == alpha) return;
     
     [UIView animateWithDuration:.25f animations:^{
         
         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
         
-        self.back2TopBtn.alpha = alpha;
+        self.back2TopView.alpha = alpha;
     }];
 }
 
@@ -56,6 +56,9 @@
     
     [self navBarShow];
     
+    if (self.dataList.count == 0) return;
+    if (!self.hasData) return;
+    
     if([self.scrollView isKindOfClass:[UITableView class]]){//tableView
         
         UITableView *tableView = (UITableView *)self.scrollView;
@@ -66,7 +69,6 @@
         
     }else{
         
-        
         UICollectionView *collectionView = (UICollectionView *)self.scrollView;
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
@@ -74,5 +76,8 @@
         [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
     }
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self animWithParam:0];
+    });
 }
 @end

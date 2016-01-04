@@ -9,7 +9,21 @@
 #ifndef CoreList_h
 #define CoreList_h
 
-#import "CoreListCommonVC.h"
+/** 公共文件 */
+#import "CoreListModel.h"
+
+/** tableview */
+#import "CoreListTableViewController.h"
+#import "CoreListTableViewCell.h"
+
+/** collectionview */
+#import "CoreListCollectionViewController.h"
+#import "CoreListCollectionViewCell.h"
+
+
+/** layout */
+#import "CLWaterflowLayout.h"
+
 
 
 

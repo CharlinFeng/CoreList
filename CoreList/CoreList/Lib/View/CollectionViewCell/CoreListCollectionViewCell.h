@@ -21,6 +21,4 @@
 /** 取出利用cell */
 +(instancetype)dequeueReusableCellWithCollectionView:(UICollectionView *)collectionView indexPath:(NSIndexPath*)indexPath;
 
-
-
 @end
