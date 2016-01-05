@@ -45,16 +45,12 @@
 +(NSString *)CoreModel_parseErrorData:(NSDictionary *)hostData{
     
     NSString *msgOut = hostData[@"msg"];
+    if(![msgOut isEqualToString:@"ok"]) return msgOut;
     
     NSString *msgIn = hostData[@"res"][@"res_msg"];
+    if(![msgIn isEqualToString:@"ok"]) return msgIn;
     
-    NSString *msg = nil;
-    
-    if(![msgIn isEqualToString:@"ok"]) msg = msgIn;
-    
-    if(![msgOut isEqualToString:@"ok"]) msg = msgOut;
-    
-    return msg;
+    return nil;
 }
 
 /** 服务器真正有用数据体：此时只是找到对应的key，还没有字典转模型 */
