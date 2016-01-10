@@ -85,7 +85,7 @@
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
     
     //提示图层：没有数据才显示
-    if(!self.hasData){[CoreIV showWithType:IVTypeLoad view:self.view msg:@"努力加载中" failClickBlock:nil];}
+    if(!self.hasData){[CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];}
 }
 
 

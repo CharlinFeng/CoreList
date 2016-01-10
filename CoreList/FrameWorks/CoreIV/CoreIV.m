@@ -105,7 +105,7 @@
 -(void)setType:(IVType)type {
     
     UIColor *tintColor = [UIColor grayColor];
-    CGFloat size = 50;
+    CGFloat size = 40;
     
     DGActivityIndicatorView *di = nil;
     if(type == IVTypeLoad) {

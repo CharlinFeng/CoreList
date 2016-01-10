@@ -122,7 +122,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
                     if(weakSelf.NetWorkErrorAction != nil) weakSelf.NetWorkErrorAction();
                     
-                    [CoreIV showWithType:IVTypeLoad view:self.view msg:@"努力加载中" failClickBlock:nil];
+                    [CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];
                     
                     [self refreshData];
                 }];
@@ -171,7 +171,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
         
         [self showErrorViewWithMsg:@"加载失败，点击重试" failClickBlock:^{
 
-            [CoreIV showWithType:IVTypeLoad view:self.view msg:@"努力加载中" failClickBlock:nil];
+            [CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];
             [self refreshData];
         }];
     }];
