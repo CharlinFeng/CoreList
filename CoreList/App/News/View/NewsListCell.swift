@@ -31,7 +31,7 @@ extension NewsListCell {
         
         var cell: CoreListTableViewCell! = tableView.dequeueReusableCellWithIdentifier(rid) as? CoreListTableViewCell
         
-        if cell == nil {cell = NSBundle.mainBundle().loadNibNamed(rid, owner: nil, options: nil).first as! CoreListTableViewCell}else{print("有缓存")}
+        if cell == nil {cell = NSBundle.mainBundle().loadNibNamed(rid, owner: nil, options: nil).first as! CoreListTableViewCell}
         
         return cell!
     }

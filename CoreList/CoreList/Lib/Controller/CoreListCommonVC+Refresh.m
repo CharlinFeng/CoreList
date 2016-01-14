@@ -49,8 +49,8 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
     if(self.scrollView.isDragging) return;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
+//    dispatch_async(dispatch_get_main_queue(), ^{
+    
         [self.emptyView removeFromSuperview];
         [self.errorView removeFromSuperview];
   
@@ -71,7 +71,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
         [self fetchDataFromModel];
         
         self.isRefreshData=YES;
-    });
+//    });
 }
 
 
@@ -96,15 +96,17 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 /** 刷新成功：顶部 */
 -(void)refreshSuccess4Header:(NSArray *)models{
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.scrollView.mj_header endRefreshing];
+        [self removeHeaderRefreshControl];
+        [self reloadData];
+        [self performSelector:@selector(headerRefreshAdd) withObject:nil afterDelay:0.2];
+    });
+    
     //存入数据
     self.dataList = models;
     
-    //刷新数据
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.scrollView.mj_header endRefreshing];
-        [self reloadData];
-    });
-    
+
     self.isRefreshData=NO;
     
     if(![self.scrollView isKindOfClass:[UITableView class]]) return;
@@ -114,6 +116,8 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
         
         [(UITableView *)self.scrollView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewRowAnimationTop animated:YES];
     });
+    
+
 }
 
 
@@ -203,6 +207,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     //添加顶部刷新控件
     if(self.scrollView.mj_header == nil) {
         self.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshAction)];
+        self.scrollView.mj_header.automaticallyChangeAlpha = YES;
     }
 }
 

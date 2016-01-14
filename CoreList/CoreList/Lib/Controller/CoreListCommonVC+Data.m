@@ -15,6 +15,7 @@
 #import "CoreIV.h"
 #import "CoreModelConst.h"
 #import "UIView+CoreListLayout.h"
+#import "CoreListCommonVC+Main.h"
 
 static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
@@ -124,7 +125,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
                     
                     [CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];
                     
-                    [self refreshData];
+                    [self refreshDataInMainThead:NO];
                 }];
             });
             
@@ -172,7 +173,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
         [self showErrorViewWithMsg:@"加载失败，点击重试" failClickBlock:^{
 
             [CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];
-            [self refreshData];
+            [self refreshDataInMainThead:NO];
         }];
     }];
 }

@@ -21,7 +21,6 @@
 /** 数据源有变化 */
 @property (nonatomic,copy) void (^DataListChangedAction)();
 
-@property (nonatomic,assign) BOOL isRefreshWhenViewDidAppeared;
 
 /** 关闭shyNavBar功能 */
 @property (nonatomic,assign) BOOL shyNavBarOff;
@@ -29,6 +28,8 @@
 @property (nonatomic,assign) BOOL needOffCoreIVWhenNoData;
 
 @property (nonatomic,weak) UIView *emptyView, *errorView;
+
+@property (nonatomic,assign) UIEdgeInsets originalScrollInsets;
 
 
 /** 分类访问接口 */

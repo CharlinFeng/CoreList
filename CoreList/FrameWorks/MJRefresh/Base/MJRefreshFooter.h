@@ -17,7 +17,7 @@
 
 /** 提示没有更多的数据 */
 - (void)endRefreshingWithNoMoreData;
-- (void)noticeNoMoreData MJRefreshDeprecated("使用endRefreshingWithNoMoreData");
+- (void)noticeNoMoreData;
 
 /** 重置没有更多的数据（消除没有更多数据的状态） */
 - (void)resetNoMoreData;

@@ -61,7 +61,6 @@
         self.mj_w = newSuperview.mj_w;
         // 设置位置
         self.mj_x = 0;
-        
         // 记录UIScrollView
         _scrollView = (UIScrollView *)newSuperview;
         // 设置永远支持垂直弹簧效果

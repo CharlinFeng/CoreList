@@ -31,7 +31,7 @@
 
 /** 缓存周期：单位秒 */
 +(NSTimeInterval)CoreModel_Duration{
-    return 10 * 60;
+    return 60 * 60;
 }
 
 
@@ -97,7 +97,7 @@
 
 /** 每页数据量 */
 +(NSUInteger)CoreModel_PageSize{
-    return 20;
+    return 36;
 }
 
 

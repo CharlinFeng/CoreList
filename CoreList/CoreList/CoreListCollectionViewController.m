@@ -147,18 +147,12 @@
 }
 
 
-
-
 /** 无本地FMDB缓存的情况下，需要在ViewDidAppear中定期自动触发顶部刷新事件 */
 -(NSString *)listVC_Update_Delay_Key{
     return NSStringFromClass(self.class);
 }
 
 
-/** 无缓存定期更新周期 */
--(NSTimeInterval)listVC_Update_Delay_Time{
-    return 10;
-}
 
 /** 是否关闭返回顶部功能 */
 -(BOOL)removeBack2TopBtn{

@@ -15,6 +15,7 @@
 #import "CoreListCommonVC+ScrollView.h"
 #import "CoreListCommonVC+BackBtn.h"
 #import "CoreListCommonVC+ScrollView.h"
+#import "CoreListCommonVC+Main.h"
 
 @interface CoreListCommonVC ()<UIScrollViewDelegate>
 
@@ -64,6 +65,11 @@
 /** viewDidLoadAction */
 -(void)viewDidLoadAction{
     
+    //监听通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterBackground:) name:UIApplicationWillResignActiveNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterForground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
     [self navBarShow];
     [self navBarScroll_Enable];
     
@@ -76,7 +82,29 @@
     if(self.scrollView.delegate == nil) self.scrollView.delegate = self;
     
     [self backBtnPrepare];
+    
+
 }
+
+-(void)appEnterBackground:(NSNotification *)noti{
+    self.originalScrollInsets = self.scrollView.mj_header.scrollViewOriginalInset;
+    [self removeHeaderRefreshControl];
+}
+
+-(void)appEnterForground:(NSNotification *)noti{
+
+    if([self listVC_RefreshType] != ListVCRefreshAddTypeBottomRefreshOnly){
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:0.25 animations:^{
+                self.scrollView.contentInset = self.originalScrollInsets;
+            }];
+            
+            [self headerRefreshAdd];
+        });
+    }
+}
+
+
 
 
 /** viewWillAppearAction */
@@ -94,42 +122,33 @@
 -(void)viewDidAppearAction{
     
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
-    
-    if(self.isRefreshWhenViewDidAppeared){
-        
-        [self refreshData];
 
+    //取出上次时间
+    NSString *key = [self listVC_Update_Delay_Key];
+    NSTimeInterval duration = [[self listVC_Model_Class] CoreModel_Duration];
+    NSTimeInterval lastTime = [[NSUserDefaults standardUserDefaults] doubleForKey:key];
+    NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
+    BOOL needTriggerHeaderAction = lastTime + duration < now;
+    
+    //如果没有数据，直接请求
+    if(!self.hasData){
+        
+        [self refreshDataInMainThead:NO];
+
+        //存入当前时间
+        [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
+        
     }else{
         
-        //取出上次时间
-        NSString *key = [self listVC_Update_Delay_Key];
-        NSTimeInterval duration = [[self listVC_Model_Class] CoreModel_Duration];
-        NSTimeInterval lastTime = [[NSUserDefaults standardUserDefaults] doubleForKey:key];
-        NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
-        BOOL needTriggerHeaderAction = lastTime + duration < now;
-        
-        //如果没有数据，直接请求
-        if(!self.hasData){
+        if(needTriggerHeaderAction){
             
-            [self refreshData];
-
+            [self performSelector:@selector(refreshDataInMainThead:) withObject:@(NO) afterDelay:1.0];
+            
             //存入当前时间
             [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
-            
-        }else{
-            
-            if(needTriggerHeaderAction){
-                
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    
-                    [self refreshData];
-                });
-                
-                //存入当前时间
-                [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
-            }
         }
     }
+    
     
     if(self.hasData){[CoreIV dismissFromView:self.view animated:YES];}
 }
@@ -137,11 +156,13 @@
 
 
 -(void)dealloc{
-    [self removeHeaderRefreshControl];
-    [self removeFooterRefreshControl];
-    [self.scrollView  removeFromSuperview];
-    self.scrollView = nil;
+//    [self removeHeaderRefreshControl];
+//    [self removeFooterRefreshControl];
+//    [self.scrollView  removeFromSuperview];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self navBarScroll_Disable];
+    self.scrollView = nil;
+    
     [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:[self listVC_Update_Delay_Key]];
 }
 

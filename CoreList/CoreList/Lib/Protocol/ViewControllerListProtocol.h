@@ -17,10 +17,6 @@
 
 -(void)dismissTipsView;
 
-/** 刷新页面数据 */
--(void)refreshData;
-
-
 
 
 
