@@ -98,9 +98,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.scrollView.mj_header endRefreshing];
-        [self removeHeaderRefreshControl];
         [self reloadData];
-        [self performSelector:@selector(headerRefreshAdd) withObject:nil afterDelay:0.2];
     });
     
     //存入数据
