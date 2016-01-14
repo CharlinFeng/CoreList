@@ -11,6 +11,8 @@
 
 /** 公共文件 */
 #import "CoreListModel.h"
+#import "CoreListCommonVC+Main.h"
+
 
 /** tableview */
 #import "CoreListTableViewController.h"
