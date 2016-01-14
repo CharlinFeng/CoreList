@@ -133,8 +133,15 @@
     //如果没有数据，直接请求
     if(!self.hasData){
         
-        [self performSelector:@selector(refreshDataInMainThead:) withObject:@(NO) afterDelay:0.25];
-
+        if(self.delayLoadDuration > 0){
+        
+            [self performSelector:@selector(refreshDataInMainThead:) withObject:@(NO) afterDelay:0.25];
+            
+        }else{
+            
+            [self refreshDataInMainThead:NO];
+        }
+        
         //存入当前时间
         [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
         

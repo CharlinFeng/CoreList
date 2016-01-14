@@ -29,7 +29,11 @@
 
 @property (nonatomic,weak) UIView *emptyView, *errorView;
 
+@property (nonatomic,assign) NSTimeInterval delayLoadDuration;
+
 @property (nonatomic,assign) UIEdgeInsets originalScrollInsets;
+
+
 
 
 /** 分类访问接口 */
