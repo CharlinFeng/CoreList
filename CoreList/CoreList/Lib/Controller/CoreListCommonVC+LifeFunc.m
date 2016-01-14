@@ -83,16 +83,15 @@
     
     [self backBtnPrepare];
     
-
+    
 }
 
 -(void)appEnterBackground:(NSNotification *)noti{
-    self.originalScrollInsets = self.scrollView.mj_header.scrollViewOriginalInset;
     [self removeHeaderRefreshControl];
 }
 
 -(void)appEnterForground:(NSNotification *)noti{
-
+    
     if([self listVC_RefreshType] != ListVCRefreshAddTypeBottomRefreshOnly){
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:0.25 animations:^{
@@ -120,9 +119,14 @@
 
 /** viewDidAppearAction */
 -(void)viewDidAppearAction{
+
+    if (!UIEdgeInsetsEqualToEdgeInsets(self.originalScrollInsets, UIEdgeInsetsZero)){self.scrollView.contentInset = self.originalScrollInsets;}
+ 
+    
+    NSLog(@"----------%@",NSStringFromUIEdgeInsets(self.scrollView.contentInset));
     
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
-
+    
     //取出上次时间
     NSString *key = [self listVC_Update_Delay_Key];
     NSTimeInterval duration = [[self listVC_Model_Class] CoreModel_Duration];
@@ -134,7 +138,7 @@
     if(!self.hasData){
         
         if(self.delayLoadDuration > 0){
-        
+            
             [self performSelector:@selector(refreshDataInMainThead:) withObject:@(NO) afterDelay:0.25];
             
         }else{
@@ -163,9 +167,9 @@
 
 
 -(void)dealloc{
-//    [self removeHeaderRefreshControl];
-//    [self removeFooterRefreshControl];
-//    [self.scrollView  removeFromSuperview];
+    //    [self removeHeaderRefreshControl];
+    //    [self removeFooterRefreshControl];
+    //    [self.scrollView  removeFromSuperview];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self navBarScroll_Disable];
     self.scrollView = nil;

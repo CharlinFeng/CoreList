@@ -12,7 +12,7 @@
 #import "CoreModel.h"
 #import "CoreListCommonVC+Data.h"
 #import "NSArray+CoreListExtend.h"
-
+#import "CoreStatus.h"
 
 static NSString const *NoMoreDataMsg = @"没有更多数据了";
 
@@ -48,6 +48,8 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 -(void)headerRefreshAction{
     
     if(self.scrollView.isDragging) return;
+    
+    if(![CoreStatus isNETWORKEnable]) {[self.scrollView.mj_header endRefreshing]; return;};
     
 //    dispatch_async(dispatch_get_main_queue(), ^{
     
@@ -114,8 +116,6 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
         
         [(UITableView *)self.scrollView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewRowAnimationTop animated:YES];
     });
-    
-
 }
 
 
@@ -154,6 +154,8 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
         });
     }
     
+    UIEdgeInsets insets = self.originalScrollInsets;
+    
     if(count < pageSize){//新的一页数据不足pagesize
         
         if(CoreModelDataSourceHostType_Sqlite_Nil == sourceType){
@@ -166,10 +168,19 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
             [self endFooterRefresWithMsg:NoMoreDataMsg];
         });
         
+        if(!UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsZero, self.originalScrollInsets)){insets.bottom=0;}
+        
     }else if (count >= pageSize){//有数据，满载
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.scrollView.mj_footer endRefreshing];
+        });
+    }
+    
+    if(!UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsZero, self.originalScrollInsets)){
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.scrollView.contentInset = insets;
         });
     }
 }

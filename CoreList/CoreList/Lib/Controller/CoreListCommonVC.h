@@ -5,7 +5,7 @@
 #import <UIKit/UIKit.h>
 #import "ViewControllerListProtocol.h"
 #import "CoreListCommonVCProtocol.h"
-
+#import "Reachability.h"
 
 @interface CoreListCommonVC : UIViewController<ViewControllerListProtocol, CoreListCommonVCProtocol>
 
@@ -29,12 +29,11 @@
 
 @property (nonatomic,weak) UIView *emptyView, *errorView;
 
-@property (nonatomic,assign) NSTimeInterval delayLoadDuration;
-
 @property (nonatomic,assign) UIEdgeInsets originalScrollInsets;
 
+@property (nonatomic,assign) NSTimeInterval delayLoadDuration;
 
-
+@property (nonatomic,strong) Reachability *readchability;
 
 /** 分类访问接口 */
 
