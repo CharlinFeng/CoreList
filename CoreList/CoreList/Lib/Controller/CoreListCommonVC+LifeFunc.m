@@ -87,18 +87,21 @@
 }
 
 -(void)appEnterBackground:(NSNotification *)noti{
-    [self removeHeaderRefreshControl];
+    
+    self.fixApplicationEnterInsets = self.scrollView.contentInset;
+    
+//    [self removeHeaderRefreshControl];
 }
 
 -(void)appEnterForground:(NSNotification *)noti{
     
     if([self listVC_RefreshType] != ListVCRefreshAddTypeBottomRefreshOnly){
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:0.25 animations:^{
-                self.scrollView.contentInset = self.originalScrollInsets;
-            }];
+//            [UIView animateWithDuration:0.25 animations:^{
+                self.scrollView.contentInset = self.fixApplicationEnterInsets;
+//            }];
             
-            [self headerRefreshAdd];
+//            [self headerRefreshAdd];
         });
     }
 }
