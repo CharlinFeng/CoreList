@@ -65,6 +65,10 @@
 /** viewDidLoadAction */
 -(void)viewDidLoadAction{
     
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.extendedLayoutIncludesOpaqueBars = YES;
+    
     //监听通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterBackground:) name:UIApplicationWillResignActiveNotification object:nil];
     
