@@ -23,7 +23,7 @@
 - (IBAction)showTableViewListVC:(id)sender {
     
     NewsListVC *newsListVC  = [[NewsListVC alloc] init];
-    
+//    newsListVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:newsListVC animated:YES];
 }
 

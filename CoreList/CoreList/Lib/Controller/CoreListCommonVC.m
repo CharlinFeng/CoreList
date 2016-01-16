@@ -46,6 +46,8 @@
     });
 }
 
+
+
 -(void)setShyNavBarOff:(BOOL)shyNavBarOff{
 
     _shyNavBarOff = shyNavBarOff;
@@ -70,6 +72,7 @@
         [btn setBackgroundImage:[UIImage imageNamed:@"CoreList.bundle/back_top"] forState:UIControlStateNormal];
         
         UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:frame];
+        toolBar.barStyle = UIBarStyleBlackTranslucent;
         [_back2TopView addSubview:toolBar];
         [_back2TopView addSubview:btn];
         
@@ -78,12 +81,15 @@
         
         [btn addTarget:self action:@selector(back2Top) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_back2TopView];
+        CGFloat marginBottom = 20;
+        if(!self.hidesBottomBarWhenPushed && self.tabBarController != nil && !self.tabBarController.tabBar.hidden) {marginBottom += self.tabBarController.tabBar.bounds.size.height;}
+        
         
         _back2TopView.translatesAutoresizingMaskIntoConstraints = NO;
         NSDictionary *views = @{@"back2TopView": _back2TopView};
         
         NSArray *v_hor = [NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"H:[back2TopView(==%@)]-20-|", @(wh)] options:0 metrics:nil views:views];
-        NSArray *v_ver = [NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:[back2TopView(==%@)]-60-|", @(wh)] options:0 metrics:nil views:views];
+        NSArray *v_ver = [NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:[back2TopView(==%@)]-%@-|", @(wh),@(marginBottom)] options:0 metrics:nil views:views];
         [self.view addConstraints:v_hor];[self.view addConstraints:v_ver];
         
         _back2TopView.layer.cornerRadius = wh/2;

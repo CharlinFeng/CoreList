@@ -15,6 +15,8 @@
 
 +(void)initialize{
     
+    if([[self modelName] isEqualToString:@"CoreModel"]) return;
+   
     if(![self CoreModel_NeedFMDB]) return;
     
     //自动创表

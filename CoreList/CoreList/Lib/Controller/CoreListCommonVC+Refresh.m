@@ -116,12 +116,13 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
         
         [(UITableView *)self.scrollView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewRowAnimationTop animated:YES];
     });
+    
 }
 
 
 /** 刷新成功：底部 */
 -(void)refreshSuccess4Footer:(NSArray *)models sourceType:(CoreModelDataSourceType)sourceType{
-    
+
     NSUInteger count = models.count;
     
     NSUInteger pageSize = self.modelPageSize;
@@ -156,6 +157,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
     UIEdgeInsets insets = self.originalScrollInsets;
     
+    CGFloat finalInsetsBottom = MJRefreshFooterHeight;
     if(count < pageSize){//新的一页数据不足pagesize
         
         if(CoreModelDataSourceHostType_Sqlite_Nil == sourceType){
@@ -167,15 +169,19 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
         dispatch_async(dispatch_get_main_queue(), ^{
             [self endFooterRefresWithMsg:NoMoreDataMsg];
         });
-        
-        if(!UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsZero, self.originalScrollInsets)){insets.bottom=0;}
+        finalInsetsBottom = 0;
+        if(self.tabBarController != nil  && !self.tabBarController.tabBar.hidden){finalInsetsBottom +=self.tabBarController.tabBar.bounds.size.height;}
         
     }else if (count >= pageSize){//有数据，满载
+        
+        if(self.tabBarController != nil  && !self.tabBarController.tabBar.hidden){finalInsetsBottom +=self.tabBarController.tabBar.bounds.size.height;}
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.scrollView.mj_footer endRefreshing];
         });
     }
+    
+    insets.bottom = finalInsetsBottom;
     
     if(!UIEdgeInsetsEqualToEdgeInsets(UIEdgeInsetsZero, self.originalScrollInsets)){
         

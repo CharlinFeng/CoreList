@@ -65,4 +65,6 @@
 
 @property (nonatomic,assign) BOOL needCompareData;
 
+@property (nonatomic,assign) BOOL isViewDidAppeare;
+
 @end

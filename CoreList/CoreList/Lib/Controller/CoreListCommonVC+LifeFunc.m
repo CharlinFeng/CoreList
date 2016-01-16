@@ -77,6 +77,11 @@
     [self navBarShow];
     [self navBarScroll_Enable];
     
+    //默认关闭shyNavBar
+    self.shyNavBarOff = YES;
+    
+    
+    
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
     
     //安装刷新控件
@@ -126,8 +131,26 @@
 
 /** viewDidAppearAction */
 -(void)viewDidAppearAction{
+    
+    if(!self.isViewDidAppeare){
+    
+        self.isViewDidAppeare = YES;
+        
+        UIEdgeInsets insets = self.originalScrollInsets;
+        
+        CGFloat bottom = MJRefreshFooterHeight;
+        
+        if(insets.top == 0 && self.navigationController != nil && !self.navigationController.navigationBarHidden){insets.top = self.navigationController.navigationBar.bounds.size.height + 20;}
+        
+        if(self.tabBarController != nil  && !self.tabBarController.tabBar.hidden ){ bottom += self.tabBarController.tabBar.bounds.size.height;NSLog(@"--------tabBarController:%@",@(bottom));}
+        
+        insets.bottom = bottom;
+        
+        self.originalScrollInsets = insets;
+    }
+    
 
-    if (!UIEdgeInsetsEqualToEdgeInsets(self.originalScrollInsets, UIEdgeInsetsZero)){self.scrollView.contentInset = self.originalScrollInsets;}
+    self.scrollView.contentInset = self.originalScrollInsets;
  
     
     NSLog(@"----------%@",NSStringFromUIEdgeInsets(self.scrollView.contentInset));
