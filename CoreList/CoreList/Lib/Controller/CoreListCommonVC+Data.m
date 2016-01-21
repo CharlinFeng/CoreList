@@ -228,7 +228,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             }else{
                 
                 [self.view addSubview:emptyView];
-                
+                self.emptyView.alpha = 1;
                 [emptyView autoLayoutFillSuperView];
             
             }
