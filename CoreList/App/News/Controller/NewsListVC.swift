@@ -16,6 +16,16 @@ class NewsListVC: CoreListTableViewController {
 
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let vc = UIViewController()
+        
+        vc.view.backgroundColor = UIColor.whiteColor()
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(CoreListVCNeedRefreshDataNoti, object: nil)
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
 }
 

@@ -12,7 +12,7 @@
 /** 公共文件 */
 #import "CoreListModel.h"
 #import "CoreListCommonVC+Main.h"
-
+#import "CoreListConst.h"
 
 /** tableview */
 #import "CoreListTableViewController.h"

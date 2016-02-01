@@ -9,6 +9,8 @@
 #ifndef CoreList_CoreListConst_h
 #define CoreList_CoreListConst_h
 
+#define CoreListVCNeedRefreshDataNoti @"CoreListVCNeedRefreshDataNoti"
+
 
 //ios系统版本
 #define ios8x [[[UIDevice currentDevice] systemVersion] floatValue] >=8.0f

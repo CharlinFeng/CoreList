@@ -53,26 +53,29 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
 //    dispatch_async(dispatch_get_main_queue(), ^{
     
-        [self.emptyView removeFromSuperview];
-        [self.errorView removeFromSuperview];
-  
-        [self removeFooterRefreshControl];
-        
-        if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
-        
-        //标明刷新类型
-        self.refreshType = ListVCRefreshActionTypeHeader;
-        
-        //页码复位
-        self.page = [[self listVC_Model_Class] CoreModel_StartPage];
-        
-        //底部刷新控件复位
-        [self.scrollView.mj_footer endRefreshing];
-        
-        //找模型要获取
-        [self fetchDataFromModel];
-        
-        self.isRefreshData=YES;
+    self.emptyView.alpha = 0;
+    [self.emptyView removeFromSuperview];
+    
+    self.errorView.alpha = 0;
+    [self.errorView removeFromSuperview];
+
+    [self removeFooterRefreshControl];
+    
+    if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
+    
+    //标明刷新类型
+    self.refreshType = ListVCRefreshActionTypeHeader;
+    
+    //页码复位
+    self.page = [[self listVC_Model_Class] CoreModel_StartPage];
+    
+    //底部刷新控件复位
+    [self.scrollView.mj_footer endRefreshing];
+    
+    //找模型要获取
+    [self fetchDataFromModel];
+    
+    self.isRefreshData=YES;
 //    });
 }
 

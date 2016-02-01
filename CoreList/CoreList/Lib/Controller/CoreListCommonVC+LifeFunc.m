@@ -16,6 +16,7 @@
 #import "CoreListCommonVC+BackBtn.h"
 #import "CoreListCommonVC+ScrollView.h"
 #import "CoreListCommonVC+Main.h"
+#import "CoreListConst.h"
 
 @interface CoreListCommonVC ()<UIScrollViewDelegate>
 
@@ -92,7 +93,13 @@
     
     [self backBtnPrepare];
     
+    self.needRefreshData = YES;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needRefreshNotiAction) name:CoreListVCNeedRefreshDataNoti object:nil];
+}
+
+-(void)needRefreshNotiAction{
+    self.needRefreshData = YES;
 }
 
 -(void)appEnterBackground:(NSNotification *)noti{
@@ -165,7 +172,7 @@
     BOOL needTriggerHeaderAction = lastTime + duration < now;
     
     //如果没有数据，直接请求
-    if(!self.hasData){
+    if(!self.hasData || self.needRefreshData){
         
         if(self.delayLoadDuration > 0){
             
@@ -181,7 +188,7 @@
         
     }else{
         
-        if(needTriggerHeaderAction){
+        if(needTriggerHeaderAction || self.needRefreshData){
             
             [self performSelector:@selector(refreshDataInMainThead:) withObject:@(NO) afterDelay:1.0];
             
