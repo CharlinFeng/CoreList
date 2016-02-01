@@ -213,23 +213,19 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
         
         BOOL noData = models == nil || count == 0;
 
-        UIView *emptyView = [self listVC_StatusView_Empty];
-        
-        self.emptyView = emptyView;
-        
         if(noData){//没有数据
             
             if (self.needOffCoreIVWhenNoData) return;
             
-            if (emptyView == nil) {
+            if (self.emptyView == nil) {
                 
                 [CoreIV showWithType:IVTypeError view:self.view msg:@"没有更多数据了" failClickBlock:nil];
                 
             }else{
                 
-                [self.view addSubview:emptyView];
+                [self.view addSubview:self.emptyView];
                 self.emptyView.alpha = 1;
-                [emptyView autoLayoutFillSuperView];
+                [self.emptyView autoLayoutFillSuperView];
             
             }
             

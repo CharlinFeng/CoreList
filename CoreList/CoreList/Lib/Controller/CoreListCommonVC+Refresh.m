@@ -58,7 +58,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
     self.errorView.alpha = 0;
     [self.errorView removeFromSuperview];
-
+    
     [self removeFooterRefreshControl];
     
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;

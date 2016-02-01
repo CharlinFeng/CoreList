@@ -47,6 +47,7 @@
 		898A62131BA27D760098A0AD /* NewsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898A62041BA27D760098A0AD /* NewsListCell.xib */; };
 		898A62151BA27D760098A0AD /* TGModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A620B1BA27D760098A0AD /* TGModel.m */; };
 		898A62171BA27D760098A0AD /* TGCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898A620F1BA27D760098A0AD /* TGCell.xib */; };
+		899155291C5F6ED200D3566B /* CoreListVCNeedRefreshNotiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 899155281C5F6ED200D3566B /* CoreListVCNeedRefreshNotiModel.m */; };
 		89A7E65A1C47AD480057AEEF /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A7E6301C47AD480057AEEF /* MJRefreshAutoFooter.m */; };
 		89A7E65B1C47AD480057AEEF /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A7E6321C47AD480057AEEF /* MJRefreshBackFooter.m */; };
 		89A7E65C1C47AD480057AEEF /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A7E6341C47AD480057AEEF /* MJRefreshComponent.m */; };
@@ -235,6 +236,8 @@
 		898A620A1BA27D760098A0AD /* TGModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TGModel.h; sourceTree = "<group>"; };
 		898A620B1BA27D760098A0AD /* TGModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TGModel.m; sourceTree = "<group>"; };
 		898A620F1BA27D760098A0AD /* TGCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TGCell.xib; sourceTree = "<group>"; };
+		899155271C5F6ED200D3566B /* CoreListVCNeedRefreshNotiModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListVCNeedRefreshNotiModel.h; sourceTree = "<group>"; };
+		899155281C5F6ED200D3566B /* CoreListVCNeedRefreshNotiModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListVCNeedRefreshNotiModel.m; sourceTree = "<group>"; };
 		89A7E62F1C47AD480057AEEF /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		89A7E6301C47AD480057AEEF /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		89A7E6311C47AD480057AEEF /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -954,6 +957,8 @@
 			children = (
 				89A7E6961C47C4B60057AEEF /* CoreListModel.h */,
 				89A7E6971C47C4B60057AEEF /* CoreListModel.m */,
+				899155271C5F6ED200D3566B /* CoreListVCNeedRefreshNotiModel.h */,
+				899155281C5F6ED200D3566B /* CoreListVCNeedRefreshNotiModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1424,6 +1429,7 @@
 				89A7E6691C47AD480057AEEF /* MJRefreshConst.m in Sources */,
 				89D4EC0C1C099C5900F81377 /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m in Sources */,
 				89A7E6B41C47C4B60057AEEF /* CoreListModel.m in Sources */,
+				899155291C5F6ED200D3566B /* CoreListVCNeedRefreshNotiModel.m in Sources */,
 				89D4EC131C099C5900F81377 /* DGActivityIndicatorTriplePulseAnimation.m in Sources */,
 				89D4EC0B1C099C5900F81377 /* DGActivityIndicatorLineScalePulseOutAnimation.m in Sources */,
 				89D4EC151C099C5900F81377 /* DGActivityIndicatorTwoDotsAnimation.m in Sources */,

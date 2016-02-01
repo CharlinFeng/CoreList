@@ -16,6 +16,7 @@
 #import "CoreListCommonVC+BackBtn.h"
 #import "CoreListCommonVC+ScrollView.h"
 #import "CoreListCommonVC+Main.h"
+#import "CoreListVCNeedRefreshNotiModel.h"
 
 @interface CoreListCommonVC ()<UIScrollViewDelegate>
 
@@ -64,6 +65,9 @@
 
 /** viewDidLoadAction */
 -(void)viewDidLoadAction{
+
+    self.emptyView = [self listVC_StatusView_Empty];
+    self.errorView = [self listVC_StatusView_Error];
     
     self.edgesForExtendedLayout = UIRectEdgeAll;
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -80,19 +84,32 @@
     //默认关闭shyNavBar
     self.shyNavBarOff = YES;
     
-    
-    
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
-    
-    //安装刷新控件
-    ListVCRefreshAddType refreshType = [self listVC_RefreshType];
-    
+
     //设置代理
     if(self.scrollView.delegate == nil) self.scrollView.delegate = self;
     
     [self backBtnPrepare];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needRefreshNoti:) name:CoreListVCNeedRefreshDataNoti object:nil];
     
+}
+
+-(void)needRefreshNoti:(NSNotification *)noti{
+
+    CoreListVCNeedRefreshNotiModel *m = noti.userInfo[CoreListVCNeedRefreshDataNoti];
+    
+    if(m==nil || ![m isKindOfClass:[CoreListVCNeedRefreshNotiModel class]]){return;}
+    
+    NSString *str_self_cls = NSStringFromClass([self class]);
+    NSString *str_m_cls = NSStringFromClass(m.CoreListControllerClass);
+    NSLog(@"%@,%@,%@",str_self_cls,str_m_cls,@(m.vcIndex));
+    if([str_self_cls isEqualToString:str_m_cls] && self.coreListVCIndex == m.vcIndex){
+        NSLog(@"需要刷新");
+        self.needRefreshData = YES;
+    }else{
+        NSLog(@"不需要刷新");
+    }
 }
 
 -(void)appEnterBackground:(NSNotification *)noti{
@@ -167,7 +184,7 @@
     //如果没有数据，直接请求
     if(!self.hasData){
         
-        if(self.delayLoadDuration > 0){
+        if(self.delayLoadDuration > 0 || self.needRefreshData){
             
             [self performSelector:@selector(refreshDataInMainThead:) withObject:@(NO) afterDelay:0.25];
             
@@ -181,7 +198,7 @@
         
     }else{
         
-        if(needTriggerHeaderAction){
+        if(needTriggerHeaderAction || self.needRefreshData){
             
             [self performSelector:@selector(refreshDataInMainThead:) withObject:@(NO) afterDelay:1.0];
             

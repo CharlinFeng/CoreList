@@ -18,8 +18,6 @@
 /** 刷新页面数据 */
 -(void)refreshDataInMainThead:(BOOL)inMainThead{
  
-    
-    
     self.hasData = NO;
     self.needRefreshData = NO;
     if(!self.scrollView.mj_header.isRefreshing){

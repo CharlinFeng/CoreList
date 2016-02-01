@@ -27,7 +27,7 @@
 
 @property (nonatomic,assign) BOOL needOffCoreIVWhenNoData;
 
-@property (nonatomic,weak) UIView *emptyView, *errorView;
+@property (nonatomic,strong) UIView *emptyView, *errorView;
 
 @property (nonatomic,assign) UIEdgeInsets originalScrollInsets,fixApplicationEnterInsets;
 
@@ -70,5 +70,7 @@
 @property (nonatomic,assign) BOOL notAdjustScrollViewInsets;
 
 @property (nonatomic,assign) BOOL needRefreshData;
+
+@property (nonatomic,assign) NSInteger coreListVCIndex;
 
 @end

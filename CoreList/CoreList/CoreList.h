@@ -26,6 +26,7 @@
 /** layout */
 #import "CLWaterflowLayout.h"
 
+#import "CoreListVCNeedRefreshNotiModel.h"
 
 
 

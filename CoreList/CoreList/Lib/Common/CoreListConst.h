@@ -9,7 +9,7 @@
 #ifndef CoreList_CoreListConst_h
 #define CoreList_CoreListConst_h
 
-#define CoreListVCNeedRefreshDataNoti @"CoreListVCNeedRefreshDataNoti"
+
 
 
 //ios系统版本
