@@ -67,6 +67,8 @@
 
 @property (nonatomic,assign) BOOL isViewDidAppeare;
 
+@property (nonatomic,assign) BOOL notAdjustScrollViewInsets;
+
 @property (nonatomic,assign) BOOL needRefreshData;
 
 @end

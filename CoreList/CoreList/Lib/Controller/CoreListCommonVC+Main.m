@@ -25,6 +25,7 @@
     if(!self.scrollView.mj_header.isRefreshing){
     
         if(inMainThead){
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 [self back2Top];
@@ -32,6 +33,7 @@
                 [self dismissCustomView_EmptyView_ErrorView];
                 [self refreshData_Real];
             });
+            
         }else{
         
             [self back2Top];
@@ -39,8 +41,6 @@
             [self dismissCustomView_EmptyView_ErrorView];
             [self refreshData_Real];
         }
-        
-
         
     }else{
         
@@ -54,7 +54,6 @@
                 [self performSelector:@selector(refreshData_Real) withObject:nil afterDelay:1];
             });
 
-            
         }else{
             
             [self back2Top];

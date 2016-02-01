@@ -16,7 +16,6 @@
 #import "CoreListCommonVC+BackBtn.h"
 #import "CoreListCommonVC+ScrollView.h"
 #import "CoreListCommonVC+Main.h"
-#import "CoreListConst.h"
 
 @interface CoreListCommonVC ()<UIScrollViewDelegate>
 
@@ -93,31 +92,25 @@
     
     [self backBtnPrepare];
     
-    self.needRefreshData = YES;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needRefreshNotiAction) name:CoreListVCNeedRefreshDataNoti object:nil];
-}
-
--(void)needRefreshNotiAction{
-    self.needRefreshData = YES;
 }
 
 -(void)appEnterBackground:(NSNotification *)noti{
     
     self.fixApplicationEnterInsets = self.scrollView.contentInset;
     
-//    [self removeHeaderRefreshControl];
+    //    [self removeHeaderRefreshControl];
 }
 
 -(void)appEnterForground:(NSNotification *)noti{
     
     if([self listVC_RefreshType] != ListVCRefreshAddTypeBottomRefreshOnly){
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [UIView animateWithDuration:0.25 animations:^{
-                self.scrollView.contentInset = self.fixApplicationEnterInsets;
-//            }];
+            //            [UIView animateWithDuration:0.25 animations:^{
+            self.scrollView.contentInset = self.fixApplicationEnterInsets;
+            //            }];
             
-//            [self headerRefreshAdd];
+            //            [self headerRefreshAdd];
         });
     }
 }
@@ -139,8 +132,8 @@
 /** viewDidAppearAction */
 -(void)viewDidAppearAction{
     
-    if(!self.isViewDidAppeare){
-    
+    if(!self.isViewDidAppeare && !self.notAdjustScrollViewInsets){
+        
         self.isViewDidAppeare = YES;
         
         UIEdgeInsets insets = self.originalScrollInsets;
@@ -151,14 +144,14 @@
         
         if(self.tabBarController != nil  && !self.tabBarController.tabBar.hidden ){ bottom += self.tabBarController.tabBar.bounds.size.height;NSLog(@"--------tabBarController:%@",@(bottom));}
         
-        insets.bottom = bottom;
+        insets.bottom += bottom;
         
         self.originalScrollInsets = insets;
     }
     
-
+    
     self.scrollView.contentInset = self.originalScrollInsets;
- 
+    
     
     NSLog(@"----------%@",NSStringFromUIEdgeInsets(self.scrollView.contentInset));
     
@@ -172,7 +165,7 @@
     BOOL needTriggerHeaderAction = lastTime + duration < now;
     
     //如果没有数据，直接请求
-    if(!self.hasData || self.needRefreshData){
+    if(!self.hasData){
         
         if(self.delayLoadDuration > 0){
             
@@ -188,7 +181,7 @@
         
     }else{
         
-        if(needTriggerHeaderAction || self.needRefreshData){
+        if(needTriggerHeaderAction){
             
             [self performSelector:@selector(refreshDataInMainThead:) withObject:@(NO) afterDelay:1.0];
             
