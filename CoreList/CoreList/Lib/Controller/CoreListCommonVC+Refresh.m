@@ -224,7 +224,10 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
     //添加顶部刷新控件
     if(self.scrollView.mj_header == nil) {
-        self.scrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshAction)];
+        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshAction)];
+        header.arrowView.alpha = 0;
+        header.lastUpdatedTimeLabel.hidden = YES;
+        self.scrollView.mj_header = header;
         self.scrollView.mj_header.automaticallyChangeAlpha = YES;
     }
 }
