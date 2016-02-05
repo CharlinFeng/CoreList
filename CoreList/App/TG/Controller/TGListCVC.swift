@@ -23,11 +23,14 @@ extension TGListCVC {
     override func listVC_View_Cell_Class() -> AnyClass! {return TGCell.self}
     
     /** 自定义空视图 */
-    override func listVC_StatusView_Empty() -> UIView! {return nil}
+    override func listVC_StatusView_Empty() -> AnyObject! {
+        return nil
+    }
     
     /** 自定义错误视图 */
-    override func listVC_StatusView_Error() -> UIView! {return nil}
-
+    override func listVC_StatusView_Error() -> AnyObject! {
+        return nil
+    }
     /** 请求参数 */
     override func listVC_Request_Params() -> [NSObject : AnyObject]! {return nil}
 

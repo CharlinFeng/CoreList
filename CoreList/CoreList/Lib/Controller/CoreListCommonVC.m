@@ -9,6 +9,8 @@
 #import "CoreListCommonVC.h"
 #import "CoreModel+Compare.h"
 #import "CoreListCommonVC+ScrollView.h"
+#import "corelistEmptyView.h"
+
 
 @interface CoreListCommonVC ()
 
@@ -99,5 +101,17 @@
     
     return _back2TopView;
 }
+
+
+-(UIView *)emptyView{
+
+    return [CoreListEmptyView emptyViewWithImageName:@"nil" desc:@"Defalt EmptyView" constant:0];
+}
+
+-(UIView *)errorView{
+    
+    return [CoreListEmptyView emptyViewWithImageName:@"nil" desc:@"Defalt ErrorView" constant:0];
+}
+
 
 @end

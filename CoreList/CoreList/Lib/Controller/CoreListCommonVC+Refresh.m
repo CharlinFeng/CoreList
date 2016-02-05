@@ -218,7 +218,6 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     self.hasFooter = YES;
 }
 
-
 /** 安装刷新控件：顶部刷新控件 */
 -(void)headerRefreshAdd{
     
@@ -246,7 +245,6 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
             self.scrollView.mj_footer = footer;
         }
     });
-    
 }
 
 

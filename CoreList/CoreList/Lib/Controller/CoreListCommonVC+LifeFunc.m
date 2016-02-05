@@ -66,9 +66,6 @@
 /** viewDidLoadAction */
 -(void)viewDidLoadAction{
 
-    self.emptyView = [self listVC_StatusView_Empty];
-    self.errorView = [self listVC_StatusView_Error];
-    
     self.edgesForExtendedLayout = UIRectEdgeAll;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.extendedLayoutIncludesOpaqueBars = YES;

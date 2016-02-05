@@ -16,6 +16,7 @@
 #import "CoreModelConst.h"
 #import "UIView+CoreListLayout.h"
 #import "CoreListCommonVC+Main.h"
+#import "CoreListEmptyView.h"
 
 static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
@@ -186,20 +187,32 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        UIView *errorView = [self listVC_StatusView_Error];
+        id errorObj = [self listVC_StatusView_Error];
+
+        UIView *errorView =nil;
         
-        self.errorView = errorView;
-        
-        if (errorView == nil) {
+        if (errorObj == nil){
             
-            [CoreIV showWithType:IVTypeError view:self.view msg:msg failClickBlock:failClickBlock];
+            errorView = self.errorView;
             
         }else{
             
-            [self.view addSubview:errorView];
+            if([errorObj isKindOfClass:[UIView class]]){
             
-            [errorView autoLayoutFillSuperView];
+                errorView = errorObj;
+                
+            }else{
+                
+                NSArray *array = (NSArray *)errorObj;
+                CoreListEmptyView *errorView_defalt = (CoreListEmptyView *)self.errorView;
+                errorView = errorView_defalt;
+                [errorView_defalt update:array[0] desc:array[1] constant:[array[2] floatValue]];
+            }
         }
+        
+        [self.view addSubview:errorView];
+        errorView.alpha = 1;
+        [errorView autoLayoutFillSuperView];
     });
 }
 
@@ -207,27 +220,43 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
 -(void)handlestatusViewWithModels:(NSArray *)models{
     
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         NSUInteger count = models.count;
         
         BOOL noData = models == nil || count == 0;
-
+     
         if(noData){//没有数据
             
             if (self.needOffCoreIVWhenNoData) return;
             
-            if (self.emptyView == nil) {
+            id emptyObj = [self listVC_StatusView_Empty];
+            
+            UIView *emptyView = nil;
+            
+            if(emptyObj == nil){
                 
-                [CoreIV showWithType:IVTypeError view:self.view msg:@"没有更多数据了" failClickBlock:nil];
+                emptyView = self.emptyView;
                 
-            }else{
+            }else {
                 
-                [self.view addSubview:self.emptyView];
-                self.emptyView.alpha = 1;
-                [self.emptyView autoLayoutFillSuperView];
+                if([emptyObj isKindOfClass:[UIView class]]){
+                
+                    emptyView = (UIView *)emptyObj;
+                    
+                }else {
+                
+                    NSArray *array = (NSArray *)emptyObj;
+                    CoreListEmptyView *emptyView_default = (CoreListEmptyView *)self.emptyView;
+                    emptyView = emptyView_default;
+                    [emptyView_default update:array[0] desc:array[1] constant:[array[2] floatValue]];
+                }
             
             }
+            
+            [self.view addSubview:emptyView];
+            emptyView.alpha = 1;
+            [emptyView autoLayoutFillSuperView];
+            
             
         }else{//有数据，隐藏
             

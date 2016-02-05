@@ -123,6 +123,8 @@
 		89D4EC161C099C5900F81377 /* DGActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4EBF21C099C5900F81377 /* DGActivityIndicatorView.m */; };
 		89DCDC0B1C3947F300CE7E8F /* NewsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DCDC0A1C3947F300CE7E8F /* NewsListCell.swift */; };
 		89DCDC0E1C39497200CE7E8F /* NewsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DCDC0D1C39497200CE7E8F /* NewsListVC.swift */; };
+		89EB6ADF1C6446DA001CBC6F /* CoreListEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EB6ADE1C6446DA001CBC6F /* CoreListEmptyView.m */; };
+		89EB6AE11C6446EC001CBC6F /* CoreListEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89EB6AE01C6446EC001CBC6F /* CoreListEmptyView.xib */; };
 		89F0ABDB1C39FBCB003BF291 /* TGListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F0ABDA1C39FBCB003BF291 /* TGListCVC.swift */; };
 		89F0ABDD1C39FCAA003BF291 /* TGCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F0ABDC1C39FCAA003BF291 /* TGCell.swift */; };
 		89F9990B1C12F7DE00DA2DC8 /* MJDictionaryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F998F51C12F7DE00DA2DC8 /* MJDictionaryCache.m */; };
@@ -392,6 +394,9 @@
 		89DCDC0A1C3947F300CE7E8F /* NewsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListCell.swift; sourceTree = "<group>"; };
 		89DCDC0C1C39480700CE7E8F /* oc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = oc.h; sourceTree = "<group>"; };
 		89DCDC0D1C39497200CE7E8F /* NewsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsListVC.swift; sourceTree = "<group>"; };
+		89EB6ADD1C6446DA001CBC6F /* CoreListEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListEmptyView.h; sourceTree = "<group>"; };
+		89EB6ADE1C6446DA001CBC6F /* CoreListEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListEmptyView.m; sourceTree = "<group>"; };
+		89EB6AE01C6446EC001CBC6F /* CoreListEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoreListEmptyView.xib; sourceTree = "<group>"; };
 		89F0ABDA1C39FBCB003BF291 /* TGListCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TGListCVC.swift; sourceTree = "<group>"; };
 		89F0ABDC1C39FCAA003BF291 /* TGCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TGCell.swift; sourceTree = "<group>"; };
 		89F998F41C12F7DE00DA2DC8 /* MJDictionaryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJDictionaryCache.h; sourceTree = "<group>"; };
@@ -990,6 +995,7 @@
 		89A7E69E1C47C4B60057AEEF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				89EB6ADC1C6446C3001CBC6F /* EmptyView */,
 				89A7E69F1C47C4B60057AEEF /* CollectionViewCell */,
 				89A7E6A21C47C4B60057AEEF /* TableViewCell */,
 			);
@@ -1116,6 +1122,16 @@
 				89D4EBEF1C099C5900F81377 /* DGActivityIndicatorTwoDotsAnimation.m */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		89EB6ADC1C6446C3001CBC6F /* EmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				89EB6ADD1C6446DA001CBC6F /* CoreListEmptyView.h */,
+				89EB6ADE1C6446DA001CBC6F /* CoreListEmptyView.m */,
+				89EB6AE01C6446EC001CBC6F /* CoreListEmptyView.xib */,
+			);
+			path = EmptyView;
 			sourceTree = "<group>";
 		};
 		89F998F31C12F7DE00DA2DC8 /* MJExtension */ = {
@@ -1313,6 +1329,7 @@
 				EE5839C01AB9953A00516AC1 /* Main.storyboard in Resources */,
 				898A62171BA27D760098A0AD /* TGCell.xib in Resources */,
 				89A7E6B51C47C4B60057AEEF /* CoreList.bundle in Resources */,
+				89EB6AE11C6446EC001CBC6F /* CoreListEmptyView.xib in Resources */,
 				893FC08D1C256A0900BA59BD /* Info.plist in Resources */,
 				898A62131BA27D760098A0AD /* NewsListCell.xib in Resources */,
 				89D4EBF41C099C5900F81377 /* CoreIV.xib in Resources */,
@@ -1433,6 +1450,7 @@
 				89D4EC131C099C5900F81377 /* DGActivityIndicatorTriplePulseAnimation.m in Sources */,
 				89D4EC0B1C099C5900F81377 /* DGActivityIndicatorLineScalePulseOutAnimation.m in Sources */,
 				89D4EC151C099C5900F81377 /* DGActivityIndicatorTwoDotsAnimation.m in Sources */,
+				89EB6ADF1C6446DA001CBC6F /* CoreListEmptyView.m in Sources */,
 				89F999111C12F7DE00DA2DC8 /* NSObject+MJClass.m in Sources */,
 				893FC0871C25632100BA59BD /* FMResultSet.m in Sources */,
 				89D4EBFA1C099C5900F81377 /* DGActivityIndicatorBallGridPulseAnimation.m in Sources */,

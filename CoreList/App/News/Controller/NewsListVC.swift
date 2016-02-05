@@ -45,10 +45,30 @@ extension NewsListVC {
     }
     
     /** 自定义空视图 */
-    override func listVC_StatusView_Empty() -> UIView! {return nil}
-    
+    override func listVC_StatusView_Empty() -> AnyObject! {
+        
+//        return nil
+        
+        
+//        let v = UIView()
+//        v.backgroundColor = UIColor.blueColor()
+//        return v
+        
+        return ["0","没有数据",60]
+    }
+
     /** 自定义错误视图 */
-    override func listVC_StatusView_Error() -> UIView! {return nil}
+    override func listVC_StatusView_Error() -> AnyObject! {
+        
+                return nil
+        
+        
+//                let v = UIView()
+//                v.backgroundColor = UIColor.redColor()
+//                return v
+        
+//        return ["0","请求失败",60]
+    }
     
     /** 参数 */
     override func listVC_Request_Params() -> [NSObject : AnyObject]! {return nil}
