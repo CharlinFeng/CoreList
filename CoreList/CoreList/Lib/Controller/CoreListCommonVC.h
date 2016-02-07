@@ -73,4 +73,6 @@
 
 @property (nonatomic,assign) NSInteger coreListVCIndex;
 
+@property (nonatomic,copy) void (^CoreListDidTrigerHeaderRefresh)();
+
 @end

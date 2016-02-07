@@ -51,6 +51,8 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
     if(![CoreStatus isNETWORKEnable]) {[self.scrollView.mj_header endRefreshing]; return;};
     
+    if(self.CoreListDidTrigerHeaderRefresh != nil){self.CoreListDidTrigerHeaderRefresh();}
+    
 //    dispatch_async(dispatch_get_main_queue(), ^{
     
     self.emptyView.alpha = 0;
