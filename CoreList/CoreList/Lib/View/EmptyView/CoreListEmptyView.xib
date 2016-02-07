@@ -11,15 +11,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5hq-Md-DOQ">
-                    <rect key="frame" x="80" y="164" width="160" height="160"/>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5hq-Md-DOQ">
+                    <rect key="frame" x="100" y="184" width="120" height="120"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="160" id="1jS-xt-2RF"/>
-                        <constraint firstAttribute="width" constant="160" id="wK3-bd-AJ0"/>
+                        <constraint firstAttribute="height" constant="120" id="1jS-xt-2RF"/>
+                        <constraint firstAttribute="width" constant="120" id="wK3-bd-AJ0"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzi-MU-M5F">
-                    <rect key="frame" x="160.5" y="334" width="0.0" height="0.0"/>
+                    <rect key="frame" x="160.5" y="314" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>

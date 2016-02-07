@@ -27,7 +27,7 @@
 #import "CLWaterflowLayout.h"
 
 #import "CoreListVCNeedRefreshNotiModel.h"
-
+#import "CoreListCommonVC+Refresh.h"
 
 
 #endif
