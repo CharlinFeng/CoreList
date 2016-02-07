@@ -45,7 +45,7 @@
 /*
  *  远程刷新方法
  */
-+(void)needRefreshWithVCIndex:(NSInteger)vcIndex;
++(void)needRefreshWithVCIndex:(NSInteger)vcIndex needMainThread:(BOOL)needMainThread;
 
 
 
