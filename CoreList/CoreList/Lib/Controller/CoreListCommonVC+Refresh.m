@@ -13,6 +13,7 @@
 #import "CoreListCommonVC+Data.h"
 #import "NSArray+CoreListExtend.h"
 #import "CoreStatus.h"
+#import "CoreListVCNeedRefreshNotiModel.h"
 
 static NSString const *NoMoreDataMsg = @"没有更多数据了";
 
@@ -264,6 +265,19 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     [self.scrollView.mj_footer endRefreshing];
     [self.scrollView.mj_footer removeFromSuperview];
     self.scrollView.mj_footer = nil;
+}
+
+
+
+/*
+ *  远程刷新方法
+ */
++(void)needRefreshWithVCIndex:(NSInteger)vcIndex{
+
+
+    CoreListVCNeedRefreshNotiModel *refreshModel = [CoreListVCNeedRefreshNotiModel quickNotiModel:[self class] vcIndex:vcIndex];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:CoreListVCNeedRefreshDataNoti object:nil userInfo:@{CoreListVCNeedRefreshDataNoti:refreshModel}];
 }
 
 @end

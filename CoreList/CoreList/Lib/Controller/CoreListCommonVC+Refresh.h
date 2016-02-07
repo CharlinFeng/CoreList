@@ -41,4 +41,12 @@
 -(void)removeHeaderRefreshControl;
 -(void)removeFooterRefreshControl;
 
+
+/*
+ *  远程刷新方法
+ */
++(void)needRefreshWithVCIndex:(NSInteger)vcIndex;
+
+
+
 @end
