@@ -7,7 +7,6 @@
 //
 
 #import "CoreListCommonVC+ScrollView.h"
-#import "UIViewController+ScrollingNavbar.h"
 #import "CoreListCommonVC+BackBtn.h"
 
 @interface CoreListCommonVC() <UIScrollViewDelegate>
@@ -23,17 +22,6 @@
 }
 
 
--(void)navBarShow{
-    [self showNavBarAnimated:YES];
-}
-
--(void)navBarScroll_Enable{
-    [self followScrollView:self.scrollView];
-}
-
--(void)navBarScroll_Disable{
-    [self stopFollowingScrollView];
-}
 
 
 -(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{

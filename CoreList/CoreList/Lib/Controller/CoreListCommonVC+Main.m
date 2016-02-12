@@ -18,48 +18,56 @@
 /** 刷新页面数据 */
 -(void)refreshDataInMainThead:(BOOL)inMainThead{
  
-    self.hasData = NO;
     self.needRefreshData = NO;
-    if(!self.scrollView.mj_header.isRefreshing){
     
+    if(self.scrollView.mj_header.isRefreshing){
+        
+        if(inMainThead){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self back2Top];
+                self.scrollView.userInteractionEnabled = NO;
+                [self.scrollView.mj_header endRefreshing];
+                
+                [self.emptyView dismiss:YES needMainTread:NO];
+                [self.errorView dismiss:YES needMainTread:NO];
+                [self performSelector:@selector(refreshData_Real) withObject:nil afterDelay:1];
+            });
+            
+        }else{
+            
+            [self back2Top];
+            self.scrollView.userInteractionEnabled = NO;
+            [self.scrollView.mj_header endRefreshing];
+            
+            [self.emptyView dismiss:YES needMainTread:NO];
+            [self.errorView dismiss:YES needMainTread:NO];
+            [self performSelector:@selector(refreshData_Real) withObject:nil afterDelay:1];
+        }
+
+    }else{
+
         if(inMainThead){
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 [self back2Top];
                 self.scrollView.userInteractionEnabled = NO;
-                [self dismissCustomView_EmptyView_ErrorView];
+                [self.emptyView dismiss:YES needMainTread:NO];
+                [self.errorView dismiss:YES needMainTread:NO];
                 [self refreshData_Real];
             });
             
         }else{
-        
-            [self back2Top];
-            self.scrollView.userInteractionEnabled = NO;
-            [self dismissCustomView_EmptyView_ErrorView];
-            [self refreshData_Real];
-        }
-        
-    }else{
-        
-        if(inMainThead){
-        
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self back2Top];
-                self.scrollView.userInteractionEnabled = NO;
-                [self.scrollView.mj_header endRefreshing];
-                [self dismissCustomView_EmptyView_ErrorView];
-                [self performSelector:@selector(refreshData_Real) withObject:nil afterDelay:1];
-            });
-
-        }else{
             
             [self back2Top];
             self.scrollView.userInteractionEnabled = NO;
-            [self.scrollView.mj_header endRefreshing];
-            [self dismissCustomView_EmptyView_ErrorView];
-            [self performSelector:@selector(refreshData_Real) withObject:nil afterDelay:1];
+            
+            [self.emptyView dismiss:YES needMainTread:NO];
+            [self.errorView dismiss:YES needMainTread:NO];
+            [self refreshData_Real];
         }
+
     }
 }
 
@@ -70,7 +78,6 @@
     
     if(self.scrollView.mj_header == nil){[self headerRefreshAdd];NSLog(@"安装");}
     [self dismissBack2TopBtn];
-    if(!self.shyNavBarOff) [self navBarShow];
     [self.scrollView.mj_footer removeFromSuperview];
     self.scrollView.mj_footer=nil;
     [self.scrollView.mj_header beginRefreshing];

@@ -54,8 +54,6 @@
 /** 返回顶部 */
 -(void)back2Top{
     
-    [self navBarShow];
-    
     if (self.dataList.count == 0) return;
     if (!self.hasData) return;
     
@@ -65,7 +63,7 @@
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
         
-        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
         
     }else{
         
@@ -73,8 +71,10 @@
         
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
         
-        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
     }
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self animWithParam:0];

@@ -12,7 +12,7 @@
 
 
 /** 数据请求地址 */
-+(NSString *)CoreModel_UrlString{return @"http://120.25.157.128/test/Test/test_content1";}
++(NSString *)CoreModel_UrlString{return @"http://120.25.157.128/test/Test/test_content";}
 
 
 @end

@@ -9,8 +9,8 @@
 #import "CoreListCommonVC.h"
 #import "CoreModel+Compare.h"
 #import "CoreListCommonVC+ScrollView.h"
-#import "corelistEmptyView.h"
-
+#import "CoreListCommonVC+Main.h"
+#import "MJRefresh.h"
 
 @interface CoreListCommonVC ()
 
@@ -49,16 +49,6 @@
 }
 
 
-
--(void)setShyNavBarOff:(BOOL)shyNavBarOff{
-
-    _shyNavBarOff = shyNavBarOff;
-
-    if(shyNavBarOff){
-    
-        [self navBarScroll_Disable];
-    }
-}
 
 -(UIView *)back2TopView {
 
@@ -105,12 +95,33 @@
 
 -(UIView *)emptyView{
 
-    return [CoreListEmptyView emptyViewWithImageName:@"nil" desc:@"Defalt EmptyView" constant:0];
+    CoreListMessageView *emptyView = [CoreListMessageView emptyViewWithImageName:@"nil" desc:@"暂无数据，单击获取" constant:0];
+    
+    emptyView.viewType = CoreListMessageViewTypeEmpty;
+    
+    __weak typeof(self) weakSelf=self;
+    
+    emptyView.ClickBlock = ^{
+    
+        [weakSelf refreshDataInMainThead:NO];
+    };
+    
+    return emptyView;
 }
 
 -(UIView *)errorView{
     
-    return [CoreListEmptyView emptyViewWithImageName:@"nil" desc:@"Defalt ErrorView" constant:0];
+    CoreListMessageView *errorView = [CoreListMessageView emptyViewWithImageName:@"nil" desc:@"加载失败，单击重试" constant:0];
+    
+    errorView.viewType = CoreListMessageViewTypeError;
+    
+    __weak typeof(self) weakSelf=self;
+    
+    errorView.ClickBlock = ^{
+        [weakSelf refreshDataInMainThead:NO];
+    };
+    
+    return errorView;
 }
 
 

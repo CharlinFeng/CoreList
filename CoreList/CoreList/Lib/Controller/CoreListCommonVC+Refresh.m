@@ -37,11 +37,16 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 /** 结束底部刷新 */
 -(void)endFooterRefresWithMsg:(NSString *)msg{
     
-    [self.scrollView.mj_footer endRefreshingWithNoMoreData];
+    if(msg != nil) {
+        
+        [self.scrollView.mj_footer endRefreshingWithNoMoreData];
+        
+        [(MJRefreshAutoStateFooter *)self.scrollView.mj_footer setTitle:[NSString stringWithFormat:@"温馨提示：%@",msg] forState:MJRefreshStateNoMoreData];
     
-    [(MJRefreshAutoStateFooter *)self.scrollView.mj_footer setTitle:msg forState:MJRefreshStateNoMoreData];
-    
-    [self removeFooterRefreshControl];
+    }else{
+        
+        [self removeFooterRefreshControl];
+    }
 }
 
 
@@ -50,17 +55,14 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
     if(self.scrollView.isDragging) return;
     
-    if(![CoreStatus isNETWORKEnable]) {[self.scrollView.mj_header endRefreshing]; return;};
+//    if(![CoreStatus isNETWORKEnable]) {[self.scrollView.mj_header endRefreshing]; return;};
     
     if(self.CoreListDidTrigerHeaderRefresh != nil){self.CoreListDidTrigerHeaderRefresh();}
     
 //    dispatch_async(dispatch_get_main_queue(), ^{
     
-    self.emptyView.alpha = 0;
-    [self.emptyView removeFromSuperview];
-    
-    self.errorView.alpha = 0;
-    [self.errorView removeFromSuperview];
+    [self.emptyView dismiss:NO needMainTread:NO];
+    [self.errorView dismiss:NO needMainTread:NO];
     
     [self removeFooterRefreshControl];
     
@@ -173,7 +175,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self endFooterRefresWithMsg:NoMoreDataMsg];
+            [self endFooterRefresWithMsg:nil];
         });
         finalInsetsBottom = 0;
         if(self.tabBarController != nil  && !self.tabBarController.tabBar.hidden){finalInsetsBottom +=self.tabBarController.tabBar.bounds.size.height;}
@@ -207,11 +209,11 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     NSUInteger count = models.count;
     
     if(count<=5){//不安装
-        [self endFooterRefresWithMsg:NoMoreDataMsg];
+        [self endFooterRefresWithMsg:nil];
         
     }else if (count >5 && count < self.modelPageSize){//安装，并将状态置为无数据
         
-        [self endFooterRefresWithMsg:NoMoreDataMsg];
+        [self endFooterRefresWithMsg:nil];
         
     }else if (count >= self.modelPageSize){//正常安装
         

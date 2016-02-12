@@ -6,6 +6,7 @@
 #import "ViewControllerListProtocol.h"
 #import "CoreListCommonVCProtocol.h"
 #import "Reachability.h"
+#import "CoreListMessageView.h"
 
 @interface CoreListCommonVC : UIViewController<ViewControllerListProtocol, CoreListCommonVCProtocol>
 
@@ -21,13 +22,7 @@
 /** 数据源有变化 */
 @property (nonatomic,copy) void (^DataListChangedAction)();
 
-
-/** 关闭shyNavBar功能 */
-@property (nonatomic,assign) BOOL shyNavBarOff;
-
-@property (nonatomic,assign) BOOL needOffCoreIVWhenNoData;
-
-@property (nonatomic,strong) UIView *emptyView, *errorView;
+@property (nonatomic,strong) CoreListMessageView *emptyView, *errorView;
 
 @property (nonatomic,assign) UIEdgeInsets originalScrollInsets,fixApplicationEnterInsets;
 

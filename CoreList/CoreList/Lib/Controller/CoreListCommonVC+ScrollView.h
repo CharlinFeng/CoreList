@@ -13,11 +13,5 @@
 
 -(void)scrollViewPrepare;
 
--(void)navBarShow;
-
--(void)navBarScroll_Enable;
-
--(void)navBarScroll_Disable;
-
 
 @end

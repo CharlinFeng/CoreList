@@ -9,14 +9,12 @@
 #import "CoreListCommonVC+Data.h"
 #import "CoreModel.h"
 #import "MJRefresh.h"
-#import "CoreIV.h"
 #import "CoreModel+Cache.h"
 #import "CoreListCommonVC+Refresh.h"
-#import "CoreIV.h"
 #import "CoreModelConst.h"
 #import "UIView+CoreListLayout.h"
 #import "CoreListCommonVC+Main.h"
-#import "CoreListEmptyView.h"
+#import "CoreListMessageView.h"
 
 static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
@@ -52,15 +50,13 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
         });
         
     } successBlock:^(NSArray *models, CoreModelDataSourceType sourceType,NSDictionary *userInfo){
-        
+      
         if(self.listVC_RefreshType == ListVCRefreshAddTypeBottomRefreshOnly){
         
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self removeHeaderRefreshControl];
             });
         }
-        
-        [CoreIV dismissFromView:self.view animated:YES];
         
         ListVCRefreshActionType refreshType = [[userInfo objectForKey:RefreshTypeKey] integerValue];
         
@@ -75,7 +71,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
                 [self handlestatusViewWithModels:models];
             }
             
-            if(!self.hasData && models.count==0 && !self.needOffCoreIVWhenNoData){
+            if(!self.hasData && models.count==0){
                 [self handlestatusViewWithModels:models];
                 
             }else{
@@ -96,7 +92,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             if(models.count ==0){
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self endFooterRefresWithMsg:@"没有更多数据了"];
+                    [self endFooterRefresWithMsg:nil];
                 });
                 
             }
@@ -105,44 +101,26 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             self.localDataNil = models.count ==0;
         }
         
-        
         //标明刷新类型：这句一定要放在后面，因为在修改刷新状态为无之前，状态值还有用
         self.refreshType = ListVCRefreshActionTypeNone;
         
     } errorBlock:^(NSString *errorResult,NSDictionary *userInfo) {
-        
-        
-        if(errorResult != nil && ![errorResult isEqualToString:NetWorkError]){ //网络请求成功，但服务器抛出错误
-            
-            __weak typeof(self) weakSelf=self;
-            
-            [CoreIV dismissFromView:self.view animated:YES];
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
-                [self showErrorViewWithMsg:@"加载失败，点击重试" failClickBlock:^{
 
-                    if(weakSelf.NetWorkErrorAction != nil) weakSelf.NetWorkErrorAction();
-                    
-                    [CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];
-                    
-                    [self refreshDataInMainThead:NO];
-                }];
-            });
-            
-            return;
-        }
+        //标记需要刷新
+        self.needRefreshData = YES;
         
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.scrollView.mj_header endRefreshing];
+        });
         
         if(self.hasData){
-            
             
             if(!self.hasFooter) return;
             
             if(self.localDataNil){
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self endFooterRefresWithMsg:@"数据加载失败"];
+                    [self endFooterRefresWithMsg:errorResult];
                 });
             }
             
@@ -151,7 +129,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    [self endFooterRefresWithMsg:@"数据加载失败"];
+                    [self endFooterRefresWithMsg:errorResult];
                 });
                 
                 //页码回退
@@ -164,18 +142,18 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
                 self.page -- ;
             }
             
+        }else{
+        
             
-            return;
+            //标明刷新类型
+            self.refreshType = ListVCRefreshActionTypeNone;
+            
+            [self showErrorViewWithMsg:errorResult failClickBlock:^{
+                
+                [self refreshDataInMainThead:NO];
+            }];
         }
-        
-        //标明刷新类型
-        self.refreshType = ListVCRefreshActionTypeNone;
-        
-        [self showErrorViewWithMsg:@"加载失败，点击重试" failClickBlock:^{
 
-            [CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];
-            [self refreshDataInMainThead:NO];
-        }];
     }];
 }
 
@@ -204,15 +182,14 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             }else{
                 
                 NSArray *array = (NSArray *)errorObj;
-                CoreListEmptyView *errorView_defalt = (CoreListEmptyView *)self.errorView;
+                CoreListMessageView *errorView_defalt = (CoreListMessageView *)self.errorView;
                 errorView = errorView_defalt;
                 [errorView_defalt update:array[0] desc:array[1] constant:[array[2] floatValue]];
             }
         }
         
-        [self.view addSubview:errorView];
-        errorView.alpha = 1;
-        [errorView autoLayoutFillSuperView];
+        [self.errorView showInView:self.view viewType:CoreListMessageViewTypeError needMainTread:NO];
+        
     });
 }
 
@@ -227,7 +204,8 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
      
         if(noData){//没有数据
             
-            if (self.needOffCoreIVWhenNoData) return;
+            //标记需要刷新
+            self.needRefreshData = YES;
             
             id emptyObj = [self listVC_StatusView_Empty];
             
@@ -246,32 +224,21 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
                 }else {
                 
                     NSArray *array = (NSArray *)emptyObj;
-                    CoreListEmptyView *emptyView_default = (CoreListEmptyView *)self.emptyView;
+                    CoreListMessageView *emptyView_default = (CoreListMessageView *)self.emptyView;
                     emptyView = emptyView_default;
                     [emptyView_default update:array[0] desc:array[1] constant:[array[2] floatValue]];
                 }
             
             }
+            [self.emptyView showInView:self.view viewType:CoreListMessageViewTypeEmpty needMainTread:NO];
+
             
-            [self.view addSubview:emptyView];
-            emptyView.alpha = 1;
-            [emptyView autoLayoutFillSuperView];
             
             
         }else{//有数据，隐藏
             
-            [CoreIV dismissFromView:self.view animated:YES];
-            
-            [UIView animateWithDuration:0.25 animations:^{
-                
-                self.emptyView.alpha = 0;
-                
-            } completion:^(BOOL finished) {
-                
-                [self.emptyView removeFromSuperview];
-                
-            }];
-            
+            [self.emptyView dismiss:YES needMainTread:NO];
+
             self.hasData = YES;
         }
         
@@ -279,20 +246,6 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 }
 
 
--(void)dismissCustomView_EmptyView_ErrorView{
-
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:0.25 animations:^{
-            
-            self.emptyView.alpha = 0;
-            self.errorView.alpha = 0;
-        } completion:^(BOOL finished) {
-            
-            [self.emptyView removeFromSuperview];
-            [self.errorView removeFromSuperview];
-        }];
-    });
-}
 
 
 -(BOOL)isNeedFMDB{

@@ -13,6 +13,12 @@ class NewsListVC: CoreListTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if #available(iOS 8.0, *) {
+            navigationController?.hidesBarsOnSwipe = true
+
+        } else {
+            // Fallback on earlier versions
+        }
 
     }
     
@@ -22,10 +28,6 @@ class NewsListVC: CoreListTableViewController {
         
         vc.view.backgroundColor = UIColor.whiteColor()
         
-        let m = CoreListVCNeedRefreshNotiModel.quickNotiModel(NewsListVC.self, vcIndex: 0)
-        let info = [CoreListVCNeedRefreshDataNoti: m]
-        NSNotificationCenter.defaultCenter().postNotificationName(CoreListVCNeedRefreshDataNoti, object: nil, userInfo: info)
-//
         navigationController?.pushViewController(vc, animated: true)
     }
 
