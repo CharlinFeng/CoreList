@@ -13,13 +13,7 @@ class NewsListVC: CoreListTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(iOS 8.0, *) {
-            navigationController?.hidesBarsOnSwipe = true
-
-        } else {
-            // Fallback on earlier versions
-        }
-
+//        self.autoHideBars = false
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -41,6 +41,11 @@
     
     /** viewWillAppearAction */
     [self viewWillAppearAction];
+    
+    if(self.autoHideBars){
+        
+        self.autoHideBars = YES;
+    }
 }
 
 
@@ -48,6 +53,7 @@
     
     [super viewWillDisappear:animated];
     
+    self.autoHideBars = NO;
 }
 
 
@@ -82,6 +88,8 @@
     [self backBtnPrepare];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needRefreshNoti:) name:CoreListVCNeedRefreshDataNoti object:nil];
+    
+    self.autoHideBars = YES;
     
 }
 

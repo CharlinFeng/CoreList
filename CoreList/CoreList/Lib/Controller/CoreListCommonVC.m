@@ -124,5 +124,14 @@
     return errorView;
 }
 
+-(void)setAutoHideBars:(BOOL)autoHideBars{
+
+    _autoHideBars = autoHideBars;
+    
+    if([UIDevice currentDevice].systemVersion.floatValue >= 8.0){
+        
+        self.navigationController.hidesBarsOnSwipe = autoHideBars;
+    }
+}
 
 @end

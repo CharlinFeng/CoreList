@@ -22,6 +22,10 @@
 /** 数据源有变化 */
 @property (nonatomic,copy) void (^DataListChangedAction)();
 
+
+/** 关闭shyNavBar功能 */
+@property (nonatomic,assign) BOOL autoHideBars;
+
 @property (nonatomic,strong) CoreListMessageView *emptyView, *errorView;
 
 @property (nonatomic,assign) UIEdgeInsets originalScrollInsets,fixApplicationEnterInsets;
