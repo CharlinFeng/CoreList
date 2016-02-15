@@ -31,7 +31,7 @@
                 
                 [self.emptyView dismiss:YES needMainTread:NO];
                 [self.errorView dismiss:YES needMainTread:NO];
-                [self performSelector:@selector(refreshData_Real) withObject:nil afterDelay:1];
+                [self performSelector:@selector(refreshData_Prepare) withObject:nil afterDelay:1];
             });
             
         }else{
@@ -42,7 +42,7 @@
             
             [self.emptyView dismiss:YES needMainTread:NO];
             [self.errorView dismiss:YES needMainTread:NO];
-            [self performSelector:@selector(refreshData_Real) withObject:nil afterDelay:1];
+            [self performSelector:@selector(refreshData_Prepare) withObject:nil afterDelay:1];
         }
 
     }else{
@@ -55,7 +55,7 @@
                 self.scrollView.userInteractionEnabled = NO;
                 [self.emptyView dismiss:YES needMainTread:NO];
                 [self.errorView dismiss:YES needMainTread:NO];
-                [self refreshData_Real];
+                [self refreshData_Prepare];
             });
             
         }else{
@@ -65,15 +65,31 @@
             
             [self.emptyView dismiss:YES needMainTread:NO];
             [self.errorView dismiss:YES needMainTread:NO];
-            [self refreshData_Real];
+            [self refreshData_Prepare];
         }
 
     }
 }
 
 
--(void)refreshData_Real{
+-(void)refreshData_Prepare{
     
+    if(self.scrollView.contentOffset.y >= [UIScreen mainScreen].bounds.size.height){
+    
+        [self back2Top];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self refreshData_Real];
+        });
+        
+    }else {
+    
+        [self refreshData_Real];
+    }
+
+}
+
+-(void)refreshData_Real{
     if(self.refreshType == ListVCRefreshAddTypeBoth || self.refreshType == ListVCRefreshAddTypeTopRefreshOnly) {if (self.scrollView.mj_header.isRefreshing) return;}
     
     if(self.scrollView.mj_header == nil){[self headerRefreshAdd];NSLog(@"安装");}
@@ -83,6 +99,8 @@
     [self.scrollView.mj_header beginRefreshing];
     self.scrollView.userInteractionEnabled = YES;
 }
+
+
 
 
 
