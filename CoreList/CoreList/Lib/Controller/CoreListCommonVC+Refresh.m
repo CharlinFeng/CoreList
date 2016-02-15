@@ -274,23 +274,11 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 /*
  *  远程刷新方法
  */
-+(void)needRefreshWithVCIndex:(NSInteger)vcIndex needMainThread:(BOOL)needMainThread{
++(void)needRefreshWithVCIndex:(NSInteger)vcIndex{
 
-    if(needMainThread){
+    CoreListVCNeedRefreshNotiModel *refreshModel = [CoreListVCNeedRefreshNotiModel quickNotiModel:[self class] vcIndex:vcIndex];
     
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            CoreListVCNeedRefreshNotiModel *refreshModel = [CoreListVCNeedRefreshNotiModel quickNotiModel:[self class] vcIndex:vcIndex];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:CoreListVCNeedRefreshDataNoti object:nil userInfo:@{CoreListVCNeedRefreshDataNoti:refreshModel}];
-        });
-    }else{
-    
-        
-        CoreListVCNeedRefreshNotiModel *refreshModel = [CoreListVCNeedRefreshNotiModel quickNotiModel:[self class] vcIndex:vcIndex];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:CoreListVCNeedRefreshDataNoti object:nil userInfo:@{CoreListVCNeedRefreshDataNoti:refreshModel}];
-    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:CoreListVCNeedRefreshDataNoti object:nil userInfo:@{CoreListVCNeedRefreshDataNoti:refreshModel}];
 }
 
 @end

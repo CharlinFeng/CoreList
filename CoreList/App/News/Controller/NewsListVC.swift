@@ -21,7 +21,7 @@ class NewsListVC: CoreListTableViewController {
         
         let vc = UIViewController()
         
-        NewsListVC.needRefreshWithVCIndex(0, needMainThread: false)
+        NewsListVC.needRefreshWithVCIndex(0)
         
         vc.view.backgroundColor = UIColor.whiteColor()
         
