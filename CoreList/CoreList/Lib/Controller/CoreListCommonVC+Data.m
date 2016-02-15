@@ -202,7 +202,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
         
         BOOL noData = models == nil || count == 0;
      
-        if(noData){//没有数据
+        if(noData && !self.hideStatusView){//没有数据
             
             //标记需要刷新
             self.needRefreshData = YES;
@@ -230,11 +230,9 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
                 }
             
             }
+            
             [self.emptyView showInView:self.view viewType:CoreListMessageViewTypeEmpty needMainTread:NO];
 
-            
-            
-            
         }else{//有数据，隐藏
             
             [self.emptyView dismiss:YES needMainTread:NO];

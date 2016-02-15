@@ -13,12 +13,15 @@ class NewsListVC: CoreListTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        self.autoHideBars = false
+    
+        self.autoHideBars = false
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let vc = UIViewController()
+        
+        NewsListVC.needRefreshWithVCIndex(0, needMainThread: false)
         
         vc.view.backgroundColor = UIColor.whiteColor()
         

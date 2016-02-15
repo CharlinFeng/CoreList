@@ -74,4 +74,6 @@
 
 @property (nonatomic,copy) void (^CoreListDidTrigerHeaderRefresh)();
 
+@property (nonatomic,assign) BOOL hideStatusView;
+
 @end
