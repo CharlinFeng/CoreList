@@ -19,6 +19,8 @@
 -(void)refreshDataInMainThead:(BOOL)inMainThead{
  
     self.needRefreshData = NO;
+    [self.emptyView dismiss:YES needMainTread:inMainThead];
+    [self.errorView dismiss:YES needMainTread:inMainThead];
     
     if(self.scrollView.mj_header.isRefreshing){
         
@@ -67,7 +69,6 @@
             [self.errorView dismiss:YES needMainTread:NO];
             [self refreshData_Prepare];
         }
-
     }
 }
 
