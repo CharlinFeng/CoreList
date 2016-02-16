@@ -89,8 +89,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needRefreshNoti:) name:CoreListVCNeedRefreshDataNoti object:nil];
     
-    self.autoHideBars = YES;
-    
+    self.autoHideBars = NO;
 }
 
 -(void)needRefreshNoti:(NSNotification *)noti{
