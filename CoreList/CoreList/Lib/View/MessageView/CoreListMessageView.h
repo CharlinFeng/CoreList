@@ -27,6 +27,7 @@ typedef enum{
 +(instancetype)emptyViewWithImageName:(NSString *)imageName desc:(NSString *)desc constant:(CGFloat)constant;
 
 -(void)showInView:(UIView *)view viewType:(CoreListMessageViewType)viewType needMainTread:(BOOL)needMainTread;
--(void)dismiss:(BOOL)anim needMainTread:(BOOL)needMainTread;
++(void)dismissFromView:(UIView *)sv;
+
 
 @end

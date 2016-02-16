@@ -43,33 +43,8 @@
 }
 
 -(void)showInView:(UIView *)view viewType:(CoreListMessageViewType)viewType needMainTread:(BOOL)needMainTread{
-    NSLog(@"来了几次？？？");
-    __block BOOL hasMessageView = NO;
     
-    [view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSLog(@"-----%@",NSStringFromClass([obj class]));
-        if([obj isKindOfClass:[self class]]){
-        
-            CoreListMessageView *view_temp = obj;
-            NSLog(@"viewType----%d",view_temp.viewType);
-            if(view_temp.viewType == viewType){
-            
-                hasMessageView = YES;
-                *stop = YES;
-            }
-        }
-        
-    }];
-    
-    if(hasMessageView){
-    
-        NSLog(@"已经有了");
-        return;
-    }else {
-    
-        NSLog(@"还没有发现");
-    }
-    
+    [CoreListMessageView dismissFromView:view];
 
     if(needMainTread){
     
@@ -86,44 +61,38 @@
     [self autoLayoutFillSuperView];
 }
 
--(void)dismiss:(BOOL)anim needMainTread:(BOOL)needMainTread{
+
++(void)dismissFromView:(UIView *)sv{
+
+    BOOL isMainThread = [NSThread isMainThread];
     
-    if(needMainTread){
-    
-        if(anim){
+    if(isMainThread){
+        
+        [sv.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull subview, NSUInteger idx, BOOL * _Nonnull stop) {
             
-            [UIView animateWithDuration:0.25 animations:^{
-                self.alpha = 0;
-            } completion:^(BOOL finished) {
+            if([subview isKindOfClass:[CoreListMessageView class]]){
                 
-                [self removeFromSuperview];
-            }];
-            
-        }else{
-            [self removeFromSuperview];
-        }
+                [subview removeFromSuperview];
+            }
+        }];
         
     }else{
     
-        if(anim){
+        dispatch_async(dispatch_get_main_queue(), ^{
             
-            [UIView animateWithDuration:0.25 animations:^{
-                self.alpha = 0;
-            } completion:^(BOOL finished) {
+            [sv.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull subview, NSUInteger idx, BOOL * _Nonnull stop) {
                 
-                [self removeFromSuperview];
+                if([subview isKindOfClass:[CoreListMessageView class]]){
+                    
+                    [subview removeFromSuperview];
+                }
             }];
-            
-        }else{
-            [self removeFromSuperview];
-        }
+        });
     }
 }
 
 - (IBAction)clickAction:(id)sender {
     
-    [self dismiss:YES needMainTread:NO];
-
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         if(self.ClickBlock != nil){self.ClickBlock();}

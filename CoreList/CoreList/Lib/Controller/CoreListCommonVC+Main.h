@@ -11,6 +11,6 @@
 @interface CoreListCommonVC (Main)
 
 /** 刷新页面数据 */
--(void)refreshDataInMainThead:(BOOL)inMainThead;
+-(void)refreshData;
 
 @end

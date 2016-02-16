@@ -103,7 +103,7 @@
     
     emptyView.ClickBlock = ^{
     
-        [weakSelf refreshDataInMainThead:NO];
+        [weakSelf refreshData];
     };
     
     return emptyView;
@@ -118,7 +118,7 @@
     __weak typeof(self) weakSelf=self;
     
     errorView.ClickBlock = ^{
-        [weakSelf refreshDataInMainThead:NO];
+        [weakSelf refreshData];
     };
     
     return errorView;

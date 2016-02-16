@@ -61,8 +61,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
 //    dispatch_async(dispatch_get_main_queue(), ^{
     
-    [self.emptyView dismiss:NO needMainTread:NO];
-    [self.errorView dismiss:NO needMainTread:NO];
+    [CoreListMessageView dismissFromView:self.view];
     
     [self removeFooterRefreshControl];
     

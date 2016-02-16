@@ -16,23 +16,21 @@
 @implementation CoreListCommonVC (Main)
 
 /** 刷新页面数据 */
--(void)refreshDataInMainThead:(BOOL)inMainThead{
+-(void)refreshData{
  
     self.needRefreshData = NO;
-    [self.emptyView dismiss:YES needMainTread:inMainThead];
-    [self.errorView dismiss:YES needMainTread:inMainThead];
+
+    BOOL isMainThread = [NSThread isMainThread];
     
     if(self.scrollView.mj_header.isRefreshing){
         
-        if(inMainThead){
+        if(!isMainThread){
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self back2Top];
                 self.scrollView.userInteractionEnabled = NO;
                 [self.scrollView.mj_header endRefreshing];
-                
-                [self.emptyView dismiss:YES needMainTread:NO];
-                [self.errorView dismiss:YES needMainTread:NO];
+                [CoreListMessageView dismissFromView:self.view];
                 [self performSelector:@selector(refreshData_Prepare) withObject:nil afterDelay:1];
             });
             
@@ -42,21 +40,19 @@
             self.scrollView.userInteractionEnabled = NO;
             [self.scrollView.mj_header endRefreshing];
             
-            [self.emptyView dismiss:YES needMainTread:NO];
-            [self.errorView dismiss:YES needMainTread:NO];
+            [CoreListMessageView dismissFromView:self.view];
             [self performSelector:@selector(refreshData_Prepare) withObject:nil afterDelay:1];
         }
 
     }else{
 
-        if(inMainThead){
+        if(!isMainThread){
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 [self back2Top];
                 self.scrollView.userInteractionEnabled = NO;
-                [self.emptyView dismiss:YES needMainTread:NO];
-                [self.errorView dismiss:YES needMainTread:NO];
+                [CoreListMessageView dismissFromView:self.view];
                 [self refreshData_Prepare];
             });
             
@@ -65,8 +61,7 @@
             [self back2Top];
             self.scrollView.userInteractionEnabled = NO;
             
-            [self.emptyView dismiss:YES needMainTread:NO];
-            [self.errorView dismiss:YES needMainTread:NO];
+            [CoreListMessageView dismissFromView:self.view];
             [self refreshData_Prepare];
         }
     }

@@ -150,7 +150,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             
             [self showErrorViewWithMsg:errorResult failClickBlock:^{
                 
-                [self refreshDataInMainThead:NO];
+                [self refreshData];
             }];
         }
 
@@ -235,7 +235,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
         }else{//有数据，隐藏
             
-            [self.emptyView dismiss:YES needMainTread:NO];
+            [CoreListMessageView dismissFromView:self.view];
 
             self.hasData = YES;
         }
