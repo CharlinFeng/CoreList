@@ -103,6 +103,8 @@
     NSString *str_m_cls = NSStringFromClass(m.CoreListControllerClass);
     NSLog(@"%@,%@,%@",str_self_cls,str_m_cls,@(m.vcIndex));
     
+    if(m.vcIndex == -1){self.needRefreshData = YES;return;}
+    
     if([str_self_cls isEqualToString:str_m_cls] && self.coreListVCIndex == m.vcIndex){
         NSLog(@"需要刷新");
         self.needRefreshData = YES;
@@ -173,7 +175,6 @@
     }
 
 }
-
 
 
 /** viewDidAppearAction */
