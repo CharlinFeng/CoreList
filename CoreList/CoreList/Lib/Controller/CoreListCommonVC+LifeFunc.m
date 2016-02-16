@@ -166,7 +166,7 @@
         if(needTriggerHeaderAction || self.needRefreshData){
 
             self.needRefreshData = YES;
-
+            
             //存入当前时间
             [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
         }
@@ -202,7 +202,7 @@
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
     
     if(self.needRefreshData){
-        [self performSelector:@selector(refreshDataInMainThead:) withObject:@(NO) afterDelay:0.25];
+        [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.25];
     }
     
 }
