@@ -208,7 +208,12 @@
             [self back2Top];
             [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.8];
         }else{
-            [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.25];
+            if(self.hasData) {
+                
+                [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.25];
+            }else{
+                [self performSelector:@selector(refreshData) withObject:nil];
+            }
         }
         
         
