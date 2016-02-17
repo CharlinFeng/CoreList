@@ -14,6 +14,7 @@
 #import "NSArray+CoreListExtend.h"
 #import "CoreStatus.h"
 #import "CoreListVCNeedRefreshNotiModel.h"
+#import "CoreListCommonVC+BackBtn.h"
 
 static NSString const *NoMoreDataMsg = @"没有更多数据了";
 
@@ -21,15 +22,15 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 
 ///** 自动触发顶部刷新 */
 //-(void)triggerHeaderRefreshing{
-//    
+//
 //    [self.scrollView.mj_footer endRefreshingWithNoMoreData];
-//    
+//
 //    [self.scrollView.mj_footer removeFromSuperview];
-//    
+//
 //    self.scrollView.mj_footer = nil;
-//    
+//
 //    if(self.scrollView.mj_header == nil) {[self headerRefreshAdd];}
-//    
+//
 //    [self refreshData];
 //}
 
@@ -42,7 +43,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
         [self.scrollView.mj_footer endRefreshingWithNoMoreData];
         
         [(MJRefreshAutoStateFooter *)self.scrollView.mj_footer setTitle:[NSString stringWithFormat:@"温馨提示：%@",msg] forState:MJRefreshStateNoMoreData];
-    
+        
     }else{
         
         [self removeFooterRefreshControl];
@@ -55,11 +56,11 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
     if(self.scrollView.isDragging) return;
     
-//    if(![CoreStatus isNETWORKEnable]) {[self.scrollView.mj_header endRefreshing]; return;};
+    //    if(![CoreStatus isNETWORKEnable]) {[self.scrollView.mj_header endRefreshing]; return;};
     
     if(self.CoreListDidTrigerHeaderRefresh != nil){self.CoreListDidTrigerHeaderRefresh();}
     
-//    dispatch_async(dispatch_get_main_queue(), ^{
+    //    dispatch_async(dispatch_get_main_queue(), ^{
     
     [CoreListMessageView dismissFromView:self.view];
     
@@ -80,7 +81,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     [self fetchDataFromModel];
     
     self.isRefreshData=YES;
-//    });
+    //    });
 }
 
 
@@ -113,15 +114,15 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     //存入数据
     self.dataList = models;
     
-
+    
     self.isRefreshData=NO;
     
     if(![self.scrollView isKindOfClass:[UITableView class]]) return;
     if(!self.hasData) return;
     if(models.count==0) return;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        [(UITableView *)self.scrollView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewRowAnimationTop animated:YES];
+        [self back2Top];
     });
     
 }
@@ -129,7 +130,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 
 /** 刷新成功：底部 */
 -(void)refreshSuccess4Footer:(NSArray *)models sourceType:(CoreModelDataSourceType)sourceType{
-
+    
     NSUInteger count = models.count;
     
     NSUInteger pageSize = self.modelPageSize;
@@ -245,7 +246,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
         if(self.scrollView.mj_footer == nil) {
             
             MJRefreshFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshAction)];
-        
+            
             self.scrollView.mj_footer = footer;
         }
     });
@@ -254,9 +255,9 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 
 
 -(void)removeHeaderRefreshControl{
-   
+    
     [self.scrollView.mj_header endRefreshing];
-
+    
     [self.scrollView.mj_header removeFromSuperview];
     self.scrollView.mj_header = nil;
 }
@@ -274,7 +275,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
  *  远程刷新方法
  */
 +(void)needRefreshWithVCIndex:(NSInteger)vcIndex{
-
+    
     CoreListVCNeedRefreshNotiModel *refreshModel = [CoreListVCNeedRefreshNotiModel quickNotiModel:[self class] vcIndex:vcIndex];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:CoreListVCNeedRefreshDataNoti object:nil userInfo:@{CoreListVCNeedRefreshDataNoti:refreshModel}];
