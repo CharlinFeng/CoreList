@@ -15,6 +15,8 @@ class NewsListVC: CoreListTableViewController {
 
     
         self.autoHideBars = false
+        
+
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

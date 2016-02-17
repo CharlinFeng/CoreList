@@ -27,21 +27,19 @@
         if(!isMainThread){
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self back2Top];
+                
                 self.scrollView.userInteractionEnabled = NO;
                 [self.scrollView.mj_header endRefreshing];
                 [CoreListMessageView dismissFromView:self.view];
-                [self performSelector:@selector(refreshData_Prepare) withObject:nil afterDelay:1];
+                [self performSelector:@selector(refreshData_Real) withObject:nil afterDelay:1];
             });
             
         }else{
-            
-            [self back2Top];
             self.scrollView.userInteractionEnabled = NO;
             [self.scrollView.mj_header endRefreshing];
             
             [CoreListMessageView dismissFromView:self.view];
-            [self performSelector:@selector(refreshData_Prepare) withObject:nil afterDelay:1];
+            [self performSelector:@selector(refreshData_Real) withObject:nil afterDelay:1];
         }
 
     }else{
@@ -50,40 +48,20 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                [self back2Top];
                 self.scrollView.userInteractionEnabled = NO;
                 [CoreListMessageView dismissFromView:self.view];
-                [self refreshData_Prepare];
+                [self refreshData_Real];
             });
             
         }else{
-            
-            [self back2Top];
             self.scrollView.userInteractionEnabled = NO;
             
             [CoreListMessageView dismissFromView:self.view];
-            [self refreshData_Prepare];
+            [self refreshData_Real];
         }
     }
 }
 
-
--(void)refreshData_Prepare{
-    
-    if(self.scrollView.contentOffset.y >= [UIScreen mainScreen].bounds.size.height){
-    
-        [self back2Top];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self refreshData_Real];
-        });
-        
-    }else {
-    
-        [self refreshData_Real];
-    }
-
-}
 
 -(void)refreshData_Real{
     if(self.refreshType == ListVCRefreshAddTypeBoth || self.refreshType == ListVCRefreshAddTypeTopRefreshOnly) {if (self.scrollView.mj_header.isRefreshing) return;}

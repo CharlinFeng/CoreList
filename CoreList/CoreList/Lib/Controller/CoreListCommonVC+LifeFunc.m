@@ -202,7 +202,16 @@
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
     
     if(self.needRefreshData){
-        [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.25];
+        
+        if(self.scrollView.contentOffset.y != 0){
+        
+            [self back2Top];
+            [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.8];
+        }else{
+            [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.25];
+        }
+        
+        
     }
     
 }
