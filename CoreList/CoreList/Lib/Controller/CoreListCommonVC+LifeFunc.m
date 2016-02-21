@@ -213,19 +213,21 @@
     
     if(!self.notAdjustScrollViewInsets){
         
-        self.isViewDidAppeare_CoreList = YES;
-        
         UIEdgeInsets insets = self.originalScrollInsets;
         
         CGFloat bottom = MJRefreshFooterHeight;
         
         if(insets.top == 0 && self.navigationController != nil && !self.navigationController.navigationBarHidden){insets.top = self.navigationController.navigationBar.bounds.size.height + 20;}
         
-        if(self.tabBarController != nil  && !self.tabBarController.tabBar.hidden ){ bottom += self.tabBarController.tabBar.bounds.size.height;}
+        if(self.tabBarController != nil  && !self.tabBarController.tabBar.hidden ){ bottom = self.tabBarController.tabBar.bounds.size.height;}
         
-        insets.bottom += bottom;
+        insets.bottom = bottom;
         
         self.originalScrollInsets = insets;
+        
+        self.isViewDidAppeare_CoreList = YES;
+        
+        self.notAdjustScrollViewInsets = YES;
     }
     
     self.scrollView.contentInset = self.originalScrollInsets;
