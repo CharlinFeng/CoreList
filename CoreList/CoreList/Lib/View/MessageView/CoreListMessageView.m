@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageV;
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *labelTMC;
+
+
+
 @end
 
 
@@ -42,23 +45,22 @@
     self.labelTMC.constant = constant;
 }
 
--(void)showInView:(UIView *)view viewType:(CoreListMessageViewType)viewType needMainTread:(BOOL)needMainTread{
+-(void)showInView:(UIView *)view viewType:(CoreListMessageViewType)viewType{
     
-    [CoreListMessageView dismissFromView:view];
-
-    if(needMainTread){
-    
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [view addSubview:self];
-            self.alpha = 1;
-        });
-    }else{
-    
+    if([NSThread isMainThread]){
+        [CoreListMessageView dismissFromView:view];
         [view addSubview:self];
         self.alpha = 1;
+        [self autoLayoutFillSuperView];
+    }else{
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [CoreListMessageView dismissFromView:view];
+            [view addSubview:self];
+            self.alpha = 1;
+            [self autoLayoutFillSuperView];
+        });
     }
-
-    [self autoLayoutFillSuperView];
 }
 
 

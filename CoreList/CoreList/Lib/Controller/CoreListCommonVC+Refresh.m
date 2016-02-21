@@ -106,10 +106,17 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 /** 刷新成功：顶部 */
 -(void)refreshSuccess4Header:(NSArray *)models{
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    if([NSThread isMainThread]){
         [self.scrollView.mj_header endRefreshing];
         [self reloadData];
-    });
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.scrollView.mj_header endRefreshing];
+            [self reloadData];
+        });
+    }
+    
+
     
     //存入数据
     self.dataList = models;
@@ -120,11 +127,15 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     if(![self.scrollView isKindOfClass:[UITableView class]]) return;
     if(!self.hasData) return;
     if(models.count==0) return;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        [self back2Top];
-    });
-    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        
+//        [self back2Top];
+//    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        
+//        [self back2Top];
+//    });
+//    
 }
 
 
@@ -240,8 +251,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 /** 安装刷新控件：顶部刷新控件 */
 -(void)footerRefreshAdd{
     
-    //添加底部刷新
-    dispatch_async(dispatch_get_main_queue(), ^{
+    if([NSThread isMainThread]){
         
         if(self.scrollView.mj_footer == nil) {
             
@@ -249,7 +259,19 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
             
             self.scrollView.mj_footer = footer;
         }
-    });
+    }else{
+        
+        //添加底部刷新
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if(self.scrollView.mj_footer == nil) {
+                
+                MJRefreshFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshAction)];
+                
+                self.scrollView.mj_footer = footer;
+            }
+        });
+    }
 }
 
 

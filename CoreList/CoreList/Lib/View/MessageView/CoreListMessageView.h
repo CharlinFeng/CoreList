@@ -22,11 +22,15 @@ typedef enum{
 
 @property (nonatomic,assign) CoreListMessageViewType viewType;
 
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+
+@property (nonatomic,assign) BOOL isCustomMessageView;
+
 -(void)update:(NSString *)imageName desc:(NSString *)desc constant:(CGFloat)constant;
 
 +(instancetype)emptyViewWithImageName:(NSString *)imageName desc:(NSString *)desc constant:(CGFloat)constant;
 
--(void)showInView:(UIView *)view viewType:(CoreListMessageViewType)viewType needMainTread:(BOOL)needMainTread;
+-(void)showInView:(UIView *)view viewType:(CoreListMessageViewType)viewType;
 +(void)dismissFromView:(UIView *)sv;
 
 

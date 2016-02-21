@@ -64,7 +64,7 @@
 
 @property (nonatomic,assign) BOOL needCompareData;
 
-@property (nonatomic,assign) BOOL isViewDidAppeare;
+@property (nonatomic,assign) BOOL isViewDidAppeare_CoreList;
 
 @property (nonatomic,assign) BOOL notAdjustScrollViewInsets;
 

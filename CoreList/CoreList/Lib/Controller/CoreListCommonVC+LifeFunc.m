@@ -16,6 +16,7 @@
 #import "CoreListCommonVC+ScrollView.h"
 #import "CoreListCommonVC+Main.h"
 #import "CoreListVCNeedRefreshNotiModel.h"
+#import "UIView+CoreListLayout.h"
 
 @interface CoreListCommonVC ()<UIScrollViewDelegate>
 
@@ -90,7 +91,35 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needRefreshNoti:) name:CoreListVCNeedRefreshDataNoti object:nil];
     
     self.autoHideBars = NO;
+    
+    [self messageViewPrepare:YES];
+    [self messageViewPrepare:NO];
 }
+
+
+-(void)messageViewPrepare:(BOOL)isEmptyView{
+    
+    id customObj = isEmptyView ? [self listVC_StatusView_Empty] : [self listVC_StatusView_Error];
+    
+    if (customObj != nil){
+        
+         __weak CoreListMessageView *messageView = isEmptyView ? self.emptyView : self.errorView;
+        
+        if([customObj isKindOfClass:[UIView class]]){
+            
+            messageView.isCustomMessageView = YES;
+            [messageView.contentView addSubview:customObj];
+            [customObj autoLayoutFillSuperView];
+            
+        }else{
+            
+            NSArray *array = (NSArray *)customObj;
+            [messageView update:array[0] desc:array[1] constant:[array[2] floatValue]];
+        }
+    }
+}
+
+
 
 -(void)needRefreshNoti:(NSNotification *)noti{
 
@@ -142,6 +171,8 @@
 /** viewWillAppearAction */
 -(void)viewWillAppearAction{
     
+    self.isViewDidAppeare_CoreList = YES;
+    
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
     
     //提示图层：没有数据才显示
@@ -172,16 +203,17 @@
             [[NSUserDefaults standardUserDefaults] setDouble:now forKey:key];
         }
     }
-
 }
 
 
 /** viewDidAppearAction */
 -(void)viewDidAppearAction{
     
-    if(!self.isViewDidAppeare && !self.notAdjustScrollViewInsets){
+    if(!self.isViewDidAppeare_CoreList){NSLog(@"CoreList的View未显示");return;}
+    
+    if(!self.notAdjustScrollViewInsets){
         
-        self.isViewDidAppeare = YES;
+        self.isViewDidAppeare_CoreList = YES;
         
         UIEdgeInsets insets = self.originalScrollInsets;
         
@@ -196,16 +228,15 @@
         self.originalScrollInsets = insets;
     }
     
-    
     self.scrollView.contentInset = self.originalScrollInsets;
     
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
     
     if(self.needRefreshData){
-        
-        if(self.scrollView.contentOffset.y != 0){
+        if(self.scrollView.contentOffset.y != -64){
         
             [self back2Top];
+            
             [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.8];
         }else{
             if(self.hasData) {
@@ -215,10 +246,14 @@
                 [self performSelector:@selector(refreshData) withObject:nil];
             }
         }
-        
-        
     }
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
     
+    [super viewDidDisappear:animated];
+    
+    self.isViewDidAppeare_CoreList = NO;
 }
 
 

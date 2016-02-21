@@ -95,33 +95,46 @@
 
 -(UIView *)emptyView{
 
-    CoreListMessageView *emptyView = [CoreListMessageView emptyViewWithImageName:@"nil" desc:@"暂无数据，单击获取" constant:0];
+
+    if(_emptyView == nil){
     
-    emptyView.viewType = CoreListMessageViewTypeEmpty;
+        CoreListMessageView *emptyView = [CoreListMessageView emptyViewWithImageName:@"nil" desc:@"暂无数据，单击获取" constant:0];
+        
+        _emptyView = emptyView;
+        
+        emptyView.viewType = CoreListMessageViewTypeEmpty;
+        
+        __weak typeof(self) weakSelf=self;
+        
+        emptyView.ClickBlock = ^{
+            
+            [weakSelf refreshData];
+        };
     
-    __weak typeof(self) weakSelf=self;
+    }
     
-    emptyView.ClickBlock = ^{
-    
-        [weakSelf refreshData];
-    };
-    
-    return emptyView;
+    return _emptyView;
 }
 
 -(UIView *)errorView{
     
-    CoreListMessageView *errorView = [CoreListMessageView emptyViewWithImageName:@"nil" desc:@"加载失败，单击重试" constant:0];
+    if(_errorView == nil){
     
-    errorView.viewType = CoreListMessageViewTypeError;
+        CoreListMessageView *errorView = [CoreListMessageView emptyViewWithImageName:@"nil" desc:@"加载失败，单击重试" constant:0];
+        
+        _errorView = errorView;
+        
+        errorView.viewType = CoreListMessageViewTypeError;
+        
+        __weak typeof(self) weakSelf=self;
+        
+        errorView.ClickBlock = ^{
+            
+            [weakSelf refreshData];
+        };
+    }
     
-    __weak typeof(self) weakSelf=self;
-    
-    errorView.ClickBlock = ^{
-        [weakSelf refreshData];
-    };
-    
-    return errorView;
+    return _errorView;
 }
 
 -(void)setAutoHideBars:(BOOL)autoHideBars{

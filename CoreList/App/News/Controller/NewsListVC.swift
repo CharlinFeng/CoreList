@@ -16,6 +16,10 @@ class NewsListVC: CoreListTableViewController {
     
         self.autoHideBars = false
         
+        self.errorView.ClickBlock = {
+        
+            print("点击了错误视图")
+        }
 
     }
     
@@ -51,22 +55,22 @@ extension NewsListVC {
 //        return nil
         
         
-//        let v = UIView()
-//        v.backgroundColor = UIColor.blueColor()
-//        return v
+        let v = UIView()
+        v.backgroundColor = UIColor.blueColor()
+        return v
         
-        return ["0","没有数据",60]
+//        return ["0","没有数据",60]
     }
 
     /** 自定义错误视图 */
     override func listVC_StatusView_Error() -> AnyObject! {
         
-                return nil
+//                return nil
         
         
-//                let v = UIView()
-//                v.backgroundColor = UIColor.redColor()
-//                return v
+                let v = UIView()
+                v.backgroundColor = UIColor.redColor()
+                return v
         
 //        return ["0","请求失败",60]
     }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -22,9 +22,13 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzi-MU-M5F">
                     <rect key="frame" x="265" y="360" width="69" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nt6-Kt-nOz" userLabel="ContentView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPH-I3-ikz">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <connections>
@@ -34,14 +38,18 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Nt6-Kt-nOz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0H5-Gc-8EO"/>
                 <constraint firstItem="Nzi-MU-M5F" firstAttribute="top" secondItem="5hq-Md-DOQ" secondAttribute="bottom" constant="10" id="9Uo-bm-i8T"/>
                 <constraint firstAttribute="bottom" secondItem="jPH-I3-ikz" secondAttribute="bottom" id="Gkt-Ax-Wfb"/>
                 <constraint firstItem="Nzi-MU-M5F" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="PMR-rP-GAz"/>
                 <constraint firstAttribute="bottom" secondItem="Nzi-MU-M5F" secondAttribute="bottom" constant="100" id="SxM-SK-LPM"/>
                 <constraint firstItem="Nzi-MU-M5F" firstAttribute="top" secondItem="5hq-Md-DOQ" secondAttribute="bottom" constant="10" id="Szk-cs-7W1"/>
+                <constraint firstAttribute="bottom" secondItem="Nt6-Kt-nOz" secondAttribute="bottom" id="UKE-RR-MbC"/>
                 <constraint firstItem="jPH-I3-ikz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WpS-O1-pa7"/>
+                <constraint firstItem="Nt6-Kt-nOz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YRV-CJ-0SR"/>
                 <constraint firstItem="Nzi-MU-M5F" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ZRY-KL-bJV"/>
                 <constraint firstItem="5hq-Md-DOQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="bGR-np-IOe"/>
+                <constraint firstAttribute="trailing" secondItem="Nt6-Kt-nOz" secondAttribute="trailing" id="gSS-lb-hvE"/>
                 <constraint firstItem="5hq-Md-DOQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="mJC-Wu-rff"/>
                 <constraint firstAttribute="trailing" secondItem="jPH-I3-ikz" secondAttribute="trailing" id="nau-8F-Qyx"/>
                 <constraint firstItem="jPH-I3-ikz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="w1b-sU-wtZ"/>
@@ -54,11 +62,12 @@
                 </mask>
             </variation>
             <connections>
+                <outlet property="contentView" destination="Nt6-Kt-nOz" id="ig4-YB-X3x"/>
                 <outlet property="descLabel" destination="Nzi-MU-M5F" id="Dge-VB-eNV"/>
                 <outlet property="imageV" destination="5hq-Md-DOQ" id="3Mf-xC-Yhd"/>
                 <outlet property="labelTMC" destination="9Uo-bm-i8T" id="yGL-bq-tQl"/>
             </connections>
-            <point key="canvasLocation" x="757" y="585"/>
+            <point key="canvasLocation" x="1146" y="609"/>
         </view>
     </objects>
 </document>

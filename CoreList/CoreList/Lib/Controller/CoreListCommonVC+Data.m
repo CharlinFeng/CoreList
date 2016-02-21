@@ -163,84 +163,66 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
 -(void)showErrorViewWithMsg:(NSString *)msg failClickBlock:(void(^)())failClickBlock{
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    if([NSThread isMainThread]){
+    
+        [self.errorView showInView:self.view viewType:CoreListMessageViewTypeError];
         
-        id errorObj = [self listVC_StatusView_Error];
-
-        UIView *errorView =nil;
-        
-        if (errorObj == nil){
-            
-            errorView = self.errorView;
-            
-        }else{
-            
-            if([errorObj isKindOfClass:[UIView class]]){
-            
-                errorView = errorObj;
-                
-            }else{
-                
-                NSArray *array = (NSArray *)errorObj;
-                CoreListMessageView *errorView_defalt = (CoreListMessageView *)self.errorView;
-                errorView = errorView_defalt;
-                [errorView_defalt update:array[0] desc:array[1] constant:[array[2] floatValue]];
-            }
-        }
-        
-        [self.errorView showInView:self.view viewType:CoreListMessageViewTypeError needMainTread:NO];
-        
-    });
+    }else{
+    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.errorView showInView:self.view viewType:CoreListMessageViewTypeError];
+        });
+    }
 }
 
 
 
 -(void)handlestatusViewWithModels:(NSArray *)models{
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    
+    if([NSThread isMainThread]){
+        
         NSUInteger count = models.count;
         
         BOOL noData = models == nil || count == 0;
-     
+        
         if(noData && !self.hideStatusView){//没有数据
             
             //标记需要刷新
             self.needRefreshData = YES;
             
-            id emptyObj = [self listVC_StatusView_Empty];
+            [self.emptyView showInView:self.view viewType:CoreListMessageViewTypeEmpty];
             
-            UIView *emptyView = nil;
-            
-            if(emptyObj == nil){
-                
-                emptyView = self.emptyView;
-                
-            }else {
-                
-                if([emptyObj isKindOfClass:[UIView class]]){
-                
-                    emptyView = (UIView *)emptyObj;
-                    
-                }else {
-                
-                    NSArray *array = (NSArray *)emptyObj;
-                    CoreListMessageView *emptyView_default = (CoreListMessageView *)self.emptyView;
-                    emptyView = emptyView_default;
-                    [emptyView_default update:array[0] desc:array[1] constant:[array[2] floatValue]];
-                }
-            
-            }
-            
-            [self.emptyView showInView:self.view viewType:CoreListMessageViewTypeEmpty needMainTread:NO];
-
         }else{//有数据，隐藏
             
             [CoreListMessageView dismissFromView:self.view];
-
+            
             self.hasData = YES;
         }
+
+    }else{
         
-    });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSUInteger count = models.count;
+            
+            BOOL noData = models == nil || count == 0;
+            
+            if(noData && !self.hideStatusView){//没有数据
+                
+                //标记需要刷新
+                self.needRefreshData = YES;
+                
+                [self.emptyView showInView:self.view viewType:CoreListMessageViewTypeEmpty];
+                
+            }else{//有数据，隐藏
+                
+                [CoreListMessageView dismissFromView:self.view];
+                
+                self.hasData = YES;
+            }
+        });
+    }
 }
 
 
