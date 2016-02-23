@@ -11,7 +11,7 @@
 #import "CoreListCommonVC+ScrollView.h"
 #import "CoreListCommonVC+BackBtn.h"
 #import "CoreListCommonVC+Data.h"
-
+#import "CoreListCommonVC+Refresh.h"
 
 @implementation CoreListCommonVC (Main)
 
@@ -60,6 +60,11 @@
             [self refreshData_Real];
         }
     }
+}
+
+/** 刷新数据_不通过刷新控件 */
+-(void)refreshData_WithoutRefreshControl{
+    [self headerRefreshAction];
 }
 
 

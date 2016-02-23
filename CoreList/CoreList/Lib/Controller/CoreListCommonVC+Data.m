@@ -159,8 +159,6 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
 
 
-
-
 -(void)showErrorViewWithMsg:(NSString *)msg failClickBlock:(void(^)())failClickBlock{
     
     if(self.hideStatusView) {return;}

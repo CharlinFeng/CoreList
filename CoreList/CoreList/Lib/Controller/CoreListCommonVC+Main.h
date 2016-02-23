@@ -13,4 +13,7 @@
 /** 刷新页面数据 */
 -(void)refreshData;
 
+/** 刷新数据_不通过刷新控件 */
+-(void)refreshData_WithoutRefreshControl;
+
 @end
