@@ -45,7 +45,22 @@
 +(NSString *)CoreModel_parseErrorData:(NSDictionary *)hostData{
     
     NSString *msgOut = hostData[@"msg"];
-    if(![msgOut isEqualToString:@"ok"]) return msgOut;
+    
+    if(![msgOut isEqualToString:@"ok"]) {
+    
+        NSInteger status = [hostData[@"status"] integerValue];
+        if(status == 900){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"AppHttpTokenDeprecatedNoti" object:nil userInfo:nil];
+            });
+            
+            NSLog(@"错误：Token过期");
+            
+            msgOut = @"请重新登陆";
+        }
+        return msgOut;
+    }
     
     NSString *msgIn = hostData[@"res"][@"res_msg"];
     if(![msgIn isEqualToString:@"ok"]) return msgIn;
