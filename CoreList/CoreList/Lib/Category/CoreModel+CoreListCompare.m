@@ -1,16 +1,16 @@
 //
-//  CoreModel+Compare.m
+//  CoreModel+CoreListCompare.m
 //  CoreList
 //
-//  Created by 冯成林 on 15/9/18.
-//  Copyright (c) 2015年 muxi. All rights reserved.
+//  Created by 冯成林 on 16/4/3.
+//  Copyright © 2016年 muxi. All rights reserved.
 //
 
-#import "CoreModel+Compare.h"
+#import "CoreModel+CoreListCompare.h"
 #import "NSArray+CoreModel.h"
 #import "NSObject+MJKeyValue.h"
 
-@implementation CoreModel (Compare)
+@implementation CoreModel (CoreListCompare)
 
 +(void)compareArr1:(NSArray *)arr1 arr2:(NSArray *)arr2 resBlock:(void(^)(BOOL res))resBlock{
     

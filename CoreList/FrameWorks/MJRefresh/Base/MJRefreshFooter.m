@@ -8,7 +8,6 @@
 //
 
 #import "MJRefreshFooter.h"
-#import "UIScrollView+MJRefresh.h"
 
 @interface MJRefreshFooter()
 
@@ -37,8 +36,8 @@
     // 设置自己的高度
     self.mj_h = MJRefreshFooterHeight;
     
-    // 默认是自动隐藏
-    self.automaticallyHidden = YES;
+    // 默认不会自动隐藏
+    self.automaticallyHidden = NO;
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview

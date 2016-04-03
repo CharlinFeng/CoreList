@@ -61,6 +61,7 @@
         self.mj_w = newSuperview.mj_w;
         // 设置位置
         self.mj_x = 0;
+        
         // 记录UIScrollView
         _scrollView = (UIScrollView *)newSuperview;
         // 设置永远支持垂直弹簧效果
@@ -143,9 +144,12 @@
     if (self.window) {
         self.state = MJRefreshStateRefreshing;
     } else {
-        self.state = MJRefreshStateWillRefresh;
-        // 刷新(预防从另一个控制器回到这个控制器的情况，回来要重新刷新一下)
-        [self setNeedsDisplay];
+        // 预发当前正在刷新中时调用本方法使得header insert回置失败
+        if (self.state != MJRefreshStateRefreshing) {
+            self.state = MJRefreshStateWillRefresh;
+            // 刷新(预防从另一个控制器回到这个控制器的情况，回来要重新刷新一下)
+            [self setNeedsDisplay];
+        }
     }
 }
 

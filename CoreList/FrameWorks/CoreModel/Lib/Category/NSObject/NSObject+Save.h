@@ -12,21 +12,13 @@
 @interface NSObject (Save)
 
 
-
-
 +(void)save:(id)model resBlock:(void(^)(BOOL res))resBlock;
-
 
 
 +(void)saveModels:(NSArray *)models resBlock:(void(^)(BOOL res))resBlock;
 
 
 +(void)saveDirect:(id)obj resBlock:(void(^)(BOOL res))resBlock;
-
-
-
-
-
 
 
 

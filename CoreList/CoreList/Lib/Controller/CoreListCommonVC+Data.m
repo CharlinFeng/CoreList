@@ -15,6 +15,7 @@
 #import "UIView+CoreListLayout.h"
 #import "CoreListCommonVC+Main.h"
 #import "CoreListMessageView.h"
+#import "CoreModel+CoreListCache.h"
 
 static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
@@ -69,6 +70,10 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
                 
                 //处理指示视图状态
                 [self handlestatusViewWithModels:models];
+                
+            }else {
+            
+                self.hasData = models.count > 0;
             }
             
             if(!self.hasData && models.count==0){

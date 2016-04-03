@@ -7,7 +7,7 @@
 //
 
 #import "CoreListCommonVC.h"
-#import "CoreModel+Compare.h"
+#import "CoreModel+CoreListCompare.h"
 #import "CoreListCommonVC+ScrollView.h"
 #import "CoreListCommonVC+Main.h"
 #import "MJRefresh.h"

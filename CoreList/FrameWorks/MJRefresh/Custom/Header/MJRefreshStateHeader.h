@@ -7,8 +7,6 @@
 //
 
 #import "MJRefreshHeader.h"
-#import <Foundation/Foundation.h>
-#import "MJRefreshComponent.h"
 
 @interface MJRefreshStateHeader : MJRefreshHeader
 #pragma mark - 刷新时间相关

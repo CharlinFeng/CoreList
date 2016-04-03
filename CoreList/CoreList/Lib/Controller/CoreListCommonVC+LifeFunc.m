@@ -76,10 +76,10 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.extendedLayoutIncludesOpaqueBars = YES;
     
-    //监听通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterBackground:) name:UIApplicationWillResignActiveNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterForground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+//    //监听通知
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterBackground:) name:UIApplicationWillResignActiveNotification object:nil];
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterForground:) name:UIApplicationWillEnterForegroundNotification object:nil];
     
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
 
@@ -215,7 +215,7 @@
         
         UIEdgeInsets insets = self.originalScrollInsets;
         
-        CGFloat bottom = MJRefreshFooterHeight;
+        CGFloat bottom = 0;
         
         if(insets.top == 0 && self.navigationController != nil && !self.navigationController.navigationBarHidden){insets.top = self.navigationController.navigationBar.bounds.size.height + 20;}
         
@@ -235,12 +235,15 @@
     if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
     
     if(self.needRefreshData){
+        
         if(self.scrollView.contentOffset.y != -64){
         
             [self back2Top];
             
             [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.8];
+            
         }else{
+            
             if(self.hasData) {
                 
                 [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.25];
