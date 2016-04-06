@@ -98,7 +98,7 @@
 
     if(_emptyView == nil){
     
-        CoreListMessageView *emptyView = [CoreListMessageView emptyViewWithImageName:@"nil" desc:@"暂无数据，单击获取" constant:0];
+        CoreListMessageView *emptyView = [CoreListMessageView emptyViewWithImageName:@"CoreList.bundle/smile_failed" desc:@"暂无数据，单击获取" constant:0];
         
         _emptyView = emptyView;
         
@@ -120,7 +120,7 @@
     
     if(_errorView == nil){
     
-        CoreListMessageView *errorView = [CoreListMessageView emptyViewWithImageName:@"nil" desc:@"加载失败，单击重试" constant:0];
+        CoreListMessageView *errorView = [CoreListMessageView emptyViewWithImageName:@"CoreList.bundle/smile_failed" desc:@"加载失败，单击重试" constant:0];
         
         _errorView = errorView;
         
@@ -146,5 +146,17 @@
         self.navigationController.hidesBarsOnSwipe = autoHideBars;
     }
 }
+
+
+-(NSMutableDictionary *)taskDictM{
+
+    if(_taskDictM == nil){
+    
+        _taskDictM = [NSMutableDictionary dictionary];
+    }
+
+    return _taskDictM;
+}
+
 
 @end

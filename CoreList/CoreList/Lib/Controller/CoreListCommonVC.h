@@ -76,4 +76,6 @@
 
 @property (nonatomic,assign) BOOL hideStatusView;
 
+@property (nonatomic,strong) NSMutableDictionary *taskDictM;
+
 @end

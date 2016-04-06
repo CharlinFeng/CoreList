@@ -18,16 +18,12 @@
 @implementation CoreModel (CoreListCache)
 
 
-+(void)selectWithParams:(NSDictionary *)params ignoreParams:(NSArray *)ignoreParams userInfo:(NSDictionary *)userInfo beginBlock:(void(^)(BOOL isNetWorkRequest,BOOL needHUD))beginBlock successBlock:(void(^)(NSArray *models,CoreModelDataSourceType sourceType,NSDictionary *userInfo))successBlock errorBlock:(void(^)(NSString *errorResult,NSDictionary *userInfo))errorBlock{
++(void)selectWithParams:(NSDictionary *)params ignoreParams:(NSArray *)ignoreParams userInfo:(NSDictionary *)userInfo beginBlock:(void(^)(BOOL isNetWorkRequest,BOOL needHUD, NSString *url, NSURLSessionDataTask *task))beginBlock successBlock:(void(^)(NSArray *models,CoreModelDataSourceType sourceType,NSDictionary *userInfo))successBlock errorBlock:(void(^)(NSString *errorResult,NSDictionary *userInfo))errorBlock{
     
     BOOL needFMDB = [self CoreModel_NeedFMDB];
     
     if(!needFMDB){
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            if(beginBlock != nil) beginBlock(YES,YES);
-        });
+
         
         NSString *url = [self CoreModel_UrlString];
         
@@ -35,9 +31,12 @@
         
         CoreModelHttpType httpType = [self CoreModel_HttpType];
         
+        NSURLSessionDataTask *dataTask = nil;
+        
+        
         if(CoreModelHttpTypeGET == httpType){
             
-            [CoreHttp getUrl:url params:requestParams success:^(id obj) {
+            dataTask = [CoreHttp getUrl:url params:requestParams success:^(id obj) {
                 
                 [self hostWithouSqliteRequestHandleData:obj userInfo:userInfo successBlock:successBlock errorBlock:errorBlock];
                 
@@ -48,7 +47,7 @@
             
         }else{
             
-            [CoreHttp postUrl:url params:requestParams success:^(id obj) {
+            dataTask = [CoreHttp postUrl:url params:requestParams success:^(id obj) {
                 
                 [self hostWithouSqliteRequestHandleData:obj userInfo:userInfo successBlock:successBlock errorBlock:errorBlock];
                 
@@ -57,6 +56,12 @@
                 if(errorBlock != nil) errorBlock(errorMsg,userInfo);
             }];
         }
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if(beginBlock != nil) beginBlock(YES,YES, url, dataTask);
+        });
         
     }else{
         
@@ -106,7 +111,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            if(beginBlock != nil) beginBlock(NO,NO);
+            if(beginBlock != nil) beginBlock(NO,NO, nil, nil);
         });
         
         [self selectWhere:where groupBy:nil orderBy:orderBy limit:limit selectResultsBlock:^(NSArray *model_sqlite_Array) {
@@ -140,7 +145,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                if(beginBlock != nil) beginBlock(YES,needHUD);
+                if(beginBlock != nil) beginBlock(YES,needHUD,nil, nil);
             });
             
             if(CoreModelHttpTypeGET == httpType){

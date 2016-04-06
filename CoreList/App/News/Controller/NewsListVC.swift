@@ -20,10 +20,6 @@ class NewsListVC: CoreListTableViewController {
         
             print("点击了错误视图")
         }
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,Int64(18 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
-            print("准备刷新")
-        })
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -55,7 +51,7 @@ extension NewsListVC {
     /** 自定义空视图 */
     override func listVC_StatusView_Empty() -> AnyObject! {
         
-//        return nil
+        return nil
         
         
         let v = UIView()
@@ -68,7 +64,7 @@ extension NewsListVC {
     /** 自定义错误视图 */
     override func listVC_StatusView_Error() -> AnyObject! {
         
-//                return nil
+                return nil
         
         
                 let v = UIView()

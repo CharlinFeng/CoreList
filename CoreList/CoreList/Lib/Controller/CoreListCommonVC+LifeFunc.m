@@ -17,6 +17,7 @@
 #import "CoreListCommonVC+Main.h"
 #import "CoreListVCNeedRefreshNotiModel.h"
 #import "UIView+CoreListLayout.h"
+#import "CoreListCommonVC+Task.h"
 
 @interface CoreListCommonVC ()<UIScrollViewDelegate>
 
@@ -94,6 +95,22 @@
     
     [self messageViewPrepare:YES];
     [self messageViewPrepare:NO];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(needRefreshNoti:) name:@"NavigationControllerWillPopNoti" object:nil];
+}
+
+-(void)NavigationControllerWillPopNoti:(NSNotification *)noti{
+
+    __block BOOL needCancel = NO;
+    
+    if([self.navigationController.topViewController isKindOfClass:[self class]]){needCancel = YES;}
+    
+    [self.navigationController.topViewController.childViewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull vc, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        if([vc isKindOfClass:[self class]]){needCancel = YES;}
+    }];
+    
+    if(needCancel){[self cancelAllTask];}
 }
 
 

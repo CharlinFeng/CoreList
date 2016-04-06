@@ -16,6 +16,7 @@
 #import "CoreListCommonVC+Main.h"
 #import "CoreListMessageView.h"
 #import "CoreModel+CoreListCache.h"
+#import "CoreListCommonVC+Task.h"
 
 static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
@@ -44,7 +45,10 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
     
     NSArray *ignoreParams = [self listVC_Ignore_Params];
     
-    [Model_Class selectWithParams:paramsM ignoreParams:ignoreParams userInfo:userInfo beginBlock:^(BOOL isNetWorkRequest,BOOL needHUD){
+    [Model_Class selectWithParams:paramsM ignoreParams:ignoreParams userInfo:userInfo beginBlock:^(BOOL isNetWorkRequest,BOOL needHUD,NSString *url, NSURLSessionDataTask *task){
+        
+        //记录task
+        [self addTask:task forKey:url];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if(self.hasFooter && isNetWorkRequest) [self.scrollView.mj_footer beginRefreshing];
@@ -109,6 +113,9 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
         //标明刷新类型：这句一定要放在后面，因为在修改刷新状态为无之前，状态值还有用
         self.refreshType = ListVCRefreshActionTypeNone;
         
+        //清除task
+        [self removeTask];
+        
     } errorBlock:^(NSString *errorResult,NSDictionary *userInfo) {
 
         //标记需要刷新
@@ -149,7 +156,6 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             
         }else{
         
-            
             //标明刷新类型
             self.refreshType = ListVCRefreshActionTypeNone;
             
@@ -158,7 +164,10 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
                 [self refreshData];
             }];
         }
-
+        
+        //清除task
+        [self removeTask];
+        
     }];
 }
 
