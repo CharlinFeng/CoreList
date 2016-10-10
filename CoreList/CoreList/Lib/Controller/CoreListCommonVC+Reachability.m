@@ -31,7 +31,7 @@
 /** 网络状态变更 */
 -(void)netWorkStatusChange{
     
-    if([CoreStatus isNETWORKEnable]){
+    if([CoreStatus isNetworkEnable]){
         
         [self.scrollView.mj_header endRefreshing];
         

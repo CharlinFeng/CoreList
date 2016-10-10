@@ -33,6 +33,8 @@
 		8914D0A91DAB6DFC00A940A6 /* MJChiBaoZiHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914D08F1DAB6DFC00A940A6 /* MJChiBaoZiHeader.m */; };
 		8914D0AA1DAB6DFC00A940A6 /* ShiDianRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8914D0901DAB6DFC00A940A6 /* ShiDianRefresh.bundle */; };
 		8914D0AB1DAB6DFC00A940A6 /* UIImage+ShiDianRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914D0921DAB6DFC00A940A6 /* UIImage+ShiDianRefresh.m */; };
+		8914D1A11DAB772200A940A6 /* CoreStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914D1981DAB772200A940A6 /* CoreStatus.m */; };
+		8914D1A21DAB772200A940A6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8914D19E1DAB772200A940A6 /* Reachability.m */; };
 		8925A2111CB4B77600588CE9 /* CoreHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 8925A2021CB4B77600588CE9 /* CoreHttp.m */; };
 		8925A2121CB4B77600588CE9 /* NSString+CoreHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 8925A2051CB4B77600588CE9 /* NSString+CoreHttp.m */; };
 		8925A2131CB4B77600588CE9 /* NSData+MimeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8925A2081CB4B77600588CE9 /* NSData+MimeType.m */; };
@@ -66,8 +68,6 @@
 		89551FED1CB0A8EB00305B24 /* NSObject+Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = 89551FDB1CB0A8EB00305B24 /* NSObject+Runtime.m */; };
 		89551FF01CB0A9D900305B24 /* CoreModel+CoreListCompare.m in Sources */ = {isa = PBXBuildFile; fileRef = 89551FEF1CB0A9D900305B24 /* CoreModel+CoreListCompare.m */; };
 		89551FF61CB0AA4E00305B24 /* CoreModel+CoreListCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 89551FF51CB0AA4E00305B24 /* CoreModel+CoreListCache.m */; };
-		897883DB1B21983C00033B01 /* CoreStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 897883D71B21983C00033B01 /* CoreStatus.m */; };
-		897883DC1B21983C00033B01 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 897883DA1B21983C00033B01 /* Reachability.m */; };
 		897884821B219B3D00033B01 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 897884811B219B3D00033B01 /* libsqlite3.dylib */; };
 		898A62111BA27D760098A0AD /* NewsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 898A62001BA27D760098A0AD /* NewsListModel.m */; };
 		898A62131BA27D760098A0AD /* NewsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898A62041BA27D760098A0AD /* NewsListCell.xib */; };
@@ -179,6 +179,13 @@
 		8914D0911DAB6DFC00A940A6 /* UIImage+ShiDianRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ShiDianRefresh.h"; sourceTree = "<group>"; };
 		8914D0921DAB6DFC00A940A6 /* UIImage+ShiDianRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ShiDianRefresh.m"; sourceTree = "<group>"; };
 		8914D0931DAB6DFC00A940A6 /* ShiDianRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiDianRefreshHeader.h; sourceTree = "<group>"; };
+		8914D1971DAB772200A940A6 /* CoreStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreStatus.h; sourceTree = "<group>"; };
+		8914D1981DAB772200A940A6 /* CoreStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreStatus.m; sourceTree = "<group>"; };
+		8914D19A1DAB772200A940A6 /* CoreNetworkStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreNetworkStatus.h; sourceTree = "<group>"; };
+		8914D19B1DAB772200A940A6 /* CoreStatusProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreStatusProtocol.h; sourceTree = "<group>"; };
+		8914D19D1DAB772200A940A6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		8914D19E1DAB772200A940A6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		8914D1A01DAB772200A940A6 /* CoreStatusSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreStatusSingleton.h; sourceTree = "<group>"; };
 		8925A2011CB4B77600588CE9 /* CoreHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreHttp.h; sourceTree = "<group>"; };
 		8925A2021CB4B77600588CE9 /* CoreHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreHttp.m; sourceTree = "<group>"; };
 		8925A2041CB4B77600588CE9 /* NSString+CoreHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CoreHttp.h"; sourceTree = "<group>"; };
@@ -250,10 +257,6 @@
 		89551FEF1CB0A9D900305B24 /* CoreModel+CoreListCompare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreModel+CoreListCompare.m"; sourceTree = "<group>"; };
 		89551FF41CB0AA4E00305B24 /* CoreModel+CoreListCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreModel+CoreListCache.h"; sourceTree = "<group>"; };
 		89551FF51CB0AA4E00305B24 /* CoreModel+CoreListCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CoreModel+CoreListCache.m"; sourceTree = "<group>"; };
-		897883D61B21983C00033B01 /* CoreStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreStatus.h; sourceTree = "<group>"; };
-		897883D71B21983C00033B01 /* CoreStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreStatus.m; sourceTree = "<group>"; };
-		897883D91B21983C00033B01 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		897883DA1B21983C00033B01 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		897884811B219B3D00033B01 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		898A61FF1BA27D760098A0AD /* NewsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListModel.h; sourceTree = "<group>"; };
 		898A62001BA27D760098A0AD /* NewsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListModel.m; sourceTree = "<group>"; };
@@ -490,6 +493,44 @@
 			path = ShiDianRefresh;
 			sourceTree = "<group>";
 		};
+		8914D1961DAB772200A940A6 /* CoreStatus */ = {
+			isa = PBXGroup;
+			children = (
+				8914D1971DAB772200A940A6 /* CoreStatus.h */,
+				8914D1981DAB772200A940A6 /* CoreStatus.m */,
+				8914D1991DAB772200A940A6 /* Lib */,
+			);
+			path = CoreStatus;
+			sourceTree = "<group>";
+		};
+		8914D1991DAB772200A940A6 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				8914D19A1DAB772200A940A6 /* CoreNetworkStatus.h */,
+				8914D19B1DAB772200A940A6 /* CoreStatusProtocol.h */,
+				8914D19C1DAB772200A940A6 /* Reachability */,
+				8914D19F1DAB772200A940A6 /* Singleton */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		8914D19C1DAB772200A940A6 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				8914D19D1DAB772200A940A6 /* Reachability.h */,
+				8914D19E1DAB772200A940A6 /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		8914D19F1DAB772200A940A6 /* Singleton */ = {
+			isa = PBXGroup;
+			children = (
+				8914D1A01DAB772200A940A6 /* CoreStatusSingleton.h */,
+			);
+			path = Singleton;
+			sourceTree = "<group>";
+		};
 		8925A2001CB4B77600588CE9 /* CoreHttp */ = {
 			isa = PBXGroup;
 			children = (
@@ -710,25 +751,6 @@
 				89551FDD1CB0A8EB00305B24 /* CoreModelType.h */,
 			);
 			path = Type;
-			sourceTree = "<group>";
-		};
-		897883D51B21983C00033B01 /* CoreStatus */ = {
-			isa = PBXGroup;
-			children = (
-				897883D61B21983C00033B01 /* CoreStatus.h */,
-				897883D71B21983C00033B01 /* CoreStatus.m */,
-				897883D81B21983C00033B01 /* Reachability */,
-			);
-			path = CoreStatus;
-			sourceTree = "<group>";
-		};
-		897883D81B21983C00033B01 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				897883D91B21983C00033B01 /* Reachability.h */,
-				897883DA1B21983C00033B01 /* Reachability.m */,
-			);
-			path = Reachability;
 			sourceTree = "<group>";
 		};
 		898A61F81BA27D760098A0AD /* App */ = {
@@ -1075,11 +1097,11 @@
 			isa = PBXGroup;
 			children = (
 				8914D05B1DAB6DFC00A940A6 /* ShiDianRefresh */,
+				8914D1961DAB772200A940A6 /* CoreStatus */,
 				8925A2001CB4B77600588CE9 /* CoreHttp */,
 				89551FAF1CB0A8EB00305B24 /* CoreModel */,
 				893FC06C1C25632100BA59BD /* CoreFMDB */,
 				89F998F31C12F7DE00DA2DC8 /* MJExtension */,
-				897883D51B21983C00033B01 /* CoreStatus */,
 			);
 			path = FrameWorks;
 			sourceTree = "<group>";
@@ -1213,7 +1235,6 @@
 				8914D0A31DAB6DFC00A940A6 /* MJRefreshConst.m in Sources */,
 				8925A2131CB4B77600588CE9 /* NSData+MimeType.m in Sources */,
 				EE5839BD1AB9953A00516AC1 /* ViewController.m in Sources */,
-				897883DB1B21983C00033B01 /* CoreStatus.m in Sources */,
 				8914D09F1DAB6DFC00A940A6 /* MJRefreshGifHeader.m in Sources */,
 				89F9990F1C12F7DE00DA2DC8 /* MJPropertyKey.m in Sources */,
 				89A7E6AF1C47C4B60057AEEF /* CoreListCommonVC+Reachability.m in Sources */,
@@ -1249,8 +1270,8 @@
 				8914D0971DAB6DFC00A940A6 /* MJRefreshFooter.m in Sources */,
 				8925A2151CB4B77600588CE9 /* NSString+File.m in Sources */,
 				89551FE21CB0A8EB00305B24 /* NSObject+CoreModelCommon.m in Sources */,
-				897883DC1B21983C00033B01 /* Reachability.m in Sources */,
 				89551FE11CB0A8EB00305B24 /* CoreModel+Cache.m in Sources */,
+				8914D1A21DAB772200A940A6 /* Reachability.m in Sources */,
 				89A7E6AE1C47C4B60057AEEF /* CoreListCommonVC+Main.m in Sources */,
 				893FC0841C25632100BA59BD /* FMDatabaseAdditions.m in Sources */,
 				8914D09D1DAB6DFC00A940A6 /* MJRefreshBackNormalFooter.m in Sources */,
@@ -1276,6 +1297,7 @@
 				893FC0871C25632100BA59BD /* FMResultSet.m in Sources */,
 				89F999131C12F7DE00DA2DC8 /* NSObject+MJKeyValue.m in Sources */,
 				8914D0A51DAB6DFC00A940A6 /* UIScrollView+MJExtension.m in Sources */,
+				8914D1A11DAB772200A940A6 /* CoreStatus.m in Sources */,
 				89A7E6AB1C47C4B60057AEEF /* CoreListCommonVC+BackBtn.m in Sources */,
 				89A7E6B01C47C4B60057AEEF /* CoreListCommonVC+Refresh.m in Sources */,
 				89A7E6A81C47C4B60057AEEF /* NSArray+CoreListExtend.m in Sources */,

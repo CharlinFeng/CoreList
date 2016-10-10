@@ -135,7 +135,7 @@
             
             if(!needHttpRequest) return;
             
-            if(![CoreStatus isNETWORKEnable]) return;
+            if(![CoreStatus isNetworkEnable]) return;
             
             NSString *url = [self CoreModel_UrlString];
             
