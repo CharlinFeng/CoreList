@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (Equal)
+@interface NSString (CoreListExtend)
+
+@property (nonatomic,copy) NSString *host;
 
 @end

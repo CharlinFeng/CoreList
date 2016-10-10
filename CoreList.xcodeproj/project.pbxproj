@@ -77,7 +77,7 @@
 		89A7E6A61C47C4B60057AEEF /* CoreListCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A7E6731C47C4B60057AEEF /* CoreListCollectionViewController.m */; };
 		89A7E6A71C47C4B60057AEEF /* CoreListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A7E6751C47C4B60057AEEF /* CoreListTableViewController.m */; };
 		89A7E6A81C47C4B60057AEEF /* NSArray+CoreListExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A7E6791C47C4B60057AEEF /* NSArray+CoreListExtend.m */; };
-		89A7E6A91C47C4B60057AEEF /* NSString+Equal.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A7E67B1C47C4B60057AEEF /* NSString+Equal.m */; };
+		89A7E6A91C47C4B60057AEEF /* NSString+CoreListExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A7E67B1C47C4B60057AEEF /* NSString+CoreListExtend.m */; };
 		89A7E6AA1C47C4B60057AEEF /* UIView+CoreListLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A7E67D1C47C4B60057AEEF /* UIView+CoreListLayout.m */; };
 		89A7E6AB1C47C4B60057AEEF /* CoreListCommonVC+BackBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A7E6821C47C4B60057AEEF /* CoreListCommonVC+BackBtn.m */; };
 		89A7E6AC1C47C4B60057AEEF /* CoreListCommonVC+Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A7E6841C47C4B60057AEEF /* CoreListCommonVC+Data.m */; };
@@ -270,8 +270,8 @@
 		89A7E6751C47C4B60057AEEF /* CoreListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreListTableViewController.m; sourceTree = "<group>"; };
 		89A7E6781C47C4B60057AEEF /* NSArray+CoreListExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CoreListExtend.h"; sourceTree = "<group>"; };
 		89A7E6791C47C4B60057AEEF /* NSArray+CoreListExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CoreListExtend.m"; sourceTree = "<group>"; };
-		89A7E67A1C47C4B60057AEEF /* NSString+Equal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Equal.h"; sourceTree = "<group>"; };
-		89A7E67B1C47C4B60057AEEF /* NSString+Equal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Equal.m"; sourceTree = "<group>"; };
+		89A7E67A1C47C4B60057AEEF /* NSString+CoreListExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CoreListExtend.h"; sourceTree = "<group>"; };
+		89A7E67B1C47C4B60057AEEF /* NSString+CoreListExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CoreListExtend.m"; sourceTree = "<group>"; };
 		89A7E67C1C47C4B60057AEEF /* UIView+CoreListLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CoreListLayout.h"; sourceTree = "<group>"; };
 		89A7E67D1C47C4B60057AEEF /* UIView+CoreListLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CoreListLayout.m"; sourceTree = "<group>"; };
 		89A7E67F1C47C4B60057AEEF /* CoreListConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreListConst.h; sourceTree = "<group>"; };
@@ -846,8 +846,8 @@
 			children = (
 				89A7E6781C47C4B60057AEEF /* NSArray+CoreListExtend.h */,
 				89A7E6791C47C4B60057AEEF /* NSArray+CoreListExtend.m */,
-				89A7E67A1C47C4B60057AEEF /* NSString+Equal.h */,
-				89A7E67B1C47C4B60057AEEF /* NSString+Equal.m */,
+				89A7E67A1C47C4B60057AEEF /* NSString+CoreListExtend.h */,
+				89A7E67B1C47C4B60057AEEF /* NSString+CoreListExtend.m */,
 				89A7E67C1C47C4B60057AEEF /* UIView+CoreListLayout.h */,
 				89A7E67D1C47C4B60057AEEF /* UIView+CoreListLayout.m */,
 				89551FEE1CB0A9D900305B24 /* CoreModel+CoreListCompare.h */,
@@ -1223,7 +1223,7 @@
 				89A7E6A71C47C4B60057AEEF /* CoreListTableViewController.m in Sources */,
 				8914D0A81DAB6DFC00A940A6 /* MJChiBaoZiFooter.m in Sources */,
 				89DCDC0E1C39497200CE7E8F /* NewsListVC.swift in Sources */,
-				89A7E6A91C47C4B60057AEEF /* NSString+Equal.m in Sources */,
+				89A7E6A91C47C4B60057AEEF /* NSString+CoreListExtend.m in Sources */,
 				89DCDC0B1C3947F300CE7E8F /* NewsListCell.swift in Sources */,
 				89A7E6B71C47C4B60057AEEF /* CoreListTableViewCell.m in Sources */,
 				8914D0A11DAB6DFC00A940A6 /* MJRefreshStateHeader.m in Sources */,

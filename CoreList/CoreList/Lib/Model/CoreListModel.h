@@ -7,6 +7,7 @@
 //
 
 #import "CoreModel.h"
+#import "NSString+CoreListExtend.h"
 
 @interface CoreListModel : CoreModel
 

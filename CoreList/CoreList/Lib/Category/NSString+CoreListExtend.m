@@ -6,9 +6,16 @@
 //  Copyright (c) 2015年 muxi. All rights reserved.
 //
 
-#import "NSString+Equal.h"
+#import "NSString+CoreListExtend.h"
 
-@implementation NSString (Equal)
+@implementation NSString (CoreListExtend)
+
+
+-(NSString *)host {
+
+    return [NSString stringWithFormat:@"%@%@",@"",self];
+}
+
 
 -(BOOL)isEqual:(id)object{
     return [self isEqualToString:object];
