@@ -10,8 +10,8 @@
 
 @interface NewsListModel : CoreListModel
 
-@property (nonatomic,copy) NSString *title,*about,*content;
+@property (nonatomic,copy) NSString *title,*content;
 
-@property (nonatomic,assign) NSInteger type;
+@property (nonatomic,assign) NSInteger score;
 
 @end

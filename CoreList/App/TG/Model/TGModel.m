@@ -24,9 +24,14 @@
  *  协议方法区
  */
 /** 接口地址 */
-+(NSString *)CoreModel_UrlString{return @"http://120.25.157.128/test/Test/test_content";}
++(NSString *)CoreModel_UrlString{return @"http://112.74.106.149/wind/Htdoc/Index/test/theList";}
 
 
 
 
 @end
+
+
+
+
+

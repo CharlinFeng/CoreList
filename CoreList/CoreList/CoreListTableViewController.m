@@ -49,6 +49,10 @@
     
     NSInteger row = indexPath.row; if(row >= self.dataList.count) row = 0;
     
+    //记录
+    cell.indexPath = indexPath;
+    cell.listVC = self;
+    
     //取出模型
     cell.model = self.dataList [row];
     

@@ -79,6 +79,7 @@
         if(CoreModelDeBug) NSLog(@"%@ 创表失败",modelName);
         return;
     }
+    
     if(CoreModelDeBug) NSLog(@"表创建完毕%@",[NSThread currentThread]);
     
     [self fieldsCheck:modelName ivars:ivarsM];

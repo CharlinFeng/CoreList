@@ -45,12 +45,10 @@ extension NewsListCell {
         idLabel.text = "\(model.hostID)"
         
         titleLabel.text = model.title;
-        
-        descLabel.text = model.about;
-        
+
         contentLabel.text = model.content;
         
-        typeLabel.text = "\(model.type)"
+        typeLabel.text = "\(model.score)"
         
     }
 }

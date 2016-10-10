@@ -7,7 +7,6 @@
 //
 
 #import "CoreListCommonVC+Refresh.h"
-#import "MJRefresh.h"
 #import "CoreListCommonVCProtocol.h"
 #import "CoreModel.h"
 #import "CoreListCommonVC+Data.h"
@@ -15,6 +14,7 @@
 #import "CoreStatus.h"
 #import "CoreListVCNeedRefreshNotiModel.h"
 #import "CoreListCommonVC+BackBtn.h"
+#import "ShiDianRefreshHeader.h"
 
 static NSString const *NoMoreDataMsg = @"没有更多数据了";
 
@@ -239,11 +239,8 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
     //添加顶部刷新控件
     if(self.scrollView.mj_header == nil) {
-        MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshAction)];
-        header.arrowView.alpha = 0;
-        header.lastUpdatedTimeLabel.hidden = YES;
-        self.scrollView.mj_header = header;
-        self.scrollView.mj_header.automaticallyChangeAlpha = YES;
+        
+        [self addHeader];
     }
 }
 
@@ -255,23 +252,50 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
         
         if(self.scrollView.mj_footer == nil) {
             
-            MJRefreshFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshAction)];
-            
-            self.scrollView.mj_footer = footer;
+            [self addFooter];
         }
+        
     }else{
         
         //添加底部刷新
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            if(self.scrollView.mj_footer == nil) {
-                
-                MJRefreshFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshAction)];
-                
-                self.scrollView.mj_footer = footer;
-            }
+            [self addFooter];
         });
     }
+}
+
+
+-(void)addHeader{
+    
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
+    MJChiBaoZiHeader *header = [MJChiBaoZiHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshAction)];
+    
+    // 隐藏时间
+    header.lastUpdatedTimeLabel.hidden = YES;
+    
+    // 隐藏状态
+    header.stateLabel.hidden = YES;
+    
+    // 设置header
+    self.scrollView.mj_header = header;
+}
+
+
+-(void)addFooter{
+    
+    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
+    MJChiBaoZiFooter *footer = [MJChiBaoZiFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefreshAction)];
+    
+    // 隐藏状态
+    footer.stateLabel.hidden = YES;
+    
+    // 隐藏刷新状态的文字
+    footer.refreshingTitleHidden = YES;
+    
+    // 设置header
+    self.scrollView.mj_footer = footer;
+    
 }
 
 

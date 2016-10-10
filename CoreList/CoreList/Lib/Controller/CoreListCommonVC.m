@@ -64,7 +64,7 @@
         [btn setBackgroundImage:[UIImage imageNamed:@"CoreList.bundle/back_top"] forState:UIControlStateNormal];
         
         UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:frame];
-        toolBar.barStyle = UIBarStyleBlackTranslucent;
+        toolBar.barStyle = UIBarStyleDefault;
         [_back2TopView addSubview:toolBar];
         [_back2TopView addSubview:btn];
         

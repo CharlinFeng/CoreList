@@ -257,15 +257,20 @@
         
             [self back2Top];
             
-            [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.8];
+//            [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.8];
+            
+            [self refreshData];
             
         }else{
             
             if(self.hasData) {
                 
-                [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.25];
+//                [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.25];
+                [self refreshData];
+                
             }else{
-                [self performSelector:@selector(refreshData) withObject:nil];
+//                [self performSelector:@selector(refreshData) withObject:nil];
+                [self refreshData];
             }
         }
     }

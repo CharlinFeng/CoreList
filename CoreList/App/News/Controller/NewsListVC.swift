@@ -35,6 +35,9 @@ class NewsListVC: CoreListTableViewController {
 
 }
 
+
+
+
 /** 协议方法区 */
 extension NewsListVC {
     
@@ -52,7 +55,6 @@ extension NewsListVC {
     override func listVC_StatusView_Empty() -> AnyObject! {
         
         return nil
-        
         
         let v = UIView()
         v.backgroundColor = UIColor.blueColor()
@@ -75,7 +77,9 @@ extension NewsListVC {
     }
     
     /** 参数 */
-    override func listVC_Request_Params() -> [NSObject : AnyObject]! {return nil}
+    override func listVC_Request_Params() -> [NSObject : AnyObject]! {
+        return ["client_info":"iOS","device_id":"CoreList"]
+    }
     
     /** 忽略参数 */
     override func listVC_Ignore_Params() -> [AnyObject]! {return nil}

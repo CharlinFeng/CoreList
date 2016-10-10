@@ -47,10 +47,8 @@ extension TGCell {
         
         tgTitleLabel.text = tgModel.title;
         
-        descLabel.text = tgModel.about;
-        
         contentLabel.text = tgModel.content;
         
-        typeLabel.text = "\(tgModel.type)"
+        typeLabel.text = "\(tgModel.score)"
     }
 }

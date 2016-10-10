@@ -26,7 +26,7 @@
 
 /** 是否需要本地缓存 */
 +(BOOL)CoreModel_NeedFMDB{
-    return YES;
+    return NO;
 }
 
 /** 缓存周期：单位秒 */
@@ -69,8 +69,9 @@
 }
 
 /** 服务器真正有用数据体：此时只是找到对应的key，还没有字典转模型 */
-+(id)CoreModel_findUsefullData:(NSDictionary *)hostData{
-    return hostData[@"res"][@"res_data"];
++(id)CoreModel_findUsefullData:(id)hostData {
+    
+    return hostData[@"data"];
 }
 
 

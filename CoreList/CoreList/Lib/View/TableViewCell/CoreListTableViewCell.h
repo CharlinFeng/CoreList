@@ -9,12 +9,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreListCellProtocol.h"
-
+#import "CoreListTableViewController.h"
 
 @interface CoreListTableViewCell : UITableViewCell<CoreListCellProtocol>
 
 /** indexPath */
-@property (nonatomic,strong) NSIndexPath *indexPath;
+@property (nonatomic,weak) NSIndexPath *indexPath;
+@property (nonatomic,weak) CoreListTableViewController *listVC;
 
 /** 模型 */
 @property (nonatomic,strong) CoreModel *model;

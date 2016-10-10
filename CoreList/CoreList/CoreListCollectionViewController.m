@@ -55,6 +55,9 @@
     //取出复用cell
     CoreListCollectionViewCell *cell = [[self listVC_View_Cell_Class] dequeueReusableCellWithCollectionView:collectionView indexPath:indexPath];
     
+    //记录
+    cell.indexPath = indexPath;
+    cell.listVC = self;
     cell.model = self.dataList[indexPath.item];
     
     return cell;

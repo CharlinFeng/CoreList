@@ -11,9 +11,9 @@
 
 @interface TGModel : CoreListModel
 
-@property (nonatomic,copy) NSString *title,*about,*content;
+@property (nonatomic,copy) NSString *title,*content;
 
-@property (nonatomic,assign) NSInteger type;
+@property (nonatomic,assign) NSInteger score;
 
 @property (nonatomic,assign) CGFloat cellH;
 

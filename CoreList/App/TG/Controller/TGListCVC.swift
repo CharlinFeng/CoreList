@@ -32,7 +32,10 @@ extension TGListCVC {
         return nil
     }
     /** 请求参数 */
-    override func listVC_Request_Params() -> [NSObject : AnyObject]! {return nil}
+    override func listVC_Request_Params() -> [NSObject : AnyObject]! {
+    
+        return ["client_info":"iOS","device_id":"CoreList"]
+    }
 
     /** 忽略参数 */
     override func listVC_Ignore_Params() -> [AnyObject]! {return nil}

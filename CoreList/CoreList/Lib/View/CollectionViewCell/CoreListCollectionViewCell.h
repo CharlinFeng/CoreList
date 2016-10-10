@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreListCellProtocol.h"
+#import "CoreListCollectionViewController.h"
 
 @interface CoreListCollectionViewCell : UICollectionViewCell<CoreListCellProtocol>
+
+@property (nonatomic,weak) NSIndexPath *indexPath;
+@property (nonatomic,weak) CoreListCollectionViewController *listVC;
 
 /** 模型 */
 @property (nonatomic,strong) CoreModel *model;
