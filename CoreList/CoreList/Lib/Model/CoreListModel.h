@@ -8,8 +8,11 @@
 
 #import "CoreModel.h"
 #import "NSString+CoreListExtend.h"
+#import <UIKit/UIKit.h>
 
 @interface CoreListModel : CoreModel
+
+@property (nonatomic,assign) CGFloat cellH;
 
 
 

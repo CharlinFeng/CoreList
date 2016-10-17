@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface NSArray (CoreListExtend)
 
 
@@ -16,6 +17,7 @@
 
 /** indexPathys计算 */
 +(NSArray *)indexPathsWithStartIndex:(NSUInteger)startIndex count:(NSUInteger)count;
+
 
 
 

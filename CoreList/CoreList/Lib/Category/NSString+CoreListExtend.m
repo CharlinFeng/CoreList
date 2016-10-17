@@ -22,5 +22,20 @@
 }
 
 
+-(CGFloat)calTextHWithLeftMargin:(CGFloat)l rightMargin:(CGFloat)r fontSize:(CGFloat)fontSize lineSpacing:(CGFloat)lineSpacing{
+    
+    CGFloat maxW = [UIScreen mainScreen].bounds.size.width - l - r;
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:lineSpacing];
+    
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName: [UIFont systemFontOfSize:fontSize],
+                                 NSParagraphStyleAttributeName:paragraphStyle
+                                 };
+    CGFloat contentH = [self boundingRectWithSize:CGSizeMake(maxW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size.height;
+    
+    return contentH;
+}
 
 @end
