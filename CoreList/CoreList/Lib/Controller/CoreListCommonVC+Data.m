@@ -177,14 +177,23 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
     
     if(self.hideStatusView) {return;}
     
+    CGFloat topMargin = 0;
+    
+    if ([self.scrollView isKindOfClass:[UITableView class]]) {
+        
+        UITableView *tableView = (UITableView *)self.scrollView;
+        
+        topMargin = tableView.tableHeaderView.bounds.size.height;
+    }
+    
     if([NSThread isMainThread]){
     
-        [self.errorView showInView:self.view viewType:CoreListMessageViewTypeError];
+        [self.errorView showInView:self.view viewType:CoreListMessageViewTypeError topMargin:topMargin];
         
     }else{
     
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.errorView showInView:self.view viewType:CoreListMessageViewTypeError];
+            [self.errorView showInView:self.view viewType:CoreListMessageViewTypeError topMargin:topMargin];
         });
     }
 }
@@ -193,6 +202,14 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
 -(void)handlestatusViewWithModels:(NSArray *)models{
     
+    CGFloat topMargin = 0;
+    
+    if ([self.scrollView isKindOfClass:[UITableView class]]) {
+        
+        UITableView *tableView = (UITableView *)self.scrollView;
+        
+        topMargin = tableView.tableHeaderView.bounds.size.height;
+    }
     
     if([NSThread isMainThread]){
         
@@ -205,7 +222,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
             //标记需要刷新
             self.needRefreshData = YES;
             
-            [self.emptyView showInView:self.view viewType:CoreListMessageViewTypeEmpty];
+            [self.emptyView showInView:self.view viewType:CoreListMessageViewTypeEmpty topMargin:topMargin];
             
         }else{//有数据，隐藏
             
@@ -227,7 +244,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
                 //标记需要刷新
                 self.needRefreshData = YES;
                 
-                [self.emptyView showInView:self.view viewType:CoreListMessageViewTypeEmpty];
+                [self.emptyView showInView:self.view viewType:CoreListMessageViewTypeEmpty topMargin:topMargin];
                 
             }else{//有数据，隐藏
                 

@@ -30,7 +30,7 @@ typedef enum{
 
 +(instancetype)emptyViewWithImageName:(NSString *)imageName desc:(NSString *)desc constant:(CGFloat)constant;
 
--(void)showInView:(UIView *)view viewType:(CoreListMessageViewType)viewType;
+-(void)showInView:(UIView *)view viewType:(CoreListMessageViewType)viewType topMargin:(CGFloat)topMargin;
 +(void)dismissFromView:(UIView *)sv;
 
 

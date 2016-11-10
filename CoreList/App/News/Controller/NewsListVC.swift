@@ -20,6 +20,10 @@ class NewsListVC: CoreListTableViewController {
         
             print("点击了错误视图")
         }
+        
+        let headerView = UIView(frame: CGRectMake(0, 0, 320, 100))
+        headerView.backgroundColor = UIColor.redColor()
+        tableView.tableHeaderView = headerView
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -45,20 +45,20 @@
     self.labelTMC.constant = constant;
 }
 
--(void)showInView:(UIView *)view viewType:(CoreListMessageViewType)viewType{
+-(void)showInView:(UIView *)view viewType:(CoreListMessageViewType)viewType topMargin:(CGFloat)topMargin{
     
     if([NSThread isMainThread]){
         [CoreListMessageView dismissFromView:view];
         [view addSubview:self];
         self.alpha = 1;
-        [self autoLayoutFillSuperView];
+        [self autoLayoutFillSuperViewWithTopMargin:topMargin];
     }else{
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [CoreListMessageView dismissFromView:view];
             [view addSubview:self];
             self.alpha = 1;
-            [self autoLayoutFillSuperView];
+            [self autoLayoutFillSuperViewWithTopMargin:topMargin];
         });
     }
 }

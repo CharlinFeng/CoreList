@@ -11,5 +11,5 @@
 @interface UIView (CoreListLayout)
 
 -(void)autoLayoutFillSuperView;
-
+-(void)autoLayoutFillSuperViewWithTopMargin:(CGFloat)topMargin;
 @end

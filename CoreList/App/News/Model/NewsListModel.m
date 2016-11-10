@@ -20,4 +20,9 @@
     return NO;
 }
 
++(id)CoreModel_findUsefullData:(id)hostData {
+
+    return hostData;
+}
+
 @end
