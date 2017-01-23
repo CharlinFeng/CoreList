@@ -162,7 +162,7 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     if(models != nil && indexPaths != nil && self.dataList != nil){
         
         //刷新数据
-        dispatch_async(dispatch_get_main_queue(), ^{
+        if ([NSThread isMainThread]) {
             
             //这里有个崩溃，先这样解决
             if(self.dataList.count <= self.modelPageSize){
@@ -171,7 +171,19 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
             /** 动态刷新 */
             [self reloadData];
             
-        });
+        }else {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                //这里有个崩溃，先这样解决
+                if(self.dataList.count <= self.modelPageSize){
+                    [self reloadData];return ;
+                }
+                /** 动态刷新 */
+                [self reloadData];
+            });
+        }
+
     }
     
     UIEdgeInsets insets = self.originalScrollInsets;

@@ -158,5 +158,12 @@
     return _taskDictM;
 }
 
+-(void)dealloc {
+
+    self.CoreListDidTrigerHeaderRefresh = nil;
+    self.CoreListHeaderRefreshSuccessBlock = nil;
+    self.CoreListHeaderRefreshSuccessBlock_HostObj = nil;
+    self.CoreListDidClickBgViewBlock = nil;
+}
 
 @end
