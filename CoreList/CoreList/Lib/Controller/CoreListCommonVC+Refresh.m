@@ -106,6 +106,9 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
 /** 刷新成功：顶部 */
 -(void)refreshSuccess4Header:(NSArray *)models{
     
+    //存入数据
+    self.dataList = models;
+    
     if([NSThread isMainThread]){
         [self.scrollView.mj_header endRefreshing];
         [self reloadData];
@@ -115,12 +118,6 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
             [self reloadData];
         });
     }
-    
-
-    
-    //存入数据
-    self.dataList = models;
-    
     
     self.isRefreshData=NO;
     
