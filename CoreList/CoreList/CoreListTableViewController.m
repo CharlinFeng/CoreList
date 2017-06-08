@@ -45,7 +45,7 @@
 /** cell */
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    CoreListTableViewCell *cell = [[self listVC_View_Cell_Class] dequeReuseCell:tableView];
+    CoreListTableViewCell *cell = [[self listVCViewCellClass] dequeReuseCell:tableView];
     
     NSInteger row = indexPath.row; if(row >= self.dataList.count) row = 0;
     

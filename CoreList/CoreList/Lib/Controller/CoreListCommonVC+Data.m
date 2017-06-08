@@ -32,18 +32,18 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
         return;
     }
     
-    Class Model_Class = [self listVC_Model_Class];
+    Class Model_Class = [self listVCModelClass];
     
     //当前页码信息：p,每页数据量信息：pageSize
     NSMutableDictionary *paramsM = [NSMutableDictionary dictionary];
     
     [paramsM addEntriesFromDictionary:@{[Model_Class CoreModel_PageKey] : @(self.page),[Model_Class CoreModel_PageSizeKey] : @([Model_Class CoreModel_PageSize])}];
     
-    if ([self listVC_Request_Params] != nil) [paramsM addEntriesFromDictionary:[self listVC_Request_Params]];
+    if ([self listVCRequestParams] != nil) [paramsM addEntriesFromDictionary:[self listVCRequestParams]];
     
     NSDictionary *userInfo = @{RefreshTypeKey : @(self.refreshType)};
     
-    NSArray *ignoreParams = [self listVC_Ignore_Params];
+    NSArray *ignoreParams = [self listVCIgnoreParams];
     
     [Model_Class selectWithParams:paramsM ignoreParams:ignoreParams userInfo:userInfo beginBlock:^(BOOL isNetWorkRequest,BOOL needHUD,NSString *url, NSURLSessionDataTask *task){
         
@@ -56,7 +56,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
         
     } successBlock:^(NSArray *models, CoreModelDataSourceType sourceType,NSDictionary *userInfo){
       
-        if(self.listVC_RefreshType == ListVCRefreshAddTypeBottomRefreshOnly){
+        if(self.listVCRefreshType == ListVCRefreshAddTypeBottomRefreshOnly){
         
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self removeHeaderRefreshControl];
@@ -261,7 +261,7 @@ static NSString * const RefreshTypeKey = @"RefreshTypeKey";
 
 -(BOOL)isNeedFMDB{
     
-    return [[self listVC_Model_Class] CoreModel_NeedFMDB];
+    return [[self listVCModelClass] CoreModel_NeedFMDB];
 }
 
 @end

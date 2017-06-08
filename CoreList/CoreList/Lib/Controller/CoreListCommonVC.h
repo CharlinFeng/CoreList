@@ -74,6 +74,12 @@
 
 @property (nonatomic,copy) void (^CoreListDidTrigerHeaderRefresh)();
 
+@property (nonatomic,copy) void (^CoreListHeaderRefreshSuccessBlock)(NSInteger count);
+
+@property (nonatomic,copy) void (^CoreListHeaderRefreshSuccessBlock_HostObj)(id hostObj, NSArray *ms);
+
+@property (nonatomic,copy) void (^CoreListDidClickBgViewBlock)();
+
 @property (nonatomic,assign) BOOL hideStatusView;
 
 @property (nonatomic,strong) NSMutableDictionary *taskDictM;

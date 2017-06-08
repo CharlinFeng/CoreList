@@ -27,7 +27,7 @@
     
     if(_modelPageSize == 0){
         
-        _modelPageSize = [[self listVC_Model_Class] CoreModel_PageSize];
+        _modelPageSize = [[self listVCModelClass] CoreModel_PageSize];
     }
     
     return _modelPageSize;

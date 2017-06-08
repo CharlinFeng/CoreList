@@ -66,13 +66,13 @@ static NSString const *NoMoreDataMsg = @"没有更多数据了";
     
     [self removeFooterRefreshControl];
     
-    if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
+    if([self listVCRefreshType] == ListVCRefreshAddTypeNeither) return;
     
     //标明刷新类型
     self.refreshType = ListVCRefreshActionTypeHeader;
     
     //页码复位
-    self.page = [[self listVC_Model_Class] CoreModel_StartPage];
+    self.page = [[self listVCModelClass] CoreModel_StartPage];
     
     //底部刷新控件复位
     [self.scrollView.mj_footer endRefreshing];

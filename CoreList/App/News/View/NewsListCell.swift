@@ -21,34 +21,38 @@ class NewsListCell: CoreListTableViewCell {
     @IBOutlet weak var typeLabel: UILabel!
     
     static let rid : String = "NewsListCell"
+
+    
 }
 
-extension NewsListCell {
-    
-    
-    
-    override class func dequeReuseCell(tableView: UITableView!) -> CoreListTableViewCell!{
-        
-        var cell: CoreListTableViewCell! = tableView.dequeueReusableCellWithIdentifier(rid) as? CoreListTableViewCell
-        
-        if cell == nil {cell = NSBundle.mainBundle().loadNibNamed(rid, owner: nil, options: nil).first as! CoreListTableViewCell}
-        
-        return cell!
-    }
-    
-    
-    
-    override func dataFill(coreModel: CoreModel!) {
-        
-        let model = coreModel as! NewsListModel
-    
-        idLabel.text = "\(model.hostID)"
-        
-        titleLabel.text = model.title;
 
-        contentLabel.text = model.content;
-        
-        typeLabel.text = "\(model.score)"
-        
-    }
-}
+
+//extension NewsListCell {
+//    
+//    
+//    
+//    override class func dequeReuse(_ tableView: UITableView!) -> CoreListTableViewCell!{
+//        
+//        var cell: CoreListTableViewCell! = tableView.dequeueReusableCell(withIdentifier: rid) as? CoreListTableViewCell
+//        
+//        if cell == nil {cell = Bundle.main.loadNibNamed(rid, owner: nil, options: nil)?.first as! CoreListTableViewCell}
+//        
+//        return cell!
+//    }
+//    
+//    
+//    
+//    override func dataFill(_ coreModel: CoreModel!) {
+//        
+//        let model = coreModel as! NewsListModel
+//    
+//        idLabel.text = "\(model.hostID)"
+//        
+//        titleLabel.text = model.title;
+//
+//        contentLabel.text = model.content;
+//        
+//        typeLabel.text = "\(model.score)"
+//        
+//    }
+//}

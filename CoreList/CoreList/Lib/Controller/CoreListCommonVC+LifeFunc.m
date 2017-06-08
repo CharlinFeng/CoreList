@@ -82,7 +82,7 @@
 //    
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appEnterForground:) name:UIApplicationWillEnterForegroundNotification object:nil];
     
-    if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
+    if([self listVCRefreshType] == ListVCRefreshAddTypeNeither) return;
 
     //设置代理
     if(self.scrollView.delegate == nil) self.scrollView.delegate = self;
@@ -116,7 +116,7 @@
 
 -(void)messageViewPrepare:(BOOL)isEmptyView{
     
-    id customObj = isEmptyView ? [self listVC_StatusView_Empty] : [self listVC_StatusView_Error];
+    id customObj = isEmptyView ? [self listVCStatusViewEmpty] : [self listVCStatusViewError];
     
     if (customObj != nil){
         
@@ -168,7 +168,7 @@
 
 -(void)appEnterForground:(NSNotification *)noti{
     
-    if([self listVC_RefreshType] != ListVCRefreshAddTypeBottomRefreshOnly){
+    if([self listVCRefreshType] != ListVCRefreshAddTypeBottomRefreshOnly){
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             //            [UIView animateWithDuration:0.25 animations:^{
             self.scrollView.contentInset = self.fixApplicationEnterInsets;
@@ -190,14 +190,14 @@
     
     self.isViewDidAppeare_CoreList = YES;
     
-    if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
+    if([self listVCRefreshType] == ListVCRefreshAddTypeNeither) return;
     
     //提示图层：没有数据才显示
 //    if(!self.hasData){[CoreIV showWithType:IVTypeLoad view:self.view msg:nil failClickBlock:nil];}
     
     //取出上次时间
-    NSString *key = [self listVC_Update_Delay_Key];
-    NSTimeInterval duration = [[self listVC_Model_Class] CoreModel_Duration];
+    NSString *key = [self listVCUpdateDelayKey];
+    NSTimeInterval duration = [[self listVCModelClass] CoreModel_Duration];
     NSTimeInterval lastTime = [[NSUserDefaults standardUserDefaults] doubleForKey:key];
     NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
     BOOL needTriggerHeaderAction = lastTime + duration < now;
@@ -249,7 +249,7 @@
     
     self.scrollView.contentInset = self.originalScrollInsets;
     
-    if([self listVC_RefreshType] == ListVCRefreshAddTypeNeither) return;
+    if([self listVCRefreshType] == ListVCRefreshAddTypeNeither) return;
     
     if(self.needRefreshData){
         
@@ -292,7 +292,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.scrollView = nil;
     
-    [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:[self listVC_Update_Delay_Key]];
+    [[NSUserDefaults standardUserDefaults] setDouble:0 forKey:[self listVCUpdateDelayKey]];
 }
 
 @end

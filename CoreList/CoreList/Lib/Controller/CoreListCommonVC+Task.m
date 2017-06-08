@@ -27,7 +27,7 @@
 
 -(void)removeTask{
 
-    Class Model_Class = [self listVC_Model_Class];
+    Class Model_Class = [self listVCModelClass];
     
     //清除task
     NSString *url = [Model_Class CoreModel_UrlString];

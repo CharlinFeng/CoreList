@@ -28,23 +28,26 @@
 
 
 /** 刷新方式 */
--(ListVCRefreshAddType)listVC_RefreshType;
+-(ListVCRefreshAddType)listVCRefreshType;
 
 
 /** 模型类 */
--(Class)listVC_Model_Class;
+-(Class)listVCModelClass;
 
 
 /** 视图类 */
--(Class)listVC_View_Cell_Class;
+-(Class)listVCViewCellClass;
 
 
 /** 请求参数 */
--(NSDictionary *)listVC_Request_Params;
+-(NSDictionary *)listVCRequestParams;
+
+/** 请求参数 */
+-(NSDictionary *)listVCRequestParams;
 
 
 /** 忽略参数 */
--(NSArray *)listVC_Ignore_Params;
+-(NSArray *)listVCIgnoreParams;
 
 
 
@@ -52,16 +55,16 @@
 @optional
 
 /** 无本地FMDB缓存的情况下，需要在ViewDidAppear中定期自动触发顶部刷新事件 */
--(NSString *)listVC_Update_Delay_Key;
+-(NSString *)listVCUpdateDelayKey;
 
 /** 返回顶部按钮 */
--(BOOL)listVC_NeedBackBtn;
+-(BOOL)listVCNeedBackBtn;
 
 /** 空数据状态视图 */
--(id)listVC_StatusView_Empty;
+-(id)listVCStatusViewEmpty;
 
 /** 错误数据状态视图 */
--(id)listVC_StatusView_Error;
+-(id)listVCStatusViewError;
 
 /** 数据方法区 */
 /** 刷新数据 */
@@ -72,9 +75,9 @@
 -(void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
 
 /** collectionView专有方法 */
--(UICollectionViewLayout *)listVC_CollectionViewLayout;
+-(UICollectionViewLayout *)listVCCollectionViewLayout;
 
 /** 是否为瀑布流布局 */
--(BOOL)listVC_IsWaterFlowLayout;
+-(BOOL)listVCIsWaterFlowLayout;
 
 @end

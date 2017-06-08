@@ -30,16 +30,16 @@ extension TGCell {
         
         super.awakeFromNib()
         
-        layer.borderColor = UIColor.grayColor().CGColor
+        layer.borderColor = UIColor.gray.cgColor
         layer.borderWidth = 0.5
     }
     
-    override class func dequeueReusableCellWithCollectionView(collectionView: UICollectionView!, indexPath: NSIndexPath!) -> TGCell! {
+    override class func dequeueReusableCell(with collectionView: UICollectionView!, indexPath: IndexPath!) -> TGCell! {
         
-        return collectionView.dequeueReusableCellWithReuseIdentifier(rid, forIndexPath: indexPath) as! TGCell
+        return collectionView.dequeueReusableCell(withReuseIdentifier: rid, for: indexPath) as! TGCell
     }
     
-    override func dataFill(coreModel: CoreModel!) {
+    override func dataFill(_ coreModel: CoreModel!) {
         
         let tgModel = coreModel as! TGModel
         

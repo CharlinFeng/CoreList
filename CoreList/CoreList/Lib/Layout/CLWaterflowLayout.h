@@ -18,6 +18,8 @@
 
 @interface CLWaterflowLayout : UICollectionViewLayout
 
+
+
 @property (nonatomic, assign) UIEdgeInsets sectionInset;
 
 /** 每一列之间的间距 */

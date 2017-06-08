@@ -14,7 +14,7 @@
 
 -(void)backBtnPrepare{
 
-    if(![self listVC_NeedBackBtn]) return;
+    if(![self listVCNeedBackBtn]) return;
 
     [self scrollViewPrepare];
 }
